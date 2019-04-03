@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Controlador.MetodoakVista;
+import APP.MetodoakVista;
 
 public class Lehioa1 extends JFrame {
 

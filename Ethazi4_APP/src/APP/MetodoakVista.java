@@ -17,11 +17,10 @@ public class MetodoakVista {
 		Bigarrena.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void hirugarrenera(ArrayList geltoki, String linea, Double prezioFinala, String DNI) {
+	public static void hirugarrenera() {
 		Lehioa3 ordainketa = new Lehioa3();
 		ordainketa.setVisible(true);
 		ordainketa.setBounds(550, 200, 642, 467);
-
 	}
 	
 }

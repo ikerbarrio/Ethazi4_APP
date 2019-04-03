@@ -14,7 +14,11 @@ public class Main {
 		System.out.println();
 		Kontsultak.hotelPantailaratu();
 
+//		VISTA.Lehioa1 ejecutar = new VISTA.Lehioa1();
+//		ejecutar.setVisible(true);
 
+		MetodoakVista.hirugarrenera();
+		
 	}
 
 }
