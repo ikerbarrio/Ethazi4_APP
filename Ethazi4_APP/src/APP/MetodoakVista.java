@@ -11,6 +11,12 @@ public class MetodoakVista {
 		lehioa1.setBounds(550, 200, 642, 467);
 }
 
+	public static void bigarrenera() {
+		Lehioa2 Bigarrena = new Lehioa2();
+		Bigarrena.setVisible(true);
+		Bigarrena.setBounds(550, 200, 642, 467);
+	}
+	
 	public static void hirugarrenera(ArrayList geltoki, String linea, Double prezioFinala, String DNI) {
 		Lehioa3 ordainketa = new Lehioa3();
 		ordainketa.setVisible(true);
