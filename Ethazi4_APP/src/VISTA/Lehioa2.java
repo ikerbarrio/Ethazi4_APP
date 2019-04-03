@@ -56,6 +56,6 @@ public class Lehioa2 extends JFrame {
 		comboHotelak.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHotelak);
 		hotelak = Kontsultak.hotelPantailaratu();
-		comboHotelak.add(hotelak);
+		comboHotelak.addItem(hotelak);
 	}
 }
