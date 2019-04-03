@@ -11,6 +11,7 @@ public class Main {
 		Konexioa con1 = new Konexioa(basedatos);
 		con1.getConexion();
 		
+		
 		Kontsultak.hotelPantailaratu();
 
 
