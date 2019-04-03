@@ -20,6 +20,8 @@ public class Lehioa2 extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
+		
+		System.out.println("kkk");
 	}
 
 }
