@@ -28,13 +28,12 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA,HELBIDEA,INFORMAZIOA FROM HOTELAK");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA,INFORMAZIOA FROM HOTELAK");
 			while (rs.next()) {
 
 				izena = rs.getString(1);
-				helbidea = rs.getString(2);
-				informazioa = rs.getString(3);
-				katea="Hotel: "+izena+", Helbidea: "+helbidea+", Informazioa: "+informazioa;
+				informazioa = rs.getString(2);
+				katea="Hotel: "+izena+", Informazioa: "+informazioa;
 				hotelak.add(katea);
 				
 			}
