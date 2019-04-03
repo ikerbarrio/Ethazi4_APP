@@ -21,7 +21,7 @@ public class Konexioa {
 	    public Konexioa(String baseDatos){
 	    	
 	    	
-	    	String fichero = "../Ethazi4_DB/src/DB/Fitxero";
+	    	String fichero = "../Ethazi4_APP/src/DB/Fitxero";
 	    	
 	    	
  		int kont =0;
