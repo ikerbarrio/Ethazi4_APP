@@ -81,7 +81,7 @@ public class Lehioa3 extends JFrame {
 		this.setSize(478,300);  
 		this.setLocationRelativeTo(null);  
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 635, 455);
+		
 		
 		
 		btnIrten.addActionListener(new ActionListener() {
@@ -111,7 +111,7 @@ public class Lehioa3 extends JFrame {
 //		Metodoak.bezKalkulatu();
 		TextDiruTot = Double.toString(Metodoak.kontTotala);
 		textDiruTot.setColumns(10);
-//		textDiruTot.setText(Double.toString(prezioFinala));
+		textDiruTot.setText(Double.toString(20));
 		
 		
 		lblBueltak.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -338,20 +338,14 @@ public class Lehioa3 extends JFrame {
 		btnAurrera.setBounds(518, 373, 91, 38);
 		getContentPane().add(btnAurrera);
 		
-//		alBAtzera = new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//
-//				try {
-//					MetodoakVista.laugarrenera(geltoki, linea, DNI);
-//				} catch (ParseException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//
-//				dispose();
-//			}
-//		};
-//		btnAtzera.addActionListener(alBAtzera);
+		alBAtzera = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				MetodoakVista.bigarrenera();
+				dispose();
+			}
+		};
+		btnAtzera.addActionListener(alBAtzera);
 		btnAtzera.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAtzera.setBounds(0, 0, 89, 30);
 		getContentPane().add(btnAtzera);
