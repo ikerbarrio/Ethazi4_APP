@@ -10,6 +10,7 @@ public class Kontsultak {
 	
 	public static void hotelPantailaratu() {
 		String izena = null;//hotelen izenak gordetzen dira
+		String informazioa = null;
 		Connection conexion = null;
 		Statement s = null;
 		
@@ -22,11 +23,12 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA,INFORMAZIOA FROM HOTELAK");
 			while (rs.next()) {
 
 				izena = rs.getString("izena");
-				System.out.println(izena);
+				informazioa = rs.getString("informazioa");
+				System.out.println("Hotel: "+izena+", Informazioa: "+informazioa);
 				
 			}
 		} catch (Exception e) {
