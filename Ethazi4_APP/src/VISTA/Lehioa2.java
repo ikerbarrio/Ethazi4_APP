@@ -9,34 +9,17 @@ import javax.swing.border.EmptyBorder;
 
 public class Lehioa2 extends JFrame {
 
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Lehioa2 frame = new Lehioa2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JPanel contentPanel;
 
 	/**
 	 * Create the frame.
 	 */
 	public Lehioa2() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		this.setSize(478, 300);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(550, 200, 635, 455);
+		getContentPane().setLayout(null);
 	}
 
 }

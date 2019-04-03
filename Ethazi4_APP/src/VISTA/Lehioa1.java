@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Controlador.MetodoakVista;
+import APP.MetodoakVista;
 
 public class Lehioa1 extends JFrame {
 
@@ -29,7 +29,7 @@ public class Lehioa1 extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 200, 635, 455);
 		
-		btnOngiEtorri.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnOngiEtorri.setFont(new Font("Tahoma", Font.BOLD, 35));
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -39,7 +39,7 @@ public class Lehioa1 extends JFrame {
 			}
 		};
 		btnOngiEtorri.addActionListener(al);
-		btnOngiEtorri.setBounds(204, 214, 206, 84);
+		btnOngiEtorri.setBounds(0, 0, 619, 416);
 		getContentPane().add(btnOngiEtorri);
 	}
 
