@@ -22,6 +22,7 @@ public class Lehioa2 extends JFrame {
 	private JLabel lblHotelak = new JLabel("HOTELAK");
 	private JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
 	JComboBox comboHotelak = new JComboBox();
+	String kaka = "KKDLAVACA";
 	/**
 	 * Create the frame.
 	 */
@@ -40,8 +41,8 @@ public class Lehioa2 extends JFrame {
 		lblGauKopurua.setBounds(417, 228, 168, 50);
 		getContentPane().add(lblGauKopurua);
 		
-		comboHiria.setBounds(63, 278, 168, 31);
-		getContentPane().add(comboHiria);
+		comboHotelak.setBounds(63, 278, 168, 31);
+		getContentPane().add(comboHotelak);
 		
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
@@ -53,9 +54,9 @@ public class Lehioa2 extends JFrame {
 		lblAukeratu.setBounds(63, 61, 215, 41);
 		getContentPane().add(lblAukeratu);
 		
-		comboHotelak.setBounds(265, 65, 168, 31);
-		getContentPane().add(comboHotelak);
+		comboHiria.setBounds(265, 65, 168, 31);
+		getContentPane().add(comboHiria);
 		hotelak = Kontsultak.hotelPantailaratu();
-		comboHotelak.addItem(hotelak);
+		comboHiria.addItem(kaka);
 	}
 }
