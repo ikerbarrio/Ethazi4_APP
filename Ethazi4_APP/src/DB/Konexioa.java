@@ -20,7 +20,7 @@ public class Konexioa {
 	    //Recibe el nombre de la base de datos
 	    public Konexioa(String baseDatos){
 	    	
-	    	
+
 	    	String fichero = "../Ethazi4_APP/src/DB/Fitxero";
 	    	
 	    	
