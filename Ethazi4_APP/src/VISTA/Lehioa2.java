@@ -1,28 +1,27 @@
 package VISTA;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JSpinner;
+import javax.swing.SwingConstants;
 
 import DB.Kontsultak;
-
-import javax.swing.JSpinner;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
 
 public class Lehioa2 extends JFrame {
 
 	private JPanel contentPanel;
-	JSpinner spinerGauKopurua = new JSpinner();
-	JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
-	JComboBox comboHiria = new JComboBox();
-
+	private JSpinner spinerGauKopurua = new JSpinner();
+	private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
+	private JComboBox comboHiria = new JComboBox();
+	private ArrayList hotelak = new ArrayList();
+	private JLabel lblHotelak = new JLabel("HOTELAK");
+	private JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
+	JComboBox comboHotelak = new JComboBox();
 	/**
 	 * Create the frame.
 	 */
@@ -33,10 +32,8 @@ public class Lehioa2 extends JFrame {
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
 		
-		
 		spinerGauKopurua.setBounds(417, 278, 168, 31);
 		getContentPane().add(spinerGauKopurua);
-		
 		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
@@ -46,22 +43,19 @@ public class Lehioa2 extends JFrame {
 		comboHiria.setBounds(63, 278, 168, 31);
 		getContentPane().add(comboHiria);
 		
-		JLabel lblHotelak = new JLabel("HOTELAK");
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHotelak.setBounds(63, 239, 168, 28);
 		getContentPane().add(lblHotelak);
 		
-		JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblAukeratu.setBounds(63, 61, 215, 41);
 		getContentPane().add(lblAukeratu);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(265, 65, 168, 31);
-		getContentPane().add(comboBox_1);
-		
-		Kontsultak.hotelPantailaratu();
+		comboHotelak.setBounds(265, 65, 168, 31);
+		getContentPane().add(comboHotelak);
+		hotelak = Kontsultak.hotelPantailaratu();
+		comboHotelak.add(hotelak);
 	}
 }
