@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import DB.Kontsultak;
+
 import javax.swing.JSpinner;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -16,6 +19,9 @@ import javax.swing.JTextField;
 public class Lehioa2 extends JFrame {
 
 	private JPanel contentPanel;
+	JSpinner spinerGauKopurua = new JSpinner();
+	JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
+	JComboBox comboHiria = new JComboBox();
 
 	/**
 	 * Create the frame.
@@ -27,19 +33,18 @@ public class Lehioa2 extends JFrame {
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(417, 278, 168, 31);
-		getContentPane().add(spinner);
 		
-		JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
+		spinerGauKopurua.setBounds(417, 278, 168, 31);
+		getContentPane().add(spinerGauKopurua);
+		
+		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGauKopurua.setBounds(417, 228, 168, 50);
 		getContentPane().add(lblGauKopurua);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(63, 278, 168, 31);
-		getContentPane().add(comboBox);
+		comboHiria.setBounds(63, 278, 168, 31);
+		getContentPane().add(comboHiria);
 		
 		JLabel lblHotelak = new JLabel("HOTELAK");
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -57,6 +62,6 @@ public class Lehioa2 extends JFrame {
 		comboBox_1.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboBox_1);
 		
-		System.out.println("kkk");
+		Kontsultak.hotelPantailaratu();
 	}
 }
