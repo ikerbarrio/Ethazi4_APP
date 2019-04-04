@@ -44,6 +44,7 @@ public class Lehioa2 extends JFrame {
 	 * Frame-aren komponente guztiak
 	 */
 	public Lehioa2() {
+		
 		setForeground(Color.DARK_GRAY);
 		getContentPane().setForeground(Color.DARK_GRAY);
 		this.setSize(478, 300);
@@ -63,6 +64,25 @@ public class Lehioa2 extends JFrame {
 		
 		comboHiria.setBounds(10, 180, 168, 31);
 		getContentPane().add(comboHiria);
+		hiriak = Kontsultak.hiriakPantailaratu();
+		
+		for(int n = 0; n < hiriak.size(); n++) {
+			comboHiria.addItem(hiriak.get(n));
+		}
+		
+		al = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+								
+				for(int i=0;i<hiriak.size();i++) {
+					if(comboHotelak.getSelectedItem().equals(hiriak.get(i))) {
+						
+						
+					}
+				}
+				
+			}
+		};
+		comboHiria.addActionListener(al);
 		
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
@@ -72,7 +92,11 @@ public class Lehioa2 extends JFrame {
 		getContentPane().add(lblGauKopurua);
 		hotelak = Kontsultak.hotelIzenaPantailaratu(getName());
 		comboHotelak.setBounds(63, 182, 168, 31);
-		comboHotelak.addItem(hotelak);
+		
+		for(int n = 0; n < hotelak.size(); n++) {
+			comboHotelak.addItem(hotelak.get(n));
+		}
+		
 		getContentPane().add(comboHotelak);
 		
 		
