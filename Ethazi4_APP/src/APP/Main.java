@@ -8,7 +8,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		Metodoak m = new Metodoak();
 		m.FitxeroaIrakurri();
-		System.out.println("bb");
+
 
 		String basedatos = "ethazi4";
 		Konexioa con1 = new Konexioa(basedatos);
