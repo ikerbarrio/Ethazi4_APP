@@ -70,7 +70,11 @@ public class Lehioa2 extends JFrame {
 		getContentPane().add(lblGauKopurua);
 		hotelak = Kontsultak.hotelIzenaPantailaratu(getName());
 		comboHotelak.setBounds(63, 182, 168, 31);
-		comboHotelak.addItem(hotelak);
+		
+		for(int n = 0; n < hotelak.size(); n++) {
+			comboHotelak.addItem(hotelak.get(n));
+		}
+		
 		getContentPane().add(comboHotelak);
 		
 		

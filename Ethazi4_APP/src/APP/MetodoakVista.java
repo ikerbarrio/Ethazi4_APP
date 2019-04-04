@@ -12,15 +12,15 @@ public class MetodoakVista {
 }
 
 	public static void bigarrenera() {
-		Lehioa2 Bigarrena = new Lehioa2();
-		Bigarrena.setVisible(true);
-		Bigarrena.setBounds(550, 200, 642, 467);
+		Lehioa2 lehioa2 = new Lehioa2();
+		lehioa2.setVisible(true);
+		lehioa2.setBounds(550, 200, 642, 467);
 	}
 	
 	public static void hirugarrenera() {
-		Lehioa3 ordainketa = new Lehioa3();
-		ordainketa.setVisible(true);
-		ordainketa.setBounds(550, 200, 642, 467);
+		Lehioa3 lehioa3 = new Lehioa3();
+		lehioa3.setVisible(true);
+		lehioa3.setBounds(550, 200, 642, 467);
 	}
 	
 }

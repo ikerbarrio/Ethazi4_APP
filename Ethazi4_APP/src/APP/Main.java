@@ -6,17 +6,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		VISTA.Lehioa1 ejecutar = new VISTA.Lehioa1();
+		ejecutar.setVisible(true);
+		
 		Metodoak m = new Metodoak();
 
 		m.fitxeroaIdatzi();
-		m.FitxeroaIrakurri();
-
-
-
-		
-
-
 		m.FitxeroaIrakurri();
 		
 
@@ -25,14 +20,7 @@ public class Main {
 		con1.getConexion();
 		
 		System.out.println();
-		Kontsultak.hotelInformazioaPantailaratu("aeiou");
-
-//		VISTA.Lehioa1 ejecutar = new VISTA.Lehioa1();
-//		ejecutar.setVisible(true);
-
-
-
-		
+		Kontsultak.hotelInformazioaPantailaratu("aeiou");		
 	}
 
 }
