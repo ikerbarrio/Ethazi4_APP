@@ -11,6 +11,8 @@ import javax.swing.JSpinner;
 import javax.swing.SwingConstants;
 
 import DB.Kontsultak;
+import javax.swing.JList;
+import javax.swing.JTextArea;
 
 public class Lehioa2 extends JFrame {
 
@@ -32,20 +34,20 @@ public class Lehioa2 extends JFrame {
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
 		
-		spinerGauKopurua.setBounds(417, 278, 168, 31);
+		spinerGauKopurua.setBounds(237, 325, 168, 31);
 		getContentPane().add(spinerGauKopurua);
 		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGauKopurua.setBounds(417, 228, 168, 50);
+		lblGauKopurua.setBounds(227, 264, 168, 50);
 		getContentPane().add(lblGauKopurua);
 		
-		comboHiria.setBounds(63, 278, 168, 31);
+		comboHiria.setBounds(10, 180, 168, 31);
 		getContentPane().add(comboHiria);
 		
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHotelak.setBounds(63, 239, 168, 28);
+		lblHotelak.setBounds(10, 129, 168, 28);
 		getContentPane().add(lblHotelak);
 		
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
@@ -57,5 +59,9 @@ public class Lehioa2 extends JFrame {
 		getContentPane().add(comboHotelak);
 		hotelak = Kontsultak.hotelPantailaratu();
 		comboHotelak.add(hotelak);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(227, 135, 364, 103);
+		getContentPane().add(textArea);
 	}
 }

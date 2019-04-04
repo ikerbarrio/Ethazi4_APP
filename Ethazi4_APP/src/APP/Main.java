@@ -12,10 +12,10 @@ public class Main {
 		con1.getConexion();
 		
 		System.out.println();
-		Kontsultak.hotelPantailaratu();
+		Kontsultak.hotelInformazioaPantailaratu("aeiou");
 
-		VISTA.Lehioa1 ejecutar = new VISTA.Lehioa1();
-		ejecutar.setVisible(true);
+//		VISTA.Lehioa1 ejecutar = new VISTA.Lehioa1();
+//		ejecutar.setVisible(true);
 
 		
 	}

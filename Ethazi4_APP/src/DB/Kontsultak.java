@@ -1,6 +1,6 @@
 package DB;
 
-import java.beans.Statement;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,11 +8,9 @@ import java.util.ArrayList;
 
 public class Kontsultak {
 	
-	public static ArrayList hotelPantailaratu() {
+	public static ArrayList hotelIzenaPantailaratu(String hiria) {
 		String izena = null;//hotelen izenak gordetzen dira
-		String helbidea;
-		String informazioa = null;
-		String katea;//izena+helbidea+informazioa
+		String katea;//izena
 		Connection conexion = null;
 		Statement s = null;
 		ArrayList<String> hotelak = new ArrayList(); 
@@ -26,12 +24,11 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA,INFORMAZIOA FROM HOTELAK");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK WHERE COD_POSTAL = (SELECT COD_POSTAL FROM HIRIAK WHERE IZENA LIKE '"+hiria+"')");
 			while (rs.next()) {
 
 				izena = rs.getString(1);
-				informazioa = rs.getString(2);
-				katea="Hotel: "+izena+", Informazioa: "+informazioa;
+				katea="Hotel: "+izena;
 				hotelak.add(katea);
 				
 			}
@@ -42,6 +39,34 @@ public class Kontsultak {
 			System.out.println(e.getMessage());
 		}
 		return hotelak;
+	}
+	
+	public static String hotelInformazioaPantailaratu(String hotelIzena) {
+		String informazioa = null;//hotelen informazioa gordetzeko
+		Connection conexion = null;
+		Statement s = null;
+		
+
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT INFORMAZIOA FROM HOTELAK WHERE IZENA LIKE '"+hotelIzena+"'");
+			while (rs.next()) {
+
+				informazioa = rs.getString(1);
+				System.out.println(informazioa);
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return informazioa;
 	}
 
 }
