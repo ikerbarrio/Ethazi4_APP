@@ -8,7 +8,8 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		Metodoak m = new Metodoak();
-		m.FitxeroaIrakurri();
+		m.fitxeroaIdatzi();
+		//m.FitxeroaIrakurri();
 
 
 
