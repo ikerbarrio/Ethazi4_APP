@@ -11,14 +11,7 @@ public class Main {
 
 		m.fitxeroaIdatzi();
 		m.FitxeroaIrakurri();
-
-
-
-		
-
-
-		m.FitxeroaIrakurri();
-		
+		System.out.println("commit");
 
 		String basedatos = "ethazi4";
 		Konexioa con1 = new Konexioa(basedatos);
