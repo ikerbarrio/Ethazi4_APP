@@ -1,6 +1,8 @@
 package APP;
 
 import java.io.File;
+import java.io.FileFilter;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Metodoak {
@@ -123,9 +125,7 @@ public class Metodoak {
 	}
 	
 	
-	//METODO DE LECTURA DEL FICHERO
-
-
+	//METODO DE LECTURA DEL FICHERO  LEER LAS RESERVAS
 
 		public void FitxeroaIrakurri() {
 			File Reserba = new File("..\\Ethazi4_APP\\src\\APP\\Reserba");
@@ -148,6 +148,31 @@ public class Metodoak {
 				
 			}
 			
+		}
+		
+		//ESCRIVIR LAS RESERVAS EN EL FITXERO
+		
+		
+		public void fitxeroaIdatzi() {
+			System.out.println("Entra en el metodo");
+			String[] proba = {"1" , "2", "3"};
+			FileWriter  reserba = null; 
+			
+			try {
+				reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");
+			
+				for(String Datuak: proba) {
+
+					reserba.write(Datuak + "\n");
+				}
+				
+				
+
+				reserba.close();
+				
+			}catch(Exception e) {
+				System.out.println("Mesua: " + e.getMessage());
+			}
 		}
 
 }

@@ -8,10 +8,16 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		Metodoak m = new Metodoak();
+
+		m.fitxeroaIdatzi();
 		m.FitxeroaIrakurri();
 
 
 
+		
+
+
+		m.FitxeroaIrakurri();
 		
 
 		String basedatos = "ethazi4";
