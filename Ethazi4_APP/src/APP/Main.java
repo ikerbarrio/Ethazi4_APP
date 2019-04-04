@@ -10,7 +10,7 @@ public class Main {
 		Metodoak m = new Metodoak();
 
 		m.fitxeroaIdatzi();
-		//m.FitxeroaIrakurri();
+		m.FitxeroaIrakurri();
 
 
 

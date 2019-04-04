@@ -161,9 +161,9 @@ public class Metodoak {
 			try {
 				reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");
 			
-				for(int i =0; i<proba.length;i++) {
+				for(String Datuak: proba) {
 
-					reserba.write(i + "\n");
+					reserba.write(Datuak + "\n");
 				}
 				
 				
