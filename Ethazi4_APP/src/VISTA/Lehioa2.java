@@ -50,16 +50,12 @@ public class Lehioa2 extends JFrame {
 		getContentPane().setLayout(null);
 		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		
-<<<<<<< HEAD
 		spinerGauKopurua.setBounds(237, 325, 168, 31);
-=======
 		spinerGauKopurua.setBounds(63, 276, 168, 31);
->>>>>>> e9f03bf7ac2bce711e990efd9382be0b96824cd0
 		getContentPane().add(spinerGauKopurua);
 		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
-<<<<<<< HEAD
 		lblGauKopurua.setBounds(227, 264, 168, 50);
 		getContentPane().add(lblGauKopurua);
 		
@@ -69,7 +65,6 @@ public class Lehioa2 extends JFrame {
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHotelak.setBounds(10, 129, 168, 28);
-=======
 		lblGauKopurua.setBounds(63, 224, 168, 41);
 		getContentPane().add(lblGauKopurua);
 		
@@ -79,7 +74,6 @@ public class Lehioa2 extends JFrame {
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHotelak.setBounds(63, 143, 168, 28);
->>>>>>> e9f03bf7ac2bce711e990efd9382be0b96824cd0
 		getContentPane().add(lblHotelak);
 		
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
@@ -90,13 +84,11 @@ public class Lehioa2 extends JFrame {
 		comboHiria.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHiria);
 		hotelak = Kontsultak.hotelPantailaratu();
-<<<<<<< HEAD
 		comboHotelak.add(hotelak);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(227, 135, 364, 103);
 		getContentPane().add(textArea);
-=======
 		comboHiria.addItem(hotelak);
 		hotelInfo.setBackground(Color.LIGHT_GRAY);
 		
@@ -121,6 +113,5 @@ public class Lehioa2 extends JFrame {
 				MetodoakVista.bueltatuLehena();
 			}
 		};
->>>>>>> e9f03bf7ac2bce711e990efd9382be0b96824cd0
 	}
 }
