@@ -9,8 +9,7 @@ public class Main {
 		String[] proba = null;
 		Metodoak m = new Metodoak();
 
-		//m.fitxeroaIdatzi();
-		//m.FitxeroaIrakurri();
+		
 		
 
 		String basedatos = "ethazi4";

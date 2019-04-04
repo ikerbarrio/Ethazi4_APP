@@ -89,7 +89,6 @@ public class Lehioa2 extends JFrame {
 		
 		comboHiria.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHiria);
-<<<<<<< HEAD
 
 		hotelak = Kontsultak.hotelIzenaPantailaratu("Madrid");
 		
@@ -99,10 +98,8 @@ public class Lehioa2 extends JFrame {
 
 
 
-=======
 //		hiriak = adfasD;
 		comboHiria.addItem(hiriak);
->>>>>>> 68a2fb826c400132becaeb7274990c49bd8936d9
 		
 		hotelInfo.setBackground(Color.LIGHT_GRAY);
 		
@@ -121,12 +118,14 @@ public class Lehioa2 extends JFrame {
 						
 					}
 				}*/
-				//m.fitxeroaIdatzi("aeiou");
-				//m.FitxeroaIrakurri();
-				MetodoakVista.hirugarrenera();
+				m.fitxeroaIdatzi("aeiou");
+				m.FitxeroaIrakurri();
 				dispose();
+				MetodoakVista.hirugarrenera();
+				
 			}
 		};
+		btnAurrera.addActionListener(al);
 		
 		btnAtzera.setBounds(0, 0, 89, 23);
 		getContentPane().add(btnAtzera);

@@ -134,7 +134,7 @@ public class Metodoak {
 
 			try {
 				// Leemos el contenido del fichero
-				System.out.println("... Leemos el contenido del fichero ...");
+				//System.out.println("... Leemos el contenido del fichero ...");
 				s = new Scanner(Reserba);
 				
 				// Leemos linea a linea el fichero
@@ -144,7 +144,7 @@ public class Metodoak {
 							}
 				
 			}catch(Exception e) {
-				System.out.println("Mesua: " + e.getMessage());
+				System.out.println("Mezua: " + e.getMessage());
 				
 			}
 			
@@ -154,7 +154,7 @@ public class Metodoak {
 		
 		
 		public void fitxeroaIdatzi(String hotelIzena) {
-			System.out.println("Entra en el metodo");
+			
 			
 			FileWriter  reserba = null; 
 			
@@ -163,7 +163,7 @@ public class Metodoak {
 			
 			
 
-					reserba.write(" Nombre de hotel " +hotelIzena+ " Lugar precio");
+					reserba.write(" Zure reserba  " +hotelIzena+ " hotelean egin da.");
 				
 				
 				
