@@ -153,18 +153,18 @@ public class Metodoak {
 		//ESCRIVIR LAS RESERVAS EN EL FITXERO
 		
 		
-		public void fitxeroaIdatzi() {
+		public void fitxeroaIdatzi(String hotelIzena) {
 			System.out.println("Entra en el metodo");
-			String[] proba = {"1" , "2", "3"};
+			
 			FileWriter  reserba = null; 
 			
 			try {
 				reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");
 			
-				for(String Datuak: proba) {
+			
 
-					reserba.write(Datuak + "\n");
-				}
+					reserba.write(" Nombre de hotel " +hotelIzena+ " Lugar precio");
+				
 				
 				
 
@@ -174,5 +174,7 @@ public class Metodoak {
 				System.out.println("Mesua: " + e.getMessage());
 			}
 		}
+		
+		
 
 }

@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
+import APP.Metodoak;
 import APP.MetodoakVista;
 import DB.Kontsultak;
 import javax.swing.JList;
@@ -25,6 +26,7 @@ public class Lehioa2 extends JFrame {
 	/**
 	 * Frame-aren atributu eta komponente guztiak sortu 
 	 */
+	Metodoak m = new Metodoak();
 	private ActionListener al;
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
@@ -95,12 +97,12 @@ public class Lehioa2 extends JFrame {
 		comboHiria.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHiria);
 
-		hotelak = Kontsultak.hotelIzenaPantailaratu(getName());
+		hotelak = Kontsultak.hotelIzenaPantailaratu("Madrid");
+		
 
 		//comboHotelak.add(hotelak);
 	
 
-		hotelak = Kontsultak.hotelIzenaPantailaratu(getName());
 
 
 		
@@ -121,8 +123,17 @@ public class Lehioa2 extends JFrame {
 		getContentPane().add(btnAurrera);
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+								
+				/*for(int i=0;i<hotelak.size();i++) {
+					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
+						//m.fitxeroaIdatzi(hotelak.get(i).toString());
+						
+					}
+				}*/
+				//m.fitxeroaIdatzi("aeiou");
+				//m.FitxeroaIrakurri();
 				MetodoakVista.hirugarrenera();
+				dispose();
 			}
 		};
 		
