@@ -33,6 +33,7 @@ public class Main {
 
 		VISTA.Lehioa1 ejecutar = new VISTA.Lehioa1();
 		ejecutar.setVisible(true);
+		System.out.println("kkakakAitor");
 
 
 		
