@@ -53,12 +53,17 @@ public class Lehioa2 extends JFrame {
 
 		spinerGauKopurua.setBounds(237, 325, 168, 31);
 
+
+
 		spinerGauKopurua.setBounds(63, 276, 168, 31);
+
+
 
 		getContentPane().add(spinerGauKopurua);
 		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
+
 
 		lblGauKopurua.setBounds(227, 264, 168, 50);
 		getContentPane().add(lblGauKopurua);
@@ -89,14 +94,21 @@ public class Lehioa2 extends JFrame {
 		
 		comboHiria.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHiria);
+
 		hotelak = Kontsultak.hotelIzenaPantailaratu(getName());
 
 		//comboHotelak.add(hotelak);
 	
+
+		hotelak = Kontsultak.hotelIzenaPantailaratu(getName());
+
+
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(227, 135, 364, 103);
 		getContentPane().add(textArea);
+
+
 
 		comboHiria.addItem(hotelak);
 		hotelInfo.setBackground(Color.LIGHT_GRAY);
@@ -122,6 +134,8 @@ public class Lehioa2 extends JFrame {
 				MetodoakVista.bueltatuLehena();
 			}
 		};
+
+
 
 	}
 }

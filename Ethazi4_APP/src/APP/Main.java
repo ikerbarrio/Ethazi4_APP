@@ -6,9 +6,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+
 		Metodoak m = new Metodoak();
 		m.FitxeroaIrakurri();
 
+
+
+		
 
 		String basedatos = "ethazi4";
 		Konexioa con1 = new Konexioa(basedatos);
@@ -21,6 +25,7 @@ public class Main {
 //		ejecutar.setVisible(true);
 
 
+
 //		String basedatos = "ethazi4";
 //		Konexioa con1 = new Konexioa(basedatos);
 //		con1.getConexion();
@@ -28,8 +33,11 @@ public class Main {
 //		System.out.println();
 //		Kontsultak.hotelPantailaratu();
 
+
+
 		VISTA.Lehioa1 ejecutar = new VISTA.Lehioa1();
 		ejecutar.setVisible(true);
+
 
 		
 	}
