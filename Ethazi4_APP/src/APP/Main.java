@@ -9,9 +9,9 @@ public class Main {
 
 		Metodoak m = new Metodoak();
 
-		m.fitxeroaIdatzi();
-		m.FitxeroaIrakurri();
-		System.out.println("commit");
+//		m.fitxeroaIdatzi();
+//		m.FitxeroaIrakurri();
+		
 
 		String basedatos = "ethazi4";
 		Konexioa con1 = new Konexioa(basedatos);
