@@ -1,5 +1,8 @@
 package APP;
 
+import java.io.File;
+import java.util.Scanner;
+
 public class Metodoak {
 	
 	public static double kontTotala = 0;
@@ -118,5 +121,33 @@ public class Metodoak {
 		String stringEmaitza = Double.toString(emaitza);
 		return stringEmaitza;
 	}
+	
+	
+	//METODO DE LECTURA DEL FICHERO
+
+
+
+		public void FitxeroaIrakurri() {
+			File Reserba = new File("..\\Ethazi4_APP\\src\\APP\\Reserba");
+
+			Scanner s = null;
+
+			try {
+				// Leemos el contenido del fichero
+				System.out.println("... Leemos el contenido del fichero ...");
+				s = new Scanner(Reserba);
+				
+				// Leemos linea a linea el fichero
+							while (s.hasNextLine()) {
+								String linea = s.nextLine(); 	// Guardamos la linea en un String
+								System.out.println(linea);      // Imprimimos la linea
+							}
+				
+			}catch(Exception e) {
+				System.out.println("Mesua: " + e.getMessage());
+				
+			}
+			
+		}
 
 }
