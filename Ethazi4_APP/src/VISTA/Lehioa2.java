@@ -33,7 +33,8 @@ public class Lehioa2 extends JFrame {
 	private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
 	private JComboBox comboHiria = new JComboBox();
 	private ArrayList hotelak = new ArrayList();
-	private JLabel lblHotelak = new JLabel("HOTELAK");
+	private ArrayList hiriak = new ArrayList();
+	private JLabel lblHotelak = new JLabel("HOTELA AUKERATU");
 	private JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
 	private JComboBox comboHotelak = new JComboBox();
 	private JTextArea hotelInfo = new JTextArea();
@@ -50,23 +51,13 @@ public class Lehioa2 extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
-		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		
-
+		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spinerGauKopurua.setBounds(237, 325, 168, 31);
-
-
-
-		spinerGauKopurua.setBounds(63, 276, 168, 31);
-
-
-
 		getContentPane().add(spinerGauKopurua);
 		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
-
-
 		lblGauKopurua.setBounds(227, 264, 168, 50);
 		getContentPane().add(lblGauKopurua);
 		
@@ -79,9 +70,11 @@ public class Lehioa2 extends JFrame {
 
 		lblGauKopurua.setBounds(63, 224, 168, 41);
 		getContentPane().add(lblGauKopurua);
-		
+		hotelak = Kontsultak.hotelIzenaPantailaratu(getName());
 		comboHotelak.setBounds(63, 182, 168, 31);
+		comboHotelak.addItem(hotelak);
 		getContentPane().add(comboHotelak);
+		
 		
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
@@ -96,6 +89,7 @@ public class Lehioa2 extends JFrame {
 		
 		comboHiria.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHiria);
+<<<<<<< HEAD
 
 		hotelak = Kontsultak.hotelIzenaPantailaratu("Madrid");
 		
@@ -105,14 +99,11 @@ public class Lehioa2 extends JFrame {
 
 
 
+=======
+//		hiriak = adfasD;
+		comboHiria.addItem(hiriak);
+>>>>>>> 68a2fb826c400132becaeb7274990c49bd8936d9
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(227, 135, 364, 103);
-		getContentPane().add(textArea);
-
-
-
-		comboHiria.addItem(hotelak);
 		hotelInfo.setBackground(Color.LIGHT_GRAY);
 		
 		hotelInfo.setBounds(288, 149, 274, 158);
