@@ -29,7 +29,6 @@ public class Lehioa2 extends JFrame {
 	 */
 	Metodoak m = new Metodoak();
 	private ActionListener al;
-	private ActionListener al2;
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
 	private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
@@ -41,7 +40,7 @@ public class Lehioa2 extends JFrame {
 	private JComboBox comboHotelak = new JComboBox();
 	private JButton btnAurrera = new JButton("AURRERA");
 	private JButton btnAtzera = new JButton("ATZERA");
-	private JTextField txtInformazioa;
+	private JTextField txtInformazioa = new JTextField();
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -95,7 +94,7 @@ public class Lehioa2 extends JFrame {
 		for(int n = 0; n < hotelak.size(); n++) {
 			comboHotelak.addItem(hotelak.get(n));
 		}
-		al2 = new ActionListener() {
+		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(comboHotelak.getItemCount()!=0) {						
@@ -106,7 +105,7 @@ public class Lehioa2 extends JFrame {
 			
 			}
 		};
-		comboHotelak.addActionListener(al2);
+		comboHotelak.addActionListener(al);
 		getContentPane().add(comboHotelak);
 		
 
@@ -144,7 +143,7 @@ public class Lehioa2 extends JFrame {
 		btnAtzera.setBounds(0, 0, 89, 23);
 		getContentPane().add(btnAtzera);
 		
-		txtInformazioa = new JTextField();
+		
 		txtInformazioa.setEditable(false);
 		txtInformazioa.setBounds(265, 136, 315, 123);
 		getContentPane().add(txtInformazioa);
