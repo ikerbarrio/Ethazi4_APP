@@ -24,7 +24,7 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK WHERE COD_POSTAL = (SELECT COD_POSTAL FROM HIRIAK WHERE IZENA LIKE '"+hiria+"')");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK WHERE HIRIAK_cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"+hiria+"')");
 			while (rs.next()) {
 
 				izena = rs.getString(1);
@@ -67,6 +67,35 @@ public class Kontsultak {
 			System.out.println(e.getMessage());
 		}
 		return informazioa;
+	}
+	
+	public static ArrayList hiriakPantailaratu() {
+		String izena = null;
+		Connection conexion = null;
+		Statement s = null;
+		ArrayList<String> hiriak = new ArrayList();
+		
+
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HIRIAK");
+			while (rs.next()) {
+
+				izena = rs.getString(1);
+				hiriak.add(izena);
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return hiriak;
 	}
 
 }

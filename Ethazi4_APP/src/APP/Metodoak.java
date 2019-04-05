@@ -134,7 +134,7 @@ public class Metodoak {
 
 			try {
 				// Leemos el contenido del fichero
-				System.out.println("... Leemos el contenido del fichero ...");
+				//System.out.println("... Leemos el contenido del fichero ...");
 				s = new Scanner(Reserba);
 				
 				// Leemos linea a linea el fichero
@@ -144,7 +144,7 @@ public class Metodoak {
 							}
 				
 			}catch(Exception e) {
-				System.out.println("Mesua: " + e.getMessage());
+				System.out.println("Mezua: " + e.getMessage());
 				
 			}
 			
@@ -153,18 +153,18 @@ public class Metodoak {
 		//ESCRIVIR LAS RESERVAS EN EL FITXERO
 		
 		
-		public void fitxeroaIdatzi() {
-			System.out.println("Entra en el metodo");
-			String[] proba = {"1" , "2", "3"};
+		public void fitxeroaIdatzi(String hotelIzena) {
+			
+			
 			FileWriter  reserba = null; 
 			
 			try {
 				reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");
 			
-				for(String Datuak: proba) {
+			
 
-					reserba.write(Datuak + "\n");
-				}
+					reserba.write(" Zure reserba  " +hotelIzena+ " hotelean egin da.");
+				
 				
 				
 
@@ -174,5 +174,7 @@ public class Metodoak {
 				System.out.println("Mesua: " + e.getMessage());
 			}
 		}
+		
+		
 
 }

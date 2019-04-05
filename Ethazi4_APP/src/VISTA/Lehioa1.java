@@ -32,8 +32,8 @@ public class Lehioa1 extends JFrame {
 		btnOngiEtorri.setFont(new Font("Tahoma", Font.BOLD, 35));
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				MetodoakVista.bigarrenera();
+				dispose();
 			}
 		};
 		btnOngiEtorri.addActionListener(al);
