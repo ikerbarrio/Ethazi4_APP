@@ -98,14 +98,9 @@ public class Lehioa2 extends JFrame {
 		al2 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(comboHotelak.getItemCount()!=0) {
-					System.out.println("dasdadasdadsadadasdas");
-					String informazioa;
-					System.out.println(comboHotelak.getSelectedItem().toString());
-						
-					informazioa=Kontsultak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString());
+				if(comboHotelak.getItemCount()!=0) {						
 							
-					txtInformazioa.setText(informazioa);
+					txtInformazioa.setText(Kontsultak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 				}
 				
 			

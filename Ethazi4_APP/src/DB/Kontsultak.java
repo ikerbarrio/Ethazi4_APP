@@ -28,8 +28,7 @@ public class Kontsultak {
 			while (rs.next()) {
 
 				izena = rs.getString(1);
-				katea="Hotel: "+izena;
-				hotelak.add(katea);
+				hotelak.add(izena);
 				
 			}
 			for(String k:hotelak) {
@@ -60,7 +59,6 @@ public class Kontsultak {
 
 				informazioa = rs.getString(1);
 				System.out.println(informazioa);
-				System.out.println("ddddddddd");
 				
 			}
 			
