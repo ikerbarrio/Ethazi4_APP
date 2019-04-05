@@ -9,9 +9,7 @@ public class Main {
 		String[] proba = null;
 		
 		Metodoak m = new Metodoak();
-//		m.fitxeroaIdatzi();
-//		m.FitxeroaIrakurri();
-System.out.println("cdvdcv");
+		
 		
 
 		String basedatos = "ethazi4";
@@ -19,7 +17,7 @@ System.out.println("cdvdcv");
 		con1.getConexion();
 		
 		System.out.println();
-		Kontsultak.hotelInformazioaPantailaratu("aeiou");
+		
 
 		VISTA.Lehioa1 ejecutar = new VISTA.Lehioa1();
 		ejecutar.setVisible(true);
