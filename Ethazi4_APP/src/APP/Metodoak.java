@@ -159,14 +159,10 @@ public class Metodoak {
 			FileWriter  reserba = null; 
 			
 			try {
-				reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");
-			
-			
+				reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");	
 
 					reserba.write(" Zure reserba  " +hotelIzena+ " hotelean egin da.");
-				
-				
-				
+	
 
 				reserba.close();
 				

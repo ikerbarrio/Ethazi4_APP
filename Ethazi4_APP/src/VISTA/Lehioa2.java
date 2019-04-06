@@ -32,8 +32,10 @@ public class Lehioa2 extends JFrame {
 	private JSpinner spinerGauKopurua = new JSpinner();
 	private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
 	private JComboBox comboHiria = new JComboBox();
+	
 	private ArrayList <String>hotelak = new ArrayList();
-	private ArrayList hiriak = new ArrayList();
+	private ArrayList<String> hiriak = new ArrayList();
+	
 	private JLabel lblHotelak = new JLabel("HOTELA AUKERATU");
 	private JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
 	private JComboBox comboHotelak = new JComboBox();

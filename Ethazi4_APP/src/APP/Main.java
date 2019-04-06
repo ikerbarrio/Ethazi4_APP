@@ -11,7 +11,7 @@ public class Main {
 		Metodoak m = new Metodoak();
 //		m.fitxeroaIdatzi();
 //		m.FitxeroaIrakurri();
-System.out.println("cdvdcv");
+
 		
 
 		String basedatos = "ethazi4";
