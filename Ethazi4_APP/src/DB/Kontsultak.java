@@ -24,12 +24,11 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK WHERE HIRIAK_cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"+hiria+"')");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK WHERE cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"+hiria+"')");
 			while (rs.next()) {
 
 				izena = rs.getString(1);
-				katea="Hotel: "+izena;
-				hotelak.add(katea);
+				hotelak.add(izena);
 				
 			}
 			for(String k:hotelak) {
@@ -90,6 +89,9 @@ public class Kontsultak {
 				izena = rs.getString(1);
 				hiriak.add(izena);
 				
+			}
+			for(String k:hiriak) {
+				System.out.println(k);
 			}
 			
 		} catch (Exception e) {

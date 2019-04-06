@@ -3,6 +3,7 @@ package APP;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Metodoak {
@@ -171,6 +172,12 @@ public class Metodoak {
 			}
 		}
 		
+		public static ArrayList arrayEzabatu(ArrayList a1) {
+			
+			a1.clear();
+			
+			return a1;
+		}
 		
 
 }

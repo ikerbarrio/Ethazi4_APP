@@ -21,6 +21,7 @@ import APP.MetodoakVista;
 import DB.Kontsultak;
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class Lehioa2 extends JFrame {
 	/**
@@ -39,9 +40,9 @@ public class Lehioa2 extends JFrame {
 	private JLabel lblHotelak = new JLabel("HOTELA AUKERATU");
 	private JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
 	private JComboBox comboHotelak = new JComboBox();
-	private JTextArea hotelInfo = new JTextArea();
 	private JButton btnAurrera = new JButton("AURRERA");
 	private JButton btnAtzera = new JButton("ATZERA");
+	private JTextField txtInformazioa = new JTextField();
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -56,12 +57,12 @@ public class Lehioa2 extends JFrame {
 		getContentPane().setLayout(null);
 		
 		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spinerGauKopurua.setBounds(237, 325, 168, 31);
+		spinerGauKopurua.setBounds(30, 312, 168, 31);
 		getContentPane().add(spinerGauKopurua);
 		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGauKopurua.setBounds(227, 264, 168, 50);
+		lblGauKopurua.setBounds(20, 251, 168, 50);
 		getContentPane().add(lblGauKopurua);
 		
 		comboHiria.setBounds(10, 180, 168, 31);
@@ -74,12 +75,12 @@ public class Lehioa2 extends JFrame {
 		
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-								
-				for(int i=0;i<hiriak.size();i++) {
-					if(comboHotelak.getSelectedItem().equals(hiriak.get(i))) {
-						
-						
-					}
+				comboHotelak.removeAllItems();
+				
+				hotelak=Kontsultak.hotelIzenaPantailaratu(comboHiria.getSelectedItem().toString());
+				
+				for(int n = 0; n < hotelak.size(); n++) {
+					comboHotelak.addItem(hotelak.get(n));
 				}
 				
 			}
@@ -88,23 +89,27 @@ public class Lehioa2 extends JFrame {
 		
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHotelak.setBounds(10, 129, 168, 28);
+		lblHotelak.setBounds(10, 143, 190, 28);
 
-		lblGauKopurua.setBounds(63, 224, 168, 41);
-		getContentPane().add(lblGauKopurua);
-		hotelak = Kontsultak.hotelIzenaPantailaratu(getName());
-		comboHotelak.setBounds(63, 182, 168, 31);
+		comboHotelak.setBounds(20, 182, 168, 31);
 		
 		for(int n = 0; n < hotelak.size(); n++) {
 			comboHotelak.addItem(hotelak.get(n));
 		}
-		
+		al = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(comboHotelak.getItemCount()!=0) {						
+							
+					txtInformazioa.setText(Kontsultak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
+				}
+				
+			
+			}
+		};
+		comboHotelak.addActionListener(al);
 		getContentPane().add(comboHotelak);
 		
-		
-		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHotelak.setBounds(63, 143, 168, 28);
 
 		getContentPane().add(lblHotelak);
 		
@@ -115,24 +120,7 @@ public class Lehioa2 extends JFrame {
 		
 		comboHiria.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHiria);
-
-		hotelak = Kontsultak.hotelIzenaPantailaratu("Madrid");
 		
-
-		//comboHotelak.add(hotelak);
-	
-
-
-
-//		hiriak = adfasD;
-		comboHiria.addItem(hiriak);
-		hotelInfo.setEditable(false);
-		
-		hotelInfo.setBackground(Color.LIGHT_GRAY);
-		
-		hotelInfo.setBounds(288, 149, 274, 158);
-		getContentPane().add(hotelInfo);
-		hotelInfo.setText("KAKADELAVACA");
 		
 		btnAurrera.setBounds(530, 393, 89, 23);
 		getContentPane().add(btnAurrera);
@@ -156,6 +144,14 @@ public class Lehioa2 extends JFrame {
 		
 		btnAtzera.setBounds(0, 0, 89, 23);
 		getContentPane().add(btnAtzera);
+		
+		
+		txtInformazioa.setEditable(false);
+		txtInformazioa.setBounds(265, 136, 315, 123);
+		getContentPane().add(txtInformazioa);
+		txtInformazioa.setColumns(10);
+		
+		
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
