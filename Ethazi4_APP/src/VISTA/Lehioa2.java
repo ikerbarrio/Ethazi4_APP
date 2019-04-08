@@ -103,8 +103,7 @@ public class Lehioa2 extends JFrame {
 				if(comboHotelak.getItemCount()!=0) {						
 							
 					txtInformazioa.setText(Kontsultak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
-				}
-				
+				}	
 			
 			}
 		};
@@ -134,14 +133,10 @@ public class Lehioa2 extends JFrame {
 				
 				for(int i=0;i<hotelak.size();i++) {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
-
 						m.fitxeroaIdatzi(hotelak.get(i).toString());
-
 						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
-
 					}
 				}
-				
 				if (comboHotelak.getSelectedItem() == null || comboHiria.getSelectedItem() == null){
 					btnAurrera.setEnabled(false);
 				}else{
@@ -151,11 +146,9 @@ public class Lehioa2 extends JFrame {
 				m.FitxeroaIrakurri();
 				dispose();
 				MetodoakVista.hirugarrenera(prezioFinala);
-				
 			}
 		};
 		btnAurrera.addActionListener(al);
-		
 		btnAtzera.setBounds(0, 0, 89, 23);
 		getContentPane().add(btnAtzera);
 		
