@@ -293,7 +293,7 @@ public class Lehioa3 extends JFrame {
 			for(int i=0;i<bueltak.length;i++) {
 				list.addElement(bueltak[i]);
 			}
-			if (bueltak[0]=="0") {
+			if (bueltak[0]=="0"  ) {
 				listMezua = "Ez daude bueltak";
 				list.addElement(listMezua);
 				lblErositakoa.setText("FALTA DEN DIRUA");
@@ -310,7 +310,6 @@ public class Lehioa3 extends JFrame {
 			if (bueltak[0]!="") {
 				textDiruTot.setText("0");
 			}
-			btnAurrera.setEnabled(true);
 			btnErosi.setEnabled(false);
 			btnEzabatu.setEnabled(false);
 			
