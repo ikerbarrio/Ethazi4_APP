@@ -81,6 +81,7 @@ public class Lehioa2 extends JFrame {
 				
 				for(int n = 0; n < hotelak.size(); n++) {
 					comboHotelak.addItem(hotelak.get(n));
+					
 				}
 				
 			}
