@@ -310,7 +310,6 @@ public class Lehioa3 extends JFrame {
 			if (bueltak[0]!="") {
 				textDiruTot.setText("0");
 			}
-			btnAurrera.setEnabled(true);
 			btnErosi.setEnabled(false);
 			btnEzabatu.setEnabled(false);
 			
