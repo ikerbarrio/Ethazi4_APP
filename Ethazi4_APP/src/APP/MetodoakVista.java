@@ -17,8 +17,8 @@ public class MetodoakVista {
 		lehioa2.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void hirugarrenera() {
-		Lehioa3 lehioa3 = new Lehioa3();
+	public static void hirugarrenera(double prezioFinala) {
+		Lehioa3 lehioa3 = new Lehioa3(prezioFinala);
 		lehioa3.setVisible(true);
 		lehioa3.setBounds(550, 200, 642, 467);
 	}
