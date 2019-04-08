@@ -306,9 +306,12 @@ public class Lehioa3 extends JFrame {
 				list.addElement(listMezua);
 				textDiruTot.setText(kenketaMetodo);
 				lblErositakoa.setText("FALTA DEN DIRUA");
+				btnEzabatu.setEnabled(true);
 			}
 			if (bueltak[0]!="") {
 				textDiruTot.setText("0");
+				btnAurrera.setEnabled(true);
+				btnEzabatu.setEnabled(false);
 			}
 			btnErosi.setEnabled(false);
 			btnEzabatu.setEnabled(false);

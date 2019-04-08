@@ -10,9 +10,6 @@ public class Main {
 		
 		Metodoak m = new Metodoak();
 
-//		m.fitxeroaIdatzi();
-//		m.FitxeroaIrakurri();
-
 
 
 		String basedatos = "ethazi4";
