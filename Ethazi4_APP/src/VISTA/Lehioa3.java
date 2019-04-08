@@ -4,356 +4,183 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
+
+import APP.Metodoak;
+import APP.MetodoakVista;
+import DB.Kontsultak;
+import javax.swing.JList;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import APP.*;
-
 public class Lehioa3 extends JFrame {
-
-	private JPanel contentPane;
-	private JTextField textDiruTot = new JTextField(); ;
-	private JTextField textOrdainketa = new JTextField();;
-	private JButton btnIrten = new JButton("IRTEN\r\n");
-	private JLabel lblErositakoa = new JLabel("DIRU TOTALA");
-	private JLabel lblBueltak = new JLabel("BUELTAK");
-	private JButton btnErosi = new JButton("EROSI");
-	private JLabel lblDaramazun = new JLabel("DARAMAZUN DIRUA");
-	private JLabel lblSartuDirua = new JLabel("SARTU DIRUA");
-	private JList listBueltak = new JList();
-	private DefaultListModel list = new DefaultListModel();
-	private JButton button1 = new JButton("1");
-	private JButton button2 = new JButton("2");
-	private JButton button3 = new JButton("3");
-	private JButton button4 = new JButton("4");
-	private JButton button5 = new JButton("5");
-	private JButton button6 = new JButton("6");
-	private JButton button7 = new JButton("7");
-	private JButton button8 = new JButton("8");
-	private JButton button9 = new JButton("9");
-	private JButton button0 = new JButton("0");
-	private JButton buttonPunto = new JButton(".");
-	private JButton btnEzabatu = new JButton("EZABATU");
-	private JButton btnAurrera = new JButton("Aurrera");
-	private String[] bueltak;
-	private double DoubleTextDiruTot;
-	private double DoubleTextOrdainketa;
-	private String listMezua;
-	private String kenketaMetodo;
-	private String TextDiruTot;
-	private JButton btnAtzera = new JButton("Atzera");
-	private ActionListener alBAtzera;
-	private ActionListener alBAurrera;
-	private ActionListener alBErosi;
-	private ActionListener ezabatu;
-	private ActionListener alBPunto;
-	private ActionListener alB0;
-	private ActionListener alB1;
-	private ActionListener alB2;
-	private ActionListener alB3;
-	private ActionListener alB4;
-	private ActionListener alB5;
-	private ActionListener alB6;
-	private ActionListener alB7;
-	private ActionListener alB8;
-	private ActionListener alB9;
+	/**
+	 * Frame-aren atributu eta komponente guztiak sortu 
+	 */
+	Metodoak m = new Metodoak();
+	private ActionListener al;
+	private ActionListener alAtzera;
+	private JPanel contentPanel;
+	private JSpinner spinerGauKopurua = new JSpinner();
+	private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
+	private JComboBox comboHiria = new JComboBox();
+	private ArrayList <String>hotelak = new ArrayList();
+	private ArrayList hiriak = new ArrayList();
+	private JLabel lblHotelak = new JLabel("HOTELA AUKERATU");
+	private JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
+	private JComboBox comboHotelak = new JComboBox();
+	private JButton btnAurrera = new JButton("AURRERA");
+	private JButton btnAtzera = new JButton("ATZERA");
+	private JTextField txtInformazioa = new JTextField();
+	private int gauKopurua;
 	private double prezioFinala;
-	
-	
 	/**
-	 * Launch the application.
+	 * Frame-aren komponente guztiak
 	 */
-
-	/**
-	 * Create the frame.
-	 */
-
-	public Lehioa3(double prezioFinala) {
-
-		getContentPane().setLayout(null);
-		this.setSize(478,300);  
-		this.setLocationRelativeTo(null);  
+	public Lehioa3() {
+		
+		setForeground(Color.DARK_GRAY);
+		getContentPane().setForeground(Color.DARK_GRAY);
+		this.setSize(478, 300);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(550, 200, 635, 455);
+		getContentPane().setLayout(null);
+		
+		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+		spinerGauKopurua.setBounds(30, 312, 168, 31);
+		getContentPane().add(spinerGauKopurua);
 		
 		
+		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGauKopurua.setBounds(20, 251, 168, 50);
+		getContentPane().add(lblGauKopurua);
 		
-		btnIrten.addActionListener(new ActionListener() {
+		comboHiria.setBounds(10, 180, 168, 31);
+		getContentPane().add(comboHiria);
+		hiriak = Kontsultak.hiriakPantailaratu();
+		
+		for(int n = 0; n < hiriak.size(); n++) {
+			comboHiria.addItem(hiriak.get(n));
+		}
+		
+		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MetodoakVista.bueltatuLehena();
-				dispose();
-			}
-		});
-		btnIrten.setBounds(514, 0, 109, 30);
-		btnIrten.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		getContentPane().add(btnIrten);
-		
-		
-		lblErositakoa.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblErositakoa.setBounds(22, 45, 149, 30);
-		getContentPane().add(lblErositakoa);
-		
-		
-		textDiruTot.setBackground(Color.WHITE);
-		textDiruTot.setEditable(false);
-//				DefaultListModel ordaintzekoa = new DefaultListModel();
-//				ordaintzekoa.addElement(Metodoak.kontTotala+"�");
-//				listBueltak.setModel(ordaintzekoa);
-		
-		textDiruTot.setBounds(22, 69, 270, 38);
-		getContentPane().add(textDiruTot);
-//		Metodoak.bezKalkulatu();
-		TextDiruTot = Double.toString(Metodoak.kontTotala);
-		textDiruTot.setColumns(10);
-		
-		textDiruTot.setText(Double.toString(prezioFinala));
-		
-		
-		lblBueltak.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblBueltak.setBounds(22, 118, 149, 21);
-		getContentPane().add(lblBueltak);
-		
-		
-		lblDaramazun.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblDaramazun.setBounds(427, 41, 177, 38);
-		getContentPane().add(lblDaramazun);
-		
-		
-		textOrdainketa.setBackground(Color.WHITE);
-		textOrdainketa.setEditable(false);
-		textOrdainketa.setBounds(427, 69, 187, 38);
-		getContentPane().add(textOrdainketa);
-		textOrdainketa.setColumns(10);
-		
-		
-		
-		lblSartuDirua.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblSartuDirua.setBounds(427, 118, 111, 22);
-		getContentPane().add(lblSartuDirua);
-		
-		
-		alB1 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=1;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button1.addActionListener(alB1);
-		button1.setBounds(427, 142, 50, 51);
-		getContentPane().add(button1);
-		
-		
-		alB2 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=2;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button2.addActionListener(alB2);
-		button2.setBounds(489, 142, 49, 51);
-		getContentPane().add(button2);
-		
-		
-		alB3 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=3;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button3.addActionListener(alB3);
-		button3.setBounds(548, 142, 50, 51);
-		getContentPane().add(button3);
-		
-		
-		alB4 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=4;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button4.addActionListener(alB4);
-		button4.setBounds(427, 204, 50, 51);
-		getContentPane().add(button4);
-		
-		
-		alB5 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=5;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button5.addActionListener(alB5);
-		button5.setBounds(488, 204, 50, 51);
-		getContentPane().add(button5);
-		
-		
-		alB6 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=6;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button6.addActionListener(alB6);
-		button6.setBounds(548, 204, 50, 51);
-		getContentPane().add(button6);
-		
-		
-		alB7 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=7;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button7.addActionListener(alB7);
-		button7.setBounds(427, 266, 50, 51);
-		getContentPane().add(button7);
-		
-		
-		alB8 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=8;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button8.addActionListener(alB8);
-		button8.setBounds(489, 266, 50, 51);
-		getContentPane().add(button8);
-		
-		
-		alB9 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=9;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button9.addActionListener(alB9);
-		button9.setBounds(548, 266, 50, 51);
-		getContentPane().add(button9);
-		
-		
-		alB0 = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int num=0;
-				textOrdainketa.setText(textOrdainketa.getText() + num);
-				btnErosi.setEnabled(true);
-			}
-		};
-		button0.addActionListener(alB0);
-		button0.setBounds(489, 328, 120, 38);
-		getContentPane().add(button0);
-		
-		alBPunto = new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String punto=".";
-				textOrdainketa.setText(textOrdainketa.getText() + punto);
+				comboHotelak.removeAllItems();
+				
+				hotelak=Kontsultak.hotelIzenaPantailaratu(comboHiria.getSelectedItem().toString());
+				
+				for(int n = 0; n < hotelak.size(); n++) {
+					comboHotelak.addItem(hotelak.get(n));
+				}
 				
 			}
 		};
-		buttonPunto.addActionListener(alBPunto);
-		buttonPunto.setBounds(427, 328, 50, 38);
-		getContentPane().add(buttonPunto);
+		comboHiria.addActionListener(al);
 		
-		ezabatu = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textOrdainketa.setText("");
-				btnErosi.setEnabled(false);
-			}
-		};
-		btnEzabatu.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnEzabatu.setBounds(427, 373, 91, 38);
-		getContentPane().add(btnEzabatu);
-		
-		btnEzabatu.addActionListener(ezabatu);
-		
-		listBueltak.setModel(list);
-		
-		alBErosi = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				list.clear();
-//				DoubleTextDiruTot = Double.parseDouble(textDiruTot.getText());
-//				DoubleTextOrdainketa = Double.parseDouble(textOrdainketa.getText());
-				bueltak = Metodoak.diruarenBueltak(textDiruTot.getText(), textOrdainketa.getText());
-				
-			for(int i=0;i<bueltak.length;i++) {
-				list.addElement(bueltak[i]);
-			}
-			if (bueltak[0]=="0") {
-				listMezua = "Ez daude bueltak";
-				list.addElement(listMezua);
-				lblErositakoa.setText("FALTA DEN DIRUA");
-				btnAurrera.setEnabled(true);
-			}
-			if (bueltak[0]=="") {
-				kenketaMetodo = Metodoak.kenketa(textDiruTot.getText(), textOrdainketa.getText());
-				textOrdainketa.setText("");
-				listMezua = "Dirua falta da";
-				list.addElement(listMezua);
-				textDiruTot.setText(kenketaMetodo);
-				lblErositakoa.setText("FALTA DEN DIRUA");
-			}
-			if (bueltak[0]!="") {
-				textDiruTot.setText("0");
-			}
-			btnAurrera.setEnabled(true);
-			btnErosi.setEnabled(false);
-			btnEzabatu.setEnabled(false);
-			
-			}
-			
-			};
-		
-		btnErosi.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnErosi.addActionListener(alBErosi);		
-		btnErosi.setBounds(329, 266, 91, 145);
-		getContentPane().add(btnErosi);
-		btnErosi.setEnabled(false);
-		
-		
-		listBueltak.setBounds(22, 150, 270, 261);
-		
-		getContentPane().add(listBueltak);
-		
-		alBAurrera = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-//				MetodoakVista.seigarrenera(DNI);
-				dispose();
-			}
-		};
-		btnAurrera.setEnabled(false);
-		btnAurrera.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAurrera.addActionListener(alBAurrera);
-		btnAurrera.setBounds(518, 373, 91, 38);
-		getContentPane().add(btnAurrera);
-		
-		alBAtzera = new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHotelak.setBounds(10, 143, 190, 28);
 
-				MetodoakVista.bigarrenera();
-				dispose();
+		comboHotelak.setBounds(20, 182, 168, 31);
+		
+		for(int n = 0; n < hotelak.size(); n++) {
+			comboHotelak.addItem(hotelak.get(n));
+		}
+		al = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(comboHotelak.getItemCount()!=0) {						
+							
+					txtInformazioa.setText(Kontsultak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
+				}
+				
+			
 			}
 		};
-		btnAtzera.addActionListener(alBAtzera);
-		btnAtzera.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAtzera.setBounds(0, 0, 89, 30);
+		comboHotelak.addActionListener(al);
+		getContentPane().add(comboHotelak);
+		
+
+		getContentPane().add(lblHotelak);
+		
+		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAukeratu.setBounds(63, 61, 215, 41);
+		getContentPane().add(lblAukeratu);
+		
+		comboHiria.setBounds(265, 65, 168, 31);
+		getContentPane().add(comboHiria);
+		
+		
+		btnAurrera.setBounds(530, 393, 89, 23);
+		getContentPane().add(btnAurrera);
+		al = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gauKopurua=(int)spinerGauKopurua.getValue();
+				System.out.println(gauKopurua);
+				prezioFinala=20*gauKopurua;
+				System.out.println(prezioFinala);
+				
+				for(int i=0;i<hotelak.size();i++) {
+					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
+						
+						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
+						
+
+					}
+				}
+				
+				if (comboHotelak.getSelectedItem() == null){
+					btnAurrera.setEnabled(false);
+				}else{
+					btnAurrera.setEnabled(true);
+				}
+			//	m.fitxeroaIdatzi("aeiou");
+				m.FitxeroaIrakurri();
+				dispose();
+				MetodoakVista.laugarrenera(prezioFinala);
+				
+			}
+		};
+		btnAurrera.addActionListener(al);
+		
+		alAtzera = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				MetodoakVista.bigarrenera();
+			}
+		};
+		btnAtzera.addActionListener(alAtzera);
+		btnAtzera.setBounds(0, 0, 89, 23);
 		getContentPane().add(btnAtzera);
 		
 		
+		txtInformazioa.setEditable(false);
+		txtInformazioa.setBounds(265, 136, 315, 123);
+		getContentPane().add(txtInformazioa);
+		txtInformazioa.setColumns(10);
 		
+		
+		al = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				MetodoakVista.bueltatuLehena();
+			}
+		};
+
+
+
 	}
 }

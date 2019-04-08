@@ -176,12 +176,7 @@ public class Metodoak {
 			}
 		}
 		
-		public static ArrayList arrayEzabatu(ArrayList a1) {
-			
-			a1.clear();
-			
-			return a1;
-		}
+		
 		
 
 }
