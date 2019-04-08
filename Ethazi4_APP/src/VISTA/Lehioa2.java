@@ -134,16 +134,15 @@ public class Lehioa2 extends JFrame {
 				
 				for(int i=0;i<hotelak.size();i++) {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
-<<<<<<< HEAD
+
 						m.fitxeroaIdatzi(hotelak.get(i).toString());
-=======
+
 						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
-						
->>>>>>> 0043468c5072531c4eee75f958ebbd2365622624
+
 					}
 				}
 				
-				if (comboHotelak.getSelectedItem() == null){
+				if (comboHotelak.getSelectedItem() == null || comboHiria.getSelectedItem() == null){
 					btnAurrera.setEnabled(false);
 				}else{
 					btnAurrera.setEnabled(true);
