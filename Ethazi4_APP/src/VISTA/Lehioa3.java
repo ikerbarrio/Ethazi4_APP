@@ -307,23 +307,36 @@ public class Lehioa3 extends JFrame {
 				textDiruTot.setText(kenketaMetodo);
 				lblErositakoa.setText("FALTA DEN DIRUA");
 				btnEzabatu.setEnabled(true);
+				
+				btnErosi.setEnabled(true);
+				button0.setEnabled(true);
+				button1.setEnabled(true);
+				button2.setEnabled(true);
+				button3.setEnabled(true);
+				button4.setEnabled(true);
+				button5.setEnabled(true);
+				button6.setEnabled(true);
+				button7.setEnabled(true);
+				button8.setEnabled(true);
+				button9.setEnabled(true);
+				
 			}
 			if (bueltak[0]!="") {
 				textDiruTot.setText("0");
 				btnAurrera.setEnabled(true);
 				btnEzabatu.setEnabled(false);
 			}
-			btnErosi.setEnabled(false);
-			button0.setEnabed(false);
-			button1.setEnabed(false);
-			button2.setEnabed(false);
-			button3.setEnabed(false);
-			button4.setEnabed(false);
-			button5.setEnabed(false);
-			button6.setEnabed(false);
-			button7.setEnabed(false);
-			button8.setEnabed(false);
-			button9.setEnabed(false);
+//			btnErosi.setEnabled(false);
+//			button0.setEnabled(false);
+//			button1.setEnabled(false);
+//			button2.setEnabled(false);
+//			button3.setEnabled(false);
+//			button4.setEnabled(false);
+//			button5.setEnabled(false);
+//			button6.setEnabled(false);
+//			button7.setEnabled(false);
+//			button8.setEnabled(false);
+//			button9.setEnabled(false);
 			}
 			
 			};
