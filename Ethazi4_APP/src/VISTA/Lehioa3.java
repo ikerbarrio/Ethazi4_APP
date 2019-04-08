@@ -65,6 +65,7 @@ public class Lehioa3 extends JFrame {
 	private ActionListener alB7;
 	private ActionListener alB8;
 	private ActionListener alB9;
+	private double prezioFinala;
 	
 	
 	/**
@@ -75,7 +76,7 @@ public class Lehioa3 extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Lehioa3() {
+	public Lehioa3(double prezioFinala) {
 
 		getContentPane().setLayout(null);
 		this.setSize(478,300);  
@@ -103,7 +104,7 @@ public class Lehioa3 extends JFrame {
 		textDiruTot.setBackground(Color.WHITE);
 		textDiruTot.setEditable(false);
 //				DefaultListModel ordaintzekoa = new DefaultListModel();
-//				ordaintzekoa.addElement(Metodoak.kontTotala+"€");
+//				ordaintzekoa.addElement(Metodoak.kontTotala+"ï¿½");
 //				listBueltak.setModel(ordaintzekoa);
 		
 		textDiruTot.setBounds(22, 69, 270, 38);
@@ -111,7 +112,8 @@ public class Lehioa3 extends JFrame {
 //		Metodoak.bezKalkulatu();
 		TextDiruTot = Double.toString(Metodoak.kontTotala);
 		textDiruTot.setColumns(10);
-		textDiruTot.setText(Double.toString(20));
+		
+		textDiruTot.setText(Double.toString(prezioFinala));
 		
 		
 		lblBueltak.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -295,6 +297,7 @@ public class Lehioa3 extends JFrame {
 				listMezua = "Ez daude bueltak";
 				list.addElement(listMezua);
 				lblErositakoa.setText("FALTA DEN DIRUA");
+				btnAurrera.setEnabled(true);
 			}
 			if (bueltak[0]=="") {
 				kenketaMetodo = Metodoak.kenketa(textDiruTot.getText(), textOrdainketa.getText());
