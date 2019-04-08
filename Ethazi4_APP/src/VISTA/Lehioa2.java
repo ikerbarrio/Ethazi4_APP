@@ -138,19 +138,19 @@ public class Lehioa2 extends JFrame {
 				for(int i=0;i<hotelak.size();i++) {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 
-
 						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
+
 						
 
 					}
 				}
 				
-				if (comboHotelak.getSelectedItem() == null){
+				if (comboHotelak.getSelectedItem() == null || comboHiria.getSelectedItem() == null){
 					btnAurrera.setEnabled(false);
 				}else{
 					btnAurrera.setEnabled(true);
 				}
-			//	m.fitxeroaIdatzi("aeiou");
+		
 				m.FitxeroaIrakurri();
 				dispose();
 				MetodoakVista.hirugarrenera(prezioFinala);
