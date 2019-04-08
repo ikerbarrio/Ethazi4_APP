@@ -162,8 +162,8 @@ public class Metodoak {
 			try {
 				reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");	
 
-					reserba.write(" Zure reserba  " +hotelIzena+ " hotelean egin da.");
-	
+					reserba.write(" Zure reserba  " +hotelIzena+ " hotelean egin da.");//HOTELAREN IZENA GORDETZEN DU
+			
 
 				reserba.close();
 				
