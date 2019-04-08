@@ -41,6 +41,8 @@ public class Lehioa2 extends JFrame {
 	private JButton btnAurrera = new JButton("AURRERA");
 	private JButton btnAtzera = new JButton("ATZERA");
 	private JTextField txtInformazioa = new JTextField();
+	private int gauKopurua;
+	private double prezioFinala;
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -57,6 +59,7 @@ public class Lehioa2 extends JFrame {
 		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spinerGauKopurua.setBounds(30, 312, 168, 31);
 		getContentPane().add(spinerGauKopurua);
+		
 		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
@@ -124,10 +127,19 @@ public class Lehioa2 extends JFrame {
 		getContentPane().add(btnAurrera);
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					
+				gauKopurua=(int)spinerGauKopurua.getValue();
+				System.out.println(gauKopurua);
+				prezioFinala=20*gauKopurua;
+				System.out.println(prezioFinala);
+				
 				for(int i=0;i<hotelak.size();i++) {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
+<<<<<<< HEAD
 						m.fitxeroaIdatzi(hotelak.get(i).toString());
+=======
+						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
+						
+>>>>>>> 0043468c5072531c4eee75f958ebbd2365622624
 					}
 				}
 				
@@ -139,7 +151,7 @@ public class Lehioa2 extends JFrame {
 			//	m.fitxeroaIdatzi("aeiou");
 				m.FitxeroaIrakurri();
 				dispose();
-				MetodoakVista.hirugarrenera();
+				MetodoakVista.hirugarrenera(prezioFinala);
 				
 			}
 		};

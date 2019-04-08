@@ -154,7 +154,7 @@ public class Metodoak {
 		//ESCRIVIR LAS RESERVAS EN EL FITXERO
 		
 		
-		public void fitxeroaIdatzi(String hotelIzena) {
+		public void fitxeroaIdatzi(String hotelIzena, double prezioFinala) {
 			
 			
 			FileWriter  reserba = null; 
@@ -164,8 +164,8 @@ public class Metodoak {
 			
 			
 
-					reserba.write(" Zure reserba  " +hotelIzena+ " hotelean egin da.");
-				
+					reserba.write("Zure reserba " +hotelIzena+ " hotelean egin da. " + prezioFinala);
+			
 				
 				
 
