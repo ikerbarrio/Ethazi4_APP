@@ -104,7 +104,7 @@ public class Lehioa3 extends JFrame {
 		textDiruTot.setBackground(Color.WHITE);
 		textDiruTot.setEditable(false);
 //				DefaultListModel ordaintzekoa = new DefaultListModel();
-//				ordaintzekoa.addElement(Metodoak.kontTotala+"€");
+//				ordaintzekoa.addElement(Metodoak.kontTotala+"ï¿½");
 //				listBueltak.setModel(ordaintzekoa);
 		
 		textDiruTot.setBounds(22, 69, 270, 38);
@@ -297,6 +297,7 @@ public class Lehioa3 extends JFrame {
 				listMezua = "Ez daude bueltak";
 				list.addElement(listMezua);
 				lblErositakoa.setText("FALTA DEN DIRUA");
+				btnAurrera.setEnabled(true);
 			}
 			if (bueltak[0]=="") {
 				kenketaMetodo = Metodoak.kenketa(textDiruTot.getText(), textOrdainketa.getText());
@@ -309,7 +310,7 @@ public class Lehioa3 extends JFrame {
 			if (bueltak[0]!="") {
 				textDiruTot.setText("0");
 			}
-			btnAurrera.setEnabled(true);
+			btnAurrera.setEnabled(false);
 			btnErosi.setEnabled(false);
 			btnEzabatu.setEnabled(false);
 			
