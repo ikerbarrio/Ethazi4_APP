@@ -314,8 +314,16 @@ public class Lehioa3 extends JFrame {
 				btnEzabatu.setEnabled(false);
 			}
 			btnErosi.setEnabled(false);
-			btnEzabatu.setEnabled(false);
-			
+			button0.setEnabed(false);
+			button1.setEnabed(false);
+			button2.setEnabed(false);
+			button3.setEnabed(false);
+			button4.setEnabed(false);
+			button5.setEnabed(false);
+			button6.setEnabed(false);
+			button7.setEnabed(false);
+			button8.setEnabed(false);
+			button9.setEnabed(false);
 			}
 			
 			};
