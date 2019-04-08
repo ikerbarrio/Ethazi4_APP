@@ -133,7 +133,6 @@ public class Lehioa2 extends JFrame {
 				
 				for(int i=0;i<hotelak.size();i++) {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
-						m.fitxeroaIdatzi(hotelak.get(i).toString());
 						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
 					}
 				}
