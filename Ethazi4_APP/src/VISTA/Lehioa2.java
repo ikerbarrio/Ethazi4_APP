@@ -9,22 +9,17 @@ import javax.swing.border.EmptyBorder;
 
 public class Lehioa2 extends JFrame {
 
-<<<<<<< HEAD
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Lehioa2 frame = new Lehioa2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-=======
+	public Lehioa2() {
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+
 		comboHotelak.setBounds(20, 182, 168, 31);
 		
 		for(int n = 0; n < hotelak.size(); n++) {
@@ -95,21 +90,10 @@ public class Lehioa2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				MetodoakVista.bueltatuLehena();
->>>>>>> c19f2c56e67f4c84cd64cca537d528cee72e83f9
 			}
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public Lehioa2() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
 	}
 
 }
