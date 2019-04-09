@@ -17,10 +17,16 @@ public class MetodoakVista {
 		lehioa2.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void hirugarrenera(double prezioFinala) {
-		Lehioa3 lehioa3 = new Lehioa3(prezioFinala);
+	public static void hirugarrenera() {
+		Lehioa3 lehioa3 = new Lehioa3();
 		lehioa3.setVisible(true);
 		lehioa3.setBounds(550, 200, 642, 467);
+	}
+	
+	public static void laugarrenera(double prezioFinala) {
+		Lehioa4 lehioa4 = new Lehioa4(prezioFinala);
+		lehioa4.setVisible(true);
+		lehioa4.setBounds(550, 200, 642, 467);
 	}
 	
 }
