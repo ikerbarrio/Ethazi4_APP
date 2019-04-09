@@ -19,7 +19,7 @@ public class Main {
 		System.out.println();
 		
 
-		VISTA.Lehioa1 ejecutar = new VISTA.Lehioa1();
+		VISTA.OngiEtorri ejecutar = new VISTA.OngiEtorri();
 		ejecutar.setVisible(true);
 
 
