@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import APP.MetodoakVista;
 
-public class Lehioa1 extends JFrame {
+public class OngiEtorri extends JFrame {
 
 	private JButton btnOngiEtorri = new JButton("ONGI ETORRI");
 	private ActionListener al;
@@ -21,7 +21,7 @@ public class Lehioa1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Lehioa1() {
+	public OngiEtorri() {
 		
 		getContentPane().setLayout(null);
 		this.setSize(478, 300);

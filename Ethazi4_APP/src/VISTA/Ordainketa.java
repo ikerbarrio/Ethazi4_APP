@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 import APP.*;
 
-public class Lehioa4 extends JFrame {
+public class Ordainketa extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textDiruTot = new JTextField(); ;
@@ -76,7 +76,7 @@ public class Lehioa4 extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Lehioa4(double prezioFinala) {
+	public Ordainketa(double prezioFinala) {
 
 		getContentPane().setLayout(null);
 		this.setSize(478,300);  
