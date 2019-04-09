@@ -79,8 +79,7 @@ public class Kontsultak {
 		Connection conexion = null;
 		Statement s = null;
 		ArrayList<String> hiriak = new ArrayList();
-		
-
+	
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
@@ -104,6 +103,36 @@ public class Kontsultak {
 			System.out.println(e.getMessage());
 		}
 		return hiriak;
+	}
+	
+	
+	//HOTELEN SERBITZUAK ATERA
+	public String serbitzuakAtera() {
+		String serbitzua = "";
+		
+		Connection conexion = null;
+		Statement s = null;
+		
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SERBITZUAK FROM HOTELAK");
+				while (rs.next()) {
+					serbitzua = rs.getString("serbitzuak");
+				}
+				
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		
+		return serbitzua; //itzultzen du ze zerbitzu daukagun
+			
+		
 	}
 
 }

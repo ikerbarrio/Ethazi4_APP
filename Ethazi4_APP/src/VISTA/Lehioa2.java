@@ -89,6 +89,7 @@ public class Lehioa2 extends JFrame {
 				
 			}
 		};
+		
 		comboHiria.addActionListener(al);
 		
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
