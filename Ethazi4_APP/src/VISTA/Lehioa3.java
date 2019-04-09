@@ -162,71 +162,10 @@ public class Lehioa3 extends JFrame {
 				MetodoakVista.bigarrenera();
 			}
 		};
-<<<<<<< HEAD
 		btnAtzera.addActionListener(alAtzera);
 		btnAtzera.setBounds(0, 0, 89, 23);
 		getContentPane().add(btnAtzera);
-=======
-		btnEzabatu.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnEzabatu.setBounds(427, 373, 91, 38);
-		getContentPane().add(btnEzabatu);
-		
-		btnEzabatu.addActionListener(ezabatu);
-		
-		listBueltak.setModel(list);
-		
-		alBErosi = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				list.clear();
-//				DoubleTextDiruTot = Double.parseDouble(textDiruTot.getText());
-//				DoubleTextOrdainketa = Double.parseDouble(textOrdainketa.getText());
-				bueltak = Metodoak.diruarenBueltak(textDiruTot.getText(), textOrdainketa.getText());
-				
-			for(int i=0;i<bueltak.length;i++) {
-				list.addElement(bueltak[i]);
-			}
-			if (bueltak[0]=="0") {
-				listMezua = "Ez daude bueltak";
-				list.addElement(listMezua);
-				lblErositakoa.setText("FALTA DEN DIRUA");
-				btnAurrera.setEnabled(true);
-			}
-			if (bueltak[0]=="") {
-				kenketaMetodo = Metodoak.kenketa(textDiruTot.getText(), textOrdainketa.getText());
-				textOrdainketa.setText("");
-				listMezua = "Dirua falta da";
-				list.addElement(listMezua);
-				textDiruTot.setText(kenketaMetodo);
-				lblErositakoa.setText("FALTA DEN DIRUA");
-				btnEzabatu.setEnabled(true);
-			}
-			if (bueltak[0]!="") {
-				textDiruTot.setText("0");
-				btnAurrera.setEnabled(true);
-				btnEzabatu.setEnabed(false);
-			}
-			btnErosi.setEnabled(false);
-			button0.setEnabed(false);
-			button1.setEnabed(false);
-			button2.setEnabed(false);
-			button3.setEnabed(false);
-			button4.setEnabed(false);
-			button5.setEnabed(false);
-			button6.setEnabed(false);
-			button7.setEnabed(false);
-			button8.setEnabed(false);
-			button9.setEnabed(false);
-			}
-			
-			};
-		
-		btnErosi.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnErosi.addActionListener(alBErosi);		
-		btnErosi.setBounds(329, 266, 91, 145);
-		getContentPane().add(btnErosi);
-		btnErosi.setEnabled(false);
->>>>>>> c19f2c56e67f4c84cd64cca537d528cee72e83f9
-		
+
 		
 		txtInformazioa.setEditable(false);
 		txtInformazioa.setBounds(265, 136, 315, 123);
