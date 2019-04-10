@@ -16,7 +16,7 @@ public class Main {
 		Konexioa con1 = new Konexioa(basedatos);
 		con1.getConexion();
 		
-		System.out.println();
+		System.out.println("kk");
 		
 
 		VISTA.OngiEtorri ejecutar = new VISTA.OngiEtorri();
