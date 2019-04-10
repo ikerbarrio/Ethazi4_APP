@@ -66,6 +66,7 @@ public class SaioaHasi extends JFrame {
 		
 		alBAurrera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+<<<<<<< HEAD:Ethazi4_APP/src/VISTA/SaioaHasi.java
 				pasahitzaEnkripatatuta = Metodoak.getMD5(passwordField.getText());
 				pasahitzaKonprobatu = Metodoak.pasahitzaKomprobaketa(pasahitzaEnkripatatuta);
 				System.out.println(pasahitzaEnkripatatuta);
@@ -79,7 +80,23 @@ public class SaioaHasi extends JFrame {
 					JOptionPane.showMessageDialog(null, "Ez da existitzen\n Saiatu berriro");
 				}
 			}
+=======
+//				pasahitzaEnkripatatuta = Metodoak.getMD5(passwordField.getText());
+//				pasahitzaKonprobatu = Metodoak.pasahitzaKomprobaketa(pasahitzaEnkripatatuta);
+//				System.out.println(pasahitzaEnkripatatuta);
+//				DNI = txtDNI.getText();
+//				DNIkonprobatu = Metodoak.nanKomprobaketa(DNI);
+//		
+//				if(DNIkonprobatu==true && pasahitzaKonprobatu==true) {
+					MetodoakVista.hirugarrenera();
+			dispose();
+//				}else {
+//					JOptionPane.showMessageDialog(null, "Ez da existitzen\n Saiatu berriro");
+//				}
+//			}
+>>>>>>> ad1c72028a3255085a747d9a2f57c75dae9ea7cc:src/VISTA/SaioaHasi.java
 			
+		};
 		};
 		btnAurrera.setEnabled(true);
 		btnAurrera.addActionListener(alBAurrera);
@@ -126,5 +143,5 @@ public class SaioaHasi extends JFrame {
 		btnSaioaSortu.setBounds(186, 335, 177, 33);
 		getContentPane().add(btnSaioaSortu);
 		
-	}
+		}
 }

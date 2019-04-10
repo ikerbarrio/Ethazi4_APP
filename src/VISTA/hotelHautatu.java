@@ -30,7 +30,6 @@ public class hotelHautatu extends JFrame {
 	 * Frame-aren atributu eta komponente guztiak sortu 
 	 */
 	Metodoak m = new Metodoak();
-	DB.Kontsultak k = new DB.Kontsultak();
 	private ActionListener al;
 	private ActionListener alAtzera;
 	private JPanel contentPanel;
@@ -108,7 +107,8 @@ public class hotelHautatu extends JFrame {
 							
 					txtInformazioa.setText(Kontsultak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 				}
-			btnAurrera.setEnabled(true);
+				
+			
 			}
 		};
 		comboHotelak.addActionListener(al);
@@ -157,7 +157,6 @@ public class hotelHautatu extends JFrame {
 			}
 		};
 		btnAurrera.addActionListener(al);
-		btnAurrera.setEnabled(false);
 		
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
