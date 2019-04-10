@@ -76,7 +76,7 @@ public class Ordainketa extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Ordainketa(double prezioFinala) {
+	public Ordainketa(double prezioFinala, String DNI) {
 
 		getContentPane().setLayout(null);
 		this.setSize(478,300);  
@@ -141,9 +141,12 @@ public class Ordainketa extends JFrame {
 		
 		alB1 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int num=1;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
+				
 			}
 		};
 		button1.addActionListener(alB1);
@@ -153,9 +156,11 @@ public class Ordainketa extends JFrame {
 		
 		alB2 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int num=2;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 			}
 		};
 		button2.addActionListener(alB2);
@@ -165,9 +170,11 @@ public class Ordainketa extends JFrame {
 		
 		alB3 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int num=3;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 			}
 		};
 		button3.addActionListener(alB3);
@@ -177,9 +184,11 @@ public class Ordainketa extends JFrame {
 		
 		alB4 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int num=4;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 			}
 		};
 		button4.addActionListener(alB4);
@@ -189,9 +198,11 @@ public class Ordainketa extends JFrame {
 		
 		alB5 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int num=5;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 			}
 		};
 		button5.addActionListener(alB5);
@@ -201,9 +212,11 @@ public class Ordainketa extends JFrame {
 		
 		alB6 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int num=6;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 			}
 		};
 		button6.addActionListener(alB6);
@@ -213,9 +226,11 @@ public class Ordainketa extends JFrame {
 		
 		alB7 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 				int num=7;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 			}
 		};
 		button7.addActionListener(alB7);
@@ -225,9 +240,11 @@ public class Ordainketa extends JFrame {
 		
 		alB8 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int num=8;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 			}
 		};
 		button8.addActionListener(alB8);
@@ -237,9 +254,11 @@ public class Ordainketa extends JFrame {
 		
 		alB9 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 				int num=9;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 			}
 		};
 		button9.addActionListener(alB9);
@@ -249,9 +268,11 @@ public class Ordainketa extends JFrame {
 		
 		alB0 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int num=0;
 				textOrdainketa.setText(textOrdainketa.getText() + num);
 				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 			}
 		};
 		button0.addActionListener(alB0);
@@ -260,8 +281,11 @@ public class Ordainketa extends JFrame {
 		
 		alBPunto = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				String punto=".";
 				textOrdainketa.setText(textOrdainketa.getText() + punto);
+				btnErosi.setEnabled(true);
+				btnEzabatu.setEnabled(true);
 				
 			}
 		};
@@ -298,6 +322,7 @@ public class Ordainketa extends JFrame {
 				list.addElement(listMezua);
 				lblErositakoa.setText("FALTA DEN DIRUA");
 				btnAurrera.setEnabled(true);
+				
 			}
 			if (bueltak[0]=="") {
 				kenketaMetodo = Metodoak.kenketa(textDiruTot.getText(), textOrdainketa.getText());
@@ -306,13 +331,29 @@ public class Ordainketa extends JFrame {
 				list.addElement(listMezua);
 				textDiruTot.setText(kenketaMetodo);
 				lblErositakoa.setText("FALTA DEN DIRUA");
+				btnErosi.setEnabled(false);
+				btnEzabatu.setEnabled(false);
 			}
 			if (bueltak[0]!="") {
 				textDiruTot.setText("0");
+				btnAurrera.setEnabled(true);
+				btnErosi.setEnabled(false);
+				btnEzabatu.setEnabled(false);
+				button1.setEnabled(false);
+				button2.setEnabled(false);
+				button3.setEnabled(false);
+				button4.setEnabled(false);
+				button5.setEnabled(false);
+				button6.setEnabled(false);
+				button7.setEnabled(false);
+				button8.setEnabled(false);
+				button9.setEnabled(false);
+				button0.setEnabled(false);
+				buttonPunto.setEnabled(false);
 			}
-			btnAurrera.setEnabled(true);
-			btnErosi.setEnabled(false);
-			btnEzabatu.setEnabled(false);
+//			btnAurrera.setEnabled(true);
+//			btnErosi.setEnabled(false);
+//			btnEzabatu.setEnabled(false);
 			
 			}
 			
@@ -344,7 +385,7 @@ public class Ordainketa extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.hirugarrenera();
+				MetodoakVista.hirugarrenera(DNI);
 				dispose();
 			}
 		};

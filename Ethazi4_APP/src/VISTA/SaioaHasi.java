@@ -69,7 +69,7 @@ public class SaioaHasi extends JFrame {
 //				DNIkonprobatu = Metodoak.nanKomprobaketa(DNI);
 			
 //				if(DNIkonprobatu==true && pasahitzaKonprobatu==true) {
-//					MetodoakVista.hirugarrenera(DNI);
+					MetodoakVista.hirugarrenera(DNI);
 					dispose();
 //				}else {
 //					JOptionPane.showMessageDialog(null, "Ez da existitzen\n Saiatu berriro");

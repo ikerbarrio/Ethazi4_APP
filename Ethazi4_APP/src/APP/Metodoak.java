@@ -157,7 +157,7 @@ public class Metodoak {
 		
 		public void fitxeroaIdatzi(String hotelIzena, double prezioFinala) {
 			
-			String Serbitzua = k.serbitzuakAtera();
+			String Serbitzua = k.serbitzuakAtera(hotelIzena);
 			FileWriter  reserba = null; 
 			
 			try {
@@ -165,7 +165,7 @@ public class Metodoak {
 
 
 		
-					reserba.write("Zure reserba " +hotelIzena+ " hotelean egin da. " + " Bere prezioa "+ prezioFinala + "€-koa izan da. Bere zerbitzuak hauek dira "+Serbitzua); //Fitxategian datuak gorde egiten ditu (Izena Hotela)
+					reserba.write("Zure reserba " +hotelIzena+ " hotelean egin da. \n" + "Bere prezioa "+ prezioFinala + "€-koa izan da. \nBere zerbitzuak hauek dira "+Serbitzua+"."); //Fitxategian datuak gorde egiten ditu (Izena Hotela)
 			
 				
 

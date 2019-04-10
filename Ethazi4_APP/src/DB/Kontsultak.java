@@ -107,7 +107,7 @@ public class Kontsultak {
 	
 	
 	//HOTELEN SERBITZUAK ATERA
-	public String serbitzuakAtera() {
+	public String serbitzuakAtera(String hotelIzena) {
 		String serbitzua = "";
 		
 		Connection conexion = null;
@@ -121,7 +121,7 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SERBITZUAK FROM HOTELAK");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SERBITZUAK FROM HOTELAK WHERE IZENA LIKE '"+hotelIzena+"'");
 				while (rs.next()) {
 					serbitzua = rs.getString("serbitzuak");
 				}
