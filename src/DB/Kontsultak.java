@@ -2,9 +2,12 @@ package DB;
 
 import java.sql.Statement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import com.mysql.jdbc.PreparedStatement;
 
 import APP.*;
 
@@ -184,6 +187,40 @@ public class Kontsultak {
 			System.out.println(e.getMessage());
 		}
 		return inicioSes; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
+	public static void sartuErabiltzailea(String DNI, String izena, String abizena, Date jaiotze_data, String sexua, String pasahitza) {
+
+		Connection conexion = null;
+		Statement s = null;
+		
+		
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			String query = "INSERT INTO ZUZENDARIAK(DNI,izena,abizena,jaiotze_data,sexua,pasahitza)"+" VALUES(?,?,?,?,?,?)";
+			
+			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
+		      preparedStmt.setString (1, DNI);
+		      preparedStmt.setString (2, izena);
+		      preparedStmt.setString (3, abizena);
+		      preparedStmt.setDate (4, jaiotze_data);
+		      preparedStmt.setString (5, sexua);
+		      preparedStmt.setString (6, pasahitza);
+		      
+		      preparedStmt.execute();
+		      
+		      System.out.println("Sartuta");
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 }

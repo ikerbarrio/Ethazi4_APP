@@ -171,7 +171,7 @@ public class Metodoak {
 
 			ArrayList<Erabiltzailea> datuErabiltzaile = new ArrayList <Erabiltzailea> ();
 			datuErabiltzaile = Kontsultak.gordeErabiltzailea(); // array bueltatzen duen metodoa deitzen dut eta bere datuak datosClienten gordetzen ditut
-			System.out.println("array");
+			
 			
 			boolean konprobatu = false;
 		
@@ -243,7 +243,7 @@ public class Metodoak {
 
 
 		
-		//ESCRIVIR LAS RESERVAS EN EL FITXERO
+		//ESCRIBIR LAS RESERVAS EN EL FITXERO
 		
 		
 		public void fitxeroaIdatzi(String hotelIzena, double prezioFinala) {
