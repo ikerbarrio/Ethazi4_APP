@@ -9,11 +9,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
-import APP.MetodoakVista;
+import APP.*;
+import DB.*;
 
 import javax.swing.JTextField;
 
@@ -33,6 +35,8 @@ public class SaioaHasi extends JFrame {
 	private ActionListener alBAurrera;
 	private ActionListener alBAtzera;
 	private ActionListener alBIrten;
+	private ActionListener alBSaioaSortu;
+	private JButton btnSaioaSortu = new JButton("Saioa sortu");
 
 	
 	public SaioaHasi() {
@@ -62,18 +66,18 @@ public class SaioaHasi extends JFrame {
 		
 		alBAurrera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				pasahitzaEnkripatatuta = Metodoak.getMD5(passwordField.getText());
-//				pasahitzaKonprobatu = Metodoak.pasahitzaKomprobaketa(pasahitzaEnkripatatuta);
-//				System.out.println(pasahitzaEnkripatatuta);
-//				DNI = txtDNI.getText();
-//				DNIkonprobatu = Metodoak.nanKomprobaketa(DNI);
+				pasahitzaEnkripatatuta = Metodoak.getMD5(passwordField.getText());
+				pasahitzaKonprobatu = Metodoak.pasahitzaKomprobaketa(pasahitzaEnkripatatuta);
+				System.out.println(pasahitzaEnkripatatuta);
+				DNI = txtDNI.getText();
+				DNIkonprobatu = Metodoak.nanKomprobaketa(DNI);
 			
-//				if(DNIkonprobatu==true && pasahitzaKonprobatu==true) {
-					MetodoakVista.hirugarrenera(DNI);
+				if(DNIkonprobatu==true && pasahitzaKonprobatu==true) {
+					MetodoakVista.hirugarrenera();
 					dispose();
-//				}else {
-//					JOptionPane.showMessageDialog(null, "Ez da existitzen\n Saiatu berriro");
-//				}
+				}else {
+					JOptionPane.showMessageDialog(null, "Ez da existitzen\n Saiatu berriro");
+				}
 			}
 			
 		};
@@ -111,7 +115,13 @@ public class SaioaHasi extends JFrame {
 		passwordField.setBounds(277, 232, 183, 43);
 		getContentPane().add(passwordField);
 		
-		JButton btnSaioaSortu = new JButton("Saioa sortu");
+		alBSaioaSortu = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MetodoakVista.saioaSortu();
+				dispose();
+			}
+		};
+		btnSaioaSortu.addActionListener(alBSaioaSortu);
 		btnSaioaSortu.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSaioaSortu.setBounds(186, 335, 177, 33);
 		getContentPane().add(btnSaioaSortu);

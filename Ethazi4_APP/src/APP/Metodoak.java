@@ -3,8 +3,13 @@ package APP;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import DB.*;
 
 public class Metodoak {
 	
@@ -157,7 +162,7 @@ public class Metodoak {
 		
 		public void fitxeroaIdatzi(String hotelIzena, double prezioFinala) {
 			
-			String Serbitzua = k.serbitzuakAtera(hotelIzena);
+			String Serbitzua = k.zerbitzuakAtera(hotelIzena);
 			FileWriter  reserba = null; 
 			
 			try {
@@ -176,8 +181,81 @@ public class Metodoak {
 			}
 		}
 		
+		public static boolean nanKomprobaketa(String DNI)  {
+
+			ArrayList<Erabiltzailea> datuErabiltzaile = new ArrayList <Erabiltzailea> ();
+			datuErabiltzaile = Kontsultak.gordeErabiltzailea(); // array bueltatzen duen metodoa deitzen dut eta bere datuak datosClienten gordetzen ditut
+			System.out.println("array");
+			
+			boolean konprobatu = false;
+		
+			for (Erabiltzailea c: datuErabiltzaile) { // for each array zeharkatzeko
+
+
+				System.out.println("inicio"); // comprobar si entra en el metodo
+
+			if (konprobatu==false) {
+
+				
+				if (c.getDni().equals(DNI)) { // komparatzen dut sartzen duten DNI datu basean dagoenarekin
+					//System.out.println("Correcto");
+					konprobatu=true;
+
+				} else {
+					//System.out.println("falso");
+				}
+			}
+			}
+			
+			System.out.println("Fin del metodo");// comprobar el metodo
+			return konprobatu;
+		}
+		
+		public static boolean pasahitzaKomprobaketa(String pasahitza) {
+
+			int i=0;
+			ArrayList<Erabiltzailea> datuErabiltzaile = new ArrayList<Erabiltzailea>();
+			datuErabiltzaile =Kontsultak.gordeErabiltzailea(); // array bueltatzen duen metodoa deitzen dut eta bere datuak
+																// datosClienten gordetzen ditut
+			boolean konprobatu = false;
+			
+			for (Erabiltzailea c : datuErabiltzaile) { // for each array zeharkatzeko
+
+			if (konprobatu==false) {
+				
+				if (c.getContraseña().equals(pasahitza)) { // komparatzen dut sartzen duten DNI datu basean dagoenarekin
+					System.out.println("Correcto");
+					konprobatu=true;
+
+				} else {
+					System.out.println("falso");
+				}
+			}
+			}
+			
+			System.out.println("Fin del metodo");// comprobar el metodo
+			return konprobatu;
+		}
+		
+		public static String getMD5(String input) {
+			 try {
+			 MessageDigest md = MessageDigest.getInstance("MD5");
+			 byte[] messageDigest = md.digest(input.getBytes());
+			 BigInteger number = new BigInteger(1, messageDigest);
+			 String hashtext = number.toString(16);
+
+			 while (hashtext.length() < 32) {
+			 hashtext = "0" + hashtext;
+			 }
+			 
+			 return hashtext;
+			 }
+			 catch (NoSuchAlgorithmException e) {
+			 throw new RuntimeException(e);
+			 }
+			 }
+
+	}
 		
 
-		
 
-}

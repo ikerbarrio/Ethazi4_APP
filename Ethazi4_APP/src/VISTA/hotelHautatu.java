@@ -50,7 +50,7 @@ public class hotelHautatu extends JFrame {
 	/**
 	 * Frame-aren komponente guztiak
 	 */
-	public hotelHautatu(String DNI) {
+	public hotelHautatu() {
 		
 		setForeground(Color.DARK_GRAY);
 		getContentPane().setForeground(Color.DARK_GRAY);
@@ -152,7 +152,7 @@ public class hotelHautatu extends JFrame {
 			//	m.fitxeroaIdatzi("aeiou");
 				m.FitxeroaIrakurri();
 				dispose();
-				MetodoakVista.laugarrenera(prezioFinala,DNI);
+				MetodoakVista.laugarrenera(prezioFinala);
 				
 			}
 		};

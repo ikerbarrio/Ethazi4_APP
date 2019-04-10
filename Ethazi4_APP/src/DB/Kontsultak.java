@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import APP.*;
+
 public class Kontsultak {
 	
 	public static ArrayList hotelIzenaPantailaratu(String hiria) {
@@ -106,9 +108,9 @@ public class Kontsultak {
 	}
 	
 	
-	//HOTELEN SERBITZUAK ATERA
-	public String serbitzuakAtera(String hotelIzena) {
-		String serbitzua = "";
+	//HOTELEN ZERBITZUAK ATERA
+	public String zerbitzuakAtera(String hotelIzena) {
+		String zerbitzua = "";
 		
 		Connection conexion = null;
 		Statement s = null;
@@ -121,18 +123,65 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SERBITZUAK FROM HOTELAK WHERE IZENA LIKE '"+hotelIzena+"'");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT ZERBITZUAK FROM HOTELAK WHERE IZENA LIKE '"+hotelIzena+"'");
 				while (rs.next()) {
-					serbitzua = rs.getString("serbitzuak");
+					zerbitzua = rs.getString("zerbitzuak");
 				}
 				
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		
-		return serbitzua; //itzultzen du ze zerbitzu daukagun
+		return zerbitzua; //itzultzen du ze zerbitzu daukagun
 			
 		
+	}
+	
+	public static ArrayList<Erabiltzailea> gordeErabiltzailea() { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		ArrayList<Erabiltzailea> inicioSes = new ArrayList<Erabiltzailea>();
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT * FROM ERABILTZAILEAK");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				String dni_;
+				dni_ = rs.getString("DNI");
+
+				String nombre_;
+				nombre_ = rs.getString("izena");
+
+				String apellido_;
+				apellido_ = rs.getString("abizena");
+
+				String sexo_;
+				sexo_ = rs.getString("sexua");
+
+				String contraseña_;
+				contraseña_ = rs.getString("pasahitza");
+
+				String fecha_nac_;
+				fecha_nac_ = rs.getString("jaiotze_data");
+				
+				Erabiltzailea c1 = new Erabiltzailea(dni_, nombre_, apellido_, fecha_nac_, sexo_, contraseña_);
+				inicioSes.add(0,c1);
+//				for (int n = 0; n < inicioSes.size(); n++) {
+//					System.out.println(inicioSes.get(n));
+//				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return inicioSes; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 
 }

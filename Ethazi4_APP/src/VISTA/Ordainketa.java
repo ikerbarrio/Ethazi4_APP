@@ -76,7 +76,7 @@ public class Ordainketa extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Ordainketa(double prezioFinala, String DNI) {
+	public Ordainketa(double prezioFinala) {
 
 		getContentPane().setLayout(null);
 		this.setSize(478,300);  
@@ -385,7 +385,7 @@ public class Ordainketa extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.hirugarrenera(DNI);
+				MetodoakVista.hirugarrenera();
 				dispose();
 			}
 		};

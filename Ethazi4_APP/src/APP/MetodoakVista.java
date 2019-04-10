@@ -17,14 +17,14 @@ public class MetodoakVista {
 		SaioaHasi.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void hirugarrenera(String DNI) {
-		hotelHautatu hotelHautatu = new hotelHautatu(DNI);
+	public static void hirugarrenera() {
+		hotelHautatu hotelHautatu = new hotelHautatu();
 		hotelHautatu.setVisible(true);
 		hotelHautatu.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void laugarrenera(double prezioFinala, String DNI) {
-		Ordainketa Ordainketa = new Ordainketa(prezioFinala,DNI);
+	public static void laugarrenera(double prezioFinala) {
+		Ordainketa Ordainketa = new Ordainketa(prezioFinala);
 		Ordainketa.setVisible(true);
 		Ordainketa.setBounds(550, 200, 642, 467);
 	}
