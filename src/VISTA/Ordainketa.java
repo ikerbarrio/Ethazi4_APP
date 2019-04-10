@@ -306,13 +306,26 @@ public class Ordainketa extends JFrame {
 				list.addElement(listMezua);
 				textDiruTot.setText(kenketaMetodo);
 				lblErositakoa.setText("FALTA DEN DIRUA");
+				btnErosi.setEnabled(false);
 			}
 			if (bueltak[0]!="") {
 				textDiruTot.setText("0");
+				btnAurrera.setEnabled(true);
+				btnEzabatu.setEnabled(false);
+				btnErosi.setEnabled(false);
+				buttonPunto.setEnabled(false);
+				button0.setEnabled(false);
+				button1.setEnabled(false);
+				button2.setEnabled(false);
+				button3.setEnabled(false);
+				button4.setEnabled(false);
+				button5.setEnabled(false);
+				button6.setEnabled(false);
+				button7.setEnabled(false);
+				button8.setEnabled(false);
+				button9.setEnabled(false);
 			}
-			btnAurrera.setEnabled(true);
-			btnErosi.setEnabled(false);
-			btnEzabatu.setEnabled(false);
+			
 			
 			}
 			

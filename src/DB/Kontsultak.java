@@ -2,9 +2,12 @@ package DB;
 
 import java.sql.Statement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import com.mysql.jdbc.PreparedStatement;
 
 import APP.*;
 
@@ -177,12 +180,22 @@ public class Kontsultak {
 		}
 		return inicioSes; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
+<<<<<<< HEAD
 	public String saioaSortuIgo() {
 		String zerbitzua = "";
 
 		Connection conexion = null;
 		Statement s = null;
 
+=======
+	
+	public static void sartuErabiltzailea(String DNI, String izena, String abizena, Date jaiotze_data, String sexua, String pasahitza) {
+
+		Connection conexion = null;
+		Statement s = null;
+		
+		
+>>>>>>> 23be3ccc69f609d17a0e3ee4610498e155109d45
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
@@ -191,8 +204,30 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
+<<<<<<< HEAD
 			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT ZERBITZUAK FROM HOTELAK WHERE IZENA LIKE '" /*+ hotelIzena*/ + "'");
 			
+=======
+			String query = "INSERT INTO ZUZENDARIAK(DNI,izena,abizena,jaiotze_data,sexua,pasahitza)"+" VALUES(?,?,?,?,?,?)";
+			
+			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
+		      preparedStmt.setString (1, DNI);
+		      preparedStmt.setString (2, izena);
+		      preparedStmt.setString (3, abizena);
+		      preparedStmt.setDate (4, jaiotze_data);
+		      preparedStmt.setString (5, sexua);
+		      preparedStmt.setString (6, pasahitza);
+		      
+		      preparedStmt.execute();
+		      
+		      System.out.println("Sartuta");
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+>>>>>>> 23be3ccc69f609d17a0e3ee4610498e155109d45
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
