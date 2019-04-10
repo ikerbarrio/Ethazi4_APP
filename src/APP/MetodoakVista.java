@@ -36,4 +36,10 @@ public class MetodoakVista {
 		azkena.setVisible(true);
 		azkena.setBounds(550, 200, 642, 467);
 	}
+	
+	public static void saioaSortu() {
+		SaioaSortu SaioaSortu = new SaioaSortu();
+		SaioaSortu.setVisible(true);
+		SaioaSortu.setBounds(550, 200, 642, 467);
+	}
 }
