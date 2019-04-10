@@ -5,6 +5,7 @@ import VISTA.OngiEtorri;
 import VISTA.Ordainketa;
 import VISTA.SaioaHasi;
 import VISTA.SaioaSortu;
+import VISTA.hotelHautatu;
 
 public class MetodoakVista {
 	public static void bueltatuLehena() {
@@ -20,9 +21,9 @@ public class MetodoakVista {
 	}
 	
 	public static void hirugarrenera() {
-		SaioaSortu saioaSortu = new SaioaSortu();
-		saioaSortu.setVisible(true);
-		saioaSortu.setBounds(550, 200, 642, 467);
+		hotelHautatu hotelHautatu = new hotelHautatu();
+		hotelHautatu.setVisible(true);
+		hotelHautatu.setBounds(550, 200, 642, 467);
 	}
 	
 	public static void laugarrenera(double prezioFinala) {
