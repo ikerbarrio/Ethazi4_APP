@@ -135,7 +135,9 @@ public class SaioaSortu extends JFrame {
 		alBAurrera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				boolean ondo = true;
+				boolean ondo = true;//balidazioak egiteko
+				
+				//Izena balidatzen du
 				Pattern p1 = Pattern.compile("[A-Z]([a-z]*)+$");
 				Matcher m1 = p1.matcher(txtIzena.getText());
 				if(!m1.matches()) {
@@ -143,6 +145,7 @@ public class SaioaSortu extends JFrame {
 					ondo = false;
 				}
 				
+				//Abizena balidatzen du
 				Pattern p2 = Pattern.compile("[A-Z]([a-z]*)+$");
 				m1 = p2.matcher(txtAbizena.getText());
 				if(!m1.matches()) {
@@ -150,6 +153,7 @@ public class SaioaSortu extends JFrame {
 					ondo = false;
 				}
 				
+				//NAN balidatzen du
 				Pattern p3 = Pattern.compile("[0-9]{8}[A-Z]");
 				m1 = p3.matcher(txtNAN.getText());
 				if(m1.matches()) {//NAN pattern expresioa betetzen badu letra begiratzen dugu
@@ -162,18 +166,21 @@ public class SaioaSortu extends JFrame {
 					ondo = false;//NAN-aren letra txarto badago ondo=false
 				}
 				
+				//Pasahitza hutsik badago begiratzen du
 				if(pasahitza.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Pasahitza bat sartu");
 					ondo=false;
 				}
 				
+				//Pasahitzak berdinak diren begiratzen du
 				if(!pasahitza.getText().equals(pasahitzaErrepikatu.getText())) {
 					JOptionPane.showMessageDialog(null, "Pasahitzak desberdinak dira");
 					ondo = false;
 				}else {
-					pasahitzaEnkriptatuta = Metodoak.getMD5(pasahitza.getText());
+					pasahitzaEnkriptatuta = Metodoak.getMD5(pasahitza.getText());//Pasahitza enkriptatzen du
 				}
 				
+				//Gizona edo emakumea aukeratu duen begiratzen du
 				if(!rdbtnEmakumea.isSelected() && !rdbtnGizona.isSelected()) {
 					JOptionPane.showMessageDialog(null, "Aukeratu sexua");
 					ondo = false;
@@ -183,16 +190,16 @@ public class SaioaSortu extends JFrame {
 						sexua="M";
 					}
 				
+				//JaioData to String
 				data = new SimpleDateFormat("yyyy/MM/dd").format(jaioData.getValue());
 				
+				//Dena ondo badago erabiltzailea sartzen du
 				if(ondo) {
 					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), data, sexua, pasahitzaEnkriptatuta);
 					MetodoakVista.hirugarrenera();
 					dispose();
 				}
 				
-				
-
 			}
 		};
 		btnAurrera.addActionListener(alBAurrera);
