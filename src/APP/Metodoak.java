@@ -267,8 +267,16 @@ public class Metodoak {
 			}
 		}
 		
-		
+		public static ArrayList hiriakPantailaratu() {
+			return Kontsultak.hiriakPantailaratu();
+		}
 
+		public static ArrayList hotelIzenaPantailaratu(String hiria) {
+			return Kontsultak.hotelIzenaPantailaratu(hiria);
+		}
 		
+		public static String hotelInformazioaPantailaratu(String hotelIzena) {
+			return Kontsultak.hotelInformazioaPantailaratu(hotelIzena);
+		}
 
 }

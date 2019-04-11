@@ -71,7 +71,7 @@ public class hotelHautatu extends JFrame {
 		
 		comboHiria.setBounds(10, 180, 168, 31);
 		getContentPane().add(comboHiria);
-		hiriak = Kontsultak.hiriakPantailaratu();
+		hiriak = Metodoak.hiriakPantailaratu();
 		
 		for(int n = 0; n < hiriak.size(); n++) {
 			comboHiria.addItem(hiriak.get(n));
@@ -81,7 +81,7 @@ public class hotelHautatu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				comboHotelak.removeAllItems();
 				
-				hotelak=Kontsultak.hotelIzenaPantailaratu(comboHiria.getSelectedItem().toString());
+				hotelak=Metodoak.hotelIzenaPantailaratu(comboHiria.getSelectedItem().toString());
 				
 				for(int n = 0; n < hotelak.size(); n++) {
 					comboHotelak.addItem(hotelak.get(n));
@@ -105,7 +105,7 @@ public class hotelHautatu extends JFrame {
 				
 				if(comboHotelak.getItemCount()!=0) {						
 							
-					txtInformazioa.setText(Kontsultak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
+					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 				}
 				
 			btnAurrera.setEnabled(true);
