@@ -269,11 +269,6 @@ public class Metodoak {
 				System.out.println("Mesua: " + e.getMessage());
 			}
 		}
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> b179fb1e392d2fdff03bb5589e6d713a67ddbe14
 		//KALKULATU ZENBAT LOGELA GERATZEN DIREN
 		
 		/*LogelaKopurua pasar el dato del spinner */
@@ -305,7 +300,7 @@ public class Metodoak {
 			Kontsultak.sartuErabiltzailea(DNI, izena, abizena, jaiotze_data, sexua, pasahitza);
 		}
 		
-		public static boolean NANkalkulatu(String NAN) {
+		public static boolean NANbalidatu(String NAN) {
 			boolean ondo = false;
 			String zenbakia;
 			int zenbakia_;
