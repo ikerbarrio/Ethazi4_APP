@@ -15,6 +15,10 @@ public class Main {
 		String basedatos = "ethazi4";
 		Konexioa con1 = new Konexioa(basedatos);
 		con1.getConexion();
+<<<<<<< HEAD
+=======
+
+>>>>>>> b179fb1e392d2fdff03bb5589e6d713a67ddbe14
 		
 		System.out.println("penepene");
 

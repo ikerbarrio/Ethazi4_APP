@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -268,7 +269,11 @@ public class Metodoak {
 				System.out.println("Mesua: " + e.getMessage());
 			}
 		}
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> b179fb1e392d2fdff03bb5589e6d713a67ddbe14
 		//KALKULATU ZENBAT LOGELA GERATZEN DIREN
 		
 		/*LogelaKopurua pasar el dato del spinner */
@@ -294,6 +299,31 @@ public class Metodoak {
 		
 		public static String hotelInformazioaPantailaratu(String hotelIzena) {
 			return Kontsultak.hotelInformazioaPantailaratu(hotelIzena);
+		}
+		
+		public static void sartuErabiltzailea(String DNI, String izena, String abizena, Date jaiotze_data, String sexua, String pasahitza) {
+			Kontsultak.sartuErabiltzailea(DNI, izena, abizena, jaiotze_data, sexua, pasahitza);
+		}
+		
+		public static boolean NANkalkulatu(String NAN) {
+			boolean ondo = false;
+			String zenbakia;
+			int zenbakia_;
+			String letra;
+			String letra_ = "TRWAGMYFPDXBNJZSQVHLCKET";
+			
+			zenbakia = NAN.substring(0, NAN.length()-1);
+			zenbakia_ = Integer.parseInt(zenbakia);
+			letra = Character.toString(NAN.charAt(NAN.length()-1));
+			zenbakia_ = zenbakia_ % 23;
+			letra_=letra_.substring(zenbakia_,zenbakia_+1);
+			
+			if(!letra_.equals(letra.toUpperCase())) {
+				System.out.println("NAN txarto dago, letra: "+letra_);
+			}else {
+				ondo = true;
+			}
+			return ondo;
 		}
 
 }

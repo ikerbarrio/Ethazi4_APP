@@ -27,8 +27,14 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+<<<<<<< HEAD
 			
 			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK WHERE cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"+hiria+"')");
+=======
+
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK WHERE cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"+hiria+"')");
+
+>>>>>>> b179fb1e392d2fdff03bb5589e6d713a67ddbe14
 			while (rs.next()) {
 
 				izena = rs.getString(1);
@@ -213,6 +219,10 @@ public class Kontsultak {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> b179fb1e392d2fdff03bb5589e6d713a67ddbe14
 	}
 	
 	public int logelaKopuruaLortu(String hotelIzena) {
@@ -242,4 +252,8 @@ public class Kontsultak {
 		
 	}
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> b179fb1e392d2fdff03bb5589e6d713a67ddbe14
 }
