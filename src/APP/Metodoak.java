@@ -268,14 +268,13 @@ public class Metodoak {
 				System.out.println("Mesua: " + e.getMessage());
 			}
 		}
-		
-<<<<<<< HEAD
+
 		//KALKULATU ZENBAT LOGELA GERATZEN DIREN
 		
 		/*LogelaKopurua pasar el dato del spinner */
 		public int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena) {
 			
-			 int hotelLogelaKopurua = k.logelaKopuruaLortu(hotelIzena);
+			 int hotelLogelaKopurua = (int)k.logelaKopuruaLortu(hotelIzena);
 			int geratzenDirenHotelak = 0;
 			
 	geratzenDirenHotelak =  hotelLogelaKopurua - logelakopurua;
@@ -285,7 +284,6 @@ public class Metodoak {
 	return geratzenDirenHotelak;
 }
 		
-=======
 		public static ArrayList hiriakPantailaratu() {
 			return Kontsultak.hiriakPantailaratu();
 		}
@@ -297,6 +295,5 @@ public class Metodoak {
 		public static String hotelInformazioaPantailaratu(String hotelIzena) {
 			return Kontsultak.hotelInformazioaPantailaratu(hotelIzena);
 		}
->>>>>>> be30c95cae6fed8b00e4e2d0c5e367b74dae704a
 
 }
