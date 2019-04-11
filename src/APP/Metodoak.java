@@ -297,11 +297,12 @@ public class Metodoak {
 			return Kontsultak.hotelInformazioaPantailaratu(hotelIzena);
 		}
 		
-		public static void sartuErabiltzailea(String DNI, String izena, String abizena, Date jaiotze_data, String sexua, String pasahitza) {
+		public static void sartuErabiltzailea(String DNI, String izena, String abizena, String jaiotze_data, String sexua, String pasahitza) {
 			Kontsultak.sartuErabiltzailea(DNI, izena, abizena, jaiotze_data, sexua, pasahitza);
 		}
 		
-		public static boolean NANkalkulatu(String NAN) {
+		//NAN-aren letra balidatzeko
+		public static boolean NANbalidatu(String NAN) {
 			boolean ondo = false;
 			String zenbakia;
 			int zenbakia_;

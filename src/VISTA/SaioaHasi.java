@@ -29,7 +29,7 @@ public class SaioaHasi extends JFrame {
 	private JButton btnIrten = new JButton("IRTEN");
 	private String DNI;
 	private boolean DNIkonprobatu;
-	private String pasahitzaEnkripatatuta;
+	private String pasahitzaEnkriptatuta;
 	private boolean pasahitzaKonprobatu;
 	private JPasswordField passwordField;
 	private ActionListener alBAurrera;
@@ -63,9 +63,9 @@ public class SaioaHasi extends JFrame {
 		
 		alBAurrera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				pasahitzaEnkripatatuta = Metodoak.getMD5(passwordField.getText());
-				pasahitzaKonprobatu = Metodoak.pasahitzaKomprobaketa(pasahitzaEnkripatatuta);
-				System.out.println(pasahitzaEnkripatatuta);
+				pasahitzaEnkriptatuta = Metodoak.getMD5(passwordField.getText());
+				pasahitzaKonprobatu = Metodoak.pasahitzaKomprobaketa(pasahitzaEnkriptatuta);
+				System.out.println(pasahitzaEnkriptatuta);
 				DNI = txtDNI.getText();
 				DNIkonprobatu = Metodoak.nanKomprobaketa(DNI);
 			

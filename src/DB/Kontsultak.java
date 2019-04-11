@@ -181,7 +181,7 @@ public class Kontsultak {
 	}
 
 	
-	public static void sartuErabiltzailea(String DNI, String izena, String abizena, Date jaiotze_data, String sexua, String pasahitza) {
+	public static void sartuErabiltzailea(String DNI, String izena, String abizena, String jaiotze_data, String sexua, String pasahitza) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -194,16 +194,14 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT ZERBITZUAK FROM HOTELAK WHERE IZENA LIKE '" /*+ hotelIzena*/ + "'");
 		
-			String query = "INSERT INTO ZUZENDARIAK(DNI,izena,abizena,jaiotze_data,sexua,pasahitza)"+" VALUES(?,?,?,?,?,?)";
+			String query = "INSERT INTO ERABILTZAILEAK(DNI,izena,abizena,jaiotze_data,sexua,pasahitza)"+" VALUES(?,?,?,?,?,?)";
 			
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 		      preparedStmt.setString (1, DNI);
 		      preparedStmt.setString (2, izena);
 		      preparedStmt.setString (3, abizena);
-		      preparedStmt.setDate (4, jaiotze_data);
+		      preparedStmt.setString (4, jaiotze_data);
 		      preparedStmt.setString (5, sexua);
 		      preparedStmt.setString (6, pasahitza);
 		      
