@@ -299,11 +299,7 @@ public class Metodoak {
 		public static void sartuErabiltzailea(String DNI, String izena, String abizena, String jaiotze_data, String sexua, String pasahitza) {
 			Kontsultak.sartuErabiltzailea(DNI, izena, abizena, jaiotze_data, sexua, pasahitza);
 		}
-		
-<<<<<<< HEAD
-=======
 		//NAN-aren letra balidatzeko
->>>>>>> defb4b9a7e4078a6aece03c165dc09f7ad70b262
 		public static boolean NANbalidatu(String NAN) {
 			boolean ondo = false;
 			String zenbakia;
