@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SwingConstants;
 
+import APP.Metodoak;
 import APP.MetodoakVista;
 
 public class SaioaSortu extends JFrame {
@@ -27,7 +30,7 @@ public class SaioaSortu extends JFrame {
 	private ActionListener alBHasiera;
 	private JTextField txtIzena;
 	private JTextField txtAbizena;
-	private JTextField txtEposta;
+	private JTextField txtNAN;
 	private JButton btnAurrera = new JButton("AURRERA");
 	private JRadioButton rdbtnGizonezkoa = new JRadioButton("GIZONA");
 	private JRadioButton rdbtnEmakumea = new JRadioButton("EMAKUMEA");
@@ -91,10 +94,10 @@ public class SaioaSortu extends JFrame {
 		rdbtnEmakumea.setBounds(337, 335, 109, 23);
 		getContentPane().add(rdbtnEmakumea);
 
-		txtEposta = new JTextField();
-		txtEposta.setBounds(264, 151, 182, 36);
-		getContentPane().add(txtEposta);
-		txtEposta.setColumns(10);
+		txtNAN = new JTextField();
+		txtNAN.setBounds(264, 151, 182, 36);
+		getContentPane().add(txtNAN);
+		txtNAN.setColumns(10);
 		lblPasahitza.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPasahitza.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPasahitza.setBounds(154, 196, 100, 36);
@@ -104,6 +107,17 @@ public class SaioaSortu extends JFrame {
 		alBAurrera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
+				Pattern p1 = Pattern.compile("[0-9]{8}[A-Z]");
+				Matcher m1 = p1.matcher(txtNAN.getText());
+				if(m1.matches()) {
+					if(Metodoak.NANkalkulatu(txtNAN.getText())) {
+						System.out.println("Ondo");
+					}
+				}else {
+					System.out.println("Txarto");
+				}
+				
+//				Metodoak.sartuErabiltzailea(DNI, izena, abizena, jaiotze_data, sexua, pasahitza);
 				MetodoakVista.hirugarrenera();
 				dispose();
 
