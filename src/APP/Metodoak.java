@@ -198,6 +198,7 @@ public class Metodoak {
 			return konprobatu;
 		}
 		
+		
 		public static boolean pasahitzaKomprobaketa(String pasahitza) {
 
 			int i=0;
@@ -223,6 +224,7 @@ public class Metodoak {
 			System.out.println("Fin del metodo");// comprobar el metodo
 			return konprobatu;
 		}
+		
 		
 		public static String getMD5(String input) {
 			 try {
@@ -268,6 +270,23 @@ public class Metodoak {
 			}
 		}
 		
+<<<<<<< HEAD
+		//KALKULATU ZENBAT LOGELA GERATZEN DIREN
+		
+		/*LogelaKopurua pasar el dato del spinner */
+		public int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena) {
+			
+			 int hotelLogelaKopurua = k.logelaKopuruaLortu(hotelIzena);
+			int geratzenDirenHotelak = 0;
+			
+	geratzenDirenHotelak =  hotelLogelaKopurua - logelakopurua;
+	
+	System.out.println("geratzen diren logelak " + geratzenDirenHotelak);
+	
+	return geratzenDirenHotelak;
+}
+		
+=======
 		public static ArrayList hiriakPantailaratu() {
 			return Kontsultak.hiriakPantailaratu();
 		}
@@ -304,5 +323,6 @@ public class Metodoak {
 			}
 			return ondo;
 		}
+>>>>>>> be30c95cae6fed8b00e4e2d0c5e367b74dae704a
 
 }
