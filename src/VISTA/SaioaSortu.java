@@ -162,6 +162,7 @@ public class SaioaSortu extends JFrame {
 				
 				if(pasahitza.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Pasahitza bat sartu");
+					ondo=false;
 				}
 				
 				if(!pasahitza.getText().equals(pasahitzaErrepikatu.getText())) {
@@ -184,10 +185,11 @@ public class SaioaSortu extends JFrame {
 				
 				if(ondo) {
 					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), data, sexua, pasahitzaEnkriptatuta);
+					MetodoakVista.hirugarrenera();
+					dispose();
 				}
 				
-				MetodoakVista.hirugarrenera();
-				dispose();
+				
 
 			}
 		};
