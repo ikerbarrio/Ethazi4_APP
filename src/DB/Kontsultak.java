@@ -180,14 +180,7 @@ public class Kontsultak {
 		}
 		return inicioSes; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
-<<<<<<< HEAD
-	public String saioaSortuIgo() {
-		String zerbitzua = "";
 
-		Connection conexion = null;
-		Statement s = null;
-
-=======
 	
 	public static void sartuErabiltzailea(String DNI, String izena, String abizena, Date jaiotze_data, String sexua, String pasahitza) {
 
@@ -195,7 +188,6 @@ public class Kontsultak {
 		Statement s = null;
 		
 		
->>>>>>> 23be3ccc69f609d17a0e3ee4610498e155109d45
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
@@ -204,10 +196,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-<<<<<<< HEAD
 			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT ZERBITZUAK FROM HOTELAK WHERE IZENA LIKE '" /*+ hotelIzena*/ + "'");
-			
-=======
+		
 			String query = "INSERT INTO ZUZENDARIAK(DNI,izena,abizena,jaiotze_data,sexua,pasahitza)"+" VALUES(?,?,?,?,?,?)";
 			
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
@@ -226,14 +216,6 @@ public class Kontsultak {
 			System.out.println(e.getMessage());
 		}
 		
-	}
->>>>>>> 23be3ccc69f609d17a0e3ee4610498e155109d45
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-
-		return zerbitzua; // itzultzen du ze zerbitzu daukagun
 
 	}
 }

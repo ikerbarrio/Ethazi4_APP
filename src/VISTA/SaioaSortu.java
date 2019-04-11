@@ -114,9 +114,14 @@ public class SaioaSortu extends JFrame {
 
 				MetodoakVista.hirugarrenera();
 				dispose();
+<<<<<<< HEAD
 
 			};
 
+=======
+			
+			}
+>>>>>>> fe5de7412c9ec50e1e4a752e01f40e650a17e41a
 		};
 		btnAurrera.addActionListener(alBAurrera);
 
