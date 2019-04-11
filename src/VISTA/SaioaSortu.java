@@ -34,9 +34,9 @@ public class SaioaSortu extends JFrame {
 	private JLabel lblSaioaSortu = new JLabel("SAIOA SORTU");
 	private JLabel lblAbizena = new JLabel("Abizena");
 	private JLabel lblIzena = new JLabel("Izena");
-	private final JLabel lblPasahitza = new JLabel("Pasahitza");
-	private JLabel lblEposta = new JLabel("E-posta");
-	private final JLabel lblErabiltzailea = new JLabel("Erabiltzailea");
+	private JLabel lblPasahitza = new JLabel("Pasahitza");
+	private JLabel lblErabiltzailea = new JLabel("Erabiltzailea");
+	private JLabel lblNan = new JLabel("NAN");
 	private final JSpinner jaioData = new JSpinner();
 	private JTextField erabiltzaile;
 	private JPasswordField pasahitza;
@@ -93,11 +93,6 @@ public class SaioaSortu extends JFrame {
 		getContentPane().add(txtEposta);
 		txtEposta.setColumns(10);
 
-		lblEposta.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblEposta.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEposta.setBounds(27, 151, 75, 36);
-		getContentPane().add(lblEposta);
-
 		lblErabiltzailea.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblErabiltzailea.setHorizontalAlignment(SwingConstants.CENTER);
 		lblErabiltzailea.setBounds(15, 198, 100, 36);
@@ -114,14 +109,8 @@ public class SaioaSortu extends JFrame {
 
 				MetodoakVista.hirugarrenera();
 				dispose();
-<<<<<<< HEAD
 
-			};
-
-=======
-			
 			}
->>>>>>> fe5de7412c9ec50e1e4a752e01f40e650a17e41a
 		};
 		btnAurrera.addActionListener(alBAurrera);
 
@@ -158,18 +147,24 @@ public class SaioaSortu extends JFrame {
 
 			};
 		};
-		btnAurrera.addActionListener(alBAtzera);
-		
+		btnAtzera.addActionListener(alBAtzera);
+
 		btnHasiera.setBounds(520, 314, 89, 23);
 		getContentPane().add(btnHasiera);
 		alBHasiera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.bigarrenera();
+				MetodoakVista.bueltatuLehena();
 				dispose();
 
 			};
 		};
-		btnAurrera.addActionListener(alBHasiera);
+		btnHasiera.addActionListener(alBHasiera);
+		
+		
+		lblNan.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNan.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNan.setBounds(10, 151, 101, 36);
+		getContentPane().add(lblNan);
 	}
 }
