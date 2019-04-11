@@ -154,6 +154,8 @@ public class SaioaSortu extends JFrame {
 				m1 = p3.matcher(txtNAN.getText());
 				if(m1.matches()) {//NAN pattern expresioa betetzen badu letra begiratzen dugu
 					if(Metodoak.NANbalidatu(txtNAN.getText())) {
+					}else {
+						JOptionPane.showMessageDialog(null, "NAN letra txarto dago");
 					}
 				}else {
 					JOptionPane.showMessageDialog(null, "NAN txarto dago");
