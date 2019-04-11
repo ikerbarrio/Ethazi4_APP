@@ -30,12 +30,7 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
- 
-			
-			
-			
-			
-			
+
 			
 			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK WHERE cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"+hiria+"')");
 			while (rs.next()) {
@@ -220,6 +215,33 @@ public class Kontsultak {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
+	}
+	
+	public int logelaKopuruaLortu(String hotelIzena) {
+		int logelaKop =0;		
+		Connection conexion = null;
+		Statement s = null;
+		
+		try {
+	
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelaKop FROM hotelak WHERE IZENA ="  + "'" +hotelIzena  + "'");
+
+				while (rs.next()) {
+					 logelaKop = rs.getInt("logelaKop");
+	
+				}
+		
+			
+		}catch(Exception e ) {
+			
+		}
+		return logelaKop;
 		
 	}
 

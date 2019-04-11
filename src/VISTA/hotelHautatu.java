@@ -34,6 +34,7 @@ public class hotelHautatu extends JFrame {
 	private ActionListener alAtzera;
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
+	private JSpinner SpinnerLogelaKop = new JSpinner();
 	private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
 	private JComboBox comboHiria = new JComboBox();
 	private ArrayList <String>hotelak = new ArrayList();
@@ -46,6 +47,8 @@ public class hotelHautatu extends JFrame {
 	private JTextField txtInformazioa = new JTextField();
 	private int gauKopurua;
 	private double prezioFinala;
+	private int logelaKopurua;
+	private String hotela =" ";
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -60,13 +63,13 @@ public class hotelHautatu extends JFrame {
 		getContentPane().setLayout(null);
 		
 		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spinerGauKopurua.setBounds(30, 312, 168, 31);
+		spinerGauKopurua.setBounds(32, 347, 168, 31);
 		getContentPane().add(spinerGauKopurua);
 		
 		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGauKopurua.setBounds(20, 251, 168, 50);
+		lblGauKopurua.setBounds(32, 284, 168, 50);
 		getContentPane().add(lblGauKopurua);
 		
 		comboHiria.setBounds(10, 180, 168, 31);
@@ -139,7 +142,7 @@ public class hotelHautatu extends JFrame {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 						
 						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
-						
+						hotela = hotelak.get(i);
 
 					}
 				}
@@ -149,10 +152,11 @@ public class hotelHautatu extends JFrame {
 				}else{
 					btnAurrera.setEnabled(true);
 				}
-			//	m.fitxeroaIdatzi("aeiou");
+		
 				m.FitxeroaIrakurri();
 				dispose();
 				MetodoakVista.laugarrenera(prezioFinala);
+				m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
 				
 			}
 		};
@@ -174,6 +178,15 @@ public class hotelHautatu extends JFrame {
 		txtInformazioa.setBounds(265, 136, 315, 123);
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
+		
+		
+		SpinnerLogelaKop.setBounds(280, 347, 153, 31);
+		getContentPane().add(SpinnerLogelaKop);
+		
+		JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
+		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblLogelaKopurua.setBounds(280, 294, 196, 36);
+		getContentPane().add(lblLogelaKopurua);
 		
 		
 		al = new ActionListener() {
