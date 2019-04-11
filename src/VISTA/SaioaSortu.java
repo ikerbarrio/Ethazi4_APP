@@ -35,18 +35,21 @@ public class SaioaSortu extends JFrame {
 	private JLabel lblAbizena = new JLabel("Abizena");
 	private JLabel lblIzena = new JLabel("Izena");
 	private JLabel lblPasahitza = new JLabel("Pasahitza");
-	private JLabel lblErabiltzailea = new JLabel("Erabiltzailea");
 	private JLabel lblNan = new JLabel("NAN");
 	private final JSpinner jaioData = new JSpinner();
-	private JTextField erabiltzaile;
 	private JPasswordField pasahitza;
 	private final JLabel lblJaiotze = new JLabel("Jaiotze data");
 	private JButton btnHasiera = new JButton("HASIERA");
+	private JButton btnAtzera = new JButton("ATZERA");
+	private final JTextField txtPasahitzaerr = new JTextField();
+	private final JLabel lblPasahitzaErrepikatu = new JLabel("Pasahitza errepikatu");
 
 	/**
 	 * Create the frame.
 	 */
 	public SaioaSortu() {
+		txtPasahitzaerr.setBounds(264, 245, 182, 36);
+		txtPasahitzaerr.setColumns(10);
 		this.setSize(478, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,7 +59,7 @@ public class SaioaSortu extends JFrame {
 		getContentPane().add(btnAurrera);
 
 		txtIzena = new JTextField();
-		txtIzena.setBounds(121, 57, 182, 36);
+		txtIzena.setBounds(264, 57, 182, 36);
 		getContentPane().add(txtIzena);
 		txtIzena.setColumns(10);
 
@@ -67,40 +70,34 @@ public class SaioaSortu extends JFrame {
 
 		lblIzena.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIzena.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblIzena.setBounds(27, 57, 75, 36);
+		lblIzena.setBounds(179, 55, 75, 36);
 		getContentPane().add(lblIzena);
 
 		txtAbizena = new JTextField();
 		txtAbizena.setColumns(10);
-		txtAbizena.setBounds(121, 104, 182, 36);
+		txtAbizena.setBounds(264, 104, 182, 36);
 		getContentPane().add(txtAbizena);
 
 		lblAbizena.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAbizena.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblAbizena.setBounds(27, 104, 75, 36);
+		lblAbizena.setBounds(179, 102, 75, 36);
 		getContentPane().add(lblAbizena);
 
 		rdbtnGizonezkoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnGizonezkoa.setBounds(15, 352, 109, 23);
+		rdbtnGizonezkoa.setBounds(154, 335, 109, 23);
 		getContentPane().add(rdbtnGizonezkoa);
 
 		rdbtnEmakumea.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnEmakumea.setBounds(173, 352, 109, 23);
+		rdbtnEmakumea.setBounds(337, 335, 109, 23);
 		getContentPane().add(rdbtnEmakumea);
 
 		txtEposta = new JTextField();
-		txtEposta.setBounds(121, 151, 182, 36);
+		txtEposta.setBounds(264, 151, 182, 36);
 		getContentPane().add(txtEposta);
 		txtEposta.setColumns(10);
-
-		lblErabiltzailea.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblErabiltzailea.setHorizontalAlignment(SwingConstants.CENTER);
-		lblErabiltzailea.setBounds(15, 198, 100, 36);
-
-		getContentPane().add(lblErabiltzailea);
 		lblPasahitza.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPasahitza.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPasahitza.setBounds(15, 245, 100, 41);
+		lblPasahitza.setBounds(154, 196, 100, 36);
 
 		getContentPane().add(lblPasahitza);
 
@@ -117,25 +114,19 @@ public class SaioaSortu extends JFrame {
 		jaioData.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
 		jaioData.setModel(new SpinnerDateModel(new Date(1546297200000L), null, null, Calendar.DAY_OF_YEAR));
-		jaioData.setBounds(121, 292, 182, 36);
+		jaioData.setBounds(264, 292, 182, 36);
 
 		getContentPane().add(jaioData);
 
 		pasahitza = new JPasswordField();
-		pasahitza.setBounds(121, 245, 182, 36);
+		pasahitza.setBounds(264, 198, 182, 36);
 		getContentPane().add(pasahitza);
 		lblJaiotze.setHorizontalAlignment(SwingConstants.CENTER);
 		lblJaiotze.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblJaiotze.setBounds(15, 292, 100, 36);
+		lblJaiotze.setBounds(154, 292, 100, 36);
 
 		getContentPane().add(lblJaiotze);
 
-		erabiltzaile = new JTextField();
-		erabiltzaile.setBounds(121, 198, 182, 36);
-		getContentPane().add(erabiltzaile);
-		erabiltzaile.setColumns(10);
-
-		JButton btnAtzera = new JButton("ATZERA");
 		btnAtzera.setBounds(520, 348, 89, 23);
 		getContentPane().add(btnAtzera);
 
@@ -164,7 +155,14 @@ public class SaioaSortu extends JFrame {
 		
 		lblNan.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNan.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNan.setBounds(10, 151, 101, 36);
+		lblNan.setBounds(153, 149, 101, 36);
 		getContentPane().add(lblNan);
+		
+		getContentPane().add(txtPasahitzaerr);
+		lblPasahitzaErrepikatu.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPasahitzaErrepikatu.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblPasahitzaErrepikatu.setBounds(72, 246, 182, 36);
+		
+		getContentPane().add(lblPasahitzaErrepikatu);
 	}
 }
