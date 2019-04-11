@@ -270,7 +270,6 @@ public class Metodoak {
 			}
 		}
 		
-<<<<<<< HEAD
 		//KALKULATU ZENBAT LOGELA GERATZEN DIREN
 		
 		/*LogelaKopurua pasar el dato del spinner */
@@ -286,7 +285,6 @@ public class Metodoak {
 	return geratzenDirenHotelak;
 }
 		
-=======
 		public static ArrayList hiriakPantailaratu() {
 			return Kontsultak.hiriakPantailaratu();
 		}
@@ -323,6 +321,5 @@ public class Metodoak {
 			}
 			return ondo;
 		}
->>>>>>> be30c95cae6fed8b00e4e2d0c5e367b74dae704a
 
 }
