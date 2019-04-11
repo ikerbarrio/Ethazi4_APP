@@ -23,6 +23,8 @@ public class SaioaSortu extends JFrame {
 
 	private JPanel contentPane;
 	private ActionListener alBAurrera;
+	private ActionListener alBAtzera;
+	private ActionListener alBHasiera;
 	private JTextField txtIzena;
 	private JTextField txtAbizena;
 	private JTextField txtEposta;
@@ -36,8 +38,10 @@ public class SaioaSortu extends JFrame {
 	private JLabel lblEposta = new JLabel("E-posta");
 	private final JLabel lblErabiltzailea = new JLabel("Erabiltzailea");
 	private final JSpinner jaioData = new JSpinner();
+	private JTextField erabiltzaile;
 	private JPasswordField pasahitza;
 	private final JLabel lblJaiotze = new JLabel("Jaiotze data");
+	private JButton btnHasiera = new JButton("HASIERA");
 
 	/**
 	 * Create the frame.
@@ -48,7 +52,7 @@ public class SaioaSortu extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
-		btnAurrera.setBounds(520, 393, 89, 23);
+		btnAurrera.setBounds(520, 382, 89, 23);
 		getContentPane().add(btnAurrera);
 
 		txtIzena = new JTextField();
@@ -110,13 +114,9 @@ public class SaioaSortu extends JFrame {
 
 				MetodoakVista.hirugarrenera();
 				dispose();
-<<<<<<< HEAD
 
 			};
-=======
-			
-			}
->>>>>>> 23be3ccc69f609d17a0e3ee4610498e155109d45
+
 		};
 		btnAurrera.addActionListener(alBAurrera);
 
@@ -133,7 +133,38 @@ public class SaioaSortu extends JFrame {
 		lblJaiotze.setHorizontalAlignment(SwingConstants.CENTER);
 		lblJaiotze.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblJaiotze.setBounds(15, 292, 100, 36);
-		
+
 		getContentPane().add(lblJaiotze);
+
+		erabiltzaile = new JTextField();
+		erabiltzaile.setBounds(121, 198, 182, 36);
+		getContentPane().add(erabiltzaile);
+		erabiltzaile.setColumns(10);
+
+		JButton btnAtzera = new JButton("ATZERA");
+		btnAtzera.setBounds(520, 348, 89, 23);
+		getContentPane().add(btnAtzera);
+
+		alBAtzera = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				MetodoakVista.bigarrenera();
+				dispose();
+
+			};
+		};
+		btnAurrera.addActionListener(alBAtzera);
+		
+		btnHasiera.setBounds(520, 314, 89, 23);
+		getContentPane().add(btnHasiera);
+		alBHasiera = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				MetodoakVista.bigarrenera();
+				dispose();
+
+			};
+		};
+		btnAurrera.addActionListener(alBHasiera);
 	}
 }
