@@ -109,6 +109,7 @@ public class hotelHautatu extends JFrame {
 				if(comboHotelak.getItemCount()!=0) {						
 							
 					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
+					
 				}
 				
 			btnAurrera.setEnabled(true);
@@ -197,7 +198,7 @@ public class hotelHautatu extends JFrame {
 			}
 		};
 
-
+		
 
 	}
 }

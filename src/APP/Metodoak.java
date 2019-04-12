@@ -303,10 +303,10 @@ public class Metodoak {
 		//NAN-aren letra balidatzeko
 		public static boolean NANbalidatu(String NAN) {
 			boolean ondo = false;
-			String zenbakia;
-			int zenbakia_;
-			String letra;
-			String letra_ = "TRWAGMYFPDXBNJZSQVHLCKET";
+			String zenbakia;//NAN-aren 8 zenbakiak gordetzen ditu
+			int zenbakia_;//NAN-aren 8 zenbakiak int moduan gordetzen du
+			String letra;//NAN-aren azken letra gordetzen du
+			String letra_ = "TRWAGMYFPDXBNJZSQVHLCKET";//NAN-aren letrarekin konparatzeko
 			
 			zenbakia = NAN.substring(0, NAN.length()-1);
 			zenbakia_ = Integer.parseInt(zenbakia);
