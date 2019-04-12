@@ -211,6 +211,7 @@ public class Kontsultak {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
 	}
 	
 	public int logelaKopuruaLortu(String hotelIzena) {

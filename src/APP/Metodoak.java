@@ -22,6 +22,7 @@ public class Metodoak {
 	
 	public static double kontTotala = 0;
 	DB.Kontsultak k = new DB.Kontsultak ();
+	APP.Metodoak m = new APP.Metodoak();
 	
 	public static String[] diruarenBueltak(String emaitza, String ordainketa) {// emaitza balioa main-etik hartu
 		double DoubleTextDiruTot = Double.parseDouble(emaitza);
@@ -272,7 +273,7 @@ public class Metodoak {
 		//KALKULATU ZENBAT LOGELA GERATZEN DIREN
 		
 		/*LogelaKopurua pasar el dato del spinner */
-		public int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena) {
+		public static int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena) {
 			
 			 int hotelLogelaKopurua = (int)k.logelaKopuruaLortu(hotelIzena);
 			int geratzenDirenHotelak = 0;
@@ -319,6 +320,14 @@ public class Metodoak {
 				ondo = true;
 			}
 			return ondo;
+		}
+		
+		public int restahoteles(String hotelIzena, int logelakopurua) {
+			
+			 int hotelLogelaKopurua = k.logelaKopuruaLortu(hotelIzena);
+			int geratzenDirenHotelak= Metodoak.hotelLogelakKalkulatu(logelakopurua, hotelIzena);//metodo passado a static y cambiar lo que ello requiera
+			int logelaKontFinal = hotelLogelaKopurua - geratzenDirenHotelak;
+			return logelaKontFinal;
 		}
 
 }

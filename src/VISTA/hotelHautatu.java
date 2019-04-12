@@ -178,6 +178,7 @@ public class hotelHautatu extends JFrame {
 		txtInformazioa.setBounds(265, 136, 315, 123);
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
+		SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 		
 		
 		SpinnerLogelaKop.setBounds(280, 347, 153, 31);
