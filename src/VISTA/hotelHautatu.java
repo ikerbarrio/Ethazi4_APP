@@ -32,6 +32,7 @@ public class hotelHautatu extends JFrame {
 	Metodoak m = new Metodoak();
 	private ActionListener al;
 	private ActionListener alAtzera;
+	private ActionListener alLogelak;
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
 	private JSpinner SpinnerLogelaKop = new JSpinner();
@@ -47,7 +48,7 @@ public class hotelHautatu extends JFrame {
 	private JTextField txtInformazioa = new JTextField();
 	private int gauKopurua;
 	private double prezioFinala;
-	private int logelaKopurua;
+	private int logelaKopurua =  m.hotelLogelakKalkulatu(DB.Kontsultak.logelaKopuruaLortu((String) comboHotelak.getSelectedItem()), (String) comboHotelak.getSelectedItem());
 	private String hotela =" ";
 	/**
 	 * Frame-aren komponente guztiak
@@ -159,6 +160,13 @@ public class hotelHautatu extends JFrame {
 				MetodoakVista.laugarrenera(prezioFinala);
 				m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
 				
+				if (comboHotelak.getSelectedItem().equals("La Plaza")) {
+					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 50, 1));
+				}else if (comboHotelak.getSelectedItem().equals("Carlthon")) {
+					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 75, 1));
+				}
+				
+				
 			}
 		};
 		btnAurrera.addActionListener(al);
@@ -179,9 +187,9 @@ public class hotelHautatu extends JFrame {
 		txtInformazioa.setBounds(265, 136, 315, 123);
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
-		SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 		
-		
+//		m.hotelLogelakKalkulatu(DB.Kontsultak.logelaKopuruaLortu((String) comboHotelak.getSelectedItem()), (String) comboHotelak.getSelectedItem())
+//		SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 		SpinnerLogelaKop.setBounds(280, 347, 153, 31);
 		getContentPane().add(SpinnerLogelaKop);
 		
@@ -189,7 +197,7 @@ public class hotelHautatu extends JFrame {
 		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblLogelaKopurua.setBounds(280, 294, 196, 36);
 		getContentPane().add(lblLogelaKopurua);
-		
+				
 		
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -197,8 +205,5 @@ public class hotelHautatu extends JFrame {
 				MetodoakVista.bueltatuLehena();
 			}
 		};
-
-		
-
 	}
 }

@@ -103,6 +103,7 @@ public class Ordainketa extends JFrame {
 		
 		textDiruTot.setBackground(Color.WHITE);
 		textDiruTot.setEditable(false);
+//		table.isCellEditable(row(vacio), column(vacio));
 //				DefaultListModel ordaintzekoa = new DefaultListModel();
 //				ordaintzekoa.addElement(Metodoak.kontTotala+"�");
 //				listBueltak.setModel(ordaintzekoa);

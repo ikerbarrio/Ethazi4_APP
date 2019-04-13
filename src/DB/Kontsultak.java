@@ -27,8 +27,10 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IZENA FROM HOTELAK WHERE cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"+hiria+"')");
+
+			ResultSet rs = ((java.sql.Statement) s).executeQuery(
+					"SELECT IZENA FROM HOTELAK WHERE cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"
+							+ hiria + "')");
 			while (rs.next()) {
 
 				izena = rs.getString(1);
@@ -166,9 +168,9 @@ public class Kontsultak {
 
 				String fecha_nac_;
 				fecha_nac_ = rs.getString("jaiotze_data");
-				
+
 				Erabiltzailea c1 = new Erabiltzailea(dni_, nombre_, apellido_, fecha_nac_, sexo_, contraseña_);
-				inicioSes.add(0,c1);
+				inicioSes.add(0, c1);
 //				for (int n = 0; n < inicioSes.size(); n++) {
 //					System.out.println(inicioSes.get(n));
 //				}
@@ -179,13 +181,12 @@ public class Kontsultak {
 		return inicioSes; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 
-	
-	public static void sartuErabiltzailea(String DNI, String izena, String abizena, String jaiotze_data, String sexua, String pasahitza) {
+	public static void sartuErabiltzailea(String DNI, String izena, String abizena, String jaiotze_data, String sexua,
+			String pasahitza) {
 
 		Connection conexion = null;
 		Statement s = null;
-		
-		
+
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
@@ -193,51 +194,52 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-		
-			String query = "INSERT INTO ERABILTZAILEAK(DNI,izena,abizena,jaiotze_data,sexua,pasahitza)"+" VALUES(?,?,?,?,?,?)";
-			
+
+			String query = "INSERT INTO ERABILTZAILEAK(DNI,izena,abizena,jaiotze_data,sexua,pasahitza)"
+					+ " VALUES(?,?,?,?,?,?)";
+
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
-		      preparedStmt.setString (1, DNI);
-		      preparedStmt.setString (2, izena);
-		      preparedStmt.setString (3, abizena);
-		      preparedStmt.setString (4, jaiotze_data);
-		      preparedStmt.setString (5, sexua);
-		      preparedStmt.setString (6, pasahitza);
-		      
-		      preparedStmt.execute();
-		      
-		      System.out.println("Sartuta");
-			
+			preparedStmt.setString(1, DNI);
+			preparedStmt.setString(2, izena);
+			preparedStmt.setString(3, abizena);
+			preparedStmt.setString(4, jaiotze_data);
+			preparedStmt.setString(5, sexua);
+			preparedStmt.setString(6, pasahitza);
+
+			preparedStmt.execute();
+
+			System.out.println("Sartuta");
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 	}
-	
-	public int logelaKopuruaLortu(String hotelIzena) {
-		int logelaKop =0;		
+
+	public static int logelaKopuruaLortu(String hotelIzena) {
+		int logelaKop = 0;
 		Connection conexion = null;
 		Statement s = null;
-		
+
 		try {
-	
+
 			Class.forName("com.mysql.jdbc.Driver");
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelaKop FROM hotelak WHERE IZENA ="  + "'" +hotelIzena  + "'");
+			ResultSet rs = ((java.sql.Statement) s)
+					.executeQuery("SELECT logelaKop FROM hotelak WHERE IZENA =" + "'" + hotelIzena + "'");
 
-				while (rs.next()) {
-					 logelaKop = rs.getInt("logelaKop");
-	
-				}
-		
-			
-		}catch(Exception e ) {
-			
+			while (rs.next()) {
+				logelaKop = rs.getInt("logelaKop");
+
+			}
+
+		} catch (Exception e) {
+
 		}
 		return logelaKop;
-		
+
 	}
 }
