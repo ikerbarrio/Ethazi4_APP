@@ -358,7 +358,7 @@ public class Ordainketa extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.hirugarrenera();
+				MetodoakVista.saihoaHastera(prezioFinala);
 				dispose();
 			}
 		};

@@ -157,15 +157,8 @@ public class hotelHautatu extends JFrame {
 		
 				m.FitxeroaIrakurri();
 				dispose();
-				MetodoakVista.laugarrenera(prezioFinala);
+				MetodoakVista.saihoaHastera(prezioFinala);
 				m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
-				
-				if (comboHotelak.getSelectedItem().equals("La Plaza")) {
-					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 50, 1));
-				}else if (comboHotelak.getSelectedItem().equals("Carlthon")) {
-					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 75, 1));
-				}
-				
 				
 			}
 		};
@@ -175,7 +168,7 @@ public class hotelHautatu extends JFrame {
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MetodoakVista.bigarrenera();
+				MetodoakVista.bueltatuLehena();
 			}
 		};
 		btnAtzera.addActionListener(alAtzera);

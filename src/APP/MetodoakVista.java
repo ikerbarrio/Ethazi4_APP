@@ -14,19 +14,19 @@ public class MetodoakVista {
 		ongiEtorri.setBounds(550, 200, 642, 467);
 }
 
-	public static void bigarrenera() {
-		SaioaHasi saioaHasi = new SaioaHasi();
+	public static void saihoaHastera(double prezioFinala) {
+		SaioaHasi saioaHasi = new SaioaHasi(prezioFinala);
 		saioaHasi.setVisible(true);
 		saioaHasi.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void hirugarrenera() {
+	public static void hotelaErostera() {
 		hotelHautatu hotelHautatu = new hotelHautatu();
 		hotelHautatu.setVisible(true);
 		hotelHautatu.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void laugarrenera(double prezioFinala) {
+	public static void ordainketaLeihora(double prezioFinala) {
 		Ordainketa ordainketa = new Ordainketa(prezioFinala);
 		ordainketa.setVisible(true);
 		ordainketa.setBounds(550, 200, 642, 467);
@@ -38,7 +38,7 @@ public class MetodoakVista {
 		azkena.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void saioaSortu() {
+	public static void saioaSortzera() {
 		SaioaSortu SaioaSortu = new SaioaSortu();
 		SaioaSortu.setVisible(true);
 		SaioaSortu.setBounds(550, 200, 642, 467);
