@@ -22,6 +22,7 @@ import DB.Kontsultak;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
 
 
 
@@ -32,6 +33,7 @@ public class hotelHautatu extends JFrame {
 	Metodoak m = new Metodoak();
 	private ActionListener al;
 	private ActionListener alAtzera;
+	private ActionListener alLogelak;
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
 	private JSpinner SpinnerLogelaKop = new JSpinner();
@@ -49,6 +51,7 @@ public class hotelHautatu extends JFrame {
 	private double prezioFinala;
 	private int logelaKopurua;
 	private String hotela =" ";
+	JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -110,6 +113,9 @@ public class hotelHautatu extends JFrame {
 							
 					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 					
+					logelaKopurua = Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString());
+					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0,logelaKopurua,1));
+					
 				}
 				
 			btnAurrera.setEnabled(true);
@@ -156,7 +162,7 @@ public class hotelHautatu extends JFrame {
 		
 				m.FitxeroaIrakurri();
 				dispose();
-				MetodoakVista.laugarrenera(prezioFinala);
+				MetodoakVista.saihoaHastera(prezioFinala);
 				m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
 				
 			}
@@ -167,7 +173,7 @@ public class hotelHautatu extends JFrame {
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MetodoakVista.bigarrenera();
+				MetodoakVista.bueltatuLehena();
 			}
 		};
 		btnAtzera.addActionListener(alAtzera);
@@ -179,25 +185,20 @@ public class hotelHautatu extends JFrame {
 		txtInformazioa.setBounds(265, 136, 315, 123);
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
+//		SpinnerLogelaKop.setModel(new SpinnerNumberModel(new Integer(0), null, null, new Integer(1)));
 		
 		
+//		m.hotelLogelakKalkulatu(DB.Kontsultak.logelaKopuruaLortu((String) comboHotelak.getSelectedItem()), (String) comboHotelak.getSelectedItem())
+//		SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 		SpinnerLogelaKop.setBounds(280, 347, 153, 31);
 		getContentPane().add(SpinnerLogelaKop);
 		
-		JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
+		
 		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblLogelaKopurua.setBounds(280, 294, 196, 36);
 		getContentPane().add(lblLogelaKopurua);
+				
 		
 		
-		al = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				MetodoakVista.bueltatuLehena();
-			}
-		};
-
-		
-
 	}
 }

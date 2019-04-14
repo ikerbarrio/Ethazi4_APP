@@ -32,7 +32,7 @@ public class OngiEtorri extends JFrame {
 		btnOngiEtorri.setFont(new Font("Tahoma", Font.BOLD, 35));
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MetodoakVista.bigarrenera();
+				MetodoakVista.hotelaErostera();
 				dispose();
 			}
 		};

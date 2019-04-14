@@ -39,7 +39,7 @@ public class SaioaHasi extends JFrame {
 	private JButton btnSaioaSortu = new JButton("Saioa sortu");
 
 	
-	public SaioaHasi() {
+	public SaioaHasi(double prezioFinala) {
 		this.setSize(478, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +70,7 @@ public class SaioaHasi extends JFrame {
 				DNIkonprobatu = Metodoak.nanKomprobaketa(DNI);
 			
 				if(DNIkonprobatu==true && pasahitzaKonprobatu==true) {
-					MetodoakVista.hirugarrenera();
+					MetodoakVista.ordainketaLeihora(prezioFinala);
 					dispose();
 				}else {
 					JOptionPane.showMessageDialog(null, "Ez da existitzen\n Saiatu berriro");
@@ -116,7 +116,7 @@ public class SaioaHasi extends JFrame {
 		
 		alBSaioaSortu = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MetodoakVista.saioaSortu();
+				MetodoakVista.saioaSortzera(prezioFinala);
 				dispose();
 			}
 		};
