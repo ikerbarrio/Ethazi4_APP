@@ -57,7 +57,7 @@ public class SaioaSortu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SaioaSortu() {
+	public SaioaSortu(double prezioFinala) {
 		this.setSize(478, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -196,7 +196,7 @@ public class SaioaSortu extends JFrame {
 				//Dena ondo badago erabiltzailea sartzen du
 				if(ondo) {
 					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), data, sexua, pasahitzaEnkriptatuta);
-					MetodoakVista.hirugarrenera();
+					MetodoakVista.ordainketaLeihora(prezioFinala);
 					dispose();
 				}
 				
@@ -226,7 +226,7 @@ public class SaioaSortu extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.bigarrenera();
+				MetodoakVista.saihoaHastera(prezioFinala);
 				dispose();
 
 			}

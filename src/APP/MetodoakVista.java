@@ -38,8 +38,8 @@ public class MetodoakVista {
 		azkena.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void saioaSortzera() {
-		SaioaSortu SaioaSortu = new SaioaSortu();
+	public static void saioaSortzera(double prezioFinala) {
+		SaioaSortu SaioaSortu = new SaioaSortu(prezioFinala);
 		SaioaSortu.setVisible(true);
 		SaioaSortu.setBounds(550, 200, 642, 467);
 	}

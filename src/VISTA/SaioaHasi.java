@@ -116,7 +116,7 @@ public class SaioaHasi extends JFrame {
 		
 		alBSaioaSortu = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MetodoakVista.saioaSortzera();
+				MetodoakVista.saioaSortzera(prezioFinala);
 				dispose();
 			}
 		};

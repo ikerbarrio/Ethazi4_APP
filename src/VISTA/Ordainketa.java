@@ -294,12 +294,14 @@ public class Ordainketa extends JFrame {
 			for(int i=0;i<bueltak.length;i++) {
 				list.addElement(bueltak[i]);
 			}
+			//BUELTAK 0 BADIRA
 			if (bueltak[0]=="0") {
 				listMezua = "Ez daude bueltak";
 				list.addElement(listMezua);
 				lblErositakoa.setText("FALTA DEN DIRUA");
 				btnAurrera.setEnabled(true);
 			}
+			//DIRUA FALTA BADA
 			if (bueltak[0]=="") {
 				kenketaMetodo = Metodoak.kenketa(textDiruTot.getText(), textOrdainketa.getText());
 				textOrdainketa.setText("");
@@ -309,6 +311,7 @@ public class Ordainketa extends JFrame {
 				lblErositakoa.setText("FALTA DEN DIRUA");
 				btnErosi.setEnabled(false);
 			}
+			//DIRUA EZ BADA FALTA
 			if (bueltak[0]!="") {
 				textDiruTot.setText("0");
 				btnAurrera.setEnabled(true);
