@@ -22,11 +22,8 @@ import DB.Kontsultak;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-<<<<<<< HEAD
 import javax.swing.JRadioButton;
-=======
 import javax.swing.SpinnerModel;
->>>>>>> 03dbbdd0e73c0dabaee65b8a569643e02550cbf6
 
 
 
@@ -56,6 +53,9 @@ public class hotelHautatu extends JFrame {
 	private int logelaKopurua;
 	private String hotela =" ";
 	JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
+	JLabel lblGelaMota = new JLabel("Gela mota");
+	JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
+	JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -146,7 +146,11 @@ public class hotelHautatu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				gauKopurua=(int)spinerGauKopurua.getValue();
 				System.out.println(gauKopurua);
-				prezioFinala=20*gauKopurua;
+				if (rdbtnBanakakoa.isSelected()) {
+					prezioFinala=(20*gauKopurua);
+				}else if (rdbtnBinakakoa.isSelected()) {
+					prezioFinala=(40*gauKopurua);
+				}
 				System.out.println(prezioFinala);
 				
 				for(int i=0;i<hotelak.size();i++) {
@@ -202,22 +206,15 @@ public class hotelHautatu extends JFrame {
 		lblLogelaKopurua.setBounds(36, 205, 196, 36);
 		getContentPane().add(lblLogelaKopurua);
 		
-		JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
+		
 		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnBanakakoa.setBounds(26, 334, 109, 23);
 		getContentPane().add(rdbtnBanakakoa);
 		
-		JRadioButton rdbtnBinakakoa = new JRadioButton("Binakakoa");
 		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnBinakakoa.setBounds(137, 334, 109, 23);
 		getContentPane().add(rdbtnBinakakoa);
 		
-		JRadioButton rdbtnSuite = new JRadioButton("Suite");
-		rdbtnSuite.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnSuite.setBounds(248, 334, 109, 23);
-		getContentPane().add(rdbtnSuite);
-		
-		JLabel lblGelaMota = new JLabel("Gela mota");
 		lblGelaMota.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGelaMota.setBounds(26, 296, 168, 31);
