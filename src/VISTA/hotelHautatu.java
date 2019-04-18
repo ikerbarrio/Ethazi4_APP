@@ -82,7 +82,7 @@ public class hotelHautatu extends JFrame {
 		comboHiria.setBounds(412, 74, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
-		
+		comboHiria.addItem("Aukeratu");
 		for(int n = 0; n < hiriak.size(); n++) {
 			comboHiria.addItem(hiriak.get(n));
 		}
@@ -117,8 +117,10 @@ public class hotelHautatu extends JFrame {
 							
 					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 					
+					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString()),1));
+					
 					logelaKopurua = Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString());
-					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0,10,1));
+					
 					
 				}
 				
@@ -147,9 +149,9 @@ public class hotelHautatu extends JFrame {
 				gauKopurua=(int)spinerGauKopurua.getValue();
 				System.out.println(gauKopurua);
 				if (rdbtnBanakakoa.isSelected()) {
-					prezioFinala=(/*20*/ *gauKopurua);
+					prezioFinala=(20*gauKopurua);
 				}else if (rdbtnBinakakoa.isSelected()) {
-					prezioFinala=(/*40*/ *gauKopurua);
+					prezioFinala=(40*gauKopurua);
 				}
 				System.out.println(prezioFinala);
 				
