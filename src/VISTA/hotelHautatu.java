@@ -69,7 +69,7 @@ public class hotelHautatu extends JFrame {
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
 		
-		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), new Integer(10), new Integer(1)));
 		spinerGauKopurua.setBounds(26, 163, 168, 31);
 		getContentPane().add(spinerGauKopurua);
 		
@@ -118,7 +118,7 @@ public class hotelHautatu extends JFrame {
 					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 					
 					logelaKopurua = Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString());
-					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0,logelaKopurua,1));
+					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0,10,1));
 					
 				}
 				
