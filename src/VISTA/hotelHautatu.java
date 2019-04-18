@@ -75,7 +75,7 @@ public class hotelHautatu extends JFrame {
 		lblGauKopurua.setBounds(32, 284, 168, 50);
 		getContentPane().add(lblGauKopurua);
 		
-		comboHiria.setBounds(10, 180, 168, 31);
+		comboHiria.setBounds(191, 65, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
 		
@@ -129,7 +129,7 @@ public class hotelHautatu extends JFrame {
 		
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAukeratu.setBounds(63, 61, 215, 41);
+		lblAukeratu.setBounds(0, 56, 215, 41);
 		getContentPane().add(lblAukeratu);
 		
 		comboHiria.setBounds(265, 65, 168, 31);

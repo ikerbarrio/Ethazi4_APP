@@ -308,13 +308,6 @@ public class Metodoak {
 		return ondo;
 	}
 
-//		public int restahoteles(String hotelIzena, int logelakopurua) {
-//			
-//			 int hotelLogelaKopurua = k.logelaKopuruaLortu(hotelIzena);
-//			int geratzenDirenHotelak= Metodoak.hotelLogelakKalkulatu(logelakopurua, hotelIzena);//metodo passado a static y cambiar lo que ello requiera
-//			int logelaKontFinal = hotelLogelaKopurua - geratzenDirenHotelak;
-//			System.out.println("Geratzen diren logelak: " + logelaKontFinal);
-//			return logelaKontFinal;
-//		}
+
 
 }
