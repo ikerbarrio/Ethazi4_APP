@@ -52,10 +52,10 @@ public class hotelHautatu extends JFrame {
 	private double prezioFinala;
 	private int logelaKopurua;
 	private String hotela =" ";
-	JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
-	JLabel lblGelaMota = new JLabel("Gela mota");
-	JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
-	JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
+	private JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
+	private JLabel lblGelaMota = new JLabel("Gela mota");
+	private JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
+	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -147,9 +147,9 @@ public class hotelHautatu extends JFrame {
 				gauKopurua=(int)spinerGauKopurua.getValue();
 				System.out.println(gauKopurua);
 				if (rdbtnBanakakoa.isSelected()) {
-					prezioFinala=(20*gauKopurua);
+					prezioFinala=(/*20*/ *gauKopurua);
 				}else if (rdbtnBinakakoa.isSelected()) {
-					prezioFinala=(40*gauKopurua);
+					prezioFinala=(/*40*/ *gauKopurua);
 				}
 				System.out.println(prezioFinala);
 				
