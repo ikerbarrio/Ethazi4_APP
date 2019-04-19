@@ -232,14 +232,13 @@ public class Kontsultak {
 			System.out.println(kontsulta);
 			
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-<<<<<<< HEAD
+
 			ResultSet rs = ((java.sql.Statement) s).executeQuery("	SELECT logelakop from logelamota WHERE id = (SELECT id FROM hotelak WHERE IZENA =" + "'" + hotelIzena + "')");
 			
 			
-=======
-			ResultSet rs = ((java.sql.Statement) s)
-					.executeQuery(kontsulta);
->>>>>>> 91d5574fa940f4c80af051a7b91c6f8c467248b6
+
+			
+
 
 			while (rs.next()) {
 				logelaKop = rs.getInt("logelaKop");

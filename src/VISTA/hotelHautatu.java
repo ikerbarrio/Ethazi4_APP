@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package VISTA;
 
 import java.awt.Color;
@@ -206,7 +206,7 @@ public class hotelHautatu extends JFrame {
 		
 	}
 }
-=======
+
 package VISTA;
 
 import java.awt.Color;
@@ -435,4 +435,4 @@ public class hotelHautatu extends JFrame {
 		
 	}
 }
->>>>>>> 91d5574fa940f4c80af051a7b91c6f8c467248b6
+
