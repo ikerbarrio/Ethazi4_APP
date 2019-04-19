@@ -222,23 +222,32 @@ public class Kontsultak {
 		Statement s = null;
 
 		try {
-
+			System.out.println(hotelIzena);
 			Class.forName("com.mysql.jdbc.Driver");
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4_2", "root", "");
 			s = (Statement) conexion.createStatement();
 
+			String kontsulta = "SELECT logelakop FROM logelamota WHERE id = (SELECT id FROM hotelak WHERE izena = '" + hotelIzena + "')";
+			
+			System.out.println(kontsulta);
+			
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+<<<<<<< HEAD
 			ResultSet rs = ((java.sql.Statement) s).executeQuery("	SELECT logelakop from logelamota WHERE id = (SELECT id FROM hotelak WHERE IZENA =" + "'" + hotelIzena + "')");
 			
 			
+=======
+			ResultSet rs = ((java.sql.Statement) s)
+					.executeQuery(kontsulta);
+>>>>>>> 91d5574fa940f4c80af051a7b91c6f8c467248b6
 
 			while (rs.next()) {
 				logelaKop = rs.getInt("logelaKop");
-
+				System.out.println(logelaKop);
 			}
 
 		} catch (Exception e) {
-
+			System.out.println(e.getMessage());
 		}
 		return logelaKop;
 
