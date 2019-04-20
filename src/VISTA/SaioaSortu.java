@@ -160,6 +160,7 @@ public class SaioaSortu extends JFrame {
 					if(Metodoak.NANbalidatu(txtNAN.getText())) {
 					}else {
 						JOptionPane.showMessageDialog(null, "NAN letra txarto dago");
+						ondo = false;
 					}
 				}else {
 					JOptionPane.showMessageDialog(null, "NAN txarto dago");

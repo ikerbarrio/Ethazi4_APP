@@ -20,8 +20,10 @@ import APP.Metodoak;
 import APP.MetodoakVista;
 import DB.Kontsultak;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JRadioButton;
 import javax.swing.SpinnerModel;
 
 
@@ -34,6 +36,8 @@ public class hotelHautatu extends JFrame {
 	private ActionListener al;
 	private ActionListener alAtzera;
 	private ActionListener alLogelak;
+	private ActionListener alBanakakoa;
+	private ActionListener alBinakakoa;
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
 	private JSpinner SpinnerLogelaKop = new JSpinner();
@@ -51,7 +55,11 @@ public class hotelHautatu extends JFrame {
 	private double prezioFinala;
 	private int logelaKopurua;
 	private String hotela =" ";
-	JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
+	private JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
+	private JLabel lblGelaMota = new JLabel("Gela mota");
+	private JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
+	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
+	private boolean ondo = true;
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -65,20 +73,20 @@ public class hotelHautatu extends JFrame {
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
 		
-		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spinerGauKopurua.setBounds(32, 347, 168, 31);
+		spinerGauKopurua.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), new Integer(10), new Integer(1)));
+		spinerGauKopurua.setBounds(26, 163, 168, 31);
 		getContentPane().add(spinerGauKopurua);
 		
 		
 		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGauKopurua.setBounds(32, 284, 168, 50);
+		lblGauKopurua.setBounds(26, 107, 168, 50);
 		getContentPane().add(lblGauKopurua);
 		
-		comboHiria.setBounds(10, 180, 168, 31);
+		comboHiria.setBounds(412, 74, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
-		
+		comboHiria.addItem("Aukeratu");
 		for(int n = 0; n < hiriak.size(); n++) {
 			comboHiria.addItem(hiriak.get(n));
 		}
@@ -99,9 +107,9 @@ public class hotelHautatu extends JFrame {
 		
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHotelak.setBounds(10, 143, 190, 28);
+		lblHotelak.setBounds(26, 28, 190, 28);
 
-		comboHotelak.setBounds(20, 182, 168, 31);
+		comboHotelak.setBounds(32, 65, 168, 31);
 		
 		for(int n = 0; n < hotelak.size(); n++) {
 			comboHotelak.addItem(hotelak.get(n));
@@ -113,8 +121,10 @@ public class hotelHautatu extends JFrame {
 							
 					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 					
+					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString()),1));
+					
 					logelaKopurua = Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString());
-					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0,logelaKopurua,1));
+					
 					
 				}
 				
@@ -129,7 +139,7 @@ public class hotelHautatu extends JFrame {
 		
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAukeratu.setBounds(63, 61, 215, 41);
+		lblAukeratu.setBounds(226, 22, 215, 41);
 		getContentPane().add(lblAukeratu);
 		
 		comboHiria.setBounds(265, 65, 168, 31);
@@ -142,7 +152,16 @@ public class hotelHautatu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				gauKopurua=(int)spinerGauKopurua.getValue();
 				System.out.println(gauKopurua);
-				prezioFinala=20*gauKopurua;
+				if (rdbtnBanakakoa.isSelected()) {
+					prezioFinala=(20*gauKopurua);
+					ondo = true;
+				}else if (rdbtnBinakakoa.isSelected()) {
+					prezioFinala=(40*gauKopurua);
+					ondo = true;
+				}else {
+					JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
+					ondo = false;
+				}
 				System.out.println(prezioFinala);
 				
 				for(int i=0;i<hotelak.size();i++) {
@@ -154,16 +173,20 @@ public class hotelHautatu extends JFrame {
 					}
 				}
 				
-				if (comboHotelak.getSelectedItem() == null){
-					btnAurrera.setEnabled(false);
-				}else{
-					btnAurrera.setEnabled(true);
+//				if (comboHotelak.getSelectedItem() == null){
+//					btnAurrera.setEnabled(false);
+//				}else{
+//					btnAurrera.setEnabled(true);
+//				}
+				
+				if(ondo) {
+					m.FitxeroaIrakurri();
+					dispose();
+					MetodoakVista.saihoaHastera(prezioFinala);
+					m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
 				}
-		
-				m.FitxeroaIrakurri();
-				dispose();
-				MetodoakVista.saihoaHastera(prezioFinala);
-				m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
+				
+				
 				
 			}
 		};
@@ -190,13 +213,48 @@ public class hotelHautatu extends JFrame {
 		
 //		m.hotelLogelakKalkulatu(DB.Kontsultak.logelaKopuruaLortu((String) comboHotelak.getSelectedItem()), (String) comboHotelak.getSelectedItem())
 //		SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 10, 1));
-		SpinnerLogelaKop.setBounds(280, 347, 153, 31);
+		SpinnerLogelaKop.setBounds(32, 252, 153, 31);
 		getContentPane().add(SpinnerLogelaKop);
 		
 		
 		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblLogelaKopurua.setBounds(280, 294, 196, 36);
+		lblLogelaKopurua.setBounds(36, 205, 196, 36);
 		getContentPane().add(lblLogelaKopurua);
+		
+		
+		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnBanakakoa.setBounds(26, 334, 109, 23);
+		getContentPane().add(rdbtnBanakakoa);
+		
+		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnBinakakoa.setBounds(137, 334, 109, 23);
+		getContentPane().add(rdbtnBinakakoa);
+		
+		lblGelaMota.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblGelaMota.setBounds(26, 296, 168, 31);
+		getContentPane().add(lblGelaMota);
+		
+		alBanakakoa = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				rdbtnBanakakoa.setSelected(true);
+				rdbtnBinakakoa.setSelected(false);
+				
+
+			}
+		};
+		rdbtnBanakakoa.addActionListener(alBanakakoa);
+		
+		alBinakakoa = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				rdbtnBinakakoa.setSelected(true);
+				rdbtnBanakakoa.setSelected(false);
+
+			}
+		};
+		rdbtnBinakakoa.addActionListener(alBinakakoa);
 				
 		
 		
