@@ -10,7 +10,6 @@ public class Main {
 		 
 		Metodoak m = new Metodoak();
 
-System.out.println(" asdsda");
 
 		String basedatos = "ethazi4";
 		Konexioa con1 = new Konexioa(basedatos);
