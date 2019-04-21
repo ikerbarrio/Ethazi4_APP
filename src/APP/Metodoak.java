@@ -258,9 +258,9 @@ public class Metodoak {
 	// KALKULATU ZENBAT LOGELA GERATZEN DIREN
 
 	/* LogelaKopurua pasar el dato del spinner */
-	public static int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena) {
+	public static int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena, String gelaMota) {
 
-		int hotelLogelaKopurua = (int) DB.Kontsultak.logelaKopuruaLortu(hotelIzena, hotelIzena);
+		int hotelLogelaKopurua = (int) DB.Kontsultak.logelaKopuruaLortu(hotelIzena, gelaMota);
 
 		hotelLogelaKopurua = hotelLogelaKopurua - logelakopurua;
 

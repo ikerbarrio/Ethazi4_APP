@@ -209,7 +209,7 @@ public class hotelHautatu extends JFrame {
 					m.FitxeroaIrakurri();
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala);
-					m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
+					m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela, gelaMota );
 				}
 				
 				
