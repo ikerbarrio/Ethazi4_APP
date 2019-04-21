@@ -216,7 +216,7 @@ public class Kontsultak {
 
 	}
 
-	public static int logelaKopuruaLortu(String hotelIzena) {
+	public static int logelaKopuruaLortu(String hotelIzena, String gelaMota) {
 		int logelaKop = 0;
 		Connection conexion = null;
 		Statement s = null;
@@ -227,13 +227,13 @@ public class Kontsultak {
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4_2", "root", "");
 			s = (Statement) conexion.createStatement();
 
-			String kontsulta = "SELECT logelakop FROM logelamota WHERE id = (SELECT id FROM hotelak WHERE izena = '" + hotelIzena + "')";
+			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM hotelak WHERE IZENA like " + "'" + hotelIzena + "')";
 			
 			System.out.println(kontsulta);
 			
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("	SELECT logelakop from logelamota WHERE id = (SELECT id FROM hotelak WHERE IZENA =" + "'" + hotelIzena + "')");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM hotelak WHERE IZENA like " + "'" + hotelIzena + "')");
 			
 			
 

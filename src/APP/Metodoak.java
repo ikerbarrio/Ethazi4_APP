@@ -260,7 +260,7 @@ public class Metodoak {
 	/* LogelaKopurua pasar el dato del spinner */
 	public static int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena) {
 
-		int hotelLogelaKopurua = (int) DB.Kontsultak.logelaKopuruaLortu(hotelIzena);
+		int hotelLogelaKopurua = (int) DB.Kontsultak.logelaKopuruaLortu(hotelIzena, hotelIzena);
 
 		hotelLogelaKopurua = hotelLogelaKopurua - logelakopurua;
 
