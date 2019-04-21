@@ -22,6 +22,7 @@ import APP.Metodoak;
 import APP.MetodoakVista;
 import DB.Kontsultak;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -37,6 +38,8 @@ public class hotelHautatu extends JFrame {
 	private ActionListener al;
 	private ActionListener alAtzera;
 	private ActionListener alLogelak;
+	private ActionListener alBanakakoa;
+	private ActionListener alBinakakoa;
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
 	private JSpinner SpinnerLogelaKop = new JSpinner();
@@ -57,8 +60,15 @@ public class hotelHautatu extends JFrame {
 	private JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
 	private JLabel lblGelaMota = new JLabel("Gela mota");
 	private JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
+
 	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
+
+
+	private boolean ondo = true ;
+	
+	
+
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -119,7 +129,7 @@ public class hotelHautatu extends JFrame {
 				if(comboHotelak.getItemCount()!=0) {		
 					
 					
-					//AQUI PASAMOS UN VALOR NULO GELAmOTA QUE AUN  NO ESTA ASIGNADO POR QUE EL VALOR SE LO DAMOS MAS ABAJO EN EL BOTON AURRERA
+					//AQUI PASAMOS UN VALOR NULO GELAMOTA QUE AUN  NO ESTA ASIGNADO POR QUE EL VALOR SE LO DAMOS MAS ABAJO EN EL BOTON AURRERA
 							
 					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 					
@@ -162,6 +172,7 @@ public class hotelHautatu extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				gauKopurua=(int)spinerGauKopurua.getValue();
+
 				System.out.println(gauKopurua);
 				
 				if (rdbtnBanakakoa.isSelected()) {
@@ -170,7 +181,12 @@ public class hotelHautatu extends JFrame {
 					
 				}else if (rdbtnBinakakoa.isSelected()) {
 					gelaMota = "Bikoitza"; //LE ASIGNO EL VALOR SEGUN EL BOTON SELECCIONADO
-					prezioFinala=(40*gauKopurua);
+
+				System.out.println(gauKopurua);
+			
+				}else {
+					JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
+					ondo = false;
 				}
 				System.out.println(prezioFinala);
 				
@@ -183,16 +199,20 @@ public class hotelHautatu extends JFrame {
 					}
 				}
 				
-				if (comboHotelak.getSelectedItem() == null){
-					btnAurrera.setEnabled(false);
-				}else{
-					btnAurrera.setEnabled(true);
+//				if (comboHotelak.getSelectedItem() == null){
+//					btnAurrera.setEnabled(false);
+//				}else{
+//					btnAurrera.setEnabled(true);
+//				}
+				
+				if(ondo) {
+					m.FitxeroaIrakurri();
+					dispose();
+					MetodoakVista.saihoaHastera(prezioFinala);
+					m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
 				}
-		
-				m.FitxeroaIrakurri();
-				dispose();
-				MetodoakVista.saihoaHastera(prezioFinala);
-				m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
+				
+				
 				
 			}
 		};
@@ -240,6 +260,27 @@ public class hotelHautatu extends JFrame {
 		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGelaMota.setBounds(26, 296, 168, 31);
 		getContentPane().add(lblGelaMota);
+		
+		alBanakakoa = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				rdbtnBanakakoa.setSelected(true);
+				rdbtnBinakakoa.setSelected(false);
+				
+
+			}
+		};
+		rdbtnBanakakoa.addActionListener(alBanakakoa);
+		
+		alBinakakoa = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				rdbtnBinakakoa.setSelected(true);
+				rdbtnBanakakoa.setSelected(false);
+
+			}
+		};
+		rdbtnBinakakoa.addActionListener(alBinakakoa);
 				
 		
 		
