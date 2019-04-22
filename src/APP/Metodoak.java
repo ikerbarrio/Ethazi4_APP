@@ -258,9 +258,9 @@ public class Metodoak {
 	// KALKULATU ZENBAT LOGELA GERATZEN DIREN
 
 	/* LogelaKopurua pasar el dato del spinner */
-	public static int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena) {
+	public static int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena, String gelaMota) {
 
-		int hotelLogelaKopurua = (int) DB.Kontsultak.logelaKopuruaLortu(hotelIzena);
+		int hotelLogelaKopurua = (int) DB.Kontsultak.logelaKopuruaLortu(hotelIzena, gelaMota);
 
 		hotelLogelaKopurua = hotelLogelaKopurua - logelakopurua;
 
@@ -308,13 +308,6 @@ public class Metodoak {
 		return ondo;
 	}
 
-//		public int restahoteles(String hotelIzena, int logelakopurua) {
-//			
-//			 int hotelLogelaKopurua = k.logelaKopuruaLortu(hotelIzena);
-//			int geratzenDirenHotelak= Metodoak.hotelLogelakKalkulatu(logelakopurua, hotelIzena);//metodo passado a static y cambiar lo que ello requiera
-//			int logelaKontFinal = hotelLogelaKopurua - geratzenDirenHotelak;
-//			System.out.println("Geratzen diren logelak: " + logelaKontFinal);
-//			return logelaKontFinal;
-//		}
+
 
 }

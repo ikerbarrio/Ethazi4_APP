@@ -1,3 +1,5 @@
+
+
 package VISTA;
 
 import java.awt.Color;
@@ -58,8 +60,15 @@ public class hotelHautatu extends JFrame {
 	private JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
 	private JLabel lblGelaMota = new JLabel("Gela mota");
 	private JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
+
 	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
-	private boolean ondo = true;
+	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
+
+
+	private boolean ondo = true ;
+	
+	
+
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -117,13 +126,16 @@ public class hotelHautatu extends JFrame {
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(comboHotelak.getItemCount()!=0) {						
+				if(comboHotelak.getItemCount()!=0) {		
+					
+					
+					//AQUI PASAMOS UN VALOR NULO GELAMOTA QUE AUN  NO ESTA ASIGNADO POR QUE EL VALOR SE LO DAMOS MAS ABAJO EN EL BOTON AURRERA
 							
 					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 					
-					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString()),1));
+					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
 					
-					logelaKopurua = Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString());
+					logelaKopurua = Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota);
 					
 					
 				}
@@ -149,15 +161,29 @@ public class hotelHautatu extends JFrame {
 		btnAurrera.setBounds(530, 393, 89, 23);
 		getContentPane().add(btnAurrera);
 		al = new ActionListener() {
+			
+			/*
+			 * LE ESTAMOS DANDO EL VALOR AL TIPO DE GELA TARDE EN ELÑ BOTON 
+			DE AURRERA CUANDO EN REALIDAD SE TE TIENE QUE DAR ANTES YA QUE DEPENDIENDO DEL BOTON (DEL TIPO DE LOGELA)
+			TIENE QUE SALIR UN HOTEL U OTRO
+			
+			*/
+			
+			
 			public void actionPerformed(ActionEvent e) {
 				gauKopurua=(int)spinerGauKopurua.getValue();
+
 				System.out.println(gauKopurua);
+				
 				if (rdbtnBanakakoa.isSelected()) {
+					gelaMota= "Banakakoa"; //LE ASIGNO EL VALOR SEGUN EL BOTON SELECCIONADO
 					prezioFinala=(20*gauKopurua);
-					ondo = true;
+					
 				}else if (rdbtnBinakakoa.isSelected()) {
-					prezioFinala=(40*gauKopurua);
-					ondo = true;
+					gelaMota = "Bikoitza"; //LE ASIGNO EL VALOR SEGUN EL BOTON SELECCIONADO
+
+				System.out.println(gauKopurua);
+			
 				}else {
 					JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
 					ondo = false;
@@ -183,7 +209,7 @@ public class hotelHautatu extends JFrame {
 					m.FitxeroaIrakurri();
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala);
-					m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela );
+					m.hotelLogelakKalkulatu((int) SpinnerLogelaKop.getValue(), hotela, gelaMota );
 				}
 				
 				
@@ -260,3 +286,4 @@ public class hotelHautatu extends JFrame {
 		
 	}
 }
+
