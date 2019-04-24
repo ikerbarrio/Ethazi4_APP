@@ -308,6 +308,12 @@ public class Metodoak {
 		return ondo;
 	}
 
-
+	public static int selectCod_logela(String hotelIzena) {
+		return Kontsultak.selectCod_logela(hotelIzena);
+	}
+	
+	public static void logelaKopAldatu(int cod_logela, String mota, int kop) {
+		Kontsultak.logelaKopAldatu(cod_logela, mota, kop);
+	}
 
 }
