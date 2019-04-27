@@ -64,6 +64,8 @@ public class hotelHautatu extends JFrame {
 	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
+	
+	JButton btnGorde = new JButton("GORDE");
 
 	private int cod_logela;
 
@@ -168,42 +170,43 @@ public class hotelHautatu extends JFrame {
 		btnAurrera.setBounds(530, 393, 89, 23);
 		getContentPane().add(btnAurrera);
 		al = new ActionListener() {
-			
-			/*
-			 * LE ESTAMOS DANDO EL VALOR AL TIPO DE GELA TARDE EN ELÑ BOTON 
-			DE AURRERA CUANDO EN REALIDAD SE TE TIENE QUE DAR ANTES YA QUE DEPENDIENDO DEL BOTON (DEL TIPO DE LOGELA)
-			TIENE QUE SALIR UN HOTEL U OTRO
-			
-			*/
-			
-			
 			public void actionPerformed(ActionEvent e) {
-				gauKopurua=(int)spinerGauKopurua.getValue();
-
-				System.out.println(gauKopurua);
 				
-				if (rdbtnBanakakoa.isSelected()) {
-					prezioFinala=(20*gauKopurua);
-					
-				}else if (rdbtnBinakakoa.isSelected()) {
-					prezioFinala=(40*gauKopurua);
+				//ESTA PUESTO EN EL BOTON DE GORDE SE PUEDE BORRAR
+	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 				
-				}else if (rdbtnUmeentzat.isSelected()) {
-					
-				}else {
-					JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
-					ondo = false;
-				}
-				System.out.println(prezioFinala);
+//				gauKopurua=(int)spinerGauKopurua.getValue();
+//
+//				System.out.println(gauKopurua);
+//				
+//				if (rdbtnBanakakoa.isSelected()) {
+//					prezioFinala=(20*gauKopurua);
+//					
+//				}else if (rdbtnBinakakoa.isSelected()) {
+//					prezioFinala=(40*gauKopurua);
+//				
+//				}else if (rdbtnUmeentzat.isSelected()) {
+//					prezioFinala=(10*gauKopurua);
+//					
+//				}else {
+//					JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
+//					ondo = false;
+//				}
+//				System.out.println(prezioFinala);
+//				
+////				for(int i=0;i<hotelak.size();i++) {
+////					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
+////						
+////					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
+////					hotela = hotelak.get(i);
+////
+////					}
+////				}
 				
-				for(int i=0;i<hotelak.size();i++) {
-					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
-						
-						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
-						hotela = hotelak.get(i);
-
-					}
-				}
+				
+				
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				
 				
 				
 				if(ondo) {
@@ -271,6 +274,48 @@ public class hotelHautatu extends JFrame {
 		rdbtnUmeentzat.setEnabled(false);
 		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
 		getContentPane().add(rdbtnUmeentzat);
+		
+		//EL BOTON DE GUARDADO
+
+		btnGorde.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			//AL DARLE AL BOTON DE GORDE SE GUARDAN LOS DATOS EN EL FITXERO FALTARIA AÑADIR LOS DATOS QUE QUERAMOS GUARDAR
+				
+				
+				gauKopurua=(int)spinerGauKopurua.getValue();
+
+				System.out.println(gauKopurua);
+				
+				if (rdbtnBanakakoa.isSelected()) {
+					prezioFinala=(20*gauKopurua);
+					
+				}else if (rdbtnBinakakoa.isSelected()) {
+					prezioFinala=(40*gauKopurua);
+				
+				}else if (rdbtnUmeentzat.isSelected()) {
+					prezioFinala=(10*gauKopurua);
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
+					ondo = false;
+				}
+				System.out.println(prezioFinala);
+				
+				for(int i=0;i<hotelak.size();i++) {
+					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
+						
+					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota);
+					hotela = hotelak.get(i);
+					}
+				}
+			}
+		});
+		btnGorde.setBounds(275, 370, 97, 25);
+		getContentPane().add(btnGorde);
+		
+		
+		
 		
 		alBanakakoa = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
