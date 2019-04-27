@@ -302,13 +302,16 @@ public class hotelHautatu extends JFrame {
 				}
 				System.out.println(prezioFinala);
 				
+		
 				for(int i=0;i<hotelak.size();i++) {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 						
-					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota);
+																						//NO COJE EL ZERBITZUA REVISAR 
+					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota, DB.Kontsultak.zerbitzuakAtera(hotela)); 
 					hotela = hotelak.get(i);
 					}
 				}
+				
 			}
 		});
 		btnGorde.setBounds(275, 370, 97, 25);

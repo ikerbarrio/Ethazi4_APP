@@ -106,7 +106,9 @@ public class Kontsultak {
 	}
 
 	// HOTELEN ZERBITZUAK ATERA
-	public String zerbitzuakAtera(String hotelIzena) {
+	
+	// el metodo static eprueba
+	public static String zerbitzuakAtera(String hotelIzena) {
 		String zerbitzua = "";
 
 		Connection conexion = null;
