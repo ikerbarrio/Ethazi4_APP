@@ -35,6 +35,7 @@ public class hotelHautatu extends JFrame {
 	 * Frame-aren atributu eta komponente guztiak sortu 
 	 */
 	Metodoak m = new Metodoak();
+	DB.Kontsultak k = new DB.Kontsultak ();
 	private ActionListener al;
 	private ActionListener alAtzera;
 	private ActionListener alLogelak;
@@ -132,8 +133,7 @@ public class hotelHautatu extends JFrame {
 				
 				if(comboHotelak.getItemCount()!=0) {		
 					
-					
-					//AQUI PASAMOS UN VALOR NULO GELAMOTA QUE AUN  NO ESTA ASIGNADO POR QUE EL VALOR SE LO DAMOS MAS ABAJO EN EL BOTON AURRERA
+
 							
 					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
 					
@@ -171,8 +171,10 @@ public class hotelHautatu extends JFrame {
 		getContentPane().add(btnAurrera);
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				MetodoakVista.saihoaHastera(prezioFinala);
 				
-				//ESTA PUESTO EN EL BOTON DE GORDE SE PUEDE BORRAR
+				//ESTA PUESTO EN EL BOTON DE GORDE 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 				
 //				gauKopurua=(int)spinerGauKopurua.getValue();
@@ -203,21 +205,21 @@ public class hotelHautatu extends JFrame {
 ////					}
 ////				}
 				
+
+				
+//				
+//				if(ondo) {
+//					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString());
+//					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
+//					m.FitxeroaIrakurri();
+//					dispose();
+//					MetodoakVista.saihoaHastera(prezioFinala);
+//
+//				}
+				
 				
 				
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-				
-				
-				
-				if(ondo) {
-					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString());
-					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
-					m.FitxeroaIrakurri();
-					dispose();
-					MetodoakVista.saihoaHastera(prezioFinala);
-
-				}
-				
 				
 				
 			}
@@ -280,6 +282,8 @@ public class hotelHautatu extends JFrame {
 		btnGorde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+
+			
 			//AL DARLE AL BOTON DE GORDE SE GUARDAN LOS DATOS EN EL FITXERO FALTARIA AÑADIR LOS DATOS QUE QUERAMOS GUARDAR
 				
 				
@@ -311,6 +315,18 @@ public class hotelHautatu extends JFrame {
 					hotela = hotelak.get(i);
 					}
 				}
+				
+				//HACEMOS LA INSERT DE LAS HABITACIONES
+				if(ondo) {
+					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString());
+					Metodoak.logelaKopAldatu(cod_logela, gelaMota,m.hotelLogelakKalkulatu(k.logelaKopuruaLortu(hotela, gelaMota), hotela, gelaMota));
+					m.FitxeroaIrakurri();
+//				dispose();
+//				MetodoakVista.saihoaHastera(prezioFinala);
+
+				}
+				
+				
 				
 			}
 		});

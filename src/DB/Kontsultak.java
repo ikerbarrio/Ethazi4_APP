@@ -278,6 +278,8 @@ public class Kontsultak {
 		
 	}
 	
+	
+	
 	public static int selectCod_logela(String hotelIzena) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
