@@ -10,12 +10,12 @@ public class Main {
 		 
 		Metodoak m = new Metodoak();
 
-System.out.println("sdsdsdsd");
+
 		String basedatos = "ethazi4";
 		Konexioa con1 = new Konexioa(basedatos);
 		con1.getConexion();
 
-System.out.println();
+
 
 		VISTA.OngiEtorri ejecutar = new VISTA.OngiEtorri();
 		ejecutar.setVisible(true);
