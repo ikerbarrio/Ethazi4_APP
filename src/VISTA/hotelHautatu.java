@@ -27,6 +27,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.SpinnerModel;
+import com.toedter.calendar.JDateChooser;
 
 
 
@@ -65,12 +66,11 @@ public class hotelHautatu extends JFrame {
 	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
-	
-	JButton btnGorde = new JButton("GORDE");
-
+	private JDateChooser dateChooser = new JDateChooser();	
+	private JButton btnGorde = new JButton("GORDE");
 	private int cod_logela;
-
 	private boolean ondo = true ;
+	private int kop;
 	
 	
 
@@ -311,7 +311,7 @@ public class hotelHautatu extends JFrame {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 						
 																						//NO COJE EL ZERBITZUA REVISAR 
-					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota, DB.Kontsultak.zerbitzuakAtera(hotela)); 
+					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota); 
 					hotela = hotelak.get(i);
 					}
 				}
@@ -319,10 +319,9 @@ public class hotelHautatu extends JFrame {
 				//HACEMOS LA INSERT DE LAS HABITACIONES
 				if(ondo) {
 					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString());
-					Metodoak.logelaKopAldatu(cod_logela, gelaMota,m.hotelLogelakKalkulatu(k.logelaKopuruaLortu(hotela, gelaMota), hotela, gelaMota));
-					m.FitxeroaIrakurri();
-//				dispose();
-//				MetodoakVista.saihoaHastera(prezioFinala);
+					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
+				m.FitxeroaIrakurri();
+
 
 				}
 				
@@ -330,8 +329,15 @@ public class hotelHautatu extends JFrame {
 				
 			}
 		});
+		
+		
 		btnGorde.setBounds(275, 370, 97, 25);
 		getContentPane().add(btnGorde);
+		
+		
+		
+		dateChooser.setBounds(344, 293, 141, 31);
+		getContentPane().add(dateChooser);
 		
 		
 		
