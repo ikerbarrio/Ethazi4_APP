@@ -236,17 +236,20 @@ public class Metodoak {
 	}
 
 	// ESCRIBIR LAS RESERVAS EN EL FITXERO
+	//añadir  mas datos al fitxero 
 
-	public void fitxeroaIdatzi(String hotelIzena, double prezioFinala) {
+	public void fitxeroaIdatzi(String hotelIzena, double prezioFinala, String logelamota, String zerbitzua) {
+		
+		System.out.println("ENTRA EN EL METODO");
 
-		String Zerbitzua = k.zerbitzuakAtera(hotelIzena);
+		 //zerbitzua = k.zerbitzuakAtera(hotelIzena);
 		FileWriter reserba = null;
 
 		try {
 			reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");
 
-			reserba.write("Zure reserba " + hotelIzena + " hotelean egin da. " + " Bere prezioa " + prezioFinala
-					+ "€-koa izan da. Bere zerbitzuak hauek dira " + Zerbitzua); // Fitxategian datuak gorde egiten ditu
+			reserba.write("Zure reserba " + hotelIzena + " hotelean egin da. " + " \n Bere prezioa " + prezioFinala
+					+ "€-koa izan da. Bere zerbitzuak hauek dira " + zerbitzua + "\n aukeratutako logela :" + logelamota); // Fitxategian datuak gorde egiten ditu
 																					// (Izena Hotela)
 
 			reserba.close();
@@ -308,6 +311,12 @@ public class Metodoak {
 		return ondo;
 	}
 
-
+	public static int selectCod_logela(String hotelIzena) {
+		return Kontsultak.selectCod_logela(hotelIzena);
+	}
+	
+	public static void logelaKopAldatu(int cod_logela, String mota, int kop) {
+		Kontsultak.logelaKopAldatu(cod_logela, mota, kop);
+	}
 
 }

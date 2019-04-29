@@ -23,7 +23,7 @@ public class Kontsultak {
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4_2", "root", "");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
@@ -54,7 +54,7 @@ public class Kontsultak {
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4_2", "root", "");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
@@ -83,7 +83,7 @@ public class Kontsultak {
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4_2", "root", "");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
@@ -106,7 +106,9 @@ public class Kontsultak {
 	}
 
 	// HOTELEN ZERBITZUAK ATERA
-	public String zerbitzuakAtera(String hotelIzena) {
+	
+	// el metodo static eprueba
+	public static String zerbitzuakAtera(String hotelIzena) {
 		String zerbitzua = "";
 
 		Connection conexion = null;
@@ -115,7 +117,7 @@ public class Kontsultak {
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4_2", "root", "");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
@@ -141,7 +143,7 @@ public class Kontsultak {
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4_2", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
@@ -190,7 +192,7 @@ public class Kontsultak {
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4_2", "root", "");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
@@ -224,7 +226,7 @@ public class Kontsultak {
 		try {
 			System.out.println(hotelIzena);
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4_2", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
 			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM hotelak WHERE IZENA like " + "'" + hotelIzena + "')";
@@ -250,5 +252,58 @@ public class Kontsultak {
 		}
 		return logelaKop;
 
+	}
+	
+	public static void logelaKopAldatu(int cod_logela, String mota, int kop) {
+
+		Connection conexion = null;
+		Statement s = null;
+		
+		
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Preparamos la consulta y la ejecutamos
+			// NumReg-> Para saber cuantos registros se han modificado
+			 int numReg = s.executeUpdate( "UPDATE LOGELAMOTA SET LOGELAKOP=LOGELAKOP-"+kop+" WHERE COD_LOGELA= "+cod_logela+" AND MOTA LIKE '"+mota+"'" );
+			 // Informamos del número de registros borrados
+			 System.out.println ("\nAldatuta\n");
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	
+	
+	public static int selectCod_logela(String hotelIzena) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int cod_logela=0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT COD_LOGELA FROM LOGELAMOTA WHERE ID=(SELECT ID FROM HOTELAK WHERE IZENA LIKE '"+hotelIzena+"')");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				
+				cod_logela = rs.getInt(1);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 }
