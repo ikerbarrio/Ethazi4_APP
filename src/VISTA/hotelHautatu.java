@@ -6,27 +6,29 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
-import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+
+import com.toedter.calendar.JDateChooser;
 
 import APP.Metodoak;
 import APP.MetodoakVista;
 import DB.Kontsultak;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.SpinnerModel;
 
 
 
@@ -65,7 +67,7 @@ public class hotelHautatu extends JFrame {
 	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
-	
+	JDateChooser dateChooser = new JDateChooser();
 	JButton btnGorde = new JButton("GORDE");
 
 	private int cod_logela;
@@ -239,7 +241,7 @@ public class hotelHautatu extends JFrame {
 		
 		
 		txtInformazioa.setEditable(false);
-		txtInformazioa.setBounds(265, 136, 315, 123);
+		txtInformazioa.setBounds(265, 103, 315, 123);
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
 		SpinnerLogelaKop.setEnabled(false);
@@ -326,14 +328,26 @@ public class hotelHautatu extends JFrame {
 
 				}
 				
-				
+				Date dateInit = dateChooser.getDate();
+				String dateStr = DateFormat.getInstance().format(dateInit);
+				System.out.println(dateStr);
 				
 			}
 		});
 		btnGorde.setBounds(275, 370, 97, 25);
 		getContentPane().add(btnGorde);
 		
+		LocalDate minDate = LocalDate.now();
+		LocalDate maxDate = LocalDate.MAX;
+		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date amaieraDate = Date.from(maxDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+//		Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant())
 		
+		
+		dateChooser.setBounds(265, 237, 168, 41);
+		getContentPane().add(dateChooser);
+		((JTextField) dateChooser.getDateEditor()).setEditable(false);  
+		dateChooser.setSelectableDateRange(amaieraDate, hasieraDate);
 		
 		
 		alBanakakoa = new ActionListener() {
