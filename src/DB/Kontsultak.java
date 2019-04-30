@@ -107,8 +107,8 @@ public class Kontsultak {
 
 	// HOTELEN ZERBITZUAK ATERA
 	
-	// el metodo static eprueba
-	public static String zerbitzuakAtera(String hotelIzena) {
+	
+	public  String zerbitzuakAtera(String hotelIzena) {
 		String zerbitzua = "";
 
 		Connection conexion = null;
@@ -135,6 +135,9 @@ public class Kontsultak {
 		return zerbitzua; // itzultzen du ze zerbitzu daukagun
 
 	}
+	
+	
+	
 
 	public static ArrayList<Erabiltzailea> gordeErabiltzailea() { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -217,6 +220,8 @@ public class Kontsultak {
 		}
 
 	}
+	
+	
 
 	public static int logelaKopuruaLortu(String hotelIzena, String gelaMota) {
 		int logelaKop = 0;
@@ -237,10 +242,6 @@ public class Kontsultak {
 
 			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM hotelak WHERE IZENA like " + "'" + hotelIzena + "')");
 			
-			
-
-			
-
 
 			while (rs.next()) {
 				logelaKop = rs.getInt("logelaKop");
@@ -268,7 +269,7 @@ public class Kontsultak {
 
 			// Preparamos la consulta y la ejecutamos
 			// NumReg-> Para saber cuantos registros se han modificado
-			 int numReg = s.executeUpdate( "UPDATE LOGELAMOTA SET LOGELAKOP=LOGELAKOP-"+kop+" WHERE COD_LOGELA= "+cod_logela+" AND MOTA LIKE '"+mota+"'" );
+			 int numReg = s.executeUpdate( "UPDATE logelamota SET logelakop = logelakop - "+kop+" WHERE cod_logela= "+cod_logela+" AND mota LIKE '"+mota+"'" );
 			 // Informamos del número de registros borrados
 			 System.out.println ("\nAldatuta\n");
 			
