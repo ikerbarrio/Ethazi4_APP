@@ -333,10 +333,13 @@ public class hotelHautatu extends JFrame {
 
 
 				}
-				
+				try {
 				Date dateInit = dateChooser.getDate();
 				String dateStr = DateFormat.getInstance().format(dateInit);
 				System.out.println(dateStr);
+				}catch(Exception e) {
+					JOptionPane.showMessageDialog(null, "Data aukeratu");
+				}
 			}
 		});
 		
