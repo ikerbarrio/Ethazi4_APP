@@ -29,8 +29,6 @@ import com.toedter.calendar.JDateChooser;
 import APP.Metodoak;
 import APP.MetodoakVista;
 import DB.Kontsultak;
-<<<<<<< HEAD
-=======
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -38,7 +36,6 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.SpinnerModel;
 import com.toedter.calendar.JDateChooser;
->>>>>>> 92388e0cf1509b47b08d80abfe2c1b7aa4b6f853
 
 
 
@@ -77,14 +74,8 @@ public class hotelHautatu extends JFrame {
 	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
-<<<<<<< HEAD
-	JDateChooser dateChooser = new JDateChooser();
-	JButton btnGorde = new JButton("GORDE");
-
-=======
 	private JDateChooser dateChooser = new JDateChooser();	
 	private JButton btnGorde = new JButton("GORDE");
->>>>>>> 92388e0cf1509b47b08d80abfe2c1b7aa4b6f853
 	private int cod_logela;
 	private boolean ondo = true ;
 	private int kop;
@@ -345,7 +336,6 @@ public class hotelHautatu extends JFrame {
 				Date dateInit = dateChooser.getDate();
 				String dateStr = DateFormat.getInstance().format(dateInit);
 				System.out.println(dateStr);
-				
 			}
 		});
 		
@@ -353,24 +343,13 @@ public class hotelHautatu extends JFrame {
 		btnGorde.setBounds(275, 370, 97, 25);
 		getContentPane().add(btnGorde);
 		
-<<<<<<< HEAD
 		LocalDate minDate = LocalDate.now();
-		LocalDate maxDate = LocalDate.MAX;
 		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date amaieraDate = Date.from(maxDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-//		Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant())
-=======
-		
-		
 		dateChooser.setBounds(344, 293, 141, 31);
 		getContentPane().add(dateChooser);
->>>>>>> 92388e0cf1509b47b08d80abfe2c1b7aa4b6f853
 		
-		
-		dateChooser.setBounds(265, 237, 168, 41);
-		getContentPane().add(dateChooser);
 		((JTextField) dateChooser.getDateEditor()).setEditable(false);  
-		dateChooser.setSelectableDateRange(amaieraDate, hasieraDate);
+		dateChooser.setSelectableDateRange(hasieraDate, null);
 		
 		
 		alBanakakoa = new ActionListener() {
