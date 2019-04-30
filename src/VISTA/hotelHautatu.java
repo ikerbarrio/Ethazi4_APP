@@ -310,7 +310,7 @@ public class hotelHautatu extends JFrame {
 				for(int i=0;i<hotelak.size();i++) {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 						
-																						//NO COJE EL ZERBITZUA REVISAR 
+																						
 					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota); 
 					hotela = hotelak.get(i);
 					}
@@ -318,7 +318,8 @@ public class hotelHautatu extends JFrame {
 				
 				//HACEMOS LA INSERT DE LAS HABITACIONES
 				if(ondo) {
-					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString());
+					System.out.println(SpinnerLogelaKop.getValue());
+					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString(), gelaMota);
 					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
 				m.FitxeroaIrakurri();
 
