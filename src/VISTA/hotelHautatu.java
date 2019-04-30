@@ -157,7 +157,7 @@ public class hotelHautatu extends JFrame {
 				rdbtnUmeentzat.setEnabled(true);
 				rdbtnBanakakoa.setEnabled(true);
 				rdbtnBinakakoa.setEnabled(true);
-				btnAurrera.setEnabled(true);
+				btnGorde.setEnabled(true);
 			}
 		};
 		comboHotelak.addActionListener(al);
@@ -173,6 +173,7 @@ public class hotelHautatu extends JFrame {
 		
 		comboHiria.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHiria);
+		btnAurrera.setEnabled(false);
 		
 		
 		btnAurrera.setBounds(530, 393, 89, 23);
@@ -233,7 +234,6 @@ public class hotelHautatu extends JFrame {
 			}
 		};
 		btnAurrera.addActionListener(al);
-		btnAurrera.setEnabled(false);
 		
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -284,6 +284,7 @@ public class hotelHautatu extends JFrame {
 		rdbtnUmeentzat.setEnabled(false);
 		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
 		getContentPane().add(rdbtnUmeentzat);
+		btnGorde.setEnabled(false);
 		
 		//EL BOTON DE GUARDADO
 
@@ -324,22 +325,33 @@ public class hotelHautatu extends JFrame {
 					}
 				}
 				
+				try {
+					Date dateInit = dateChooser.getDate();
+					String dateStr = DateFormat.getInstance().format(dateInit);
+					System.out.println(dateStr);
+					ondo = true;
+					}catch(Exception e) {
+						JOptionPane.showMessageDialog(null, "Data aukeratu");
+						ondo = false;
+					}
+				
+				if((int)SpinnerLogelaKop.getValue()==0) {
+					JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
+					ondo = false;
+				}else {
+					ondo = true;
+				}
+				
 				//HACEMOS LA INSERT DE LAS HABITACIONES
 				if(ondo) {
 					System.out.println(SpinnerLogelaKop.getValue());
 					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString(), gelaMota);
 					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
-				m.FitxeroaIrakurri();
-
+					m.FitxeroaIrakurri();
+					btnAurrera.setEnabled(true);
 
 				}
-				try {
-				Date dateInit = dateChooser.getDate();
-				String dateStr = DateFormat.getInstance().format(dateInit);
-				System.out.println(dateStr);
-				}catch(Exception e) {
-					JOptionPane.showMessageDialog(null, "Data aukeratu");
-				}
+				
 			}
 		});
 		
