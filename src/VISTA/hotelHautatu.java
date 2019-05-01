@@ -6,17 +6,25 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
-import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+
+import com.toedter.calendar.JDateChooser;
 
 import APP.Metodoak;
 import APP.MetodoakVista;
@@ -149,7 +157,7 @@ public class hotelHautatu extends JFrame {
 				rdbtnUmeentzat.setEnabled(true);
 				rdbtnBanakakoa.setEnabled(true);
 				rdbtnBinakakoa.setEnabled(true);
-				btnAurrera.setEnabled(true);
+				btnGorde.setEnabled(true);
 			}
 		};
 		comboHotelak.addActionListener(al);
@@ -165,13 +173,14 @@ public class hotelHautatu extends JFrame {
 		
 		comboHiria.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHiria);
+		btnAurrera.setEnabled(false);
 		
 		
 		btnAurrera.setBounds(530, 393, 89, 23);
 		getContentPane().add(btnAurrera);
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				dispose(); //MARCA
 				MetodoakVista.saihoaHastera(prezioFinala);
 				
 				//ESTA PUESTO EN EL BOTON DE GORDE 
@@ -225,11 +234,10 @@ public class hotelHautatu extends JFrame {
 			}
 		};
 		btnAurrera.addActionListener(al);
-		btnAurrera.setEnabled(false);
 		
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				dispose(); //MARCA
 				MetodoakVista.bueltatuLehena();
 			}
 		};
@@ -239,7 +247,7 @@ public class hotelHautatu extends JFrame {
 		
 		
 		txtInformazioa.setEditable(false);
-		txtInformazioa.setBounds(265, 136, 315, 123);
+		txtInformazioa.setBounds(265, 103, 315, 123);
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
 		SpinnerLogelaKop.setEnabled(false);
@@ -276,13 +284,14 @@ public class hotelHautatu extends JFrame {
 		rdbtnUmeentzat.setEnabled(false);
 		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
 		getContentPane().add(rdbtnUmeentzat);
+		btnGorde.setEnabled(false);
 		
 		//EL BOTON DE GUARDADO
 
 		btnGorde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-
+ondo = true;
 			
 			//AL DARLE AL BOTON DE GORDE SE GUARDAN LOS DATOS EN EL FITXERO FALTARIA AÑADIR LOS DATOS QUE QUERAMOS GUARDAR
 				
@@ -310,22 +319,42 @@ public class hotelHautatu extends JFrame {
 				for(int i=0;i<hotelak.size();i++) {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 						
-																						//NO COJE EL ZERBITZUA REVISAR 
+																						
 					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota); 
 					hotela = hotelak.get(i);
 					}
 				}
 				
-				//HACEMOS LA INSERT DE LAS HABITACIONES
-				if(ondo) {
-					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString());
-					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
-				m.FitxeroaIrakurri();
-
-
+				try {
+					
+					System.out.println("<<<<<<<<<<<<<<<<<ENTRA EN EL TRY<<<<<<<<<<<<<<<<<<<<<<<<");
+					Date dateInit = dateChooser.getDate();
+					String dateStr = DateFormat.getInstance().format(dateInit);
+					System.out.println(dateStr);
+					ondo = true;
+					}catch(Exception e) {
+						System.out.println("");
+						JOptionPane.showMessageDialog(null, "Data aukeratu");
+						ondo = false;
+					}
+				
+				if((int)SpinnerLogelaKop.getValue()==0) {
+					JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
+					ondo = true;
+				}else {
+					ondo = false;
 				}
 				
-				
+				//HACEMOS LA INSERT DE LAS HABITACIONES
+				if(ondo) {
+					System.out.println(SpinnerLogelaKop.getValue());
+					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString(), gelaMota);
+					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
+					m.FitxeroaIrakurri();
+					btnAurrera.setEnabled(true); //MARCA
+			
+
+				}
 				
 			}
 		});
@@ -334,12 +363,13 @@ public class hotelHautatu extends JFrame {
 		btnGorde.setBounds(275, 370, 97, 25);
 		getContentPane().add(btnGorde);
 		
-		
-		
+		LocalDate minDate = LocalDate.now();
+		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dateChooser.setBounds(344, 293, 141, 31);
 		getContentPane().add(dateChooser);
 		
-		
+		((JTextField) dateChooser.getDateEditor()).setEditable(false);  
+		dateChooser.setSelectableDateRange(hasieraDate, null);
 		
 		
 		alBanakakoa = new ActionListener() {
