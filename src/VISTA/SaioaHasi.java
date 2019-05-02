@@ -39,7 +39,7 @@ public class SaioaHasi extends JFrame {
 	private JButton btnSaioaSortu = new JButton("Saioa sortu");
 
 	
-	public SaioaHasi(double prezioFinala) {
+	public SaioaHasi(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
 		this.setSize(478, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +70,7 @@ public class SaioaHasi extends JFrame {
 				DNIkonprobatu = Metodoak.nanKomprobaketa(DNI);
 			
 				if(DNIkonprobatu==true && pasahitzaKonprobatu==true) {
-					MetodoakVista.ordainketaLeihora(prezioFinala);
+					MetodoakVista.ordainketaLeihora(prezioFinala,hotela,gelaMota,logela_kop);
 					dispose();
 				}else {
 					JOptionPane.showMessageDialog(null, "Ez da existitzen\n Saiatu berriro");
@@ -89,7 +89,7 @@ public class SaioaHasi extends JFrame {
 		
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MetodoakVista.bueltatuLehena();
+				MetodoakVista.hotelaErostera();
 				dispose();
 			}
 		};
@@ -116,7 +116,7 @@ public class SaioaHasi extends JFrame {
 		
 		alBSaioaSortu = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MetodoakVista.saioaSortzera(prezioFinala);
+				MetodoakVista.saioaSortzera(prezioFinala,hotela,gelaMota,logela_kop);
 				dispose();
 			}
 		};
