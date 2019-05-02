@@ -260,7 +260,6 @@ public class Kontsultak {
 		Connection conexion = null;
 		Statement s = null;
 		
-		
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
@@ -281,7 +280,7 @@ public class Kontsultak {
 	
 	
 	
-	public static int selectCod_logela(String hotelIzena) { // arraylist bueltatu behar du
+	public static int selectCod_logela(String hotelIzena, String mota) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
 		int cod_logela=0;
@@ -292,7 +291,7 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT COD_LOGELA FROM LOGELAMOTA WHERE ID=(SELECT ID FROM HOTELAK WHERE IZENA LIKE '"+hotelIzena+"')");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT COD_LOGELA FROM LOGELAMOTA WHERE ID=(SELECT ID FROM HOTELAK WHERE IZENA LIKE '"+hotelIzena+"') AND mota like '"+mota+"'");
 
 			while (rs.next()) {
 
