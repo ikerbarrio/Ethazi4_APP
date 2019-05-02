@@ -331,6 +331,7 @@ ondo = true;
 					Date dateInit = dateChooser.getDate();
 					String dateStr = DateFormat.getInstance().format(dateInit);
 					System.out.println(dateStr);
+					btnAurrera.setEnabled(true); //MARCA
 					ondo = true;
 					}catch(Exception e) {
 						System.out.println("");
@@ -351,7 +352,7 @@ ondo = true;
 					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString(), gelaMota);
 					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
 					m.FitxeroaIrakurri();
-					btnAurrera.setEnabled(true); //MARCA
+					//btnAurrera.setEnabled(true); //MARCA
 			
 
 				}
