@@ -202,24 +202,27 @@ public class hotelHautatu extends JFrame {
 					}
 					System.out.println(prezioFinala);
 					
+					try {
+						Date dateInit = dateChooser.getDate();
+						String dateStr = DateFormat.getInstance().format(dateInit);
+						System.out.println(dateStr);
+						
+					
 			
 					for(int i=0;i<hotelak.size();i++) {
 						if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 							
 																							
-						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota); 
+						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,dateStr,gauKopurua);
 						hotela = hotelak.get(i);
 						}
 					}
 					
-					try {
-						Date dateInit = dateChooser.getDate();
-						String dateStr = DateFormat.getInstance().format(dateInit);
-						System.out.println(dateStr);
-						}catch(Exception a) {
-							JOptionPane.showMessageDialog(null, "Data aukeratu");
-							ondo = false;
-						}
+					}catch(Exception a) {
+						JOptionPane.showMessageDialog(null, "Data aukeratu");
+						ondo = false;
+					}
+					
 					
 					if((int)SpinnerLogelaKop.getValue()==0) {
 						JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
@@ -290,14 +293,21 @@ public class hotelHautatu extends JFrame {
 		rdbtnUmeentzat.setEnabled(false);
 		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
 		getContentPane().add(rdbtnUmeentzat);
+
 		
+		//EL BOTON DE GUARDADO
+		Date dateInit;
 		LocalDate minDate = LocalDate.now();
 		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		
 		dateChooser.setBounds(344, 293, 141, 31);
 		getContentPane().add(dateChooser);
 		
 		((JTextField) dateChooser.getDateEditor()).setEditable(false);  
 		dateChooser.setSelectableDateRange(hasieraDate, null);
+		
+		
 		
 		
 		alBanakakoa = new ActionListener() {
