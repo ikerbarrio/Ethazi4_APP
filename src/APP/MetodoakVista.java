@@ -14,8 +14,8 @@ public class MetodoakVista {
 		ongiEtorri.setBounds(550, 200, 642, 467);
 }
 
-	public static void saihoaHastera(double prezioFinala) {
-		SaioaHasi saioaHasi = new SaioaHasi(prezioFinala);
+	public static void saihoaHastera(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
+		SaioaHasi saioaHasi = new SaioaHasi(prezioFinala,hotela,gelaMota,logela_kop);
 		saioaHasi.setVisible(true);
 		saioaHasi.setBounds(550, 200, 642, 467);
 	}
@@ -26,8 +26,8 @@ public class MetodoakVista {
 		hotelHautatu.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void ordainketaLeihora(double prezioFinala) {
-		Ordainketa ordainketa = new Ordainketa(prezioFinala);
+	public static void ordainketaLeihora(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
+		Ordainketa ordainketa = new Ordainketa(prezioFinala,hotela,gelaMota,logela_kop);
 		ordainketa.setVisible(true);
 		ordainketa.setBounds(550, 200, 642, 467);
 	}
@@ -38,8 +38,8 @@ public class MetodoakVista {
 		azkena.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void saioaSortzera(double prezioFinala) {
-		SaioaSortu SaioaSortu = new SaioaSortu(prezioFinala);
+	public static void saioaSortzera(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
+		SaioaSortu SaioaSortu = new SaioaSortu(prezioFinala,hotela,gelaMota,logela_kop);
 		SaioaSortu.setVisible(true);
 		SaioaSortu.setBounds(550, 200, 642, 467);
 	}

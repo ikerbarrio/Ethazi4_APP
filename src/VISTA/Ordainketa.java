@@ -19,6 +19,7 @@ import APP.*;
 
 public class Ordainketa extends JFrame {
 
+	Metodoak m = new Metodoak();
 	private JPanel contentPane;
 	private JTextField textDiruTot = new JTextField(); ;
 	private JTextField textOrdainketa = new JTextField();;
@@ -66,6 +67,7 @@ public class Ordainketa extends JFrame {
 	private ActionListener alB8;
 	private ActionListener alB9;
 	private double prezioFinala;
+	private int cod_logela;
 	
 	
 	/**
@@ -76,7 +78,7 @@ public class Ordainketa extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Ordainketa(double prezioFinala) {
+	public Ordainketa(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
 
 		getContentPane().setLayout(null);
 		this.setSize(478,300);  
@@ -348,6 +350,9 @@ public class Ordainketa extends JFrame {
 		
 		alBAurrera = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
+				cod_logela = Metodoak.selectCod_logela(hotela, gelaMota);
+				Metodoak.logelaKopAldatu(cod_logela, gelaMota,logela_kop);
+				m.FitxeroaIrakurri();
 //				MetodoakVista.seigarrenera(DNI);
 				dispose();
 			}
@@ -361,7 +366,7 @@ public class Ordainketa extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.saihoaHastera(prezioFinala);
+				MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,cod_logela);
 				dispose();
 			}
 		};
