@@ -29,13 +29,6 @@ import com.toedter.calendar.JDateChooser;
 import APP.Metodoak;
 import APP.MetodoakVista;
 import DB.Kontsultak;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.SpinnerModel;
-import com.toedter.calendar.JDateChooser;
 
 
 
@@ -300,12 +293,7 @@ public class hotelHautatu extends JFrame {
 		
 		btnGorde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-<<<<<<< HEAD
-=======
 				ondo = true;
-			
->>>>>>> d7970804b2893d29ed83bd177006192425e86aa4
 			//AL DARLE AL BOTON DE GORDE SE GUARDAN LOS DATOS EN EL FITXERO FALTARIA AÑADIR LOS DATOS QUE QUERAMOS GUARDAR
 				
 				
@@ -328,32 +316,24 @@ public class hotelHautatu extends JFrame {
 				}
 				System.out.println(prezioFinala);
 				
-				Date dateInit = dateChooser.getDate();
-				String dateStr1 = DateFormat.getInstance().format(dateInit);
-				System.out.println(dateStr1);
-		
-				for(int i=0;i<hotelak.size();i++) {
-					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
-						
-<<<<<<< HEAD
-																						//NO COJE EL ZERBITZUA REVISAR 
-					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota, dateStr1, gauKopurua); 
-=======
-																						
-					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota); 
->>>>>>> d7970804b2893d29ed83bd177006192425e86aa4
-					hotela = hotelak.get(i);
-					}
-				}
-				
 				try {
 					Date dateInit = dateChooser.getDate();
 					String dateStr = DateFormat.getInstance().format(dateInit);
 					System.out.println(dateStr);
-					}catch(Exception e) {
-						JOptionPane.showMessageDialog(null, "Data aukeratu");
-						ondo = false;
+					
+		
+				for(int i=0;i<hotelak.size();i++) {
+					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
+																						//NO COJE EL ZERBITZUA REVISAR 
+					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota, dateStr, gauKopurua); 
+																						
+					hotela = hotelak.get(i);
 					}
+				}
+				}catch(Exception e) {
+					JOptionPane.showMessageDialog(null, "Data aukeratu");
+					ondo = false;
+				}
 				
 				if((int)SpinnerLogelaKop.getValue()==0) {
 					JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
@@ -369,12 +349,6 @@ public class hotelHautatu extends JFrame {
 					btnAurrera.setEnabled(true);
 
 				}
-				
-<<<<<<< HEAD
-				
-				
-=======
->>>>>>> d7970804b2893d29ed83bd177006192425e86aa4
 			}
 		});
 		
