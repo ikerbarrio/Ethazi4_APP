@@ -286,12 +286,20 @@ public class hotelHautatu extends JFrame {
 		getContentPane().add(rdbtnUmeentzat);
 		
 		//EL BOTON DE GUARDADO
-
+		Date dateInit;
+		LocalDate minDate = LocalDate.now();
+		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		
+		dateChooser.setBounds(344, 293, 141, 31);
+		getContentPane().add(dateChooser);
+		
+		((JTextField) dateChooser.getDateEditor()).setEditable(false);  
+		dateChooser.setSelectableDateRange(hasieraDate, null);
+		
 		btnGorde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-
-			
 			//AL DARLE AL BOTON DE GORDE SE GUARDAN LOS DATOS EN EL FITXERO FALTARIA AÑADIR LOS DATOS QUE QUERAMOS GUARDAR
 				
 				
@@ -314,12 +322,15 @@ public class hotelHautatu extends JFrame {
 				}
 				System.out.println(prezioFinala);
 				
+				Date dateInit = dateChooser.getDate();
+				String dateStr1 = DateFormat.getInstance().format(dateInit);
+				System.out.println(dateStr1);
 		
 				for(int i=0;i<hotelak.size();i++) {
 					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 						
 																						//NO COJE EL ZERBITZUA REVISAR 
-					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota); 
+					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota, dateStr1, gauKopurua); 
 					hotela = hotelak.get(i);
 					}
 				}
@@ -333,23 +344,14 @@ public class hotelHautatu extends JFrame {
 
 				}
 				
-				Date dateInit = dateChooser.getDate();
-				String dateStr = DateFormat.getInstance().format(dateInit);
-				System.out.println(dateStr);
+				
+				
 			}
 		});
 		
 		
 		btnGorde.setBounds(275, 370, 97, 25);
 		getContentPane().add(btnGorde);
-		
-		LocalDate minDate = LocalDate.now();
-		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		dateChooser.setBounds(344, 293, 141, 31);
-		getContentPane().add(dateChooser);
-		
-		((JTextField) dateChooser.getDateEditor()).setEditable(false);  
-		dateChooser.setSelectableDateRange(hasieraDate, null);
 		
 		
 		alBanakakoa = new ActionListener() {

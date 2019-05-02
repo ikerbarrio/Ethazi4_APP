@@ -238,7 +238,7 @@ public class Metodoak {
 	// ESCRIBIR LAS RESERVAS EN EL FITXERO
 	//añadir  mas datos al fitxero 
 
-	public void fitxeroaIdatzi(String hotelIzena, double prezioFinala, String logelamota) {
+	public void fitxeroaIdatzi(String hotelIzena, double prezioFinala, String logelamota, String eguna, int gauKop) {
 		
 		System.out.println("ENTRA EN EL METODO");
 
@@ -249,7 +249,7 @@ public class Metodoak {
 			reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");
 
 			reserba.write("Zure reserba " + hotelIzena + " hotelean egin da. " + " \n Bere prezioa " + prezioFinala
-					+ "€-koa izan da.  " + "\n aukeratutako logela :" + logelamota); // Fitxategian datuak gorde egiten ditu
+					+ "€-koa izan da.  " + "\n Aukeratutako logela :" + logelamota + "\n Hotelaren erreserba " + eguna + "-tik aurrera " + gauKop + " gauko estantzia."); // Fitxategian datuak gorde egiten ditu
 																					// (Izena Hotela)
 
 			reserba.close();
