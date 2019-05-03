@@ -222,6 +222,8 @@ public class hotelHautatu extends JFrame {
 																							
 						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,dateStr,gauKopurua);
 						hotela = hotelak.get(i);
+						k.ReserbaDatuakGorde(hotela, 1, prezioFinala, gelaMota, 345, dateStr,  "prueba");
+						
 						}
 					}
 					
@@ -243,7 +245,7 @@ public class hotelHautatu extends JFrame {
 
 				}
 				
-			k.ReserbaDatuakGorde(hotela, 1, prezioFinala, gelaMota, 345, "hasiera",  "prueba");
+		
 				
 				
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
