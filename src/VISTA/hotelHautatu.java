@@ -246,7 +246,7 @@ public class hotelHautatu extends JFrame {
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MetodoakVista.bueltatuLehena();
+				MetodoakVista.hostatuaAukeratzera();
 			}
 		};
 		btnAtzera.addActionListener(alAtzera);
