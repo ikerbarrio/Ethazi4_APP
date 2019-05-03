@@ -10,7 +10,7 @@ public class Main {
 		 
 		Metodoak m = new Metodoak();
 
-
+System.out.println();
 		String basedatos = "ethazi4";
 		Konexioa con1 = new Konexioa(basedatos);
 		con1.getConexion();
