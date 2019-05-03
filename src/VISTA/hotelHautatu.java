@@ -259,7 +259,6 @@ public class hotelHautatu extends JFrame {
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
 		SpinnerLogelaKop.setEnabled(false);
-//		SpinnerLogelaKop.setModel(new SpinnerNumberModel(new Integer(0), null, null, new Integer(1)));
 		
 		
 //		m.hotelLogelakKalkulatu(DB.Kontsultak.logelaKopuruaLortu((String) comboHotelak.getSelectedItem()), (String) comboHotelak.getSelectedItem())
