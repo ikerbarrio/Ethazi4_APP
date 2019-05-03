@@ -306,4 +306,74 @@ public class Kontsultak {
 		}
 		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
+	
+	public static ArrayList selectDNI() { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		String DNI;
+		ArrayList<String> arrayDNI = new ArrayList();
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT DNI FROM ERABILTZAILEAK");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				
+				DNI = rs.getString(1);
+				arrayDNI.add(DNI);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return arrayDNI; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
+	
+	
+	
+	//INSERTAR DATOS EN LA TABLA DE RESERBAS
+	
+	
+	public static void ReserbaDatuakGorde(String hotelIena, int id, double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData) {
+
+		Connection conexion = null;
+		Statement s = null;
+
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			String query = "INSERT INTO reserba (hotelIzena,id,prezioa,logelaMota,codLogela,hasieraData, amaieraData)"
+					+ " VALUES(?,?,?,?,?,?,?)";
+
+			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
+			preparedStmt.setString(1, hotelIena);
+			preparedStmt.setInt(2, id);
+			preparedStmt.setDouble(3, prezioa);
+			preparedStmt.setString(4, logelaMota);
+			preparedStmt.setInt(5, codLogela);
+			preparedStmt.setString(6, hasieraData);
+			preparedStmt.setString(7, amaieraData);
+
+			preparedStmt.execute();
+
+			System.out.println("Sartuta");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
 }

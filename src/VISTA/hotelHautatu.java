@@ -75,10 +75,13 @@ public class hotelHautatu extends JFrame {
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
 	private JDateChooser dateChooser = new JDateChooser();	
-	private JButton btnGorde = new JButton("GORDE");
 	private int cod_logela;
 	private boolean ondo = true ;
-	private int kop;
+	private int logela_kop;
+	
+	
+	
+
 	
 	
 
@@ -157,7 +160,6 @@ public class hotelHautatu extends JFrame {
 				rdbtnUmeentzat.setEnabled(true);
 				rdbtnBanakakoa.setEnabled(true);
 				rdbtnBinakakoa.setEnabled(true);
-				btnGorde.setEnabled(true);
 			}
 		};
 		comboHotelak.addActionListener(al);
@@ -173,59 +175,75 @@ public class hotelHautatu extends JFrame {
 		
 		comboHiria.setBounds(265, 65, 168, 31);
 		getContentPane().add(comboHiria);
-		btnAurrera.setEnabled(false);
 		
 		
 		btnAurrera.setBounds(530, 393, 89, 23);
 		getContentPane().add(btnAurrera);
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose(); //MARCA
-				MetodoakVista.saihoaHastera(prezioFinala);
-				
-				//ESTA PUESTO EN EL BOTON DE GORDE 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-				
-//				gauKopurua=(int)spinerGauKopurua.getValue();
-//
-//				System.out.println(gauKopurua);
-//				
-//				if (rdbtnBanakakoa.isSelected()) {
-//					prezioFinala=(20*gauKopurua);
-//					
-//				}else if (rdbtnBinakakoa.isSelected()) {
-//					prezioFinala=(40*gauKopurua);
-//				
-//				}else if (rdbtnUmeentzat.isSelected()) {
-//					prezioFinala=(10*gauKopurua);
-//					
-//				}else {
-//					JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
-//					ondo = false;
-//				}
-//				System.out.println(prezioFinala);
-//				
-////				for(int i=0;i<hotelak.size();i++) {
-////					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
-////						
-////					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala);
-////					hotela = hotelak.get(i);
-////
-////					}
-////				}
-				
+
+			
 
 				
-//				
-//				if(ondo) {
-//					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString());
-//					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
-//					m.FitxeroaIrakurri();
-//					dispose();
-//					MetodoakVista.saihoaHastera(prezioFinala);
-//
-//				}
+				ondo = true;
 				
+				//AL DARLE AL BOTON DE GORDE SE GUARDAN LOS DATOS EN EL FITXERO FALTARIA AÑADIR LOS DATOS QUE QUERAMOS GUARDAR
+					
+					
+					gauKopurua=(int)spinerGauKopurua.getValue();
+
+					System.out.println(gauKopurua);
+					
+					if (rdbtnBanakakoa.isSelected()) {
+						prezioFinala=(20*gauKopurua);
+						
+					}else if (rdbtnBinakakoa.isSelected()) {
+						prezioFinala=(40*gauKopurua);
+					
+					}else if (rdbtnUmeentzat.isSelected()) {
+						prezioFinala=(10*gauKopurua);
+						
+					}else {
+						JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
+						ondo = false;
+					}
+					System.out.println(prezioFinala);
+					
+					try {
+					Date dateInit = dateChooser.getDate();
+					String dateStr = DateFormat.getInstance().format(dateInit);
+						System.out.println(dateStr);
+						
+					
+			
+					for(int i=0;i<hotelak.size();i++) {
+						if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
+							
+																							
+						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,dateStr,gauKopurua);
+						hotela = hotelak.get(i);
+						}
+					}
+					
+					}catch(Exception a) {
+						JOptionPane.showMessageDialog(null, "Data aukeratu");
+						ondo = false;
+					}
+					
+					
+					if((int)SpinnerLogelaKop.getValue()==0) {
+						JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
+						ondo = false;
+					}
+				
+				if(ondo) {
+					logela_kop = (int) SpinnerLogelaKop.getValue();
+					dispose();
+					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
+
+				}
+				
+			k.ReserbaDatuakGorde(hotela, 1, prezioFinala, gelaMota, 345, "hasiera",  "prueba");
 				
 				
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -233,6 +251,7 @@ public class hotelHautatu extends JFrame {
 				
 			}
 		};
+		
 		btnAurrera.addActionListener(al);
 		
 		alAtzera = new ActionListener() {
@@ -284,7 +303,7 @@ public class hotelHautatu extends JFrame {
 		rdbtnUmeentzat.setEnabled(false);
 		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
 		getContentPane().add(rdbtnUmeentzat);
-		btnGorde.setEnabled(false);
+
 		
 		//EL BOTON DE GUARDADO
 		Date dateInit;
@@ -298,91 +317,11 @@ public class hotelHautatu extends JFrame {
 		((JTextField) dateChooser.getDateEditor()).setEditable(false);  
 		dateChooser.setSelectableDateRange(hasieraDate, null);
 		
-		btnGorde.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
 
-
-
-				ondo = true;
-
-			//AL DARLE AL BOTON DE GORDE SE GUARDAN LOS DATOS EN EL FITXERO FALTARIA AÑADIR LOS DATOS QUE QUERAMOS GUARDAR
-				
-				
-				gauKopurua=(int)spinerGauKopurua.getValue();
-
-				System.out.println(gauKopurua);
-				
-				if (rdbtnBanakakoa.isSelected()) {
-					prezioFinala=(20*gauKopurua);
-					
-				}else if (rdbtnBinakakoa.isSelected()) {
-					prezioFinala=(40*gauKopurua);
-				
-				}else if (rdbtnUmeentzat.isSelected()) {
-					prezioFinala=(10*gauKopurua);
-					
-				}else {
-					JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
-					ondo = false;
-				}
-				System.out.println(prezioFinala);
-				
-			try {
-				Date dateInit = dateChooser.getDate();
-				String dateStr1 = DateFormat.getInstance().format(dateInit);
-				System.out.println(dateStr1);
-		
-				for(int i=0;i<hotelak.size();i++) {
-					if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
-						
-
-					m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota, dateStr1, gauKopurua); 
-																				
-			
-					hotela = hotelak.get(i);
-					}
-				}
-					
-					System.out.println("<<<<<<<<<<<<<<<<<ENTRA EN EL TRY<<<<<<<<<<<<<<<<<<<<<<<<");
-				
 	
-					}catch(Exception e) {
-						System.out.println("");
-						JOptionPane.showMessageDialog(null, "Data aukeratu");
-						ondo = false;
-					}
-				
-				if((int)SpinnerLogelaKop.getValue()==0) {
-					JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
-
-			
-				}else {
-
-					ondo = false;
-				}
-				
-				//HACEMOS LA INSERT DE LAS HABITACIONES
-				if(ondo) {
-					System.out.println(SpinnerLogelaKop.getValue());
-					cod_logela = Metodoak.selectCod_logela(comboHotelak.getSelectedItem().toString(), gelaMota);
-					Metodoak.logelaKopAldatu(cod_logela, gelaMota,(int) SpinnerLogelaKop.getValue());
-					m.FitxeroaIrakurri();
-
-					btnAurrera.setEnabled(true); //MARCA		
-			
-
-				}
-				
-				
-				
-
-			}
-		});
 		
 		
-		btnGorde.setBounds(275, 370, 97, 25);
-		getContentPane().add(btnGorde);
+
 		
 		
 		alBanakakoa = new ActionListener() {
