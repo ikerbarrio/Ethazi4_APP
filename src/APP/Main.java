@@ -9,7 +9,7 @@ public class Main {
 		String[] proba = null;
 		 
 		Metodoak m = new Metodoak();
-
+System.out.println();
 
 		String basedatos = "ethazi4";
 		Konexioa con1 = new Konexioa(basedatos);
