@@ -75,9 +75,11 @@ public class hotelHautatu extends JFrame {
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
 	private JDateChooser dateChooser = new JDateChooser();	
-	private int cod_logela;
+	
 	private boolean ondo = true ;
 	private int logela_kop;
+	//private int id = Kontsultak.hotelIdLortu(hotela);
+	//private int cod_logela =Kontsultak.logelaMotaCodLogelaLortu(hotela);
 	
 	
 	
@@ -222,7 +224,7 @@ public class hotelHautatu extends JFrame {
 																							
 						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,dateStr,gauKopurua);
 						hotela = hotelak.get(i);
-						k.ReserbaDatuakGorde(hotela, 1, prezioFinala, gelaMota, 345, dateStr,  "prueba");
+						k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), dateStr,  "prueba");
 						
 						}
 					}

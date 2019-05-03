@@ -304,6 +304,7 @@ public class Kontsultak {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
 		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
@@ -376,4 +377,65 @@ public class Kontsultak {
 		}
 
 	}
-}
+	public static int hotelIdLortu(String hotela) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		String DNI;
+		ArrayList<String> arrayDNI = new ArrayList();
+		int id =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT id FROM hotelak WHERE  izena LIKE '" +hotela +"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				id = rs.getInt("id");
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+		
+	}
+	
+	
+	
+	
+	
+	public static int logelaMotaCodLogelaLortu(String hotela) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		String DNI;
+		ArrayList<String> arrayDNI = new ArrayList();
+		int cod_logela = 0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT  cod_logela ,hotelak.izena FROM  logelamota, hotelak  WHERE hotelak.id = logelamota.id AND  hotelak.izena LIKE '" +hotela +"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+			
+				 cod_logela = rs.getInt("cod_logela");
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return cod_logela;
+		
+	}
+	}
