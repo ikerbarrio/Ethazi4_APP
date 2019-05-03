@@ -250,8 +250,7 @@ public class hotelHautatu extends JFrame {
 		
 				
 				
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-				
+
 				
 			}
 		};
@@ -260,8 +259,13 @@ public class hotelHautatu extends JFrame {
 		
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				dispose(); //MARCA
 				MetodoakVista.bueltatuLehena();
+=======
+				dispose();
+				MetodoakVista.hostatuaAukeratzera();
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 			}
 		};
 		btnAtzera.addActionListener(alAtzera);
@@ -274,7 +278,6 @@ public class hotelHautatu extends JFrame {
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
 		SpinnerLogelaKop.setEnabled(false);
-//		SpinnerLogelaKop.setModel(new SpinnerNumberModel(new Integer(0), null, null, new Integer(1)));
 		
 		
 //		m.hotelLogelakKalkulatu(DB.Kontsultak.logelaKopuruaLortu((String) comboHotelak.getSelectedItem()), (String) comboHotelak.getSelectedItem())
