@@ -328,6 +328,7 @@ public class Metodoak {
 		
 		
 		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		
 		    fechaInicio = "22/04/1988";
 	         fechaActual = "09/04/2015";
 	        
