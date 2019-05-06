@@ -23,19 +23,11 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
-
 import com.toedter.calendar.JDateChooser;
 
 import APP.Metodoak;
 import APP.MetodoakVista;
 import DB.Kontsultak;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.SpinnerModel;
-import com.toedter.calendar.JDateChooser;
 
 
 
@@ -51,6 +43,7 @@ public class hotelHautatu extends JFrame {
 	private ActionListener alBanakakoa;
 	private ActionListener alBinakakoa;
 	private ActionListener alUmeentzat;
+	private ActionListener alCheckin;
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
 	private JSpinner SpinnerLogelaKop = new JSpinner();
@@ -73,19 +66,16 @@ public class hotelHautatu extends JFrame {
 	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
-	private JDateChooser dateChooser = new JDateChooser();	
+	private JDateChooser hasieraDateChooser = new JDateChooser();	
 	private int prezioLogela;
 	private boolean ondo = true ;
 	private int logela_kop;
 	//private int id = Kontsultak.hotelIdLortu(hotela);
 	private int cod_logela=0;
+	private final JButton btnCheckinaGorde = new JButton("Checkin-a gorde");
 	
 	
 	
-
-	
-	
-
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -204,7 +194,7 @@ public class hotelHautatu extends JFrame {
 					System.out.println(prezioFinala);
 					
 					try {
-					Date dateInit = dateChooser.getDate();
+					Date dateInit = hasieraDateChooser.getDate();
 					String dateStr = DateFormat.getInstance().format(dateInit);
 						System.out.println(dateStr);
 						
@@ -307,19 +297,30 @@ public class hotelHautatu extends JFrame {
 		LocalDate minDate = LocalDate.now();
 		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
+				
+		btnCheckinaGorde.setBounds(265, 279, 141, 31);
+		getContentPane().add(btnCheckinaGorde);
 		
-		dateChooser.setBounds(344, 293, 141, 31);
-		getContentPane().add(dateChooser);
-		
-		((JTextField) dateChooser.getDateEditor()).setEditable(false);  
-		dateChooser.setSelectableDateRange(hasieraDate, null);
-		
-
-	
-		
+		hasieraDateChooser.setBounds(265, 237, 141, 31);
+		getContentPane().add(hasieraDateChooser);
+		((JTextField) hasieraDateChooser.getDateEditor()).setEditable(false);  
+		hasieraDateChooser.setSelectableDateRange(hasieraDate, null);
 		
 
+		JDateChooser amaieraDateChooser = new JDateChooser();
+		amaieraDateChooser.setBounds(439, 237, 141, 31);
+		getContentPane().add(amaieraDateChooser);
+		amaieraDateChooser.setEnabled(false);
 		
+		alCheckin = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				amaieraDateChooser.setSelectableDateRange(hasieraDateChooser.getDate(), null);
+				amaieraDateChooser.setEnabled(true);
+				System.out.println("kaka");
+			}
+		};
+		btnCheckinaGorde.addActionListener(alCheckin);
 		
 		alBanakakoa = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
