@@ -438,4 +438,33 @@ public class Kontsultak {
 		return cod_logela;
 		
 	}
+	
+	public static int selectPrezioa(int cod_logela) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int prezioa=0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT PREZIOA FROM LOGELAMOTA WHERE COD_LOGELA="+cod_logela);
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				
+				prezioa = rs.getInt(1);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return prezioa; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
 	}

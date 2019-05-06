@@ -66,7 +66,6 @@ public class hotelHautatu extends JFrame {
 	private JTextField txtInformazioa = new JTextField();
 	private int gauKopurua;
 	private double prezioFinala;
-	private int logelaKopurua;
 	private String hotela =" ";
 	private JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
 	private JLabel lblGelaMota = new JLabel("Gela mota");
@@ -75,11 +74,11 @@ public class hotelHautatu extends JFrame {
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
 	private JDateChooser dateChooser = new JDateChooser();	
-	
+	private int prezioLogela;
 	private boolean ondo = true ;
 	private int logela_kop;
 	//private int id = Kontsultak.hotelIdLortu(hotela);
-	//private int cod_logela =Kontsultak.logelaMotaCodLogelaLortu(hotela);
+	private int cod_logela=0;
 	
 	
 	
@@ -196,14 +195,7 @@ public class hotelHautatu extends JFrame {
 
 					System.out.println(gauKopurua);
 					
-					if (rdbtnBanakakoa.isSelected()) {
-						prezioFinala=(20*gauKopurua);
-						
-					}else if (rdbtnBinakakoa.isSelected()) {
-						prezioFinala=(40*gauKopurua);
-					
-					}else if (rdbtnUmeentzat.isSelected()) {
-						prezioFinala=(10*gauKopurua);
+					if (rdbtnBanakakoa.isSelected() | rdbtnBinakakoa.isSelected() | rdbtnUmeentzat.isSelected()) {
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
@@ -241,6 +233,9 @@ public class hotelHautatu extends JFrame {
 					}
 				
 				if(ondo) {
+					cod_logela=Kontsultak.selectCod_logela(hotela, gelaMota);
+					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
+					prezioFinala=prezioLogela*gauKopurua;
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
@@ -259,13 +254,8 @@ public class hotelHautatu extends JFrame {
 		
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose(); //MARCA
-				MetodoakVista.bueltatuLehena();
-=======
 				dispose();
 				MetodoakVista.hostatuaAukeratzera();
->>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 			}
 		};
 		btnAtzera.addActionListener(alAtzera);
