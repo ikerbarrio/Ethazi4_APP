@@ -259,13 +259,13 @@ public class hotelHautatu extends JFrame {
 		
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
+ 
 				dispose(); //MARCA
 				MetodoakVista.bueltatuLehena();
-=======
+
 				dispose();
 				MetodoakVista.hostatuaAukeratzera();
->>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
+
 			}
 		};
 		btnAtzera.addActionListener(alAtzera);
