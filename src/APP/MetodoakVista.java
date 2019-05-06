@@ -1,11 +1,6 @@
 package APP;
 
-import VISTA.LehioaAzkena;
-import VISTA.OngiEtorri;
-import VISTA.Ordainketa;
-import VISTA.SaioaHasi;
-import VISTA.SaioaSortu;
-import VISTA.hotelHautatu;
+import VISTA.*;
 
 public class MetodoakVista {
 	public static void bueltatuLehena() {
@@ -42,5 +37,11 @@ public class MetodoakVista {
 		SaioaSortu SaioaSortu = new SaioaSortu(prezioFinala,hotela,gelaMota,logela_kop);
 		SaioaSortu.setVisible(true);
 		SaioaSortu.setBounds(550, 200, 642, 467);
+	}
+	
+	public static void hostatuaAukeratzera() {
+		hostatuaAukeratu hostatuaAukeratu = new hostatuaAukeratu();
+		hostatuaAukeratu.setVisible(true);
+		hostatuaAukeratu.setBounds(550, 200, 642, 467);
 	}
 }
