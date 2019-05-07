@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+
 import com.toedter.calendar.JDateChooser;
 
 import APP.Metodoak;
@@ -297,6 +299,8 @@ public class hotelHautatu extends JFrame {
 		LocalDate minDate = LocalDate.now();
 		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+		String strDate = dateFormat.format(dateInit);
 				
 		btnCheckinaGorde.setBounds(265, 279, 141, 31);
 		getContentPane().add(btnCheckinaGorde);
