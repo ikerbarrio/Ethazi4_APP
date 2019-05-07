@@ -181,9 +181,6 @@ public class hotelHautatu extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 
-				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
-				String strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
-				String strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 				
 				ondo = true;
 				
@@ -202,9 +199,10 @@ public class hotelHautatu extends JFrame {
 					System.out.println(prezioFinala);
 					
 					try {			
-						
+						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
+						String strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
+						String strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 				
-
 						System.out.println(strDateHasiera);
 						System.out.println(strDateAmaiera);
 						
@@ -219,6 +217,9 @@ public class hotelHautatu extends JFrame {
 							
 						
 						}
+						
+						m.datenKenketa(strDateHasiera, strDateAmaiera);
+						k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), strDateHasiera,  strDateAmaiera);
 					}
 					
 					}catch(Exception a) {
@@ -240,8 +241,7 @@ public class hotelHautatu extends JFrame {
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
 					
-					m.datenKenketa(strDateHasiera, strDateAmaiera);
-					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), strDateHasiera,  strDateAmaiera);//marka
+					//marka
 				}
 				
 		
