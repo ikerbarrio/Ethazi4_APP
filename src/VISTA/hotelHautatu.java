@@ -74,7 +74,12 @@ public class hotelHautatu extends JFrame {
 	private int logela_kop;
 	//private int id = Kontsultak.hotelIdLortu(hotela);
 	private int cod_logela=0;
+	private Date dateChooser;
+	 private String dateStr;
+	
+
 	private final JButton btnCheckinaGorde = new JButton("Checkin-a gorde");
+
 	
 	
 	
@@ -180,8 +185,7 @@ public class hotelHautatu extends JFrame {
 				
 				ondo = true;
 				
-				//AL DARLE AL BOTON DE GORDE SE GUARDAN LOS DATOS EN EL FITXERO FALTARIA AÑADIR LOS DATOS QUE QUERAMOS GUARDAR
-					
+			
 					
 					gauKopurua=(int)spinerGauKopurua.getValue();
 
@@ -196,8 +200,13 @@ public class hotelHautatu extends JFrame {
 					System.out.println(prezioFinala);
 					
 					try {
-					Date dateInit = hasieraDateChooser.getDate();
-					String dateStr = DateFormat.getInstance().format(dateInit);
+
+			
+						int dateInit=dateChooser.getDate();
+						dateStr= DateFormat.getInstance().format(dateInit);
+
+				
+
 						System.out.println(dateStr);
 						
 					
@@ -208,7 +217,7 @@ public class hotelHautatu extends JFrame {
 																							
 						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,dateStr,gauKopurua);
 						hotela = hotelak.get(i);
-						k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), dateStr,  "prueba");
+							m.datenKenketa(fechaInicio, fechaActual);
 						
 						}
 					}
@@ -231,7 +240,8 @@ public class hotelHautatu extends JFrame {
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
-
+					
+					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), dateStr,  "prueba");//marka
 				}
 				
 		
@@ -246,8 +256,14 @@ public class hotelHautatu extends JFrame {
 		
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+ 
+				dispose(); //MARCA
+				MetodoakVista.bueltatuLehena();
+
 				dispose();
 				MetodoakVista.hostatuaAukeratzera();
+
 			}
 		};
 		btnAtzera.addActionListener(alAtzera);
