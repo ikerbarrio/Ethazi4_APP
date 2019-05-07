@@ -47,7 +47,6 @@ public class hotelHautatu extends JFrame {
 	private ActionListener alUmeentzat;
 	private ActionListener alCheckin;
 	private JPanel contentPanel;
-	private JSpinner spinerGauKopurua = new JSpinner();
 	private JSpinner SpinnerLogelaKop = new JSpinner();
 	//private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
 	private JComboBox comboHiria = new JComboBox();
@@ -98,16 +97,13 @@ public class hotelHautatu extends JFrame {
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
 		
-		spinerGauKopurua.setModel(new SpinnerNumberModel(1, 1, 10, 1));
-		spinerGauKopurua.setBounds(26, 149, 168, 31);
-		getContentPane().add(spinerGauKopurua);
-		
-//		
+//		PARA BORRAR
 //		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 //		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
 //		lblGauKopurua.setBounds(26, 107, 168, 50);
 //		getContentPane().add(lblGauKopurua);
 //		
+		
 		comboHiria.setBounds(412, 74, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
@@ -191,7 +187,7 @@ public class hotelHautatu extends JFrame {
 				
 			
 					
-					gauKopurua=(int)spinerGauKopurua.getValue();
+					//gauKopurua=(int)spinerGauKopurua.getValue();
 
 					System.out.println(gauKopurua);
 					
@@ -284,33 +280,33 @@ public class hotelHautatu extends JFrame {
 		
 //		m.hotelLogelakKalkulatu(DB.Kontsultak.logelaKopuruaLortu((String) comboHotelak.getSelectedItem()), (String) comboHotelak.getSelectedItem())
 //		SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 10, 1));
-		SpinnerLogelaKop.setBounds(41, 361, 153, 31);
+		SpinnerLogelaKop.setBounds(32, 279, 153, 31);
 		getContentPane().add(SpinnerLogelaKop);
 		
 		
 		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblLogelaKopurua.setBounds(33, 315, 183, 36);
+		lblLogelaKopurua.setBounds(32, 232, 183, 36);
 		getContentPane().add(lblLogelaKopurua);
 		rdbtnBanakakoa.setEnabled(false);
 		
 		
 		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnBanakakoa.setBounds(26, 233, 109, 23);
+		rdbtnBanakakoa.setBounds(6, 159, 109, 23);
 		getContentPane().add(rdbtnBanakakoa);
 		rdbtnBinakakoa.setEnabled(false);
 		
 		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnBinakakoa.setBounds(139, 233, 89, 23);
+		rdbtnBinakakoa.setBounds(127, 159, 89, 23);
 		getContentPane().add(rdbtnBinakakoa);
 		
 		lblGelaMota.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblGelaMota.setBounds(36, 195, 168, 31);
+		lblGelaMota.setBounds(32, 121, 168, 31);
 		getContentPane().add(lblGelaMota);
 		
 		
 		rdbtnUmeentzat.setEnabled(false);
-		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
+		rdbtnUmeentzat.setBounds(72, 185, 103, 23);
 		getContentPane().add(rdbtnUmeentzat);
 
 		

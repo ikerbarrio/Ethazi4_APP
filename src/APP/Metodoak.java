@@ -324,14 +324,18 @@ public class Metodoak {
 	
 	
 	//DATEN ARTEKO KENKETA
-	public int datenKenketa(String fechaInicio, String fechaActual) {
+	public int datenKenketa(String fechaInicio, String fechaFinal) {
+		
+
+		
+		int []dias30 = {4,6,9,11};
+		int []dias31 = {1,3,5,7,8,10,12};
 		
 		
+	
+	
 		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-
-
-
-	        
+   
 	        Date date = new Date(0);
 	        
 	        DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
@@ -341,7 +345,7 @@ public class Metodoak {
 	        Integer mesInicio = Integer.parseInt(aFechaIng[1]);
 	        Integer anioInicio = Integer.parseInt(aFechaIng[2]);
 
-	        String[] aFecha = fechaActual.split("/");
+	        String[] aFecha = fechaFinal.split("/");
 	        Integer diaFinal = Integer.parseInt(aFecha[0]);
 	        Integer mesFinal = Integer.parseInt(aFecha[1]);
 	        Integer anioFinal = Integer.parseInt(aFecha[2]);
@@ -356,86 +360,22 @@ public class Metodoak {
 	    	
 		    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
 		    
+		    for (int i =0; i<= dias30.length; i++) {
+		    	
+		    		if(mesInicio == i) {
+		    			
+		    		}
+		    	
+		    }
+		    
 		    int sumaPorMes=	mesFinal -mesInicio;
 		    sumaPorMes = sumaPorMes *30;
 		    dias = dias + sumaPorMes;
 		    
-	    System.out.println(" aplicando la diferencia del mes " + dias);
+		    System.out.println(" aplicando la diferencia del mes " + dias);
 	    	
 	 
 	    }
-/*
-	        System.out.println(diaActual);
-	        System.out.println(mesActual);
-	        System.out.println(anioActual);
-	        int b = 0;
-	        int dias = 0;
-	        int mes = 0;
-	        int anios = 0;
-	        int meses = 0;
-	        mes = mesInicio - 1;
-	        if (mes == 2) {
-	            if ((anioActual % 4 == 0) && ((anioActual % 100 != 0) || (anioActual % 400 == 0))) {
-	                b = 29;
-	            } else {
-	                b = 28;
-	            }
-	        } else if (mes <= 7) {
-	            if (mes == 0) {
-	                b = 31;
-	            } else if (mes % 2 == 0) {
-	                b = 30;
-	            } else {
-	                b = 31;
-	            }
-	        } else if (mes > 7) {
-	            if (mes % 2 == 0) {
-	                b = 31;
-	            } else {
-	                b = 30;
-	            }
-	        }
-	        
-	        if ((anioInicio > anioActual) || (anioInicio == anioActual && mesInicio > mesActual)
-	                || (anioInicio == anioActual && mesInicio == mesActual && diaInicio > diaActual)) {
-	        	
-	            System.out.println("La fecha de inicio debe ser anterior a la fecha Actual");
-	            
-	        } else {
-	            if (mesInicio <= mesActual) {
-	                anios = anioActual - anioInicio;
-	                if (diaInicio <= diaActual) {
-	                    meses = mesActual - mesInicio;
-	                    dias = b - (diaInicio - diaActual);
-	                } else {
-	                    if (mesActual == mesInicio) {
-	                        anios = anios - 1;
-	                    }
-	                    meses = (mesActual - mesInicio - 1 + 12) % 12;
-	                    dias = b - (diaInicio - diaActual);
-	                }
-	            } else {
-	                anios = anioActual - anioInicio - 1;
-	                System.out.println(anios);
-	                if (diaInicio > diaActual) {
-	                    meses = mesActual - mesInicio - 1 + 12;
-	                    dias = b - (diaInicio - diaActual);
-	                } else {
-	                    meses = mesActual - mesInicio + 12;
-	                    dias = diaActual - diaInicio;
-	                }
-	            }
-	        }
-	       
-
-
-	        System.out.println("Años: " + anios);
-	        System.out.println("Meses: " + meses);
-	        */
-	        
-
-//	        System.out.println("Años: " + anios);
-//	        System.out.println("Meses: " + meses);
 
 	        System.out.println("Días: " + dias);
 	        
