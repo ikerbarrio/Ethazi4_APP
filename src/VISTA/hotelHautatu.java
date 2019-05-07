@@ -290,7 +290,7 @@ public class hotelHautatu extends JFrame {
 
 		btnGorde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				ondo = true;
 
 			
 			//AL DARLE AL BOTON DE GORDE SE GUARDAN LOS DATOS EN EL FITXERO FALTARIA AÑADIR LOS DATOS QUE QUERAMOS GUARDAR
@@ -329,7 +329,6 @@ public class hotelHautatu extends JFrame {
 					Date dateInit = dateChooser.getDate();
 					String dateStr = DateFormat.getInstance().format(dateInit);
 					System.out.println(dateStr);
-					ondo = true;
 					}catch(Exception e) {
 						JOptionPane.showMessageDialog(null, "Data aukeratu");
 						ondo = false;
@@ -338,9 +337,8 @@ public class hotelHautatu extends JFrame {
 				if((int)SpinnerLogelaKop.getValue()==0) {
 					JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
 					ondo = false;
-				}else {
-					ondo = true;
 				}
+				
 				
 				//HACEMOS LA INSERT DE LAS HABITACIONES
 				if(ondo) {
