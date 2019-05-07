@@ -329,9 +329,7 @@ public class Metodoak {
 		
 		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
-//		
-//		    fechaInicio = "22/04/1988";
-//	         fechaActual = "09/04/2015";
+
 
 	        
 	        Date date = new Date(0);
@@ -352,16 +350,16 @@ public class Metodoak {
 	        int dias = diaFinal - diaInicio;
 	        
 	    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
-	    
-	    
-	    
+
 	    
 	    if (mesFinal > mesInicio) {
-	    	   System.out.println(" PROBANDO SI FUNCIONA  EL IF");
-	    int sumaPorMes=	mesFinal -mesInicio;
-	    sumaPorMes = sumaPorMes *30;
-	    dias = dias + sumaPorMes;
-	    
+	    	
+		    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
+		    
+		    int sumaPorMes=	mesFinal -mesInicio;
+		    sumaPorMes = sumaPorMes *30;
+		    dias = dias + sumaPorMes;
+		    
 	    System.out.println(" aplicando la diferencia del mes " + dias);
 	    	
 	 
