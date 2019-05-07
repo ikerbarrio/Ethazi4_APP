@@ -75,9 +75,9 @@ public class hotelHautatu extends JFrame {
 	//private int id = Kontsultak.hotelIdLortu(hotela);
 	private int cod_logela=0;
 	private Date dateChooser;
-	 private String dateStr;
-	
-
+	private String dateStr;
+	private Date dateInit;
+	private JDateChooser amaieraDateChooser = new JDateChooser();
 	private final JButton btnCheckinaGorde = new JButton("Checkin-a gorde");
 
 	
@@ -178,10 +178,12 @@ public class hotelHautatu extends JFrame {
 		btnAurrera.setBounds(530, 393, 89, 23);
 		getContentPane().add(btnAurrera);
 		al = new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 
-			
-
+				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
+				String strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
+				String strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 				
 				ondo = true;
 				
@@ -199,15 +201,12 @@ public class hotelHautatu extends JFrame {
 					}
 					System.out.println(prezioFinala);
 					
-					try {
-
-			
-						int dateInit=dateChooser.getDate();
-						dateStr= DateFormat.getInstance().format(dateInit);
-
+					try {			
+						
 				
 
-						System.out.println(dateStr);
+						System.out.println(strDateHasiera);
+						System.out.println(strDateAmaiera);
 						
 					
 			
@@ -215,9 +214,9 @@ public class hotelHautatu extends JFrame {
 						if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 							
 																							
-						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,dateStr,gauKopurua);
+						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,strDateHasiera,gauKopurua);
 						hotela = hotelak.get(i);
-							m.datenKenketa(fechaInicio, fechaActual);
+							
 						
 						}
 					}
@@ -241,7 +240,8 @@ public class hotelHautatu extends JFrame {
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
 					
-					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), dateStr,  "prueba");//marka
+					m.datenKenketa(strDateHasiera, strDateAmaiera);
+					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), strDateHasiera,  strDateAmaiera);//marka
 				}
 				
 		
@@ -311,12 +311,10 @@ public class hotelHautatu extends JFrame {
 
 		
 		//EL BOTON DE GUARDADO
-		Date dateInit;
+		Date dateInit = null;
 		LocalDate minDate = LocalDate.now();
 		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
-		String strDate = dateFormat.format(dateInit);
 				
 		btnCheckinaGorde.setBounds(265, 279, 141, 31);
 		getContentPane().add(btnCheckinaGorde);
@@ -327,8 +325,8 @@ public class hotelHautatu extends JFrame {
 		hasieraDateChooser.setSelectableDateRange(hasieraDate, null);
 		
 
-		JDateChooser amaieraDateChooser = new JDateChooser();
 		amaieraDateChooser.setBounds(439, 237, 141, 31);
+		((JTextField) amaieraDateChooser.getDateEditor()).setEditable(false); 
 		getContentPane().add(amaieraDateChooser);
 		amaieraDateChooser.setEnabled(false);
 		
