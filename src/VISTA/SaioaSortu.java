@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -23,6 +24,7 @@ import javax.swing.SwingConstants;
 
 import APP.Metodoak;
 import APP.MetodoakVista;
+import DB.Kontsultak;
 
 public class SaioaSortu extends JFrame {
 
@@ -53,11 +55,12 @@ public class SaioaSortu extends JFrame {
 	private String data;
 	private JPasswordField pasahitzaErrepikatu;
 	private final JSpinner jaioData = new JSpinner();
+	private ArrayList <String>arrayDNI = new ArrayList();
 
 	/**
 	 * Create the frame.
 	 */
-	public SaioaSortu(double prezioFinala) {
+	public SaioaSortu(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
 		this.setSize(478, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -194,10 +197,22 @@ public class SaioaSortu extends JFrame {
 				//JaioData to String
 				data = new SimpleDateFormat("yyyy/MM/dd").format(jaioData.getValue());
 				
+				
+				arrayDNI = Kontsultak.selectDNI();
+				
+				for(int i=0;i<arrayDNI.size();i++) {
+					if(txtNAN.getText().equals(arrayDNI.get(i))) {
+						JOptionPane.showMessageDialog(null, "NAN hori badago erregistratuta");
+						ondo=false;
+					}
+				}
+				
+			
+				
 				//Dena ondo badago erabiltzailea sartzen du
 				if(ondo) {
 					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), data, sexua, pasahitzaEnkriptatuta);
-					MetodoakVista.ordainketaLeihora(prezioFinala);
+					MetodoakVista.ordainketaLeihora(prezioFinala,hotela,gelaMota,logela_kop);
 					dispose();
 				}
 				
@@ -227,7 +242,7 @@ public class SaioaSortu extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.saihoaHastera(prezioFinala);
+				MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
 				dispose();
 
 			}
