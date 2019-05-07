@@ -49,7 +49,7 @@ public class hotelHautatu extends JFrame {
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
 	private JSpinner SpinnerLogelaKop = new JSpinner();
-	private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
+	//private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
 	private JComboBox comboHiria = new JComboBox();
 	private ArrayList <String>hotelak = new ArrayList();
 	private ArrayList hiriak = new ArrayList();
@@ -81,6 +81,13 @@ public class hotelHautatu extends JFrame {
 	private JDateChooser amaieraDateChooser = new JDateChooser();
 	private final JButton btnCheckinaGorde = new JButton("Checkin-a gorde");
 	private DateFormat dateFormat;
+<<<<<<< HEAD
+=======
+	private String strDateHasiera;
+	private String strDateAmaiera;
+	
+
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 
 	
 	
@@ -102,12 +109,12 @@ public class hotelHautatu extends JFrame {
 		spinerGauKopurua.setBounds(26, 149, 168, 31);
 		getContentPane().add(spinerGauKopurua);
 		
-		
-		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGauKopurua.setBounds(26, 107, 168, 50);
-		getContentPane().add(lblGauKopurua);
-		
+//		
+//		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+//		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblGauKopurua.setBounds(26, 107, 168, 50);
+//		getContentPane().add(lblGauKopurua);
+//		
 		comboHiria.setBounds(412, 74, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
@@ -183,9 +190,12 @@ public class hotelHautatu extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 
+<<<<<<< HEAD
 				dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 				String strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
 				String strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
+=======
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 				
 				ondo = true;
 				
@@ -204,9 +214,10 @@ public class hotelHautatu extends JFrame {
 					System.out.println(prezioFinala);
 					
 					try {			
-						
+						dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
+						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
+						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 				
-
 						System.out.println(strDateHasiera);
 						System.out.println(strDateAmaiera);
 						
@@ -216,11 +227,14 @@ public class hotelHautatu extends JFrame {
 						if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 							
 																							
-						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,strDateHasiera,gauKopurua);
+						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
 						hotela = hotelak.get(i);
-							
+
 						
 						}
+						
+						m.datenKenketa(strDateHasiera, strDateAmaiera);
+						k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), strDateHasiera,  strDateAmaiera);
 					}
 					
 					}catch(Exception a) {
@@ -242,13 +256,14 @@ public class hotelHautatu extends JFrame {
 				if(ondo) {
 					cod_logela=Kontsultak.selectCod_logela(hotela, gelaMota);
 					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
-					prezioFinala=prezioLogela*gauKopurua;
+					
+					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
+					
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
 					
-					m.datenKenketa(strDateHasiera, strDateAmaiera);
-					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), strDateHasiera,  strDateAmaiera);//marka
+					//marka
 				}
 				
 		
