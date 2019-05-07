@@ -215,7 +215,7 @@ public class hotelHautatu extends JFrame {
 																							
 						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,dateStr,gauKopurua);
 						hotela = hotelak.get(i);
-							m.datenKenketa(fechaInicio, fechaActual);
+						
 						
 						}
 					}
