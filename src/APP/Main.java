@@ -17,7 +17,7 @@ public class Main {
 		VISTA.OngiEtorri ejecutar = new VISTA.OngiEtorri();
 		ejecutar.setVisible(true);
 
-		//m.datenKenketa();
+	
 
 	}
 

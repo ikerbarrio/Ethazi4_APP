@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+
 import com.toedter.calendar.JDateChooser;
 
 import APP.Metodoak;
@@ -47,7 +49,7 @@ public class hotelHautatu extends JFrame {
 	private JPanel contentPanel;
 	private JSpinner spinerGauKopurua = new JSpinner();
 	private JSpinner SpinnerLogelaKop = new JSpinner();
-	private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
+	//private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
 	private JComboBox comboHiria = new JComboBox();
 	private ArrayList <String>hotelak = new ArrayList();
 	private ArrayList hiriak = new ArrayList();
@@ -73,10 +75,12 @@ public class hotelHautatu extends JFrame {
 	//private int id = Kontsultak.hotelIdLortu(hotela);
 	private int cod_logela=0;
 	private Date dateChooser;
-	 private String dateStr;
+	private String dateStr;
+	private Date dateInit;
+	private JDateChooser amaieraDateChooser = new JDateChooser();
+	private final JButton btnCheckinaGorde = new JButton("Checkin-a gorde");
 	
 
-	private final JButton btnCheckinaGorde = new JButton("Checkin-a gorde");
 
 	
 	
@@ -98,12 +102,12 @@ public class hotelHautatu extends JFrame {
 		spinerGauKopurua.setBounds(26, 149, 168, 31);
 		getContentPane().add(spinerGauKopurua);
 		
-		
-		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGauKopurua.setBounds(26, 107, 168, 50);
-		getContentPane().add(lblGauKopurua);
-		
+//		
+//		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+//		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblGauKopurua.setBounds(26, 107, 168, 50);
+//		getContentPane().add(lblGauKopurua);
+//		
 		comboHiria.setBounds(412, 74, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
@@ -176,10 +180,12 @@ public class hotelHautatu extends JFrame {
 		btnAurrera.setBounds(530, 393, 89, 23);
 		getContentPane().add(btnAurrera);
 		al = new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 
-			
-
+				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
+				String strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
+				String strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 				
 				ondo = true;
 				
@@ -197,15 +203,12 @@ public class hotelHautatu extends JFrame {
 					}
 					System.out.println(prezioFinala);
 					
-					try {
-
-			
-						int dateInit=dateChooser.getDate();
-						dateStr= DateFormat.getInstance().format(dateInit);
-
+					try {			
+						
 				
 
-						System.out.println(dateStr);
+						System.out.println(strDateHasiera);
+						System.out.println(strDateAmaiera);
 						
 					
 			
@@ -213,9 +216,9 @@ public class hotelHautatu extends JFrame {
 						if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 							
 																							
-						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,dateStr,gauKopurua);
+						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
 						hotela = hotelak.get(i);
-						
+
 						
 						}
 					}
@@ -234,12 +237,15 @@ public class hotelHautatu extends JFrame {
 				if(ondo) {
 					cod_logela=Kontsultak.selectCod_logela(hotela, gelaMota);
 					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
-					prezioFinala=prezioLogela*gauKopurua;
+					
+					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
+					
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
 					
-					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), dateStr,  "prueba");//marka
+					m.datenKenketa(strDateHasiera, strDateAmaiera);
+					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), strDateHasiera,  strDateAmaiera);//marka
 				}
 				
 		
@@ -309,7 +315,7 @@ public class hotelHautatu extends JFrame {
 
 		
 		//EL BOTON DE GUARDADO
-		Date dateInit;
+		Date dateInit = null;
 		LocalDate minDate = LocalDate.now();
 		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
@@ -323,8 +329,8 @@ public class hotelHautatu extends JFrame {
 		hasieraDateChooser.setSelectableDateRange(hasieraDate, null);
 		
 
-		JDateChooser amaieraDateChooser = new JDateChooser();
 		amaieraDateChooser.setBounds(439, 237, 141, 31);
+		((JTextField) amaieraDateChooser.getDateEditor()).setEditable(false); 
 		getContentPane().add(amaieraDateChooser);
 		amaieraDateChooser.setEnabled(false);
 		
