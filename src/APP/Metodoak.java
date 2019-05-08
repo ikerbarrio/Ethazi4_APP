@@ -318,5 +318,31 @@ public class Metodoak {
 	public static void logelaKopAldatu(int cod_logela, String mota, int kop) {
 		Kontsultak.logelaKopAldatu(cod_logela, mota, kop);
 	}
+	
+	public static boolean dataKalkulatu(String hasieraData) {
+		boolean balidatu = false;
+		ArrayList<String> datak = new ArrayList<String>();
+		datak = Kontsultak.selectDatak();
+		String urteaAmaieraData;
+		int intUrteaAmaieraData;
+		String urteaHasieraData;
+		int inturteaHasieraData;
+		
+		urteaHasieraData = hasieraData.substring(6, 7);
+		inturteaHasieraData = Integer.parseInt(urteaHasieraData);
+		
+		for(int i=0;i<datak.size();i++) {
+			urteaAmaieraData = datak.get(i).substring(6, 7);
+			intUrteaAmaieraData = Integer.parseInt(urteaAmaieraData);
+			if(intUrteaAmaieraData<inturteaHasieraData) {
+				
+			}
+			
+		}
+		
+		
+		
+		return balidatu;
+	}
 
 }

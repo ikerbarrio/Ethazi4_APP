@@ -73,6 +73,7 @@ public class hotelHautatu extends JFrame {
 	//private int id = Kontsultak.hotelIdLortu(hotela);
 	private int cod_logela=0;
 	private final JButton btnCheckinaGorde = new JButton("Checkin-a gorde");
+	private String dateStr;
 	
 	
 	
@@ -195,8 +196,7 @@ public class hotelHautatu extends JFrame {
 					
 					try {
 					Date dateInit = hasieraDateChooser.getDate();
-					String dateStr = DateFormat.getInstance().format(dateInit);
-						System.out.println(dateStr);
+					dateStr = DateFormat.getInstance().format(dateInit);
 						
 					
 			
