@@ -248,6 +248,9 @@ public class hotelHautatu extends JFrame {
 							amaieraDateChooser.setEnabled(false);
 							amaieraDateChooser.setDate(null);
 						}
+					}if (!ondo) {
+						hasieraDateChooser.setEnabled(true);
+						amaieraDateChooser.setEnabled(false);
 					}
 					/////////////////////////////////////
 				if(ondo) {
@@ -346,6 +349,7 @@ public class hotelHautatu extends JFrame {
 		amaieraDateChooser.setBounds(439, 237, 141, 31);
 		((JTextField) amaieraDateChooser.getDateEditor()).setEditable(false); 
 		getContentPane().add(amaieraDateChooser);
+		hasieraDateChooser.setEnabled(true);
 		amaieraDateChooser.setEnabled(false);
 		
 		alCheckin = new ActionListener() {
@@ -361,6 +365,7 @@ public class hotelHautatu extends JFrame {
 				if(ondo) {
 					amaieraDateChooser.setSelectableDateRange(hasieraDateChooser.getDate(), null);
 					amaieraDateChooser.setEnabled(true);
+					hasieraDateChooser.setEnabled(false);
 				}
 				
 				System.out.println("kaka");
