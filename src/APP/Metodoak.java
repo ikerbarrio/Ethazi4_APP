@@ -372,27 +372,27 @@ public class Metodoak {
 	        Integer anioFinal = Integer.parseInt(aFecha[2]);
 	        
 	        
-	        int dias = diaFinal - diaInicio;
+//	        int dias = diaFinal - diaInicio;
 	        
-	    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
+//	    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
 
 	    
-	    if (mesFinal > mesInicio) {
-	    	
-		    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
-		    
-		    int sumaPorMes=	mesFinal -mesInicio;
-		    sumaPorMes = sumaPorMes *30;
-		    dias = dias + sumaPorMes;
-		    
-	    System.out.println(" aplicando la diferencia del mes " + dias);
-	    	
-	 
-	    }
-/*
-	        System.out.println(diaActual);
-	        System.out.println(mesActual);
-	        System.out.println(anioActual);
+//	    if (mesFinal > mesInicio) {
+//	    	
+//		    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
+//		    
+//		    int sumaPorMes=	mesFinal -mesInicio;
+//		    sumaPorMes = sumaPorMes *30;
+//		    dias = dias + sumaPorMes;
+//		    
+//	    System.out.println(" aplicando la diferencia del mes " + dias);
+//	    	
+//	 
+//	    }
+
+	        System.out.println(diaFinal);
+	        System.out.println(mesFinal);
+	        System.out.println(anioFinal);
 	        int b = 0;
 	        int dias = 0;
 	        int mes = 0;
@@ -400,7 +400,7 @@ public class Metodoak {
 	        int meses = 0;
 	        mes = mesInicio - 1;
 	        if (mes == 2) {
-	            if ((anioActual % 4 == 0) && ((anioActual % 100 != 0) || (anioActual % 400 == 0))) {
+	            if ((anioFinal % 4 == 0) && ((anioFinal % 100 != 0) || (anioFinal % 400 == 0))) {
 	                b = 29;
 	            } else {
 	                b = 28;
@@ -421,33 +421,33 @@ public class Metodoak {
 	            }
 	        }
 	        
-	        if ((anioInicio > anioActual) || (anioInicio == anioActual && mesInicio > mesActual)
-	                || (anioInicio == anioActual && mesInicio == mesActual && diaInicio > diaActual)) {
+	        if ((anioInicio > anioFinal) || (anioInicio == anioFinal && mesInicio > mesFinal)
+	                || (anioInicio == anioFinal && mesInicio == mesFinal && diaInicio > diaFinal)) {
 	        	
 	            System.out.println("La fecha de inicio debe ser anterior a la fecha Actual");
 	            
 	        } else {
-	            if (mesInicio <= mesActual) {
-	                anios = anioActual - anioInicio;
-	                if (diaInicio <= diaActual) {
-	                    meses = mesActual - mesInicio;
-	                    dias = b - (diaInicio - diaActual);
+	            if (mesInicio <= mesFinal) {
+	                anios = anioFinal - anioInicio;
+	                if (diaInicio <= diaFinal) {
+	                    meses = mesFinal - mesInicio;
+	                    dias = b - (diaInicio - diaFinal);
 	                } else {
-	                    if (mesActual == mesInicio) {
+	                    if (mesFinal == mesInicio) {
 	                        anios = anios - 1;
 	                    }
-	                    meses = (mesActual - mesInicio - 1 + 12) % 12;
-	                    dias = b - (diaInicio - diaActual);
+	                    meses = (mesFinal - mesInicio - 1 + 12) % 12;
+	                    dias = b - (diaInicio - diaFinal);
 	                }
 	            } else {
-	                anios = anioActual - anioInicio - 1;
+	                anios = anioFinal - anioInicio - 1;
 	                System.out.println(anios);
-	                if (diaInicio > diaActual) {
-	                    meses = mesActual - mesInicio - 1 + 12;
-	                    dias = b - (diaInicio - diaActual);
+	                if (diaInicio > diaFinal) {
+	                    meses = mesFinal - mesInicio - 1 + 12;
+	                    dias = b - (diaInicio - diaFinal);
 	                } else {
-	                    meses = mesActual - mesInicio + 12;
-	                    dias = diaActual - diaInicio;
+	                    meses = mesFinal - mesInicio + 12;
+	                    dias = diaFinal - diaInicio;
 	                }
 	            }
 	        }
@@ -456,15 +456,15 @@ public class Metodoak {
 
 	        System.out.println("Años: " + anios);
 	        System.out.println("Meses: " + meses);
-	        */
+	   
 	        
 
 //	        System.out.println("Años: " + anios);
 //	        System.out.println("Meses: " + meses);
 
-	        System.out.println("Días: " + dias);
+	        System.out.println("Días: " + (dias - 30));
 	        
-			return dias;
+			return dias - 30;
 
 	    }
 	
