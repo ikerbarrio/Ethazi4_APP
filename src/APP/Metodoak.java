@@ -19,6 +19,9 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Metodoak {
 
 	public static double kontTotala = 0;
@@ -326,13 +329,30 @@ public class Metodoak {
 	//DATEN ARTEKO KENKETA
 	public int datenKenketa(String fechaInicio, String fechaFinal) {
 		
+		
+	     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	     Date dateHasiera = new Date (0);
+	     Date dateAmaiera = new Date (0);
+	     
+	
+	     try {
+	             dateHasiera = (java.sql.Date) formatter.parse(fechaInicio);
+	             dateAmaiera= (java.sql.Date) formatter.parse(fechaFinal);
+	             
+	     } catch (ParseException e) {
+	            e.printStackTrace();
+	        }
+	     
+	     
 
-		
-		int []dias30 = {4,6,9,11};
-		int []dias31 = {1,3,5,7,8,10,12};
-		
+	     int dias =  (int) (dateHasiera.getTime() - dateAmaiera.getTime())/ 86400000 ;
+	     
+	    
+		 
 		
 	
+		
+	/*
 	
 		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
    
@@ -363,20 +383,20 @@ public class Metodoak {
 		    for (int i =0; i<= dias30.length; i++) {
 		    	
 		    		if(mesInicio == i) {
-		    			
+		    			diasCalendario = 30;
 		    		}
 		    	
 		    }
 		    
 		    int sumaPorMes=	mesFinal -mesInicio;
-		    sumaPorMes = sumaPorMes *30;
+		    sumaPorMes = sumaPorMes *diasCalendario;
 		    dias = dias + sumaPorMes;
 		    
 		    System.out.println(" aplicando la diferencia del mes " + dias);
 	    	
 	 
 	    }
-
+*/
 	        System.out.println("Días: " + dias);
 	        
 			return dias;
