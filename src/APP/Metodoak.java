@@ -328,79 +328,14 @@ public class Metodoak {
 	
 	//DATEN ARTEKO KENKETA
 	public int datenKenketa(String fechaInicio, String fechaFinal) {
+		return 0;
 		
 		
-	     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-	     Date dateHasiera = new Date (0);
-	     Date dateAmaiera = new Date (0);
-	     
-	
-	     try {
-	             dateHasiera = (java.sql.Date) formatter.parse(fechaInicio);
-	             dateAmaiera= (java.sql.Date) formatter.parse(fechaFinal);
-	             
-	     } catch (ParseException e) {
-	            e.printStackTrace();
-	        }
-	     
-	     
-
-	     int dias =  (int) (dateHasiera.getTime() - dateAmaiera.getTime())/ 86400000 ;
 	     
 	    
 		 
 		
 	
-		
-	/*
-	
-		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-   
-	        Date date = new Date(0);
-	        
-	        DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
-	
-	        String[] aFechaIng = fechaInicio.split("/");
-	        Integer diaInicio = Integer.parseInt(aFechaIng[0]);
-	        Integer mesInicio = Integer.parseInt(aFechaIng[1]);
-	        Integer anioInicio = Integer.parseInt(aFechaIng[2]);
-
-	        String[] aFecha = fechaFinal.split("/");
-	        Integer diaFinal = Integer.parseInt(aFecha[0]);
-	        Integer mesFinal = Integer.parseInt(aFecha[1]);
-	        Integer anioFinal = Integer.parseInt(aFecha[2]);
-	        
-	        
-	        int dias = diaFinal - diaInicio;
-	        
-	    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
-
-	    
-	    if (mesFinal > mesInicio) {
-	    	
-		    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
-		    
-		    for (int i =0; i<= dias30.length; i++) {
-		    	
-		    		if(mesInicio == i) {
-		    			diasCalendario = 30;
-		    		}
-		    	
-		    }
-		    
-		    int sumaPorMes=	mesFinal -mesInicio;
-		    sumaPorMes = sumaPorMes *diasCalendario;
-		    dias = dias + sumaPorMes;
-		    
-		    System.out.println(" aplicando la diferencia del mes " + dias);
-	    	
-	 
-	    }
-*/
-	        System.out.println("Días: " + dias);
-	        
-			return dias;
-
 	    }
 
 
