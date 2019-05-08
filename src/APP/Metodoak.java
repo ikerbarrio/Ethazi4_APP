@@ -323,7 +323,7 @@ public class Metodoak {
 	public static boolean dataKalkulatu(String hasieraData) {
 		boolean balidatu = false;
 		ArrayList<String> datak = new ArrayList<String>();
-		datak = Kontsultak.selectDatak();
+		datak = Kontsultak.selectAmaieraDatak();
 		String urteaAmaieraData;
 		int intUrteaAmaieraData;
 		String urteaHasieraData;
@@ -468,11 +468,13 @@ public class Metodoak {
 
 	    }
 	
-	public boolean reserbaFechaKalkulatu(String fechaInicio) {
+	public boolean reserbaFechaKalkulatu(String fechaInicio,String fechaFinal) {
 	        
 	        boolean ondo = true;
-	        ArrayList<String> datak = new ArrayList();
-	        datak = Kontsultak.selectDatak();
+	        ArrayList<String> datak_DB = new ArrayList();
+	        datak_DB = Kontsultak.selectAmaieraDatak();
+	        String fechaInicio_DB;
+	        
 	
 	        String[] aFechaIng = fechaInicio.split("/");
 	        Integer diaInicio = Integer.parseInt(aFechaIng[0]);
@@ -484,21 +486,44 @@ public class Metodoak {
 	        int mesFinal;
 	        int anioFinal;
 
-	        for(int i=0;i<datak.size();i++) {
-	        	aFecha = datak.get(i).split("/");
+	        for(int i=0;i<datak_DB.size();i++) {
+	        	aFecha = datak_DB.get(i).split("/");
 	        	diaFinal = Integer.parseInt(aFecha[0]);
 	        	mesFinal = Integer.parseInt(aFecha[1]);
 	        	anioFinal = Integer.parseInt(aFecha[2]);
 	        	if(anioFinal==anioInicio) {
 	        		if(mesFinal==mesInicio) {
 	        			if(diaFinal>=diaInicio) {
-	        				ondo = false;
+	        				fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+	        				aFechaIng = fechaInicio_DB.split("/");
+	        				diaInicio = Integer.parseInt(aFechaIng[0]);
+	        				aFecha = fechaFinal.split("/");
+	        				diaFinal = Integer.parseInt(aFecha[0]);
+	        				if(diaInicio<=diaFinal) {
+	        					ondo = false;
+	        				}
+	        					
 	        			}
 	        		}else if(mesFinal>mesInicio) {
-	        			ondo = false;
+	        			fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+        				aFechaIng = fechaInicio_DB.split("/");
+        				mesInicio = Integer.parseInt(aFechaIng[0]);
+        				aFecha = fechaFinal.split("/");
+        				mesFinal = Integer.parseInt(aFecha[0]);
+        				if(mesInicio<=mesFinal) {
+        					ondo = false;
+        				}
+	        			
 	        		}
 	        	}else if(anioFinal>anioInicio) {
-	        		ondo = false;
+	        		fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+    				aFechaIng = fechaInicio_DB.split("/");
+    				anioInicio = Integer.parseInt(aFechaIng[0]);
+    				aFecha = fechaFinal.split("/");
+    				anioFinal = Integer.parseInt(aFecha[0]);
+    				if(anioInicio<=anioFinal) {
+    					ondo = false;
+    				}
 	        	}
 	        }
 	       
