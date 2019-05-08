@@ -33,7 +33,7 @@ import DB.Kontsultak;
 
 
 
-public class hotelHautatu extends JFrame {
+public class apartamentuHautatu extends JFrame {
 	/**
 	 * Frame-aren atributu eta komponente guztiak sortu 
 	 */
@@ -48,13 +48,12 @@ public class hotelHautatu extends JFrame {
 	private ActionListener alCheckin;
 	private JPanel contentPanel;
 	private JSpinner SpinnerLogelaKop = new JSpinner();
-	//private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
 	private JComboBox comboHiria = new JComboBox();
-	private ArrayList <String>hotelak = new ArrayList();
+	private ArrayList <String>apartamentuak = new ArrayList();
 	private ArrayList hiriak = new ArrayList();
-	private JLabel lblHotelak = new JLabel("HOTELA AUKERATU");
+	private JLabel lblApartamentuak = new JLabel("APARTAMENTUA AUKERATU");
 	private JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
-	private JComboBox comboHotelak = new JComboBox();
+	private JComboBox comboApartamentuak = new JComboBox();
 	private JButton btnAurrera = new JButton("AURRERA");
 	private JButton btnAtzera = new JButton("ATZERA");
 	private JTextField txtInformazioa = new JTextField();
@@ -89,7 +88,7 @@ public class hotelHautatu extends JFrame {
 	/**
 	 * Frame-aren komponente guztiak
 	 */
-	public hotelHautatu() {
+	public apartamentuHautatu() {
 		
 		setForeground(Color.DARK_GRAY);
 		getContentPane().setForeground(Color.DARK_GRAY);
@@ -99,7 +98,7 @@ public class hotelHautatu extends JFrame {
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
 		
-		
+	
 		comboHiria.setBounds(412, 74, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
@@ -110,35 +109,35 @@ public class hotelHautatu extends JFrame {
 		
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboHotelak.removeAllItems();
+				comboApartamentuak.removeAllItems();
 				
-				hotelak=Metodoak.hotelIzenaPantailaratu(comboHiria.getSelectedItem().toString());
+				apartamentuak = Metodoak.apartamentuIzenaPantailaratu(comboHiria.getSelectedItem().toString());
 				
-				for(int n = 0; n < hotelak.size(); n++) {
-					comboHotelak.addItem(hotelak.get(n));
+				for(int n = 0; n < apartamentuak.size(); n++) {
+					comboApartamentuak.addItem(apartamentuak.get(n));
 				}
 				
 			}
 		};
 		comboHiria.addActionListener(al);
 		
-		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHotelak.setBounds(26, 28, 190, 28);
+		lblApartamentuak.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblApartamentuak.setHorizontalAlignment(SwingConstants.CENTER);
+		lblApartamentuak.setBounds(10, 28, 206, 28);
 
-		comboHotelak.setBounds(32, 65, 168, 31);
+		comboApartamentuak.setBounds(32, 65, 168, 31);
 		
-		for(int n = 0; n < hotelak.size(); n++) {
-			comboHotelak.addItem(hotelak.get(n));
+		for(int n = 0; n < apartamentuak.size(); n++) {
+			comboApartamentuak.addItem(apartamentuak.get(n));
 		}
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(comboHotelak.getItemCount()!=0) {		
+				if(comboApartamentuak.getItemCount()!=0) {		
 					
 
 							
-					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
+					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboApartamentuak.getSelectedItem().toString()));
 					
 //					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
 					
@@ -154,11 +153,11 @@ public class hotelHautatu extends JFrame {
 				rdbtnBinakakoa.setEnabled(true);
 			}
 		};
-		comboHotelak.addActionListener(al);
-		getContentPane().add(comboHotelak);
+		comboApartamentuak.addActionListener(al);
+		getContentPane().add(comboApartamentuak);
 		
 
-		getContentPane().add(lblHotelak);
+		getContentPane().add(lblApartamentuak);
 		
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -182,6 +181,7 @@ public class hotelHautatu extends JFrame {
 				ondo = true;
 				
 			
+					
 
 					System.out.println(gauKopurua);
 					
@@ -195,12 +195,12 @@ public class hotelHautatu extends JFrame {
 					
 
 								
-					for(int i=0;i<hotelak.size();i++) {
-						if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
+					for(int i=0;i<apartamentuak.size();i++) {
+						if(comboApartamentuak.getSelectedItem().equals(apartamentuak.get(i))) {
 							
 																							
 						
-						hotela = hotelak.get(i);
+						hotela = apartamentuak.get(i);
 						}
 					}
 					
@@ -366,7 +366,7 @@ public class hotelHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnBanakakoa.getText();
 				
-				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
+				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 
 			}
 		};
@@ -381,7 +381,7 @@ public class hotelHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnBinakakoa.getText();
 				
-				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
+				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 			}
 		};
 		rdbtnBinakakoa.addActionListener(alBinakakoa);
@@ -395,7 +395,7 @@ public class hotelHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnUmeentzat.getText();
 				
-				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
+				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 			}
 		};
 		rdbtnUmeentzat.addActionListener(alUmeentzat);

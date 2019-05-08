@@ -531,6 +531,12 @@ public class Metodoak {
 
 	    }
 
-
+	public static ArrayList apartamentuIzenaPantailaratu(String hiria) {
+		return Kontsultak.apartamentuIzenaPantailaratu(hiria);
+	}
+	
+	public static ArrayList etxeIzenaPantailaratu(String hiria) {
+		return Kontsultak.etxeIzenaPantailaratu(hiria);
+	}
 
 }

@@ -408,37 +408,6 @@ public class Kontsultak {
 	
 	
 	
-	
-	
-	public static int logelaMotaCodLogelaLortu(String hotela) { // arraylist bueltatu behar du
-		Connection conexion = null;
-		Statement s = null;
-		String DNI;
-		ArrayList<String> arrayDNI = new ArrayList();
-		int cod_logela = 0;
-		try {
-			// Cargar el driver
-			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
-			s = (Statement) conexion.createStatement();
-
-			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT  cod_logela ,hotelak.izena FROM  logelamota, hotelak  WHERE hotelak.id = logelamota.id AND  hotelak.izena LIKE '" +hotela +"'");
-
-			while (rs.next()) {
-
-				// SELECTAREN DATUAK GORDE
-			
-				 cod_logela = rs.getInt("cod_logela");
-
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return cod_logela;
-		
-	}
-	
 	public static int selectPrezioa(int cod_logela) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -524,4 +493,74 @@ public class Kontsultak {
 		return data; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
+	public static ArrayList apartamentuIzenaPantailaratu(String hiria) {
+		String izena = null;// hotelen izenak gordetzen dira
+		String katea;// izena
+		Connection conexion = null;
+		Statement s = null;
+		ArrayList<String> apartamentuak = new ArrayList();
+
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			ResultSet rs = ((java.sql.Statement) s).executeQuery(
+					"SELECT IZENA FROM APARTAMENTUAK WHERE cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"
+							+ hiria + "')");
+			while (rs.next()) {
+
+				izena = rs.getString(1);
+				apartamentuak.add(izena);
+
+			}
+			for (String k : apartamentuak) {
+				System.out.println(k);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return apartamentuak;
 	}
+	
+	public static ArrayList etxeIzenaPantailaratu(String hiria) {
+		String izena = null;// hotelen izenak gordetzen dira
+		String katea;// izena
+		Connection conexion = null;
+		Statement s = null;
+		ArrayList<String> etxeak = new ArrayList();
+
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			ResultSet rs = ((java.sql.Statement) s).executeQuery(
+					"SELECT IZENA FROM ETXEAK WHERE cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"
+							+ hiria + "')");
+			while (rs.next()) {
+
+				izena = rs.getString(1);
+				etxeak.add(izena);
+
+			}
+			for (String k : etxeak) {
+				System.out.println(k);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return etxeak;
+	}
+	
+	
+	
+}
+
+	
