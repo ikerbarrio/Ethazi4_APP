@@ -84,7 +84,6 @@ public class hotelHautatu extends JFrame {
 	private String strDateAmaiera;
 	
 
-
 	
 	
 	
@@ -186,6 +185,9 @@ public class hotelHautatu extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 
+				dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
+				//String strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
+				//String strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 				
 				ondo = true;
 				
@@ -203,29 +205,28 @@ public class hotelHautatu extends JFrame {
 					}
 					System.out.println(prezioFinala);
 					
-					try {			
-						dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
-						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
-						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
-				
-						System.out.println(strDateHasiera);
-						System.out.println(strDateAmaiera);
-						
-					
-			
+
+								
 					for(int i=0;i<hotelak.size();i++) {
 						if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 							
 																							
-						m.fitxeroaIdatzi(hotelak.get(i).toString(), prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
+						
 						hotela = hotelak.get(i);
-
-						
 						}
-						
-						m.datenKenketa(strDateHasiera, strDateAmaiera);
-						k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.logelaMotaCodLogelaLortu(hotela), strDateHasiera,  strDateAmaiera);
 					}
+					
+					
+					try {			
+						hasieraDateChooser.getDate().toString();
+						amaieraDateChooser.getDate().toString();
+						
+				
+						System.out.println(strDateHasiera);
+						System.out.println(strDateAmaiera);
+						
+						
+					
 					
 					}catch(Exception a) {
 						JOptionPane.showMessageDialog(null, "Data aukeratu");
@@ -237,8 +238,22 @@ public class hotelHautatu extends JFrame {
 						JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
 						ondo = false;
 					}
-				
+					//PARA QUE NO PETE ESTE IF TIENE QUE ESTAR AQUI ABAJO//
+					if(ondo) {
+						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
+						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
+						System.out.println(strDateHasiera);
+						if(!m.reserbaFechaKalkulatu(strDateHasiera)) {
+							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
+							ondo = false;
+							amaieraDateChooser.setEnabled(false);
+						}
+					}
+					/////////////////////////////////////
 				if(ondo) {
+					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
+					
+					
 					cod_logela=Kontsultak.selectCod_logela(hotela, gelaMota);
 					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
 					
@@ -248,13 +263,14 @@ public class hotelHautatu extends JFrame {
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
 					
+					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
+					m.datenKenketa(strDateHasiera, strDateAmaiera);
+					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera);
+					
 					//marka
+			
 				}
 				
-		
-				
-				
-
 				
 			}
 		};
@@ -317,7 +333,8 @@ public class hotelHautatu extends JFrame {
 		getContentPane().add(rdbtnUmeentzat);
 
 		
-		//EL BOTON DE GUARDADO
+		
+		
 		Date dateInit = null;
 		LocalDate minDate = LocalDate.now();
 		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -339,9 +356,19 @@ public class hotelHautatu extends JFrame {
 		
 		alCheckin = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ondo = true;
+				try {
+					hasieraDateChooser.getDate().toString();
+					
+				}catch(Exception e) {
+					JOptionPane.showMessageDialog(null, "Data aukeratu");
+					ondo = false;
+				}
+				if(ondo) {
+					amaieraDateChooser.setSelectableDateRange(hasieraDateChooser.getDate(), null);
+					amaieraDateChooser.setEnabled(true);
+				}
 				
-				amaieraDateChooser.setSelectableDateRange(hasieraDateChooser.getDate(), null);
-				amaieraDateChooser.setEnabled(true);
 				System.out.println("kaka");
 			}
 		};
@@ -392,6 +419,7 @@ public class hotelHautatu extends JFrame {
 				
 		
 		
+	
 	}
-}
 
+}

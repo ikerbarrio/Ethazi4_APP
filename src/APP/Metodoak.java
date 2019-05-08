@@ -320,6 +320,31 @@ public class Metodoak {
 		Kontsultak.logelaKopAldatu(cod_logela, mota, kop);
 	}
 	
+	public static boolean dataKalkulatu(String hasieraData) {
+		boolean balidatu = false;
+		ArrayList<String> datak = new ArrayList<String>();
+		datak = Kontsultak.selectDatak();
+		String urteaAmaieraData;
+		int intUrteaAmaieraData;
+		String urteaHasieraData;
+		int inturteaHasieraData;
+		
+		urteaHasieraData = hasieraData.substring(6, 7);
+		inturteaHasieraData = Integer.parseInt(urteaHasieraData);
+		
+		for(int i=0;i<datak.size();i++) {
+			urteaAmaieraData = datak.get(i).substring(6, 7);
+			intUrteaAmaieraData = Integer.parseInt(urteaAmaieraData);
+			if(intUrteaAmaieraData<inturteaHasieraData) {
+				
+			}
+			
+		}
+		
+		
+		
+		return balidatu;
+	}
 	
 	
 	
@@ -440,6 +465,44 @@ public class Metodoak {
 	        System.out.println("Días: " + dias);
 	        
 			return dias;
+
+	    }
+	
+	public boolean reserbaFechaKalkulatu(String fechaInicio) {
+	        
+	        boolean ondo = true;
+	        ArrayList<String> datak = new ArrayList();
+	        datak = Kontsultak.selectDatak();
+	
+	        String[] aFechaIng = fechaInicio.split("/");
+	        Integer diaInicio = Integer.parseInt(aFechaIng[0]);
+	        Integer mesInicio = Integer.parseInt(aFechaIng[1]);
+	        Integer anioInicio = Integer.parseInt(aFechaIng[2]);
+
+	        String[] aFecha;
+	        int diaFinal;
+	        int mesFinal;
+	        int anioFinal;
+
+	        for(int i=0;i<datak.size();i++) {
+	        	aFecha = datak.get(i).split("/");
+	        	diaFinal = Integer.parseInt(aFecha[0]);
+	        	mesFinal = Integer.parseInt(aFecha[1]);
+	        	anioFinal = Integer.parseInt(aFecha[2]);
+	        	if(anioFinal==anioInicio) {
+	        		if(mesFinal==mesInicio) {
+	        			if(diaFinal>=diaInicio) {
+	        				ondo = false;
+	        			}
+	        		}else if(mesFinal>mesInicio) {
+	        			ondo = false;
+	        		}
+	        	}else if(anioFinal>anioInicio) {
+	        		ondo = false;
+	        	}
+	        }
+	       
+			return ondo;
 
 	    }
 
