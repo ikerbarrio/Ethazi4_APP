@@ -242,10 +242,11 @@ public class hotelHautatu extends JFrame {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
 						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 						System.out.println(strDateHasiera);
-						if(!m.reserbaFechaKalkulatu(strDateHasiera)) {
+						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera)) {
 							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
+							amaieraDateChooser.setDate(null);
 						}
 					}
 					/////////////////////////////////////
@@ -278,10 +279,6 @@ public class hotelHautatu extends JFrame {
 		
 		alAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
- 
-				dispose(); //MARCA
-				MetodoakVista.bueltatuLehena();
 
 				dispose();
 				MetodoakVista.hostatuaAukeratzera();
@@ -330,8 +327,6 @@ public class hotelHautatu extends JFrame {
 		rdbtnUmeentzat.setEnabled(false);
 		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
 		getContentPane().add(rdbtnUmeentzat);
-
-		
 		
 		
 		Date dateInit = null;
