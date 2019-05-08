@@ -186,11 +186,10 @@ public class hotelHautatu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
-				//String strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
-				//String strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
+				String strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
+				String strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 				
-				ondo = true;
-				
+				ondo = true;	
 			
 					
 					gauKopurua=(int)spinerGauKopurua.getValue();
