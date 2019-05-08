@@ -7,6 +7,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -344,5 +345,167 @@ public class Metodoak {
 		
 		return balidatu;
 	}
+	
+	
+	
+	//DATEN ARTEKO KENKETA
+	public int datenKenketa(String fechaInicio, String fechaActual) {
+		
+		
+		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
+
+
+	        
+	        Date date = new Date(0);
+	        
+	        DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+	
+	        String[] aFechaIng = fechaInicio.split("/");
+	        Integer diaInicio = Integer.parseInt(aFechaIng[0]);
+	        Integer mesInicio = Integer.parseInt(aFechaIng[1]);
+	        Integer anioInicio = Integer.parseInt(aFechaIng[2]);
+
+	        String[] aFecha = fechaActual.split("/");
+	        Integer diaFinal = Integer.parseInt(aFecha[0]);
+	        Integer mesFinal = Integer.parseInt(aFecha[1]);
+	        Integer anioFinal = Integer.parseInt(aFecha[2]);
+	        
+	        
+	        int dias = diaFinal - diaInicio;
+	        
+	    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
+
+	    
+	    if (mesFinal > mesInicio) {
+	    	
+		    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
+		    
+		    int sumaPorMes=	mesFinal -mesInicio;
+		    sumaPorMes = sumaPorMes *30;
+		    dias = dias + sumaPorMes;
+		    
+	    System.out.println(" aplicando la diferencia del mes " + dias);
+	    	
+	 
+	    }
+/*
+	        System.out.println(diaActual);
+	        System.out.println(mesActual);
+	        System.out.println(anioActual);
+	        int b = 0;
+	        int dias = 0;
+	        int mes = 0;
+	        int anios = 0;
+	        int meses = 0;
+	        mes = mesInicio - 1;
+	        if (mes == 2) {
+	            if ((anioActual % 4 == 0) && ((anioActual % 100 != 0) || (anioActual % 400 == 0))) {
+	                b = 29;
+	            } else {
+	                b = 28;
+	            }
+	        } else if (mes <= 7) {
+	            if (mes == 0) {
+	                b = 31;
+	            } else if (mes % 2 == 0) {
+	                b = 30;
+	            } else {
+	                b = 31;
+	            }
+	        } else if (mes > 7) {
+	            if (mes % 2 == 0) {
+	                b = 31;
+	            } else {
+	                b = 30;
+	            }
+	        }
+	        
+	        if ((anioInicio > anioActual) || (anioInicio == anioActual && mesInicio > mesActual)
+	                || (anioInicio == anioActual && mesInicio == mesActual && diaInicio > diaActual)) {
+	        	
+	            System.out.println("La fecha de inicio debe ser anterior a la fecha Actual");
+	            
+	        } else {
+	            if (mesInicio <= mesActual) {
+	                anios = anioActual - anioInicio;
+	                if (diaInicio <= diaActual) {
+	                    meses = mesActual - mesInicio;
+	                    dias = b - (diaInicio - diaActual);
+	                } else {
+	                    if (mesActual == mesInicio) {
+	                        anios = anios - 1;
+	                    }
+	                    meses = (mesActual - mesInicio - 1 + 12) % 12;
+	                    dias = b - (diaInicio - diaActual);
+	                }
+	            } else {
+	                anios = anioActual - anioInicio - 1;
+	                System.out.println(anios);
+	                if (diaInicio > diaActual) {
+	                    meses = mesActual - mesInicio - 1 + 12;
+	                    dias = b - (diaInicio - diaActual);
+	                } else {
+	                    meses = mesActual - mesInicio + 12;
+	                    dias = diaActual - diaInicio;
+	                }
+	            }
+	        }
+	       
+
+
+	        System.out.println("Años: " + anios);
+	        System.out.println("Meses: " + meses);
+	        */
+	        
+
+//	        System.out.println("Años: " + anios);
+//	        System.out.println("Meses: " + meses);
+
+	        System.out.println("Días: " + dias);
+	        
+			return dias;
+
+	    }
+	
+	public boolean reserbaFechaKalkulatu(String fechaInicio) {
+	        
+	        boolean ondo = true;
+	        ArrayList<String> datak = new ArrayList();
+	        datak = Kontsultak.selectDatak();
+	
+	        String[] aFechaIng = fechaInicio.split("/");
+	        Integer diaInicio = Integer.parseInt(aFechaIng[0]);
+	        Integer mesInicio = Integer.parseInt(aFechaIng[1]);
+	        Integer anioInicio = Integer.parseInt(aFechaIng[2]);
+
+	        String[] aFecha;
+	        int diaFinal;
+	        int mesFinal;
+	        int anioFinal;
+
+	        for(int i=0;i<datak.size();i++) {
+	        	aFecha = datak.get(i).split("/");
+	        	diaFinal = Integer.parseInt(aFecha[0]);
+	        	mesFinal = Integer.parseInt(aFecha[1]);
+	        	anioFinal = Integer.parseInt(aFecha[2]);
+	        	if(anioFinal==anioInicio) {
+	        		if(mesFinal==mesInicio) {
+	        			if(diaFinal>=diaInicio) {
+	        				ondo = false;
+	        			}
+	        		}else if(mesFinal>mesInicio) {
+	        			ondo = false;
+	        		}
+	        	}else if(anioFinal>anioInicio) {
+	        		ondo = false;
+	        	}
+	        }
+	       
+			return ondo;
+
+	    }
+
+
 
 }

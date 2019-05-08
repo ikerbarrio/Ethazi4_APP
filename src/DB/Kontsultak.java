@@ -467,10 +467,11 @@ public class Kontsultak {
 		return prezioa; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
-	public static ArrayList<String> selectDatak() { // arraylist bueltatu behar du
+	public static ArrayList selectDatak() { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
-		ArrayList<String> datak = new ArrayList<String>();
+		String data;
+		ArrayList<String> datak = new ArrayList();
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
@@ -484,15 +485,10 @@ public class Kontsultak {
 
 				// SELECTAREN DATUAK GORDE
 
-				String data;
+				
 				data = rs.getString(1);
-
-				
-				
 				datak.add(data);
-//				for (int n = 0; n < inicioSes.size(); n++) {
-//					System.out.println(inicioSes.get(n));
-//				}
+
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
