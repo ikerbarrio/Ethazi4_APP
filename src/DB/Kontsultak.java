@@ -467,4 +467,33 @@ public class Kontsultak {
 		return prezioa; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
+	public static ArrayList selectDatak() { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		String data;
+		ArrayList<String> datak = new ArrayList();
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT AMAIERADATA FROM RESERBA");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				
+				data = rs.getString(1);
+				datak.add(data);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return datak; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
 	}
