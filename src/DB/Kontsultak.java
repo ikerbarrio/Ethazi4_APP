@@ -571,7 +571,7 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SUM(LOGELAKOP) FROM RESERBA WHERE AMAIERADATA LIKE '" +data +"'");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT LOGELAKOP FROM RESERBA WHERE AMAIERADATA LIKE '" +data +"'");
 
 			while (rs.next()) {
 
@@ -614,7 +614,32 @@ public class Kontsultak {
 		
 	}
 	
-	
+	public static int selectLogelaKopEspecifico(int cod_logela) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int kop =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SUM(LOGELAKOP) FROM RESERBA WHERE CODLOGELA = " +cod_logela);
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				kop = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return kop;
+		
+	}
 	
 }
 
