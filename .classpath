@@ -2,7 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="lib" path="C:/Users/Aitor/Desktop/jcalendar-1.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Aitor/Downloads/Programas/jdbc_driver/mysql-connector-java-5.1.15-bin.jar"/>
+=======
+	<classpathentry exported="true" kind="lib" path="C:/Users/mañana/Desktop/base datos/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/mañana/Desktop/jcalendar-1.4.jar"/>
+>>>>>>> 00a13ed147ec53eecabc24aaaf28240867d3d3d4
 	<classpathentry kind="output" path="bin"/>
 </classpath>
