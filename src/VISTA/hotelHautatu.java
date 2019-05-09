@@ -15,6 +15,7 @@ import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -99,8 +100,13 @@ public class hotelHautatu extends JFrame {
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
 		
-		
 		comboHiria.setBounds(412, 74, 168, 31);
+//		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+//		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblGauKopurua.setBounds(26, 107, 168, 50);
+//		getContentPane().add(lblGauKopurua);
+//		
+		comboHiria.setBounds(200, 65, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
 		comboHiria.addItem("Aukeratu");
@@ -126,7 +132,7 @@ public class hotelHautatu extends JFrame {
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHotelak.setBounds(26, 28, 190, 28);
 
-		comboHotelak.setBounds(32, 65, 168, 31);
+		comboHotelak.setBounds(36, 65, 168, 31);
 		
 		for(int n = 0; n < hotelak.size(); n++) {
 			comboHotelak.addItem(hotelak.get(n));
@@ -178,8 +184,7 @@ public class hotelHautatu extends JFrame {
 				dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 				
 				
-				ondo = true;	
-			
+				ondo = true;
 
 					System.out.println(gauKopurua);
 					
@@ -256,12 +261,10 @@ public class hotelHautatu extends JFrame {
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
 					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue());
 					
-					//Metodoak.logelaKopAldatu(cod_logela, gelaMota,logela_kop);
-					
 			
 				}
 				
-				
+				btnCheckinaGorde.setEnabled(true);
 			}
 		};
 		
@@ -291,6 +294,7 @@ public class hotelHautatu extends JFrame {
 //		SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 		SpinnerLogelaKop.setBounds(41, 361, 153, 31);
 		getContentPane().add(SpinnerLogelaKop);
+//		((JSpinner.DefaultEditor)SpinnerLogelaKop.getEditor()).getTextField().setEditable(false);
 		
 		
 		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -299,23 +303,23 @@ public class hotelHautatu extends JFrame {
 		rdbtnBanakakoa.setEnabled(false);
 		
 		
-		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnBanakakoa.setBounds(26, 233, 109, 23);
+		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.LEFT);
+		rdbtnBanakakoa.setBounds(36, 157, 109, 23);
 		getContentPane().add(rdbtnBanakakoa);
 		rdbtnBinakakoa.setEnabled(false);
 		
-		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnBinakakoa.setBounds(139, 233, 89, 23);
+		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.LEFT);
+		rdbtnBinakakoa.setBounds(36, 210, 103, 23);
 		getContentPane().add(rdbtnBinakakoa);
 		
 		lblGelaMota.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblGelaMota.setBounds(36, 195, 168, 31);
+		lblGelaMota.setBounds(32, 119, 168, 31);
 		getContentPane().add(lblGelaMota);
 		
 		
 		rdbtnUmeentzat.setEnabled(false);
-		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
+		rdbtnUmeentzat.setBounds(36, 261, 103, 23);
 		getContentPane().add(rdbtnUmeentzat);
 		
 		
@@ -338,6 +342,7 @@ public class hotelHautatu extends JFrame {
 		getContentPane().add(amaieraDateChooser);
 		hasieraDateChooser.setEnabled(true);
 		amaieraDateChooser.setEnabled(false);
+		btnCheckinaGorde.setEnabled(true);
 		
 		alCheckin = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -354,8 +359,7 @@ public class hotelHautatu extends JFrame {
 					amaieraDateChooser.setEnabled(true);
 					hasieraDateChooser.setEnabled(false);
 				}
-				
-				System.out.println("kaka");
+			btnCheckinaGorde.setEnabled(false);
 			}
 		};
 		btnCheckinaGorde.addActionListener(alCheckin);
@@ -367,6 +371,7 @@ public class hotelHautatu extends JFrame {
 				rdbtnBinakakoa.setSelected(false);
 				rdbtnUmeentzat.setSelected(false);
 				SpinnerLogelaKop.setEnabled(true);
+						
 				gelaMota=rdbtnBanakakoa.getText();
 				
 				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
