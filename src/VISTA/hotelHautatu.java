@@ -358,8 +358,9 @@ public class hotelHautatu extends JFrame {
 					amaieraDateChooser.setSelectableDateRange(hasieraDateChooser.getDate(), null);
 					amaieraDateChooser.setEnabled(true);
 					hasieraDateChooser.setEnabled(false);
+					btnCheckinaGorde.setEnabled(false);
 				}
-			btnCheckinaGorde.setEnabled(false);
+			
 			}
 		};
 		btnCheckinaGorde.addActionListener(alCheckin);
