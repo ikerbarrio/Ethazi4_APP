@@ -176,8 +176,7 @@ public class hotelHautatu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
-				String strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
-				String strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
+				
 				
 				ondo = true;	
 			
@@ -220,7 +219,6 @@ public class hotelHautatu extends JFrame {
 						ondo = false;
 					}
 					
-					
 					if((int)SpinnerLogelaKop.getValue()==0) {
 						JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
 						ondo = false;
@@ -230,7 +228,7 @@ public class hotelHautatu extends JFrame {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
 						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 						System.out.println(strDateHasiera);
-						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera)) {
+						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
 							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
@@ -256,9 +254,10 @@ public class hotelHautatu extends JFrame {
 					
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
-					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera);
+					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue());
 					
-					//marka
+					//Metodoak.logelaKopAldatu(cod_logela, gelaMota,logela_kop);
+					
 			
 				}
 				

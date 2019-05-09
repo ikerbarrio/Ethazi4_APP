@@ -350,8 +350,8 @@ public class Ordainketa extends JFrame {
 		
 		alBAurrera = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				cod_logela = Metodoak.selectCod_logela(hotela, gelaMota);
-				Metodoak.logelaKopAldatu(cod_logela, gelaMota,logela_kop);
+				//cod_logela = Metodoak.selectCod_logela(hotela, gelaMota);
+				
 				m.FitxeroaIrakurri();
 //				MetodoakVista.seigarrenera(DNI);
 				dispose();

@@ -343,7 +343,7 @@ public class Kontsultak {
 	//INSERTAR DATOS EN LA TABLA DE RESERBAS
 	
 	
-	public static void ReserbaDatuakGorde(String hotelIena, int id, double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData) {
+	public static void ReserbaDatuakGorde(String hotelIena, int id, double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -356,8 +356,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,id,prezioa,logelaMota,codLogela,hasieraData, amaieraData)"
-					+ " VALUES(?,?,?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,id,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop)"
+					+ " VALUES(?,?,?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, hotelIena);
@@ -367,6 +367,7 @@ public class Kontsultak {
 			preparedStmt.setInt(5, codLogela);
 			preparedStmt.setString(6, hasieraData);
 			preparedStmt.setString(7, amaieraData);
+			preparedStmt.setInt(8, logeolaKop);
 
 			preparedStmt.execute();
 
@@ -557,6 +558,60 @@ public class Kontsultak {
 			System.out.println(e.getMessage());
 		}
 		return etxeak;
+	}
+	
+	public static int selectLogelaKop(String data) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int kop =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SUM(LOGELAKOP) FROM RESERBA WHERE AMAIERADATA LIKE '" +data +"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				kop = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return kop;
+		
+	}
+	
+	public static int selectMaximoLogelaKop(int cod_logela) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int kop =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT LOGELAKOP FROM LOGELAMOTA WHERE COD_LOGELA = "+cod_logela);
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				kop = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return kop;
+		
 	}
 	
 	
