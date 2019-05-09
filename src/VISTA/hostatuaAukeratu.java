@@ -50,7 +50,8 @@ public class hostatuaAukeratu extends JFrame {
 		
 		alBtnEtxea = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MetodoakVista.etxeaErostera();
+				dispose();
 			}
 		};
 		btnEtxea.addActionListener(alBtnEtxea);
@@ -61,7 +62,8 @@ public class hostatuaAukeratu extends JFrame {
 		
 		alBtnApartamentua = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MetodoakVista.apartamentuaErostera();
+				dispose();
 			}
 		};
 		btnApartamentua.addActionListener(alBtnApartamentua);
