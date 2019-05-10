@@ -670,7 +670,7 @@ public class Kontsultak {
 		return logelaKop; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
-	public static int selectSumaLogelaKopPorHotel(int id) { // arraylist bueltatu behar du
+	public static int selectSumaLogelaKopPorHotel(int id, String data) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
 		int kop =0;
@@ -681,7 +681,7 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SUM(LOGELAKOP) FROM RESERBA WHERE ID = " +id);
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SUM(LOGELAKOP) FROM RESERBA WHERE ID = " +id+" AND AMAIERADATA LIKE '"+data+"'");
 
 			while (rs.next()) {
 

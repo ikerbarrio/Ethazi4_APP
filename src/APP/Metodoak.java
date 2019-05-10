@@ -520,7 +520,7 @@ public class Metodoak {
 	        					logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
 	        					System.out.println("Okupatuta: "+okupatutak);
 	        					
-	        					logelaKopHotel = Kontsultak.selectSumaLogelaKopPorHotel(Kontsultak.selectID(cod_logela));
+	        					logelaKopHotel = Kontsultak.selectSumaLogelaKopPorHotel(Kontsultak.selectID(cod_logela),datak_DB.get(i));
 	        			        System.out.println("LogelaKopHotel: "+logelaKopHotel);
 	        			        logelaKopHotel += logelaKop;
 	        			        if(maximoLogelaKopHotel<logelaKopHotel) {
