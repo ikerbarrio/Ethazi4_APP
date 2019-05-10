@@ -44,4 +44,16 @@ public class MetodoakVista {
 		hostatuaAukeratu.setVisible(true);
 		hostatuaAukeratu.setBounds(550, 200, 642, 467);
 	}
+	
+	public static void apartamentuaErostera() {
+		apartamentuHautatu apartamentuHautatu = new apartamentuHautatu();
+		apartamentuHautatu.setVisible(true);
+		apartamentuHautatu.setBounds(550, 200, 642, 467);
+	}
+	
+	public static void etxeaErostera() {
+		etxeHautatu etxeHautatu = new etxeHautatu();
+		etxeHautatu.setVisible(true);
+		etxeHautatu.setBounds(550, 200, 642, 467);
+	}
 }

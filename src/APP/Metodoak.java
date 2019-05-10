@@ -379,6 +379,7 @@ public class Metodoak {
 		        
 //		    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
 
+
 		    
 //		    if (mesFinal > mesInicio) {
 //		    	
@@ -392,6 +393,28 @@ public class Metodoak {
 //		    	
 //		 
 //		    }
+
+	  
+	        
+//	        int dias = diaFinal - diaInicio;
+	        
+//	    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
+
+	    
+//	    if (mesFinal > mesInicio) {
+//	    	
+//		    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
+//		    
+//		    int sumaPorMes=	mesFinal -mesInicio;
+//		    sumaPorMes = sumaPorMes *30;
+//		    dias = dias + sumaPorMes;
+//		    
+//	    System.out.println(" aplicando la diferencia del mes " + dias);
+//	    	
+//	 
+//	    }
+
+	       
 
 		        System.out.println(diaFinal);
 		        System.out.println(mesFinal);
@@ -457,6 +480,17 @@ public class Metodoak {
 		       
 
 
+
+	   
+	        
+
+//	        System.out.println("Años: " + anios);
+//	        System.out.println("Meses: " + meses);
+
+	     
+
+
+
 		        System.out.println("Años: " + anios);
 		        System.out.println("Meses: " + meses);
 		   
@@ -470,13 +504,18 @@ public class Metodoak {
 	  }
 
 	
-	public boolean reserbaFechaKalkulatu(String fechaInicio,String fechaFinal) {
+	public boolean reserbaFechaKalkulatu(String fechaInicio,String fechaFinal, int logelaKop, String hotelIzena, String gelaMota) {
 	        
 	        boolean ondo = true;
 	        ArrayList<String> datak_DB = new ArrayList();
 	        datak_DB = Kontsultak.selectAmaieraDatak();
 	        String fechaInicio_DB;
-	        
+	        int okupatutak=0;
+	        int emaitza=0;//resta entre el maximo de habitaciones permitidas y ocupadas
+	        int cod_logela=0;
+	        int maximoLogelaKop=0;//maximo de habitaciones de un tipo de cod_logela
+	        int maximoLogelaKopGenerala=0;//maximo de habitaciones permitidas en el hotel
+	        int logelaKop_DB=0;//numero de habitaciones de un tipo de cod_logela en la tabla de reserba
 	
 	        String[] aFechaIng = fechaInicio.split("/");
 	        Integer diaInicio = Integer.parseInt(aFechaIng[0]);
@@ -502,7 +541,8 @@ public class Metodoak {
 	        				aFecha = fechaFinal.split("/");
 	        				diaFinal = Integer.parseInt(aFecha[0]);
 	        				if(diaInicio<=diaFinal) {
-	        					ondo = false;
+	        					okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+	        					System.out.println("Okupatuta: "+okupatutak);
 	        				}
 	        					
 	        			}
@@ -513,7 +553,8 @@ public class Metodoak {
         				aFecha = fechaFinal.split("/");
         				mesFinal = Integer.parseInt(aFecha[0]);
         				if(mesInicio<=mesFinal) {
-        					ondo = false;
+        					okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+        					System.out.println(okupatutak);
         				}
 	        			
 	        		}
@@ -524,15 +565,56 @@ public class Metodoak {
     				aFecha = fechaFinal.split("/");
     				anioFinal = Integer.parseInt(aFecha[0]);
     				if(anioInicio<=anioFinal) {
-    					ondo = false;
+    					okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+    					System.out.println(okupatutak);
     				}
 	        	}
 	        }
-	       
+	        
+	        
+	        cod_logela = Kontsultak.selectCod_logela(hotelIzena, gelaMota);
+	        maximoLogelaKop = Kontsultak.selectMaximoLogelaKop(cod_logela);
+	        logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+	        logelaKop_DB += logelaKop;
+	        maximoLogelaKopGenerala = 50;
+	        emaitza = maximoLogelaKopGenerala - okupatutak;
+	        
+	        if(maximoLogelaKop<logelaKop_DB) {
+	        	ondo = false;
+	        }
+	        
+	        System.out.println("Numero de habitaciones elegidas: "+logelaKop);
+	        System.out.println("Numero de habitaciones en la BD de cod_logela "+cod_logela+": "+logelaKop_DB);
+	        System.out.println("Logela okupatutak: "+okupatutak);
+	        System.out.println("Maximologelakop de cod_logela "+cod_logela+": "+maximoLogelaKop);
+	        System.out.println("Maximo general del hotel: "+maximoLogelaKopGenerala);
+	        
+	        
+	        if(emaitza<logelaKop) {
+	        	ondo = false;
+	        }else {
+	        	emaitza-=logelaKop;
+	        }
+	        System.out.println("Habitaciones restantes en el hotel: "+emaitza);
+	        
 			return ondo;
 
 	    }
+	
+	public static int logelaKopKalkulatu(String data) {
+		int okupatutak=0;
+		
+		okupatutak = Kontsultak.selectLogelaKop(data);
+		
+		return okupatutak;
+	}
 
-
+	public static ArrayList apartamentuIzenaPantailaratu(String hiria) {
+		return Kontsultak.apartamentuIzenaPantailaratu(hiria);
+	}
+	
+	public static ArrayList etxeIzenaPantailaratu(String hiria) {
+		return Kontsultak.etxeIzenaPantailaratu(hiria);
+	}
 
 }

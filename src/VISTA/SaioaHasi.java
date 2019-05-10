@@ -18,6 +18,7 @@ import APP.*;
 import DB.*;
 
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class SaioaHasi extends JFrame {
 
@@ -37,6 +38,7 @@ public class SaioaHasi extends JFrame {
 	private ActionListener alBIrten;
 	private ActionListener alBSaioaSortu;
 	private JButton btnSaioaSortu = new JButton("Saioa sortu");
+	private JLabel lblSaioaHasi = new JLabel("SAIOA HASI");
 
 	
 	public SaioaHasi(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
@@ -124,6 +126,12 @@ public class SaioaHasi extends JFrame {
 		btnSaioaSortu.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSaioaSortu.setBounds(186, 335, 177, 33);
 		getContentPane().add(btnSaioaSortu);
+		
+		
+		lblSaioaHasi.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSaioaHasi.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblSaioaHasi.setBounds(184, 50, 249, 45);
+		getContentPane().add(lblSaioaHasi);
 		
 		}
 }

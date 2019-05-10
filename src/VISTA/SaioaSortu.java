@@ -207,7 +207,7 @@ public class SaioaSortu extends JFrame {
 					}
 				}
 				
-			
+				
 				
 				//Dena ondo badago erabiltzailea sartzen du
 				if(ondo) {
