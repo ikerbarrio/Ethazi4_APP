@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,6 +27,7 @@ import javax.swing.SwingConstants;
 import APP.Metodoak;
 import APP.MetodoakVista;
 import DB.Kontsultak;
+import com.toedter.calendar.JDateChooser;
 
 public class SaioaSortu extends JFrame {
 
@@ -54,13 +57,13 @@ public class SaioaSortu extends JFrame {
 	private String sexua;
 	private String data;
 	private JPasswordField pasahitzaErrepikatu;
-	private final JSpinner jaioData = new JSpinner();
-	private ArrayList <String>arrayDNI = new ArrayList();
+	private ArrayList<String> arrayDNI = new ArrayList();
+	JDateChooser jaiotzeDateChooser = new JDateChooser();
 
 	/**
 	 * Create the frame.
 	 */
-	public SaioaSortu(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
+	public SaioaSortu(double prezioFinala, String hotela, String gelaMota, int logela_kop) {
 		this.setSize(478, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,8 +71,6 @@ public class SaioaSortu extends JFrame {
 		getContentPane().setLayout(null);
 		btnAurrera.setBounds(520, 382, 89, 23);
 		getContentPane().add(btnAurrera);
-		
-		
 
 		txtIzena = new JTextField();
 		txtIzena.setBounds(264, 57, 182, 36);
@@ -103,21 +104,20 @@ public class SaioaSortu extends JFrame {
 		rdbtnEmakumea.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnEmakumea.setBounds(337, 335, 109, 23);
 		getContentPane().add(rdbtnEmakumea);
-		
+
 		alGizona = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				rdbtnGizona.setSelected(true);
 				rdbtnEmakumea.setSelected(false);
-				
 
 			}
 		};
 		rdbtnGizona.addActionListener(alGizona);
-		
+
 		alEmakumea = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				rdbtnGizona.setSelected(false);
 				rdbtnEmakumea.setSelected(true);
 
@@ -138,94 +138,84 @@ public class SaioaSortu extends JFrame {
 		alBAurrera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				boolean ondo = true;//balidazioak egiteko
-				
-				//Izena balidatzen du
+				boolean ondo = true;// balidazioak egiteko
+
+				// Izena balidatzen du
 				Pattern p1 = Pattern.compile("[A-Z]([a-z]*)+$");
 				Matcher m1 = p1.matcher(txtIzena.getText());
-				if(!m1.matches()) {
+				if (!m1.matches()) {
 					JOptionPane.showMessageDialog(null, "Izena txarto dago");
 					ondo = false;
 				}
-				
-				//Abizena balidatzen du
+
+				// Abizena balidatzen du
 				Pattern p2 = Pattern.compile("[A-Z]([a-z]*)+$");
 				m1 = p2.matcher(txtAbizena.getText());
-				if(!m1.matches()) {
+				if (!m1.matches()) {
 					JOptionPane.showMessageDialog(null, "Abizena txarto dago");
 					ondo = false;
 				}
-				
-				//NAN balidatzen du
+
+				// NAN balidatzen du
 				Pattern p3 = Pattern.compile("[0-9]{8}[A-Z]");
 				m1 = p3.matcher(txtNAN.getText());
-				if(m1.matches()) {//NAN pattern expresioa betetzen badu letra begiratzen dugu
-					if(Metodoak.NANbalidatu(txtNAN.getText())) {
-					}else {
+				if (m1.matches()) {// NAN pattern expresioa betetzen badu letra begiratzen dugu
+					if (Metodoak.NANbalidatu(txtNAN.getText())) {
+					} else {
 						JOptionPane.showMessageDialog(null, "NAN letra txarto dago");
 						ondo = false;
 					}
-				}else {
+				} else {
 					JOptionPane.showMessageDialog(null, "NAN txarto dago");
-					ondo = false;//NAN-aren letra txarto badago ondo=false
+					ondo = false;// NAN-aren letra txarto badago ondo=false
 				}
-				
-				//Pasahitza hutsik badago begiratzen du
-				if(pasahitza.getText().isEmpty()) {
+
+				// Pasahitza hutsik badago begiratzen du
+				if (pasahitza.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Pasahitza bat sartu");
-					ondo=false;
+					ondo = false;
 				}
-				
-				//Pasahitzak berdinak diren begiratzen du
-				if(!pasahitza.getText().equals(pasahitzaErrepikatu.getText())) {
+
+				// Pasahitzak berdinak diren begiratzen du
+				if (!pasahitza.getText().equals(pasahitzaErrepikatu.getText())) {
 					JOptionPane.showMessageDialog(null, "Pasahitzak desberdinak dira");
 					ondo = false;
-				}else {
-					pasahitzaEnkriptatuta = Metodoak.getMD5(pasahitza.getText());//Pasahitza enkriptatzen du
+				} else {
+					pasahitzaEnkriptatuta = Metodoak.getMD5(pasahitza.getText());// Pasahitza enkriptatzen du
 				}
-				
-				//Gizona edo emakumea aukeratu duen begiratzen du
-				if(!rdbtnEmakumea.isSelected() && !rdbtnGizona.isSelected()) {
+
+				// Gizona edo emakumea aukeratu duen begiratzen du
+				if (!rdbtnEmakumea.isSelected() && !rdbtnGizona.isSelected()) {
 					JOptionPane.showMessageDialog(null, "Aukeratu sexua");
 					ondo = false;
-				}else if(rdbtnGizona.isSelected()){
-						sexua="V";
-					}else {
-						sexua="M";
-					}
-				
-				//JaioData to String
-				data = new SimpleDateFormat("yyyy/MM/dd").format(jaioData.getValue());
-				
-				
+				} else if (rdbtnGizona.isSelected()) {
+					sexua = "V";
+				} else {
+					sexua = "M";
+				}
+
+				// JaioData to String
+
 				arrayDNI = Kontsultak.selectDNI();
-				
-				for(int i=0;i<arrayDNI.size();i++) {
-					if(txtNAN.getText().equals(arrayDNI.get(i))) {
+
+				for (int i = 0; i < arrayDNI.size(); i++) {
+					if (txtNAN.getText().equals(arrayDNI.get(i))) {
 						JOptionPane.showMessageDialog(null, "NAN hori badago erregistratuta");
-						ondo=false;
+						ondo = false;
 					}
 				}
-				
-				
-				
-				//Dena ondo badago erabiltzailea sartzen du
-				if(ondo) {
-					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), data, sexua, pasahitzaEnkriptatuta);
-					MetodoakVista.ordainketaLeihora(prezioFinala,hotela,gelaMota,logela_kop);
+
+				// Dena ondo badago erabiltzailea sartzen du
+				if (ondo) {
+					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), data, sexua,
+							pasahitzaEnkriptatuta);
+					MetodoakVista.ordainketaLeihora(prezioFinala, hotela, gelaMota, logela_kop);
 					dispose();
 				}
-				
+
 			}
 		};
 		btnAurrera.addActionListener(alBAurrera);
-
-		jaioData.setFont(new Font("Tahoma", Font.PLAIN, 20));
-
-		jaioData.setModel(new SpinnerDateModel(new Date(1546297200000L), null, null, Calendar.DAY_OF_YEAR));
-		jaioData.setBounds(264, 292, 182, 36);
-
-		getContentPane().add(jaioData);
 
 		pasahitza = new JPasswordField();
 		pasahitza.setBounds(264, 198, 182, 36);
@@ -242,7 +232,7 @@ public class SaioaSortu extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
+				MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota, logela_kop);
 				dispose();
 
 			}
@@ -260,8 +250,7 @@ public class SaioaSortu extends JFrame {
 			}
 		};
 		btnHasiera.addActionListener(alBHasiera);
-		
-		
+
 		lblNan.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNan.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNan.setBounds(153, 149, 101, 36);
@@ -269,11 +258,19 @@ public class SaioaSortu extends JFrame {
 		lblPasahitzaErrepikatu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPasahitzaErrepikatu.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPasahitzaErrepikatu.setBounds(72, 246, 182, 36);
-		
+
 		getContentPane().add(lblPasahitzaErrepikatu);
-		
+
 		pasahitzaErrepikatu = new JPasswordField();
 		pasahitzaErrepikatu.setBounds(264, 245, 182, 36);
 		getContentPane().add(pasahitzaErrepikatu);
+
+		jaiotzeDateChooser.setBounds(264, 292, 182, 36);
+		getContentPane().add(jaiotzeDateChooser);
+
+		Date dateInit = null;
+		LocalDate minDate = LocalDate.now();
+		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		jaiotzeDateChooser.setSelectableDateRange(null, hasieraDate);
 	}
 }
