@@ -261,7 +261,7 @@ public class hotelHautatu extends JFrame {
 					cod_logela=Kontsultak.selectCod_logela(hotela, gelaMota);
 					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
 					
-					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
+					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue(); //marka
 					
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
@@ -269,7 +269,7 @@ public class hotelHautatu extends JFrame {
 					
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
-					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue());
+					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue(),0,0);
 					
 			
 				}
@@ -402,8 +402,9 @@ public class hotelHautatu extends JFrame {
 					amaieraDateChooser.setSelectableDateRange(hasieraDateChooser.getDate(), null);
 					amaieraDateChooser.setEnabled(true);
 					hasieraDateChooser.setEnabled(false);
+					btnCheckinaGorde.setEnabled(false);
 				}
-			btnCheckinaGorde.setEnabled(false);
+			
 			}
 		};
 		btnCheckinaGorde.addActionListener(alCheckin);

@@ -542,6 +542,7 @@ public class Metodoak {
 	        				diaFinal = Integer.parseInt(aFecha[0]);
 	        				if(diaInicio<=diaFinal) {
 	        					okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+	        					logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
 	        					System.out.println("Okupatuta: "+okupatutak);
 	        				}
 	        					
@@ -554,6 +555,7 @@ public class Metodoak {
         				mesFinal = Integer.parseInt(aFecha[0]);
         				if(mesInicio<=mesFinal) {
         					okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+        					logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
         					System.out.println(okupatutak);
         				}
 	        			
@@ -563,9 +565,10 @@ public class Metodoak {
     				aFechaIng = fechaInicio_DB.split("/");
     				anioInicio = Integer.parseInt(aFechaIng[0]);
     				aFecha = fechaFinal.split("/");
-    				anioFinal = Integer.parseInt(aFecha[0]);
+    				anioFinal = Integer.parseInt(aFecha[0]);    				
     				if(anioInicio<=anioFinal) {
     					okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+    					logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
     					System.out.println(okupatutak);
     				}
 	        	}
@@ -574,7 +577,7 @@ public class Metodoak {
 	        
 	        cod_logela = Kontsultak.selectCod_logela(hotelIzena, gelaMota);
 	        maximoLogelaKop = Kontsultak.selectMaximoLogelaKop(cod_logela);
-	        logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+	        
 	        logelaKop_DB += logelaKop;
 	        maximoLogelaKopGenerala = 50;
 	        emaitza = maximoLogelaKopGenerala - okupatutak;
