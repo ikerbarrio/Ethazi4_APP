@@ -641,6 +641,89 @@ public class Kontsultak {
 		
 	}
 	
+	public static ArrayList selectLogelaKop() { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int kop;
+		ArrayList<Integer> logelaKop = new ArrayList();
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT LOGELAKOP FROM RESERBA");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				
+				kop = rs.getInt(1);
+				logelaKop.add(kop);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return logelaKop; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
+	public static int selectSumaLogelaKopPorHotel(int id) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int kop =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SUM(LOGELAKOP) FROM RESERBA WHERE ID = " +id);
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				kop = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return kop;
+		
+	}
+	
+	public static int selectID(int cod_logela) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int id =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT ID FROM LOGELAMOTA WHERE COD_LOGELA = " +cod_logela);
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				id = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+		
+	}
+	
 }
 
 	
