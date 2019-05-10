@@ -267,6 +267,7 @@ public class SaioaSortu extends JFrame {
 
 		jaiotzeDateChooser.setBounds(264, 292, 182, 36);
 		getContentPane().add(jaiotzeDateChooser);
+		((JTextField) jaiotzeDateChooser.getDateEditor()).setEditable(false);
 
 		Date dateInit = null;
 		LocalDate minDate = LocalDate.now();
