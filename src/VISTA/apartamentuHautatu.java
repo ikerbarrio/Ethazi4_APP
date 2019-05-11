@@ -80,6 +80,7 @@ public class apartamentuHautatu extends JFrame {
 	private DateFormat dateFormat;
 	private String strDateHasiera;
 	private String strDateAmaiera;
+	private String apartamentuIzena;
 	
 
 	
@@ -140,7 +141,7 @@ public class apartamentuHautatu extends JFrame {
 					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboApartamentuak.getSelectedItem().toString()));
 					
 //					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
-					
+					apartamentuIzena = comboApartamentuak.getSelectedItem().toString();
 				
 					
 					
@@ -263,7 +264,7 @@ public class apartamentuHautatu extends JFrame {
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));																					//0los id de papartamentuy y etxea
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
 				
-					Kontsultak.ReserbaDatuakGordeApartamentua("prueba", prezioFinala, gelaMota, cod_logela, strDateHasiera, strDateHasiera, logela_kop, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()));
+					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, cod_logela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()));
 					//marka
 			
 				}
