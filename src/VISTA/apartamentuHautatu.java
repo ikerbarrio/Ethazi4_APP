@@ -141,7 +141,7 @@ public class apartamentuHautatu extends JFrame {
 					
 //					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
 					
-					
+				
 					
 					
 				}
@@ -152,6 +152,7 @@ public class apartamentuHautatu extends JFrame {
 				rdbtnBanakakoa.setEnabled(true);
 				rdbtnBinakakoa.setEnabled(true);
 			}
+			
 		};
 		comboApartamentuak.addActionListener(al);
 		getContentPane().add(comboApartamentuak);
@@ -231,8 +232,14 @@ public class apartamentuHautatu extends JFrame {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
 						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 						System.out.println(strDateHasiera);
+						
+						
+						
+						//MARKA DEL CALENDARIO
+						
+						
 						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
-							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
+							//JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
 							amaieraDateChooser.setDate(null);
@@ -240,6 +247,7 @@ public class apartamentuHautatu extends JFrame {
 					}
 					/////////////////////////////////////
 				if(ondo) {
+		
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 					
 					
@@ -252,10 +260,10 @@ public class apartamentuHautatu extends JFrame {
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
 					
-					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
+					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));																					//0los id de papartamentuy y etxea
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
-					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue());
-					
+				
+					Kontsultak.ReserbaDatuakGordeApartamentua("prueba", prezioFinala, gelaMota, cod_logela, strDateHasiera, strDateHasiera, logela_kop, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()));
 					//marka
 			
 				}
@@ -283,6 +291,7 @@ public class apartamentuHautatu extends JFrame {
 		txtInformazioa.setBounds(265, 103, 315, 123);
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
+		SpinnerLogelaKop.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		SpinnerLogelaKop.setEnabled(false);
 		
 		
@@ -325,6 +334,10 @@ public class apartamentuHautatu extends JFrame {
 				
 		btnCheckinaGorde.setBounds(265, 279, 141, 31);
 		getContentPane().add(btnCheckinaGorde);
+		hasieraDateChooser.getCalendarButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		
 		hasieraDateChooser.setBounds(265, 237, 141, 31);
 		getContentPane().add(hasieraDateChooser);
@@ -364,9 +377,9 @@ public class apartamentuHautatu extends JFrame {
 				rdbtnBinakakoa.setSelected(false);
 				rdbtnUmeentzat.setSelected(false);
 				SpinnerLogelaKop.setEnabled(true);
-				gelaMota=rdbtnBanakakoa.getText();
+				gelaMota=rdbtnBanakakoa.getText();					
 				
-				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
+			//	SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 
 			}
 		};
@@ -381,7 +394,7 @@ public class apartamentuHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnBinakakoa.getText();
 				
-				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
+				//SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 			}
 		};
 		rdbtnBinakakoa.addActionListener(alBinakakoa);
@@ -395,7 +408,7 @@ public class apartamentuHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnUmeentzat.getText();
 				
-				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
+			//	SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 			}
 		};
 		rdbtnUmeentzat.addActionListener(alUmeentzat);
