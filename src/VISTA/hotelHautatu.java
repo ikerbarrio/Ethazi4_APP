@@ -27,15 +27,8 @@ import javax.swing.SwingConstants;
 import com.toedter.calendar.JDateChooser;
 import APP.Metodoak;
 import APP.MetodoakVista;
-<<<<<<< HEAD
 import DB.Kontsultak;
 
-public class hotelHautatu extends JFrame {
-	/**
-	 * Frame-aren atributu eta komponente guztiak sortu
-	 */
-=======
-import DB.Kontsultak;
 import javax.swing.JFormattedTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -45,7 +38,6 @@ public class hotelHautatu extends JFrame {
 	/**
 	 * Frame-aren atributu eta komponente guztiak sortu 
 	 */
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
 	Metodoak m = new Metodoak();
 	DB.Kontsultak k = new DB.Kontsultak();
 	private ActionListener al;
@@ -54,34 +46,30 @@ public class hotelHautatu extends JFrame {
 	private ActionListener alBanakakoa;
 	private ActionListener alBinakakoa;
 	private ActionListener alUmeentzat;
-<<<<<<< HEAD
 	private ActionListener alCheckin;
-	private JPanel contentPanel;
+//	private JPanel contentPanel;
+//	// private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
+//	private JComboBox comboHiria = new JComboBox();
+//	private ArrayList<String> hotelak = new ArrayList();
+//	private ArrayList hiriak = new ArrayList();
+//	private JLabel lblHotelak = new JLabel("HOTELA AUKERATU");
+//	private JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
+//	private JComboBox comboHotelak = new JComboBox();
+//	private JButton btnAurrera = new JButton("AURRERA");
+//	private JButton btnAtzera = new JButton("ATZERA");
+//	private JTextField txtInformazioa = new JTextField();
+//	private int gauKopurua;
+//	private double prezioFinala;
+//	private String hotela = " ";
+//	private JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
+//	private JLabel lblGelaMota = new JLabel("Gela mota");
+//	private JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
+//	private ActionListener alCheckin;
+//	private JPanel contentPanel;
+//
+	
+	
 	private JSpinner SpinnerLogelaKop = new JSpinner();
-	// private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
-	private JComboBox comboHiria = new JComboBox();
-	private ArrayList<String> hotelak = new ArrayList();
-	private ArrayList hiriak = new ArrayList();
-	private JLabel lblHotelak = new JLabel("HOTELA AUKERATU");
-	private JLabel lblAukeratu = new JLabel("HIRIA AUKERATU");
-	private JComboBox comboHotelak = new JComboBox();
-	private JButton btnAurrera = new JButton("AURRERA");
-	private JButton btnAtzera = new JButton("ATZERA");
-	private JTextField txtInformazioa = new JTextField();
-	private int gauKopurua;
-	private double prezioFinala;
-	private String hotela = " ";
-	private JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
-	private JLabel lblGelaMota = new JLabel("Gela mota");
-	private JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
-=======
-	private ActionListener alCheckin;
-	private JPanel contentPanel;
-
-	private JSpinner SpinnerLogelaKop = new JSpinner();
- 
-
-
 	//private JLabel lblGauKopurua = new JLabel("GAU KOPURUA");
 	private JComboBox comboHiria = new JComboBox();
 	private ArrayList <String>hotelak = new ArrayList();
@@ -98,7 +86,6 @@ public class hotelHautatu extends JFrame {
 	private JLabel lblLogelaKopurua = new JLabel("LOGELA KOPURUA");
 	private JLabel lblGelaMota = new JLabel("Gela mota");
 	private JRadioButton rdbtnBanakakoa = new JRadioButton("Banakakoa");
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
 	private JRadioButton rdbtnBinakakoa = new JRadioButton("Bikoitza");
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; // CREO VARIABLE PARA SABER EL TIPO DE GELA
@@ -116,80 +103,11 @@ public class hotelHautatu extends JFrame {
 	private DateFormat dateFormat;
 	private String strDateHasiera;
 	private String strDateAmaiera;
-<<<<<<< HEAD
 
 	/**
 	 * Frame-aren komponente guztiak
 	 */
-	public hotelHautatu() {
-
-		setForeground(Color.DARK_GRAY);
-		getContentPane().setForeground(Color.DARK_GRAY);
-		this.setSize(478, 300);
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(550, 200, 635, 455);
-		getContentPane().setLayout(null);
-
-		comboHiria.setBounds(412, 74, 168, 31);
-//		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
-//		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
-//		lblGauKopurua.setBounds(26, 107, 168, 50);
-//		getContentPane().add(lblGauKopurua);
-//		
-		comboHiria.setBounds(200, 65, 168, 31);
-		getContentPane().add(comboHiria);
-		hiriak = Metodoak.hiriakPantailaratu();
-		comboHiria.addItem("Aukeratu");
-		for (int n = 0; n < hiriak.size(); n++) {
-			comboHiria.addItem(hiriak.get(n));
-		}
-
-		al = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboHotelak.removeAllItems();
-
-				hotelak = Metodoak.hotelIzenaPantailaratu(comboHiria.getSelectedItem().toString());
-
-				for (int n = 0; n < hotelak.size(); n++) {
-					comboHotelak.addItem(hotelak.get(n));
-				}
-
-			}
-		};
-		comboHiria.addActionListener(al);
-
-		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHotelak.setBounds(26, 28, 190, 28);
-
-		comboHotelak.setBounds(36, 65, 168, 31);
-
-		for (int n = 0; n < hotelak.size(); n++) {
-			comboHotelak.addItem(hotelak.get(n));
-		}
-		al = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				if (comboHotelak.getItemCount() != 0) {
-
-					txtInformazioa
-							.setText(Metodoak.hotelInformazioaPantailaratu(comboHotelak.getSelectedItem().toString()));
-
-//					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
-
-=======
-	
-	
-	
-
-	
-	
-	
-	/**
-	 * Frame-aren komponente guztiak
-	 */
-	public hotelHautatu() {
+	public hotelHautatu() { 
 		getContentPane().setEnabled(false);
 		
 		setForeground(Color.DARK_GRAY);
@@ -255,15 +173,12 @@ public class hotelHautatu extends JFrame {
 					
 					
 					
-					
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
 				}
 				rdbtnUmeentzat.setSelected(false);
 				rdbtnBanakakoa.setSelected(false);
 				rdbtnBinakakoa.setSelected(false);
 				rdbtnUmeentzat.setEnabled(true);
 				rdbtnBanakakoa.setEnabled(true);
-<<<<<<< HEAD
 				rdbtnBinakakoa.setEnabled(true);
 			}
 		};
@@ -302,8 +217,6 @@ public class hotelHautatu extends JFrame {
 
 				for (int i = 0; i < hotelak.size(); i++) {
 					if (comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
-
-=======
 				rdbtnBinakakoa.setEnabled(true);
 			}
 		};
@@ -320,10 +233,6 @@ public class hotelHautatu extends JFrame {
 				dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 				
 				
-
-				
-			
-					
 					//gauKopurua=(int)spinerGauKopurua.getValue();
 
 				ondo = true;
@@ -344,9 +253,7 @@ public class hotelHautatu extends JFrame {
 					for(int i=0;i<hotelak.size();i++) {
 						if(comboHotelak.getSelectedItem().equals(hotelak.get(i))) {
 							
-																							
-						
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
+													
 						hotela = hotelak.get(i);
 					}
 				}
@@ -401,22 +308,13 @@ public class hotelHautatu extends JFrame {
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota, strDateHasiera,
 							m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
-<<<<<<< HEAD
-					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota,
-							Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera, strDateAmaiera,
-							(int) SpinnerLogelaKop.getValue());
-=======
 					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue(),0,0);
 					
-			
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
 				}
 
 				btnCheckinaGorde.setEnabled(true);
 			}
 		};
-<<<<<<< HEAD
-
 		btnAurrera.addActionListener(al);
 
 		alAtzera = new ActionListener() {
@@ -434,7 +332,6 @@ public class hotelHautatu extends JFrame {
 		txtInformazioa.setEditable(false);
 		txtInformazioa.setBounds(265, 103, 315, 123);
 		getContentPane().add(txtInformazioa);
-=======
 		btnAurrera.setBounds(530, 393, 89, 23);
 		
 		btnAurrera.addActionListener(al);
@@ -461,7 +358,6 @@ public class hotelHautatu extends JFrame {
 
 		txtInformazioa.setBounds(265, 103, 315, 123);
 		getContentPane().add(txtInformazioa);
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
 		txtInformazioa.setColumns(10);
 		SpinnerLogelaKop.setEnabled(false);
 
@@ -469,7 +365,6 @@ public class hotelHautatu extends JFrame {
 //		SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 		SpinnerLogelaKop.setBounds(41, 361, 153, 31);
 		getContentPane().add(SpinnerLogelaKop);
-<<<<<<< HEAD
 //		((JSpinner.DefaultEditor)SpinnerLogelaKop.getEditor()).getTextField().setEditable(false);
 
 		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -490,8 +385,6 @@ public class hotelHautatu extends JFrame {
 		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGelaMota.setBounds(32, 119, 168, 31);
 		getContentPane().add(lblGelaMota);
-
-=======
 //		((JSpinner.DefaultEditor)SpinnerLogelaKop.getEditor()).getTextField().setEditable(false);t
 		
 		
@@ -528,13 +421,10 @@ public class hotelHautatu extends JFrame {
 		getContentPane().add(lblGelaMota);
 
 		
-		
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
 		rdbtnUmeentzat.setEnabled(false);
 
 		rdbtnUmeentzat.setBounds(36, 261, 103, 23);
 		getContentPane().add(rdbtnUmeentzat);
-<<<<<<< HEAD
 
 		Date dateInit = null;
 		LocalDate minDate = LocalDate.now();
@@ -550,13 +440,9 @@ public class hotelHautatu extends JFrame {
 
 		amaieraDateChooser.setBounds(439, 237, 141, 31);
 		((JTextField) amaieraDateChooser.getDateEditor()).setEditable(false);
-=======
 
 		
 		
-		Date dateInit = null;
-		LocalDate minDate = LocalDate.now();
-		Date hasieraDate = Date.from(minDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		((JTextField) hasieraDateChooser.getDateEditor()).setEditable(false);  
 		hasieraDateChooser.setBounds(265, 237, 141, 31);
 		hasieraDateChooser.setSelectableDateRange(hasieraDate, null);
@@ -580,18 +466,12 @@ public class hotelHautatu extends JFrame {
 		btnCheckinaGorde.setBounds(265, 279, 141, 31);
 		getContentPane().add(btnCheckinaGorde);
 		getContentPane().add(hasieraDateChooser);
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
 		getContentPane().add(amaieraDateChooser);
 
 		hasieraDateChooser.setEnabled(true);
 		amaieraDateChooser.setEnabled(false);
 		btnCheckinaGorde.setEnabled(true);
-<<<<<<< HEAD
 
-=======
-
-		
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
 		alCheckin = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ondo = true;
@@ -659,7 +539,11 @@ public class hotelHautatu extends JFrame {
 			}
 		};
 		rdbtnUmeentzat.addActionListener(alUmeentzat);
-
+		}
+	};
 	}
-
 }
+
+	
+
+

@@ -593,15 +593,9 @@ public class Metodoak {
 	        }
 	        
 	       
-	        
-	        
-<<<<<<< HEAD
 	        cod_logela = Kontsultak.selectCod_logela(hotelIzena, gelaMota);
 	        maximoLogelaKop = Kontsultak.selectMaximoLogelaKop(cod_logela);
 	        logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
-=======
-	        
->>>>>>> d340e519cef1312e3df722bdcfc24ce1fc39970d
 	        logelaKop_DB += logelaKop;
 	        
 	        emaitza = maximoLogelaKopHotel - okupatutak;
