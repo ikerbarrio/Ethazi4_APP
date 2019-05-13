@@ -294,6 +294,7 @@ public class etxeHautatu extends JFrame {
 			
 			
 				}
+				btnCheckinaGorde.setEnabled(true);
 				
 				
 			}

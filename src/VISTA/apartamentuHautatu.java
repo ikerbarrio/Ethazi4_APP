@@ -290,7 +290,7 @@ public class apartamentuHautatu extends JFrame {
 			
 				}
 				
-				
+				btnCheckinaGorde.setEnabled(true);
 			}
 		};
 		
@@ -385,12 +385,14 @@ public class apartamentuHautatu extends JFrame {
 				if(ondo) {
 					amaieraDateChooser.setSelectableDateRange(hasieraDateChooser.getDate(), null);
 					amaieraDateChooser.setEnabled(true);
+					hasieraDateChooser.setEnabled(false);
+					btnCheckinaGorde.setEnabled(false);
 				}
-				
-				System.out.println("kaka");
+			
 			}
 		};
 		btnCheckinaGorde.addActionListener(alCheckin);
+		
 		
 		alBanakakoa = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
