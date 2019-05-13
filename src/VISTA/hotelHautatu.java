@@ -86,6 +86,7 @@ public class hotelHautatu extends JFrame {
 	private String strDateAmaiera;
 	
 	
+<<<<<<< HEAD
 	
 
 	
@@ -94,7 +95,15 @@ public class hotelHautatu extends JFrame {
 	/**
 	 * Frame-aren komponente guztiak
 	 */
+=======
+	
+
+	/**
+	 * Frame-aren komponente guztiak
+	 */
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 	public hotelHautatu() {
+<<<<<<< HEAD
 		getContentPane().setEnabled(false);
 		
 		setForeground(Color.DARK_GRAY);
@@ -150,6 +159,60 @@ public class hotelHautatu extends JFrame {
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+=======
+		getContentPane().setEnabled(false);
+		
+		setForeground(Color.DARK_GRAY);
+		getContentPane().setForeground(Color.DARK_GRAY);
+		this.setSize(478, 300);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(550, 200, 635, 455);
+
+		getContentPane().setLayout(null);
+		
+//		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+//		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblGauKopurua.setBounds(26, 107, 168, 50);
+//		getContentPane().add(lblGauKopurua);
+//		
+		comboHiria.setBounds(35, 65, 168, 31);
+		getContentPane().add(comboHiria);
+
+		hiriak = Metodoak.hiriakPantailaratu();
+		comboHiria.addItem("Aukeratu");
+		for(int n = 0; n < hiriak.size(); n++) {
+			comboHiria.addItem(hiriak.get(n));
+		}
+		
+		al = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboHotelak.removeAllItems();
+				
+				hotelak=Metodoak.hotelIzenaPantailaratu(comboHiria.getSelectedItem().toString());
+				
+				for(int n = 0; n < hotelak.size(); n++) {
+					comboHotelak.addItem(hotelak.get(n));
+				}
+				
+			}
+		};
+		comboHiria.addActionListener(al);
+		lblHotelak.setBounds(262, 32, 190, 28);
+		
+		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
+
+
+		comboHotelak.setBounds(32, 90, 168, 31);
+
+		for(int n = 0; n < hotelak.size(); n++) {
+			comboHotelak.addItem(hotelak.get(n));
+		}
+		al = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 				if(comboHotelak.getItemCount()!=0) {		
 					
 
@@ -167,6 +230,7 @@ public class hotelHautatu extends JFrame {
 				rdbtnBinakakoa.setSelected(false);
 				rdbtnUmeentzat.setEnabled(true);
 				rdbtnBanakakoa.setEnabled(true);
+<<<<<<< HEAD
 				rdbtnBinakakoa.setEnabled(true);
 			}
 		};
@@ -176,6 +240,17 @@ public class hotelHautatu extends JFrame {
 		
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+=======
+				rdbtnBinakakoa.setEnabled(true);
+			}
+		};
+		comboHotelak.setBounds(270, 65, 168, 31);
+		comboHotelak.addActionListener(al);
+		lblAukeratu.setBounds(10, 26, 215, 41);
+		
+		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 		al = new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
@@ -239,17 +314,30 @@ public class hotelHautatu extends JFrame {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
 						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 						System.out.println(strDateHasiera);
+						if(strDateHasiera.equals(strDateAmaiera)) {
+							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
+							ondo = false;
+						}
 						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
 							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
 							amaieraDateChooser.setDate(null);
 						}
-					}if (!ondo) {
+					}
+					if (!ondo) {
 						hasieraDateChooser.setEnabled(true);
 						amaieraDateChooser.setEnabled(false);
+<<<<<<< HEAD
 					}
 					/////////////////////////////////////
+=======
+					}
+					/////////////////////////////////////
+					
+					
+					
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 				if(ondo) {
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 					
@@ -325,12 +413,20 @@ public class hotelHautatu extends JFrame {
 //		SpinnerLogelaKop.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 		SpinnerLogelaKop.setBounds(41, 361, 153, 31);
 		getContentPane().add(SpinnerLogelaKop);
+<<<<<<< HEAD
 //		((JSpinner.DefaultEditor)SpinnerLogelaKop.getEditor()).getTextField().setEditable(false);t
 		
 		
 		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		rdbtnBanakakoa.setBounds(6, 159, 109, 23);
+=======
+//		((JSpinner.DefaultEditor)SpinnerLogelaKop.getEditor()).getTextField().setEditable(false);t
+		
+		
+		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 		rdbtnBanakakoa.setEnabled(false);
+<<<<<<< HEAD
 		
 		
 
@@ -341,7 +437,18 @@ public class hotelHautatu extends JFrame {
 		rdbtnBanakakoa.setBounds(36, 157, 109, 23);
 		getContentPane().add(rdbtnBanakakoa);
 
+=======
+		
+		
+
+
+		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.LEFT);
+		rdbtnBanakakoa.setBounds(36, 157, 109, 23);
+		getContentPane().add(rdbtnBanakakoa);
+
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 		rdbtnBinakakoa.setEnabled(false);
+<<<<<<< HEAD
 		
 
 		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.CENTER);
@@ -358,6 +465,22 @@ public class hotelHautatu extends JFrame {
 
 		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGelaMota.setBounds(32, 119, 168, 31);
+=======
+		
+
+		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.CENTER);
+
+		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.LEFT);
+		rdbtnBinakakoa.setBounds(36, 210, 103, 23);
+		getContentPane().add(rdbtnBinakakoa);
+
+		lblGelaMota.setHorizontalAlignment(SwingConstants.CENTER);
+
+		
+
+		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblGelaMota.setBounds(32, 119, 168, 31);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 		getContentPane().add(lblGelaMota);
 
 		

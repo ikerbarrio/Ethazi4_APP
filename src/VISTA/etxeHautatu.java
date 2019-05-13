@@ -101,7 +101,7 @@ public class etxeHautatu extends JFrame {
 		getContentPane().setLayout(null);
 		
 		
-		comboHiria.setBounds(412, 74, 168, 31);
+		comboHiria.setBounds(36, 61, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
 		comboHiria.addItem("Aukeratu");
@@ -127,9 +127,9 @@ public class etxeHautatu extends JFrame {
 		
 		lblEtxeak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblEtxeak.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEtxeak.setBounds(26, 28, 190, 28);
+		lblEtxeak.setBounds(247, 27, 190, 28);
 
-		comboEtxeak.setBounds(32, 65, 168, 31);
+		comboEtxeak.setBounds(259, 61, 168, 31);
 		
 		for(int n = 0; n < etxeak.size(); n++) {
 			comboEtxeak.addItem(etxeak.get(n));
@@ -165,11 +165,9 @@ public class etxeHautatu extends JFrame {
 		
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAukeratu.setBounds(226, 22, 215, 41);
+		lblAukeratu.setBounds(10, 21, 215, 41);
 		getContentPane().add(lblAukeratu);
 		
-		comboHiria.setBounds(265, 65, 168, 31);
-		getContentPane().add(comboHiria);
 		
 		
 		btnAurrera.setBounds(530, 393, 89, 23);
@@ -235,12 +233,20 @@ public class etxeHautatu extends JFrame {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
 						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 						System.out.println(strDateHasiera);
+						if(strDateHasiera.equals(strDateAmaiera)) {
+							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
+							ondo = false;
+						}
 						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera, (int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
 							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
 							amaieraDateChooser.setDate(null);
 						}
+					}
+					if (!ondo) {
+						hasieraDateChooser.setEnabled(true);
+						amaieraDateChooser.setEnabled(false);
 					}
 					/////////////////////////////////////
 				if(ondo) {
@@ -329,22 +335,22 @@ public class etxeHautatu extends JFrame {
 		
 		
 		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnBanakakoa.setBounds(26, 233, 109, 23);
+		rdbtnBanakakoa.setBounds(36, 165, 109, 23);
 		getContentPane().add(rdbtnBanakakoa);
 		rdbtnBinakakoa.setEnabled(false);
 		
 		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnBinakakoa.setBounds(139, 233, 89, 23);
+		rdbtnBinakakoa.setBounds(32, 212, 103, 23);
 		getContentPane().add(rdbtnBinakakoa);
 		
 		lblGelaMota.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblGelaMota.setBounds(36, 195, 168, 31);
+		lblGelaMota.setBounds(32, 119, 168, 31);
 		getContentPane().add(lblGelaMota);
 		
 		
 		rdbtnUmeentzat.setEnabled(false);
-		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
+		rdbtnUmeentzat.setBounds(48, 260, 97, 23);
 		getContentPane().add(rdbtnUmeentzat);
 		
 		
@@ -380,9 +386,10 @@ public class etxeHautatu extends JFrame {
 				if(ondo) {
 					amaieraDateChooser.setSelectableDateRange(hasieraDateChooser.getDate(), null);
 					amaieraDateChooser.setEnabled(true);
+					hasieraDateChooser.setEnabled(false);
+					btnCheckinaGorde.setEnabled(false);
 				}
-				
-				System.out.println("kaka");
+			
 			}
 		};
 		btnCheckinaGorde.addActionListener(alCheckin);
