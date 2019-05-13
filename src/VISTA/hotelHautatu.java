@@ -257,7 +257,13 @@ public class hotelHautatu extends JFrame {
 					cod_logela=Kontsultak.selectCod_logela(hotela, gelaMota);
 					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
 					
+					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
+				if (temporada.equals("alta")) {
+					prezioFinala=(prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue())+50; //marka
+				}else if (temporada.equals("baja")) {
 					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue(); //marka
+				}
+					
 					
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
