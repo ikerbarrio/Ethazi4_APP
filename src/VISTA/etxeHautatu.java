@@ -82,7 +82,8 @@ public class etxeHautatu extends JFrame {
 	private String strDateHasiera;
 	private String strDateAmaiera;
 	private String etxeIzena;	
-
+	private String mota;
+	private int codlogela;
 	
 	
 	
@@ -243,25 +244,48 @@ public class etxeHautatu extends JFrame {
 					}
 					/////////////////////////////////////
 				if(ondo) {
+					
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 					
-					
-					cod_logela=Kontsultak.selectCod_logela(hotela, gelaMota);
-					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
-					
-					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
-					
+					prezioLogela=Kontsultak.selectPrezioa(cod_logela);					
+					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera); 
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
+				
+					
+					
+					//para el metodo de calcular el precio 
+					if(rdbtnBanakakoa.isSelected()) {
+						
+						mota = "Banakakoa";
+						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
+						
+					}else if(rdbtnBinakakoa.isSelected()) {
+						
+						mota = "Binakakoa";
+						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
+						
+					}else if(rdbtnUmeentzat.isSelected()) {
+						
+						mota = "Umeentzat";
+						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
+					}
+	
+					prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
+					
 					
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);		
 					
 				
-					Kontsultak.ReserbaDatuakGordeEtxeak(etxeIzena, 0, prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue(), Kontsultak.etxeIdLortu(etxeIzena), 0);
 					
-					//marka
+					Kontsultak.ReserbaDatuakGordeEtxeak(etxeIzena, 0, prezioFinala, gelaMota,codlogela , strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue(), Kontsultak.etxeIdLortu(etxeIzena), 0);
+					
+					
+				
+					
+			
 			
 				}
 				
