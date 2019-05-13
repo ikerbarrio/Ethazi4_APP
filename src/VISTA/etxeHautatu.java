@@ -263,7 +263,7 @@ public class etxeHautatu extends JFrame {
 						
 					}else if(rdbtnBinakakoa.isSelected()) {
 						
-						mota = "Binakakoa";
+						mota = "Bikoitza";
 						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
 						
 					}else if(rdbtnUmeentzat.isSelected()) {
