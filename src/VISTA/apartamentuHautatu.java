@@ -83,6 +83,7 @@ public class apartamentuHautatu extends JFrame {
 	private String apartamentuIzena;
 	private String mota;
 	private int codLogela=0;
+	private int logelaKop;
 
 	
 	
@@ -282,7 +283,9 @@ public class apartamentuHautatu extends JFrame {
 						codLogela=	Kontsultak.selectCodLogelaApartamentu(apartamentuIzena, mota);
 					}
 	
-					prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
+					
+					logelaKop = SpinnerLogelaKop.getComponentCount();
+					prezioFinala = m.prezioKalk(logelaKop, mota); 
 					
 					
 					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()));

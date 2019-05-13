@@ -118,6 +118,7 @@ public class Ordainketa extends JFrame {
 		
 		textDiruTot.setText(Double.toString(prezioFinala));
 		
+		    
 		
 		lblBueltak.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblBueltak.setBounds(22, 118, 149, 21);
