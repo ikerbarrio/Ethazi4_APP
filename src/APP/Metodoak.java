@@ -659,5 +659,28 @@ public class Metodoak {
 		}
 		return prezioFinala;
 	}
+	
+	public static String kalkulatuDenboraldia(String fechaInicio, String fechaFinal) {
+		String[] aFechaIng = new String[3];
+		aFechaIng = fechaInicio.split("/");
+    	int diaInicio = Integer.parseInt(aFechaIng[0]);
+        int mesInicio = Integer.parseInt(aFechaIng[1]);
+        int anioInicio = Integer.parseInt(aFechaIng[2]);
+        
+        String [] aFechaSal = new String[3];
+        aFechaSal = fechaInicio.split("/");
+    	int diaFinal = Integer.parseInt(aFechaIng[0]);
+        int mesFinal = Integer.parseInt(aFechaIng[1]);
+        int anioFinal = Integer.parseInt(aFechaIng[2]);
+        
+        
+		return "";
+	}
 
 }
+
+
+
+
+
+
