@@ -277,7 +277,7 @@ public class Kontsultak {
 		
 	}
 	
-	
+	//hotelaren cod_ logela lortu
 	
 	public static int selectCod_logela(String hotelIzena, String mota) { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -306,6 +306,7 @@ public class Kontsultak {
 		
 		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
+	
 	
 	public static ArrayList selectDNI() { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -783,7 +784,7 @@ public class Kontsultak {
 
 	}
 	
-	
+	// conseguir el idE de etxea
 	public static int etxeIdLortu(String etxeIzena) { 
 		Connection conexion = null;
 		Statement s = null;
@@ -852,6 +853,34 @@ public class Kontsultak {
 
 	}
 	   
+	
+	//etxeen cod_ logela lortu
+	
+	public static int selectCodLogelaEtxea(String izena, String mota) { 
+		Connection conexion = null;
+		Statement s = null;
+		int cod_logela=0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT cod_logela FROM logelamota WHERE idE=(SELECT idE FROM etxea WHERE izena  LIKE '"+izena+"') AND mota like '"+mota+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				cod_logela = rs.getInt("cod_logela");
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
 
 	
 	
