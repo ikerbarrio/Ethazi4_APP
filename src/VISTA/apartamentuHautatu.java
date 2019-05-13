@@ -343,7 +343,7 @@ public class apartamentuHautatu extends JFrame {
 		
 		
 		rdbtnUmeentzat.setEnabled(false);
-		rdbtnUmeentzat.setBounds(52, 261, 103, 23);
+		rdbtnUmeentzat.setBounds(49, 261, 96, 23);
 		getContentPane().add(rdbtnUmeentzat);
 		
 		

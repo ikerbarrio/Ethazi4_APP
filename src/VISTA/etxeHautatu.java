@@ -342,7 +342,7 @@ public class etxeHautatu extends JFrame {
 		
 		
 		rdbtnUmeentzat.setEnabled(false);
-		rdbtnUmeentzat.setBounds(54, 260, 103, 23);
+		rdbtnUmeentzat.setBounds(48, 260, 97, 23);
 		getContentPane().add(rdbtnUmeentzat);
 		
 		
