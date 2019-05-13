@@ -69,7 +69,7 @@ public class SaioaSortu extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 200, 635, 455);
 		getContentPane().setLayout(null);
-		btnAurrera.setBounds(520, 382, 89, 23);
+		btnAurrera.setBounds(530, 387, 89, 30);
 		getContentPane().add(btnAurrera);
 
 		txtIzena = new JTextField();
@@ -226,7 +226,7 @@ public class SaioaSortu extends JFrame {
 
 		getContentPane().add(lblJaiotze);
 
-		btnAtzera.setBounds(520, 348, 89, 23);
+		btnAtzera.setBounds(0, 0, 89, 30);
 		getContentPane().add(btnAtzera);
 
 		alBAtzera = new ActionListener() {
@@ -239,7 +239,7 @@ public class SaioaSortu extends JFrame {
 		};
 		btnAtzera.addActionListener(alBAtzera);
 
-		btnHasiera.setBounds(520, 314, 89, 23);
+		btnHasiera.setBounds(530, 0, 89, 30);
 		getContentPane().add(btnHasiera);
 		alBHasiera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

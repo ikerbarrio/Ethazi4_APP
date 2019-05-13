@@ -92,9 +92,6 @@ public class hotelHautatu extends JFrame {
 	
 	
 
-	
-	
-	
 	/**
 	 * Frame-aren komponente guztiak
 	 */
@@ -110,17 +107,15 @@ public class hotelHautatu extends JFrame {
 
 		getContentPane().setLayout(null);
 		
-		comboHiria.setBounds(412, 74, 168, 31);
 //		lblGauKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 //		lblGauKopurua.setHorizontalAlignment(SwingConstants.CENTER);
 //		lblGauKopurua.setBounds(26, 107, 168, 50);
 //		getContentPane().add(lblGauKopurua);
 //		
-		comboHiria.setBounds(200, 65, 168, 31);
+		comboHiria.setBounds(35, 65, 168, 31);
 		getContentPane().add(comboHiria);
 
 		hiriak = Metodoak.hiriakPantailaratu();
-		comboHiria.setBounds(265, 65, 168, 31);
 		comboHiria.addItem("Aukeratu");
 		for(int n = 0; n < hiriak.size(); n++) {
 			comboHiria.addItem(hiriak.get(n));
@@ -139,14 +134,13 @@ public class hotelHautatu extends JFrame {
 			}
 		};
 		comboHiria.addActionListener(al);
-		lblHotelak.setBounds(26, 28, 190, 28);
+		lblHotelak.setBounds(262, 32, 190, 28);
 		
 		lblHotelak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHotelak.setHorizontalAlignment(SwingConstants.CENTER);
 
-		lblHotelak.setBounds(26, 28, 190, 28);
 
-		comboHotelak.setBounds(36, 65, 168, 31);
+		comboHotelak.setBounds(32, 90, 168, 31);
 
 		for(int n = 0; n < hotelak.size(); n++) {
 			comboHotelak.addItem(hotelak.get(n));
@@ -174,9 +168,9 @@ public class hotelHautatu extends JFrame {
 				rdbtnBinakakoa.setEnabled(true);
 			}
 		};
-		comboHotelak.setBounds(32, 65, 168, 31);
+		comboHotelak.setBounds(270, 65, 168, 31);
 		comboHotelak.addActionListener(al);
-		lblAukeratu.setBounds(226, 22, 215, 41);
+		lblAukeratu.setBounds(10, 26, 215, 41);
 		
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -243,6 +237,10 @@ public class hotelHautatu extends JFrame {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
 						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 						System.out.println(strDateHasiera);
+						if(strDateHasiera.equals(strDateAmaiera)) {
+							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
+							ondo = false;
+						}
 						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
 							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
@@ -254,6 +252,9 @@ public class hotelHautatu extends JFrame {
 						amaieraDateChooser.setEnabled(false);
 					}
 					/////////////////////////////////////
+					
+					
+					
 				if(ondo) {
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 					
@@ -315,13 +316,10 @@ public class hotelHautatu extends JFrame {
 		
 		
 		lblLogelaKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		rdbtnBanakakoa.setBounds(6, 159, 109, 23);
 		rdbtnBanakakoa.setEnabled(false);
 		
 		
 
-		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnBinakakoa.setBounds(127, 159, 89, 23);
 
 		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnBanakakoa.setBounds(36, 157, 109, 23);
@@ -331,7 +329,6 @@ public class hotelHautatu extends JFrame {
 		
 
 		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGelaMota.setBounds(32, 121, 168, 31);
 
 		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnBinakakoa.setBounds(36, 210, 103, 23);
@@ -339,8 +336,7 @@ public class hotelHautatu extends JFrame {
 
 		lblGelaMota.setHorizontalAlignment(SwingConstants.CENTER);
 
-		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		rdbtnUmeentzat.setBounds(41, 238, 103, 23);
+		
 
 		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblGelaMota.setBounds(32, 119, 168, 31);
