@@ -783,6 +783,74 @@ public class Kontsultak {
 
 	}
 	
+	
+	public static int etxeIdLortu(String etxeIzena) { 
+		Connection conexion = null;
+		Statement s = null;
+	
+		int id =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT idE FROM etxea WHERE  izena LIKE '" +etxeIzena +"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				id = rs.getInt("idE");
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+		
+	}
+	//GUARDAR DATOS DE ETXEAK
+	
+	public static void ReserbaDatuakGordeEtxeak(String izena,int id,  double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop,int idE, int idA) {
+
+		Connection conexion = null;
+		Statement s = null;
+
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			String query = "INSERT INTO reserba (hotelIzena,id ,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop, idE, idA)"
+					+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
+
+			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
+			preparedStmt.setString(1, izena);
+			preparedStmt.setInt(2, id);
+			preparedStmt.setDouble(3, prezioa);
+			preparedStmt.setString(4, logelaMota);
+			preparedStmt.setInt(5, codLogela);
+			preparedStmt.setString(6, hasieraData);
+			preparedStmt.setString(7, amaieraData);
+			preparedStmt.setInt(8, logeolaKop);
+			preparedStmt.setInt(9, idE);
+			preparedStmt.setInt(10, idA);
+
+			preparedStmt.execute();
+
+			System.out.println("Sartuta");
+
+		} catch (Exception e) {
+			System.out.println("fallo");
+			System.out.println(e.getMessage());
+		}
+
+	}
 	   
 
 	
