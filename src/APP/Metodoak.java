@@ -640,5 +640,27 @@ public class Metodoak {
 	public static ArrayList etxeIzenaPantailaratu(String hiria) {
 		return Kontsultak.etxeIzenaPantailaratu(hiria);
 	}
+	
+	
+	//PREZIOA CALCULATU METODOA
+	public static int prezioKalk(int logelaKop, String mota) {
+		
+		int prezioFinala =0;
+		
+		if(mota.equalsIgnoreCase("Banakakoa")) {
+			
+			prezioFinala = logelaKop * 20;
+			
+		}else if (mota.equalsIgnoreCase("Binakakoa")) {
+			
+			prezioFinala = logelaKop * 40;
+			
+		}else if (mota.equalsIgnoreCase("Umeentzat")) {
+			
+			prezioFinala = logelaKop * 10;
+		
+		}
+		return prezioFinala;
+	}
 
 }

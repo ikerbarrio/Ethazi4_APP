@@ -81,7 +81,8 @@ public class apartamentuHautatu extends JFrame {
 	private String strDateHasiera;
 	private String strDateAmaiera;
 	private String apartamentuIzena;
-	
+	private String mota;
+	private int codLogela=0;
 
 	
 	
@@ -262,7 +263,27 @@ public class apartamentuHautatu extends JFrame {
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));																					//0los id de papartamentuy y etxea
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
 				
-					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, cod_logela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()));
+					//para el metodo de calcular el precio 
+					if(rdbtnBanakakoa.isSelected()) {
+						
+						mota = "Banakakoa";
+						codLogela=	Kontsultak.selectCodLogelaApartamentu(apartamentuIzena, mota);
+						
+					}else if(rdbtnBinakakoa.isSelected()) {
+						
+						mota = "Bikoitza";
+					codLogela=	Kontsultak.selectCodLogelaApartamentu(apartamentuIzena, mota);
+						
+					}else if(rdbtnUmeentzat.isSelected()) {
+						
+						mota = "Umeentzat";
+						codLogela=	Kontsultak.selectCodLogelaApartamentu(apartamentuIzena, mota);
+					}
+	
+					prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
+					
+					
+					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()));
 					//marka
 			
 				}
