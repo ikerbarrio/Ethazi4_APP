@@ -247,7 +247,8 @@ public class hotelHautatu extends JFrame {
 							amaieraDateChooser.setEnabled(false);
 							amaieraDateChooser.setDate(null);
 						}
-					}if (!ondo) {
+					}
+					if (!ondo) {
 						hasieraDateChooser.setEnabled(true);
 						amaieraDateChooser.setEnabled(false);
 					}

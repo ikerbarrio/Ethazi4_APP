@@ -232,18 +232,20 @@ public class apartamentuHautatu extends JFrame {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
 						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 						System.out.println(strDateHasiera);
-						
-						
-						
-						//MARKA DEL CALENDARIO
-						
-						
+						if(strDateHasiera.equals(strDateAmaiera)) {
+							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
+							ondo = false;
+						}
 						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
-							//JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
+							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
 							amaieraDateChooser.setDate(null);
 						}
+					}
+					if (!ondo) {
+						hasieraDateChooser.setEnabled(true);
+						amaieraDateChooser.setEnabled(false);
 					}
 					/////////////////////////////////////
 				if(ondo) {
