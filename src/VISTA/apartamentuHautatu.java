@@ -102,7 +102,7 @@ public class apartamentuHautatu extends JFrame {
 		getContentPane().setLayout(null);
 		
 	
-		comboHiria.setBounds(412, 74, 168, 31);
+		comboHiria.setBounds(41, 61, 168, 31);
 		getContentPane().add(comboHiria);
 		hiriak = Metodoak.hiriakPantailaratu();
 		comboHiria.addItem("Aukeratu");
@@ -126,9 +126,9 @@ public class apartamentuHautatu extends JFrame {
 		
 		lblApartamentuak.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblApartamentuak.setHorizontalAlignment(SwingConstants.CENTER);
-		lblApartamentuak.setBounds(10, 28, 206, 28);
+		lblApartamentuak.setBounds(251, 30, 206, 28);
 
-		comboApartamentuak.setBounds(32, 65, 168, 31);
+		comboApartamentuak.setBounds(265, 61, 168, 31);
 		
 		for(int n = 0; n < apartamentuak.size(); n++) {
 			comboApartamentuak.addItem(apartamentuak.get(n));
@@ -165,11 +165,9 @@ public class apartamentuHautatu extends JFrame {
 		
 		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAukeratu.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAukeratu.setBounds(226, 22, 215, 41);
+		lblAukeratu.setBounds(26, 22, 215, 41);
 		getContentPane().add(lblAukeratu);
 		
-		comboHiria.setBounds(265, 65, 168, 31);
-		getContentPane().add(comboHiria);
 		
 		
 		btnAurrera.setBounds(530, 393, 89, 23);
@@ -235,18 +233,20 @@ public class apartamentuHautatu extends JFrame {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
 						strDateAmaiera = dateFormat.format(amaieraDateChooser.getDate());
 						System.out.println(strDateHasiera);
-						
-						
-						
-						//MARKA DEL CALENDARIO
-						
-						
+						if(strDateHasiera.equals(strDateAmaiera)) {
+							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
+							ondo = false;
+						}
 						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
-							//JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
+							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
 							amaieraDateChooser.setDate(null);
 						}
+					}
+					if (!ondo) {
+						hasieraDateChooser.setEnabled(true);
+						amaieraDateChooser.setEnabled(false);
 					}
 					/////////////////////////////////////
 				if(ondo) {
@@ -293,7 +293,7 @@ public class apartamentuHautatu extends JFrame {
 			
 				}
 				
-				
+				btnCheckinaGorde.setEnabled(true);
 			}
 		};
 		
@@ -316,7 +316,7 @@ public class apartamentuHautatu extends JFrame {
 		txtInformazioa.setBounds(265, 103, 315, 123);
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
-		SpinnerLogelaKop.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+		SpinnerLogelaKop.setModel(new SpinnerNumberModel(1, 1, 10, 1));
 		SpinnerLogelaKop.setEnabled(false);
 		
 		
@@ -333,22 +333,22 @@ public class apartamentuHautatu extends JFrame {
 		
 		
 		rdbtnBanakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnBanakakoa.setBounds(26, 233, 109, 23);
+		rdbtnBanakakoa.setBounds(36, 157, 109, 23);
 		getContentPane().add(rdbtnBanakakoa);
 		rdbtnBinakakoa.setEnabled(false);
 		
 		rdbtnBinakakoa.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnBinakakoa.setBounds(139, 233, 89, 23);
+		rdbtnBinakakoa.setBounds(31, 210, 103, 23);
 		getContentPane().add(rdbtnBinakakoa);
 		
 		lblGelaMota.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGelaMota.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblGelaMota.setBounds(36, 195, 168, 31);
+		lblGelaMota.setBounds(32, 119, 168, 31);
 		getContentPane().add(lblGelaMota);
 		
 		
 		rdbtnUmeentzat.setEnabled(false);
-		rdbtnUmeentzat.setBounds(82, 265, 103, 23);
+		rdbtnUmeentzat.setBounds(49, 261, 96, 23);
 		getContentPane().add(rdbtnUmeentzat);
 		
 		
@@ -388,12 +388,14 @@ public class apartamentuHautatu extends JFrame {
 				if(ondo) {
 					amaieraDateChooser.setSelectableDateRange(hasieraDateChooser.getDate(), null);
 					amaieraDateChooser.setEnabled(true);
+					hasieraDateChooser.setEnabled(false);
+					btnCheckinaGorde.setEnabled(false);
 				}
-				
-				System.out.println("kaka");
+			
 			}
 		};
 		btnCheckinaGorde.addActionListener(alCheckin);
+		
 		
 		alBanakakoa = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -433,7 +435,7 @@ public class apartamentuHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnUmeentzat.getText();
 				
-			//	SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
+				//SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 			}
 		};
 		rdbtnUmeentzat.addActionListener(alUmeentzat);

@@ -530,6 +530,8 @@ public class Metodoak {
 	        int mesFinal;
 	        int anioFinal;
 	        
+	       
+	        
 	        cod_logela = Kontsultak.selectCod_logela(hotelIzena, gelaMota);
 	        maximoLogelaKop = Kontsultak.selectMaximoLogelaKop(cod_logela);
 
@@ -600,9 +602,10 @@ public class Metodoak {
 	        
 	        emaitza = maximoLogelaKopHotel - okupatutak;
 	        
-//	        if(maximoLogelaKop<logelaKop_DB) {
-//	        	ondo = false;
-//	        }
+	        if(maximoLogelaKop<logelaKop_DB) {
+	        	ondo = false;
+	        	logelaKop_DB -= logelaKop;
+	        }
 	        
 	        System.out.println("Numero de habitaciones elegidas: "+logelaKop);
 	        System.out.println("Numero de habitaciones en la BD de cod_logela "+cod_logela+": "+logelaKop_DB);
@@ -622,13 +625,13 @@ public class Metodoak {
 
 	    }
 	
-	public static int logelaKopKalkulatu(String data) {
-		int okupatutak=0;
-		
-		okupatutak = Kontsultak.selectLogelaKop(data);
-		
-		return okupatutak;
-	}
+//	public static int logelaKopKalkulatu(String data) {
+//		int okupatutak=0;
+//		
+//		okupatutak = Kontsultak.selectLogelaKop(data);
+//		
+//		return okupatutak;
+//	}
 
 	public static ArrayList apartamentuIzenaPantailaratu(String hiria) {
 		return Kontsultak.apartamentuIzenaPantailaratu(hiria);

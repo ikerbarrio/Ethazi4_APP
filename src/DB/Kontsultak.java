@@ -380,6 +380,7 @@ public class Kontsultak {
 		}
 
 	}
+	
 	public static int hotelIdLortu(String hotela) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
