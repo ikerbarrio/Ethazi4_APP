@@ -543,7 +543,7 @@ public class Kontsultak {
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
 			ResultSet rs = ((java.sql.Statement) s).executeQuery(
-					"SELECT IZENA FROM ETXEA WHERE codpostal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"
+					"SELECT IZENA FROM ETXEA WHERE cod_postal = (SELECT cod_postal FROM HIRIAK WHERE IZENA LIKE '"
 							+ hiria + "')");
 			while (rs.next()) {
 
@@ -655,17 +655,17 @@ public class Kontsultak {
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
-			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')";
+			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')";
 			
 			System.out.println(kontsulta);
 			
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM hotelak WHERE IZENA like " + "'" + hotelIzena + "')");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')");
 			
 
 			while (rs.next()) {
-				logelaKop = rs.getInt("logelaKop");
+				logelaKop = rs.getInt(1);
 				System.out.println(logelaKop);
 			}
 
