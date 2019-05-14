@@ -380,6 +380,7 @@ public class Kontsultak {
 		}
 
 	}
+	
 	public static int hotelIdLortu(String hotela) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -408,8 +409,6 @@ public class Kontsultak {
 		return id;
 		
 	}
-	
-	
 	
 	public static int selectPrezioa(int cod_logela) { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -578,7 +577,7 @@ public class Kontsultak {
 				// SELECTAREN DATUAK GORDE
 				kop = rs.getInt(1);
 				
-
+ 
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
