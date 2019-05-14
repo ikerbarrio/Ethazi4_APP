@@ -238,23 +238,26 @@ public class hotelHautatu extends JFrame {
 
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
-					
 
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
 					if (temporada.equals("alta")) {
-						prezioFinala=(prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue());
-						prezioFinala = prezioFinala + 50;//marka
-					}else if (temporada.equals("baja")) {
-						prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue(); //marka
+						prezioFinala = (prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
+								* (int) SpinnerLogelaKop.getValue());
+						prezioFinala = prezioFinala + 50;// marka
+					} else if (temporada.equals("baja")) {
+						prezioFinala = prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
+								* (int) SpinnerLogelaKop.getValue(); // marka
 					}
 
 					MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota, logela_kop);
-					
+
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota, strDateHasiera,
 							m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
-					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota, Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue(),0,0);
-					
+					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota,
+							Kontsultak.selectCod_logela(hotela, gelaMota), strDateHasiera, strDateAmaiera,
+							(int) SpinnerLogelaKop.getValue(), 0, 0);
+
 				}
 
 				btnCheckinaGorde.setEnabled(true);
