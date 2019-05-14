@@ -654,17 +654,17 @@ public class Kontsultak {
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
-			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')";
+			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')";
 			
 			System.out.println(kontsulta);
 			
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM hotelak WHERE IZENA like " + "'" + hotelIzena + "')");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')");
 			
 
 			while (rs.next()) {
-				logelaKop = rs.getInt("logelaKop");
+				logelaKop = rs.getInt(1);
 				System.out.println(logelaKop);
 			}
 
@@ -689,17 +689,17 @@ public class Kontsultak {
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
-			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idA = (SELECT idA FROM apartamentua WHERE IZENA like " + "'" + apartamentuIzena + "')";
+			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idA = (SELECT idA FROM apartamentua WHERE IZENA like '" + apartamentuIzena + "')";
 			
 			System.out.println(kontsulta);
 			
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idA = (SELECT idA FROM hotelak WHERE IZENA like " + "'" + apartamentuIzena + "')");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idA = (SELECT idA FROM apartamentua WHERE IZENA like '" + apartamentuIzena + "')");
 			
 
 			while (rs.next()) {
-				logelaKop = rs.getInt("logelakop");
+				logelaKop = rs.getInt(1);
 				System.out.println(logelaKop);
 			}
 
