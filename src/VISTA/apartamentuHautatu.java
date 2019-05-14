@@ -403,7 +403,7 @@ public class apartamentuHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnBanakakoa.getText();					
 				
-			//	SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
+				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 
 			}
 		};
@@ -418,7 +418,7 @@ public class apartamentuHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnBinakakoa.getText();
 				
-				//SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
+				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 			}
 		};
 		rdbtnBinakakoa.addActionListener(alBinakakoa);
@@ -432,7 +432,7 @@ public class apartamentuHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnUmeentzat.getText();
 				
-			//	SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
+				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
 			}
 		};
 		rdbtnUmeentzat.addActionListener(alUmeentzat);
