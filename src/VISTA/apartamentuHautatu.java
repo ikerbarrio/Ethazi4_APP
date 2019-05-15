@@ -141,7 +141,7 @@ public class apartamentuHautatu extends JFrame {
 					
 
 							
-					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboApartamentuak.getSelectedItem().toString()));
+					txtInformazioa.setText(Metodoak.informazioaPantailaratu(comboApartamentuak.getSelectedItem().toString(),"apartamentua"));
 					
 //					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
 					apartamentuIzena = comboApartamentuak.getSelectedItem().toString();

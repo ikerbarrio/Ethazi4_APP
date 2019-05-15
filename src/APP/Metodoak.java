@@ -284,8 +284,8 @@ public class Metodoak {
 		return Kontsultak.hotelIzenaPantailaratu(hiria);
 	}
 
-	public static String hotelInformazioaPantailaratu(String hotelIzena) {
-		return Kontsultak.hotelInformazioaPantailaratu(hotelIzena);
+	public static String informazioaPantailaratu(String hotelIzena, String tabla) {
+		return Kontsultak.informazioaPantailaratu(hotelIzena,tabla);
 	}
 
 	public static void sartuErabiltzailea(String DNI, String izena, String abizena, String jaiotze_data, String sexua,

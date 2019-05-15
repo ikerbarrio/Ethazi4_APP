@@ -45,7 +45,7 @@ public class Kontsultak {
 		return hotelak;
 	}
 
-	public static String hotelInformazioaPantailaratu(String hotelIzena) {
+	public static String informazioaPantailaratu(String hotelIzena, String tabla) {
 		String informazioa = null;// hotelen informazioa gordetzeko
 		Connection conexion = null;
 		Statement s = null;
@@ -59,7 +59,7 @@ public class Kontsultak {
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
 			ResultSet rs = ((java.sql.Statement) s)
-					.executeQuery("SELECT INFORMAZIOA FROM HOTELAK WHERE IZENA LIKE '" + hotelIzena + "'");
+					.executeQuery("SELECT INFORMAZIOA FROM "+ tabla +" WHERE IZENA LIKE '" + hotelIzena + "'");
 			while (rs.next()) {
 
 				informazioa = rs.getString(1);
