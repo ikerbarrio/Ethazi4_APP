@@ -17,8 +17,6 @@ public class Main {
 		VISTA.OngiEtorri ejecutar = new VISTA.OngiEtorri();
 		ejecutar.setVisible(true);
 
-	
-System.out.println("me estoy cagando en la puta madre la concha la lora");
 	}
 
 }

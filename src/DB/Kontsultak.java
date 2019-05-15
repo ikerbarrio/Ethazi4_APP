@@ -45,7 +45,7 @@ public class Kontsultak {
 		return hotelak;
 	}
 
-	public static String hotelInformazioaPantailaratu(String hotelIzena) {
+	public static String informazioaPantailaratu(String hotelIzena, String tabla) {
 		String informazioa = null;// hotelen informazioa gordetzeko
 		Connection conexion = null;
 		Statement s = null;
@@ -59,7 +59,7 @@ public class Kontsultak {
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
 			ResultSet rs = ((java.sql.Statement) s)
-					.executeQuery("SELECT INFORMAZIOA FROM HOTELAK WHERE IZENA LIKE '" + hotelIzena + "'");
+					.executeQuery("SELECT INFORMAZIOA FROM "+ tabla +" WHERE IZENA LIKE '" + hotelIzena + "'");
 			while (rs.next()) {
 
 				informazioa = rs.getString(1);
@@ -277,9 +277,9 @@ public class Kontsultak {
 		
 	}
 	
+	//hotelaren cod_ logela lortu
 	
-	
-	public static int selectCod_logela(String hotelIzena, String mota) { // arraylist bueltatu behar du
+	public static int selectCod_logelaHotel(String izena, String mota) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
 		int cod_logela=0;
@@ -290,7 +290,7 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT COD_LOGELA FROM LOGELAMOTA WHERE ID=(SELECT ID FROM HOTELAK WHERE IZENA LIKE '"+hotelIzena+"') AND mota like '"+mota+"'");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT COD_LOGELA FROM LOGELAMOTA WHERE ID=(SELECT ID FROM HOTELAK WHERE IZENA LIKE '"+izena+"') AND mota like '"+mota+"'");
 
 			while (rs.next()) {
 
@@ -306,6 +306,63 @@ public class Kontsultak {
 		
 		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
+	
+	public static int selectCod_logelaApartamentu(String izena, String mota) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int cod_logela=0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT COD_LOGELA FROM LOGELAMOTA WHERE IDA=(SELECT IDA FROM APARTAMENTUA WHERE IZENA LIKE '"+izena+"') AND mota like '"+mota+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				
+				cod_logela = rs.getInt(1);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
+	public static int selectCod_logelaEtxe(String izena, String mota) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int cod_logela=0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT COD_LOGELA FROM LOGELAMOTA WHERE IDE=(SELECT IDE FROM ETXEA WHERE IZENA LIKE '"+izena+"') AND mota like '"+mota+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				
+				cod_logela = rs.getInt(1);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
 	
 	public static ArrayList selectDNI() { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -379,6 +436,7 @@ public class Kontsultak {
 		}
 
 	}
+	
 	public static int hotelIdLortu(String hotela) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -407,8 +465,6 @@ public class Kontsultak {
 		return id;
 		
 	}
-	
-	
 	
 	public static int selectPrezioa(int cod_logela) { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -577,7 +633,7 @@ public class Kontsultak {
 				// SELECTAREN DATUAK GORDE
 				kop = rs.getInt(1);
 				
-
+ 
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -654,17 +710,19 @@ public class Kontsultak {
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
-			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')";
+			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')";
 			
 			System.out.println(kontsulta);
 			
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND id = (SELECT id FROM hotelak WHERE IZENA like " + "'" + hotelIzena + "')");
-			
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')");
+
+		
+
 
 			while (rs.next()) {
-				logelaKop = rs.getInt("logelaKop");
+				logelaKop = rs.getInt(1);
 				System.out.println(logelaKop);
 			}
 
@@ -689,17 +747,17 @@ public class Kontsultak {
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
 			s = (Statement) conexion.createStatement();
 
-			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idA = (SELECT idA FROM apartamentua WHERE IZENA like " + "'" + apartamentuIzena + "')";
+			String kontsulta = "SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idA = (SELECT idA FROM apartamentua WHERE IZENA like '" + apartamentuIzena + "')";
 			
 			System.out.println(kontsulta);
 			
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idA = (SELECT idA FROM hotelak WHERE IZENA like " + "'" + apartamentuIzena + "')");
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idA = (SELECT idA FROM apartamentua WHERE IZENA like '" + apartamentuIzena + "')");
 			
 
 			while (rs.next()) {
-				logelaKop = rs.getInt("logelakop");
+				logelaKop = rs.getInt(1);
 				System.out.println(logelaKop);
 			}
 
@@ -744,7 +802,7 @@ public class Kontsultak {
 	
 	//GUARDAR DATOS DE LOS APARTAMENTU
 	
-	public static void ReserbaDatuakGordeApartamentua(String izena,int id,  double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop,int idE, int idA) {
+	public static void ReserbaDatuakGordeApartamentua(String izena,int id,  double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop,int idE, int idA, int pisua) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -757,8 +815,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,id ,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop, idE, idA)"
-					+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,id ,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop, idE, idA, pisua)"
+					+ " VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, izena);
@@ -771,7 +829,7 @@ public class Kontsultak {
 			preparedStmt.setInt(8, logeolaKop);
 			preparedStmt.setInt(9, idE);
 			preparedStmt.setInt(10, idA);
-
+			preparedStmt.setInt(11, pisua);
 			preparedStmt.execute();
 
 			System.out.println("Sartuta");
@@ -783,7 +841,7 @@ public class Kontsultak {
 
 	}
 	
-	
+	// conseguir el idE de etxea
 	public static int etxeIdLortu(String etxeIzena) { 
 		Connection conexion = null;
 		Statement s = null;
@@ -852,6 +910,63 @@ public class Kontsultak {
 
 	}
 	   
+	
+	//ETXEEN COD_ LOGELA LORTU
+	
+	public static int selectCodLogelaEtxea(String izena, String mota) { 
+		Connection conexion = null;
+		Statement s = null;
+		int cod_logela=0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT cod_logela FROM logelamota WHERE idE=(SELECT idE FROM etxea WHERE izena  LIKE '"+izena+"') AND mota like '"+mota+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				cod_logela = rs.getInt("cod_logela");
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
+	
+	//APARTAMENTUAREN CODLOGELA LORTU
+	public static int selectCodLogelaApartamentu(String izena, String mota) { 
+		Connection conexion = null;
+		Statement s = null;
+		int cod_logela=0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT cod_logela FROM logelamota WHERE idA=(SELECT idA FROM apartamentua WHERE izena  LIKE '"+izena+"') AND mota like '"+mota+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				cod_logela = rs.getInt("cod_logela");
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
 
 	
 	
@@ -912,7 +1027,61 @@ public class Kontsultak {
 		
 	}
 	
-	public static int selectID(int cod_logela) { // arraylist bueltatu behar du
+	public static int selectSumaLogelaKopPorApartamentu(int id, String data) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int kop =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SUM(LOGELAKOP) FROM RESERBA WHERE IDA = " +id+" AND AMAIERADATA LIKE '"+data+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				kop = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return kop;
+		
+	}
+	
+	public static int selectSumaLogelaKopPorEtxe(int id, String data) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int kop =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SUM(LOGELAKOP) FROM RESERBA WHERE IDE = " +id+" AND AMAIERADATA LIKE '"+data+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				kop = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return kop;
+		
+	}
+	
+	public static int selectIDHotel(int cod_logela) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
 		int id =0;
@@ -938,8 +1107,87 @@ public class Kontsultak {
 		return id;
 		
 	}
+	
+	public static int selectIDApartamentu(int cod_logela) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int id =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IDA FROM LOGELAMOTA WHERE COD_LOGELA = " +cod_logela);
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				id = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+		
+	}
+	
+	public static int selectIDEtxe(int cod_logela) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int id =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IDE FROM LOGELAMOTA WHERE COD_LOGELA = " +cod_logela);
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				id = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+		
+	}
+	
+	public static int selectPrezioEtxe(String izena) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int id =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT PREZIOA FROM ETXEA WHERE IZENA = '" +izena+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				id = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+		
+	}
 
 	
 }
-
-	

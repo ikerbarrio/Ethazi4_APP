@@ -107,7 +107,7 @@ public class Ordainketa extends JFrame {
 		textDiruTot.setEditable(false);
 //		table.isCellEditable(row(vacio), column(vacio));
 //				DefaultListModel ordaintzekoa = new DefaultListModel();
-//				ordaintzekoa.addElement(Metodoak.kontTotala+"�");
+//				ordaintzekoa.addElement(Metodoak.kontTotala+"");
 //				listBueltak.setModel(ordaintzekoa);
 		
 		textDiruTot.setBounds(22, 69, 270, 38);
@@ -118,6 +118,7 @@ public class Ordainketa extends JFrame {
 		
 		textDiruTot.setText(Double.toString(prezioFinala));
 		
+		    
 		
 		lblBueltak.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblBueltak.setBounds(22, 118, 149, 21);
@@ -350,8 +351,8 @@ public class Ordainketa extends JFrame {
 		
 		alBAurrera = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				cod_logela = Metodoak.selectCod_logela(hotela, gelaMota);
-				Metodoak.logelaKopAldatu(cod_logela, gelaMota,logela_kop);
+//				cod_logela = Metodoak.selectCod_logela(hotela, gelaMota);
+//				Metodoak.logelaKopAldatu(cod_logela, gelaMota,logela_kop);
 				m.FitxeroaIrakurri();
 //				MetodoakVista.seigarrenera(DNI);
 				dispose();
