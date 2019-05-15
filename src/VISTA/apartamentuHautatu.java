@@ -85,6 +85,7 @@ public class apartamentuHautatu extends JFrame {
 	private int codLogela=0;
 	private int logelaKop;
 	private JSpinner SpinnerPisua = new JSpinner();
+	private int pisua=0;
 	
 	
 	
@@ -237,7 +238,7 @@ public class apartamentuHautatu extends JFrame {
 							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
 							ondo = false;
 						}
-						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
+						if(!m.reserbaFechaKalkulatuApartamentu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
 							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
@@ -254,10 +255,10 @@ public class apartamentuHautatu extends JFrame {
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 					
 					
-					cod_logela=Kontsultak.selectCod_logela(hotela, gelaMota);
+					cod_logela=Kontsultak.selectCod_logelaApartamentu(hotela, gelaMota);
 					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
 					
-					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
+					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue(); //marka
 					
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
@@ -282,6 +283,7 @@ public class apartamentuHautatu extends JFrame {
 						mota = "Umeentzat";
 						codLogela=	Kontsultak.selectCodLogelaApartamentu(apartamentuIzena, mota);
 					}
+<<<<<<< HEAD
 					
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
 					if (temporada.equals("alta")) {
@@ -293,12 +295,23 @@ public class apartamentuHautatu extends JFrame {
 								* (int) SpinnerLogelaKop.getValue(); // marka
 					}
 	
+=======
+	
+					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 					
-					logelaKop = SpinnerLogelaKop.getComponentCount();
+					logelaKop = (int)SpinnerLogelaKop.getValue();
 					prezioFinala = m.prezioKalk(logelaKop, mota); 
 					
+<<<<<<< HEAD
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
 					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),SpinnerPisua.getComponentCount() );
+=======
+					pisua = (int)SpinnerPisua.getValue();
+					System.out.println("PISUA: "+pisua);
+					
+					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateAmaiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),pisua);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 					//marka
 			
 				}
@@ -376,7 +389,7 @@ public class apartamentuHautatu extends JFrame {
 		
 		hasieraDateChooser.setBounds(265, 237, 141, 31);
 		getContentPane().add(hasieraDateChooser);
-		((JTextField) hasieraDateChooser.getDateEditor()).setEditable(false);  
+		((JTextField) hasieraDateChooser.getDateEditor()).setEditable(false);
 		hasieraDateChooser.setSelectableDateRange(hasieraDate, null);
 		
 

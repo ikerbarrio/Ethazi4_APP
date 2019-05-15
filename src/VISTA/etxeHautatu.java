@@ -235,7 +235,7 @@ public class etxeHautatu extends JFrame {
 							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
 							ondo = false;
 						}
-						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera, (int)SpinnerLogelaKop.getValue(), etxeIzena, gelaMota)) {
+						if(!m.reserbaFechaKalkulatuEtxe(strDateHasiera,strDateAmaiera, (int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
 							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
@@ -251,9 +251,18 @@ public class etxeHautatu extends JFrame {
 					
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 					
+<<<<<<< HEAD
 					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
+=======
+					cod_logela=Kontsultak.selectCod_logelaEtxe(hotela, gelaMota);
+					prezioLogela=Kontsultak.selectPrezioa(cod_logela);					
+					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue(); 
+					logela_kop = (int) SpinnerLogelaKop.getValue();
+					dispose();
+					MetodoakVista.saihoaHastera(prezioFinala,etxeIzena,gelaMota,logela_kop);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 				
 					
 					
@@ -276,6 +285,7 @@ public class etxeHautatu extends JFrame {
 						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
 						
 					}
+<<<<<<< HEAD
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
 					if (temporada.equals("alta")) {
 						prezioFinala = (prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
@@ -285,6 +295,13 @@ public class etxeHautatu extends JFrame {
 						prezioFinala = prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
 								* (int) SpinnerLogelaKop.getValue(); // marka
 					}
+=======
+	
+					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
+					
+					
+					
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 
 					logelaKop = SpinnerLogelaKop.getComponentCount();
 					 // cambiar el mota
