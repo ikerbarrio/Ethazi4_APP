@@ -411,7 +411,12 @@ public class etxeHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnBanakakoa.getText();
 				
+
 			SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuEtxea(comboEtxeak.getSelectedItem().toString(), gelaMota),1));
+
+				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuEtxea(comboEtxeak.getSelectedItem().toString(), gelaMota),1));
+
+
 			}
 		};
 		rdbtnBanakakoa.addActionListener(alBanakakoa);
@@ -439,13 +444,19 @@ public class etxeHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnUmeentzat.getText();
 				
-				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuEtxea(comboEtxeak.getSelectedItem().toString(), gelaMota),1));			}
+
+				
+
+				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuEtxea(comboEtxeak.getSelectedItem().toString(), gelaMota),1));
+			}
+
 		};
 		rdbtnUmeentzat.addActionListener(alUmeentzat);
 				
 		
-		
+
+
 	
 	}
-
 }
+

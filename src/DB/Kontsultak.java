@@ -410,8 +410,6 @@ public class Kontsultak {
 		
 	}
 	
-	
-	
 	public static int selectPrezioa(int cod_logela) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -579,7 +577,7 @@ public class Kontsultak {
 				// SELECTAREN DATUAK GORDE
 				kop = rs.getInt(1);
 				
-
+ 
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -663,10 +661,12 @@ public class Kontsultak {
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
 			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM hotelak WHERE IZENA like " + "'" + hotelIzena + "')");
-			
+
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')");
+
 
 			while (rs.next()) {
-				logelaKop = rs.getInt("logelaKop");
+				logelaKop = rs.getInt(1);
 				System.out.println(logelaKop);
 			}
 

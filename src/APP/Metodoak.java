@@ -595,9 +595,9 @@ public class Metodoak {
 	        }
 	        
 	       
-	        
-	        
-	        
+	        cod_logela = Kontsultak.selectCod_logela(hotelIzena, gelaMota);
+	        maximoLogelaKop = Kontsultak.selectMaximoLogelaKop(cod_logela);
+	        logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
 	        logelaKop_DB += logelaKop;
 	        
 	        emaitza = maximoLogelaKopHotel - okupatutak;
@@ -664,5 +664,42 @@ public class Metodoak {
 		
 		return prezioFinala;
 	}
+	
+	public static String kalkulatuDenboraldia(String fechaInicio, String fechaFinal) {
+		String temporada = null;
+		String[] aFechaIng = new String[3];
+		String [] aFechaSal = new String[3];
+		int diaInicio;
+		int mesInicio;
+		int anioInicio;
+		int diaFinal;
+		int mesFinal;
+		int anioFinal;
+		
+		aFechaIng = fechaInicio.split("/");
+    	diaInicio = Integer.parseInt(aFechaIng[0]);
+        mesInicio = Integer.parseInt(aFechaIng[1]);
+        anioInicio = Integer.parseInt(aFechaIng[2]);
+                
+        aFechaSal = fechaInicio.split("/");
+    	diaFinal = Integer.parseInt(aFechaIng[0]);
+        mesFinal = Integer.parseInt(aFechaIng[1]);
+        anioFinal = Integer.parseInt(aFechaIng[2]);
+        
+        if (mesInicio == 11 || mesInicio == 12 || mesInicio == 1 || mesInicio == 2 || mesInicio == 3 || (diaInicio > 21 && mesInicio == 6) || mesInicio == 7 || mesInicio == 8
+        	||	mesFinal == 11 || mesFinal == 12 || mesFinal == 1 || mesFinal == 2 || mesFinal == 3 || (diaFinal > 21 && mesFinal == 6) || mesFinal == 7 || mesFinal == 8) {
+        	temporada = "alta";
+        }else if (mesInicio == 4 || mesInicio == 5 || (mesInicio == 6 && diaInicio < 22) || mesInicio == 9 || mesInicio == 10
+        	||	mesFinal == 4 || mesFinal == 5 || (mesFinal == 6 && diaFinal < 22) || mesFinal == 9 || mesFinal == 10) {
+        	temporada = "baja";
+        }
+		return temporada;
+	}
 
 }
+
+
+
+
+
+
