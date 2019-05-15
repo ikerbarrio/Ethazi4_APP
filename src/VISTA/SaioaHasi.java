@@ -91,7 +91,7 @@ public class SaioaHasi extends JFrame {
 		
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MetodoakVista.hotelaErostera();
+				MetodoakVista.hostatuaAukeratzera();
 				dispose();
 			}
 		};

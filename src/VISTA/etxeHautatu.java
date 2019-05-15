@@ -84,7 +84,7 @@ public class etxeHautatu extends JFrame {
 	private String etxeIzena;	
 	private String mota;
 	private int codlogela;
-	
+	private int	logelaKop ;
 	
 	
 	/**
@@ -258,7 +258,7 @@ public class etxeHautatu extends JFrame {
 					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue(); 
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
-					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
+					MetodoakVista.saihoaHastera(prezioFinala,etxeIzena,gelaMota,logela_kop);
 				
 					
 					
@@ -267,26 +267,37 @@ public class etxeHautatu extends JFrame {
 						
 						mota = "Banakakoa";
 						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
+					
 						
 					}else if(rdbtnBinakakoa.isSelected()) {
 						
 						mota = "Bikoitza";
 						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
+					
 						
 					}else if(rdbtnUmeentzat.isSelected()) {
 						
 						mota = "Umeentzat";
 						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
+						
 					}
 	
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
 					
-					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
-					m.datenKenketa(strDateHasiera, strDateAmaiera);		
+					
+
+					logelaKop = SpinnerLogelaKop.getComponentCount();
+					 // cambiar el mota
 					
 				
 					
+					
+					m.fitxeroaIdatzi(etxeIzena, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
+					m.datenKenketa(strDateHasiera, strDateAmaiera);		
+					
+				
+					prezioFinala = m.prezioKalk(logelaKop, mota);
 					Kontsultak.ReserbaDatuakGordeEtxeak(etxeIzena, 0, prezioFinala, gelaMota,codlogela , strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue(), Kontsultak.etxeIdLortu(etxeIzena), 0);
 					
 					
@@ -405,7 +416,11 @@ public class etxeHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnBanakakoa.getText();
 				
+
+			SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuEtxea(comboEtxeak.getSelectedItem().toString(), gelaMota),1));
+
 				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuEtxea(comboEtxeak.getSelectedItem().toString(), gelaMota),1));
+
 
 			}
 		};
@@ -434,14 +449,19 @@ public class etxeHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnUmeentzat.getText();
 				
+
+				
+
 				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuEtxea(comboEtxeak.getSelectedItem().toString(), gelaMota),1));
 			}
+
 		};
 		rdbtnUmeentzat.addActionListener(alUmeentzat);
 				
 		
-		
+
+
 	
 	}
-
 }
+

@@ -206,8 +206,11 @@ public class SaioaSortu extends JFrame {
 				}
 
 				// Dena ondo badago erabiltzailea sartzen du
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				String strJaiotzeData = dateFormat.format(jaiotzeDateChooser.getDate());
+				
 				if (ondo) {
-					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), data, sexua,
+					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), strJaiotzeData, sexua,
 							pasahitzaEnkriptatuta);
 					MetodoakVista.ordainketaLeihora(prezioFinala, hotela, gelaMota, logela_kop);
 					dispose();
