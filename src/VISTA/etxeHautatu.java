@@ -66,7 +66,7 @@ public class etxeHautatu extends JFrame {
 	private JRadioButton rdbtnUmeentzat = new JRadioButton("Umeentzat");
 	private String gelaMota; //CREO VARIABLE PARA SABER EL TIPO DE GELA
 	private JDateChooser hasieraDateChooser = new JDateChooser();	
-	private int prezioLogela;
+	private int prezioEtxea;
 	private boolean ondo = true ;
 	private int logela_kop;
 	//private int id = Kontsultak.hotelIdLortu(hotela);
@@ -221,10 +221,10 @@ public class etxeHautatu extends JFrame {
 					}
 					
 					
-					if((int)SpinnerLogelaKop.getValue()==0) {
+					/*if((int)SpinnerLogelaKop.getValue()==0) {
 						JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
 						ondo = false;
-					}
+					}*/
 					//PARA QUE NO PETE ESTE IF TIENE QUE ESTAR AQUI ABAJO//
 					if(ondo) {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
@@ -244,12 +244,11 @@ public class etxeHautatu extends JFrame {
 				if(ondo) {
 					
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
-					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
-					logela_kop = (int) SpinnerLogelaKop.getValue();
-					dispose();
+					prezioEtxea=Kontsultak.selectPrezioEtxe(comboEtxeak.getSelectedItem().toString());
+					System.out.println("aAAAAAAAAA "+prezioEtxea);
 					cod_logela=Kontsultak.selectCod_logelaEtxe(hotela, gelaMota);
-					prezioLogela=Kontsultak.selectPrezioa(cod_logela);					
-					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue(); 
+					//prezioLogela=Kontsultak.selectPrezioa(cod_logela);					
+					prezioFinala=prezioEtxea* m.datenKenketa(strDateHasiera, strDateAmaiera); 
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,etxeIzena,gelaMota,logela_kop);
@@ -278,11 +277,11 @@ public class etxeHautatu extends JFrame {
 
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
 					if (temporada.equals("alta")) {
-						prezioFinala = (prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
+						prezioFinala = (prezioEtxea * m.datenKenketa(strDateHasiera, strDateAmaiera)
 								* (int) SpinnerLogelaKop.getValue());
 						prezioFinala = prezioFinala + 50;// marka
 					} else if (temporada.equals("baja")) {
-						prezioFinala = prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
+						prezioFinala = prezioEtxea * m.datenKenketa(strDateHasiera, strDateAmaiera)
 								* (int) SpinnerLogelaKop.getValue(); // marka
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
@@ -296,7 +295,7 @@ public class etxeHautatu extends JFrame {
 					m.fitxeroaIdatzi(etxeIzena, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);		
 					
-					MetodoakVista.saihoaHastera(prezioFinala,etxeIzena,gelaMota,logela_kop);
+					
 				
 					prezioFinala = m.prezioKalk(logelaKop, mota);
 					Kontsultak.ReserbaDatuakGordeEtxeak(etxeIzena, 0, prezioFinala, gelaMota,codlogela , strDateHasiera,  strDateAmaiera, (int)SpinnerLogelaKop.getValue(), Kontsultak.etxeIdLortu(etxeIzena), 0);

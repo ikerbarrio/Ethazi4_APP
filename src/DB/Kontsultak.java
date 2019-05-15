@@ -1161,6 +1161,33 @@ public class Kontsultak {
 		return id;
 		
 	}
+	
+	public static int selectPrezioEtxe(String izena) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int id =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT PREZIOA FROM ETXEA WHERE IZENA = '" +izena+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				id = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+		
+	}
 
 	
 }
