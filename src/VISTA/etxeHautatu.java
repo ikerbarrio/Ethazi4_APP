@@ -251,8 +251,7 @@ public class etxeHautatu extends JFrame {
 					
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 					
-					prezioLogela=Kontsultak.selectPrezioa(cod_logela);					
-					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera); 
+					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
 				
