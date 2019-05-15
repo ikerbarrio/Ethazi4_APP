@@ -83,7 +83,8 @@ public class apartamentuHautatu extends JFrame {
 	private String apartamentuIzena;
 	private String mota;
 	private int codLogela=0;
-
+	private int logelaKop;
+	private JSpinner SpinnerPisua = new JSpinner();
 	
 	
 	
@@ -282,10 +283,12 @@ public class apartamentuHautatu extends JFrame {
 						codLogela=	Kontsultak.selectCodLogelaApartamentu(apartamentuIzena, mota);
 					}
 	
-					prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
+					
+					logelaKop = SpinnerLogelaKop.getComponentCount();
+					prezioFinala = m.prezioKalk(logelaKop, mota); 
 					
 					
-					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()));
+					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),SpinnerPisua.getComponentCount() );
 					//marka
 			
 				}
@@ -313,7 +316,7 @@ public class apartamentuHautatu extends JFrame {
 		txtInformazioa.setBounds(265, 103, 315, 123);
 		getContentPane().add(txtInformazioa);
 		txtInformazioa.setColumns(10);
-		SpinnerLogelaKop.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+		SpinnerLogelaKop.setModel(new SpinnerNumberModel(1, 1, 10, 1));
 		SpinnerLogelaKop.setEnabled(false);
 		
 		
@@ -371,6 +374,16 @@ public class apartamentuHautatu extends JFrame {
 		((JTextField) amaieraDateChooser.getDateEditor()).setEditable(false); 
 		getContentPane().add(amaieraDateChooser);
 		amaieraDateChooser.setEnabled(false);
+		SpinnerPisua.setModel(new SpinnerNumberModel(1, 1, 10, 1));
+		
+		
+		SpinnerPisua.setBounds(291, 361, 142, 31);
+		getContentPane().add(SpinnerPisua);
+		
+		JLabel lblPisua = new JLabel("PISUA");
+		lblPisua.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		lblPisua.setBounds(291, 316, 142, 31);
+		getContentPane().add(lblPisua);
 		
 		alCheckin = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -432,7 +445,11 @@ public class apartamentuHautatu extends JFrame {
 				SpinnerLogelaKop.setEnabled(true);
 				gelaMota=rdbtnUmeentzat.getText();
 				
+
+			
+
 				SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortuApartamentu(comboApartamentuak.getSelectedItem().toString(), gelaMota),1));
+
 			}
 		};
 		rdbtnUmeentzat.addActionListener(alUmeentzat);
@@ -441,5 +458,4 @@ public class apartamentuHautatu extends JFrame {
 		
 	
 	}
-
 }

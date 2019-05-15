@@ -660,8 +660,10 @@ public class Kontsultak {
 			
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM etxea WHERE IZENA like " + "'" + hotelIzena + "')");
-			
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT logelakop from logelamota WHERE  mota like '" +  gelaMota + "' AND idE = (SELECT idE FROM hotelak WHERE IZENA like " + "'" + hotelIzena + "')");
+
+		
+
 
 			while (rs.next()) {
 				logelaKop = rs.getInt(1);
@@ -744,7 +746,7 @@ public class Kontsultak {
 	
 	//GUARDAR DATOS DE LOS APARTAMENTU
 	
-	public static void ReserbaDatuakGordeApartamentua(String izena,int id,  double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop,int idE, int idA) {
+	public static void ReserbaDatuakGordeApartamentua(String izena,int id,  double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop,int idE, int idA, int pisua) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -757,8 +759,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,id ,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop, idE, idA)"
-					+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,id ,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop, idE, idA, pisua)"
+					+ " VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, izena);
@@ -771,7 +773,7 @@ public class Kontsultak {
 			preparedStmt.setInt(8, logeolaKop);
 			preparedStmt.setInt(9, idE);
 			preparedStmt.setInt(10, idA);
-
+			preparedStmt.setInt(11, pisua);
 			preparedStmt.execute();
 
 			System.out.println("Sartuta");

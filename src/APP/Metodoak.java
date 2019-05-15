@@ -651,15 +651,17 @@ public class Metodoak {
 			
 			prezioFinala = logelaKop * 20;
 			
-		}else if (mota.equalsIgnoreCase("Binakakoa")) {
+		}else if (mota.equalsIgnoreCase("Bikoitza")) {
 			
 			prezioFinala = logelaKop * 40;
+			System.out.println(logelaKop+ " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 			
 		}else if (mota.equalsIgnoreCase("Umeentzat")) {
 			
 			prezioFinala = logelaKop * 10;
 		
 		}
+		
 		return prezioFinala;
 	}
 	
