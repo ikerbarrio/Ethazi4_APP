@@ -184,12 +184,12 @@ public class etxeHautatu extends JFrame {
 
 					System.out.println(gauKopurua);
 					
-					if (rdbtnBanakakoa.isSelected() | rdbtnBinakakoa.isSelected() | rdbtnUmeentzat.isSelected()) {
+					/*if (rdbtnBanakakoa.isSelected() | rdbtnBinakakoa.isSelected() | rdbtnUmeentzat.isSelected()) {
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
 						ondo = false;
-					}
+					}*/
 					System.out.println(prezioFinala);
 					
 
