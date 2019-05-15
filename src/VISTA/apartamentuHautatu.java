@@ -238,12 +238,7 @@ public class apartamentuHautatu extends JFrame {
 							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
 							ondo = false;
 						}
-						if(!m.reserbaFechaKalkulatuApartamentu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
-							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
-							ondo = false;
-							amaieraDateChooser.setEnabled(false);
-							amaieraDateChooser.setDate(null);
-						}
+						
 					}
 					if (!ondo) {
 						hasieraDateChooser.setEnabled(true);
@@ -262,7 +257,7 @@ public class apartamentuHautatu extends JFrame {
 					
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
-					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
+					
 					
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));																					//0los id de papartamentuy y etxea
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
@@ -283,12 +278,22 @@ public class apartamentuHautatu extends JFrame {
 						mota = "Umeentzat";
 						codLogela=	Kontsultak.selectCodLogelaApartamentu(apartamentuIzena, mota);
 					}
-	
+					
+					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
+					if (temporada.equals("alta")) {
+						prezioFinala = (prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
+								* (int) SpinnerLogelaKop.getValue());
+						prezioFinala = prezioFinala + 50;// marka
+					} else if (temporada.equals("baja")) {
+						prezioFinala = prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
+								* (int) SpinnerLogelaKop.getValue(); // marka
+					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
 					logelaKop = (int)SpinnerLogelaKop.getValue();
-					prezioFinala = m.prezioKalk(logelaKop, mota); 
-					
+					prezioFinala = m.prezioKalk(logelaKop, mota);
+					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
+					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),SpinnerPisua.getComponentCount() );
 					pisua = (int)SpinnerPisua.getValue();
 					System.out.println("PISUA: "+pisua);
 					
@@ -370,7 +375,7 @@ public class apartamentuHautatu extends JFrame {
 		
 		hasieraDateChooser.setBounds(265, 237, 141, 31);
 		getContentPane().add(hasieraDateChooser);
-		((JTextField) hasieraDateChooser.getDateEditor()).setEditable(false);  
+		((JTextField) hasieraDateChooser.getDateEditor()).setEditable(false);
 		hasieraDateChooser.setSelectableDateRange(hasieraDate, null);
 		
 
