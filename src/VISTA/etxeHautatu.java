@@ -237,7 +237,7 @@ public class etxeHautatu extends JFrame {
 							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
 							ondo = false;
 						}
-						if(!m.reserbaFechaKalkulatu(strDateHasiera,strDateAmaiera, (int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
+						if(!m.reserbaFechaKalkulatuEtxe(strDateHasiera,strDateAmaiera, (int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
 							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
 							ondo = false;
 							amaieraDateChooser.setEnabled(false);
@@ -253,8 +253,9 @@ public class etxeHautatu extends JFrame {
 					
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 					
+					cod_logela=Kontsultak.selectCod_logelaEtxe(hotela, gelaMota);
 					prezioLogela=Kontsultak.selectPrezioa(cod_logela);					
-					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera); 
+					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue(); 
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
@@ -278,7 +279,7 @@ public class etxeHautatu extends JFrame {
 						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
 					}
 	
-					prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
+					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
 					
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
