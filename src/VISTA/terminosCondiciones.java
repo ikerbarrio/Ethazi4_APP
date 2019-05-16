@@ -56,7 +56,7 @@ public class terminosCondiciones extends JFrame {
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MetodoakVista.saioaHastera(prezioFinala, hotela, gelaMota);
+				MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota);
 			}
 		};
 		btnAurrera.addActionListener(al);

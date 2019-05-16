@@ -258,14 +258,14 @@ public class apartamentuHautatu extends JFrame {
 					
 					
 					prezioApartamentua=Kontsultak.selectPrezioApartamentu(comboApartamentuak.getSelectedItem().toString());
-					//prezioFinala=prezioApartamentua* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
+					prezioFinala=prezioApartamentua* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
 					
 					
 					dispose();
 					
 					
-				//	m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));																					//0los id de papartamentuy y etxea
-					//m.datenKenketa(strDateHasiera, strDateAmaiera);
+					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));																					//0los id de papartamentuy y etxea
+					m.datenKenketa(strDateHasiera, strDateAmaiera);
 				
 					//para el metodo de calcular el precio 
 //					if(rdbtnBanakakoa.isSelected()) {
@@ -284,31 +284,19 @@ public class apartamentuHautatu extends JFrame {
 //						codLogela=	Kontsultak.selectCodLogelaApartamentu(apartamentuIzena, mota);
 //					}
 					
-					int egunKop = m.datenKenketa(strDateHasiera, strDateAmaiera);
-					
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
-<<<<<<< HEAD
-					if (temporada.equals("alta")) {
-						prezioFinala = (prezioLogela * egunKop);
-=======
 					if (temporada.equals("alta")) {
 						prezioFinala = (prezioApartamentua * m.datenKenketa(strDateHasiera, strDateAmaiera));
->>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 						prezioFinala = prezioFinala + 50;// marka
 					} else if (temporada.equals("baja")) {
-<<<<<<< HEAD
-						prezioFinala = (prezioLogela * egunKop); // marka
-						System.out.println(prezioFinala);
-=======
 
 						prezioFinala = prezioApartamentua * m.datenKenketa(strDateHasiera, strDateAmaiera); 
 						
 						System.out.println(prezioFinala);
->>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
-					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota);
+					MetodoakVista.terminoEtaCondizioetara(prezioFinala, temporada, temporada);
 		
 					
 					
