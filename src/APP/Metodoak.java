@@ -500,14 +500,17 @@ public class Metodoak {
 
 //	        System.out.println("Años: " + anios);
 //	        System.out.println("Meses: " + meses);
-
+		if (dias < 0) {
+			dias = dias * (-1);
+		}
 
 		System.out.println("Años: " + anios);
 		System.out.println("Meses: " + meses);
 
-		System.out.println("Días: " + (dias - 30));
+		System.out.println("Días: " + (dias + 2));
+		System.out.println("Final del metodo.");
 
-		return dias - 30;
+		return dias + 2;
 
 	}
 
