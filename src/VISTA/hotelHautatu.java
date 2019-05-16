@@ -248,7 +248,7 @@ public class hotelHautatu extends JFrame {
 								* (int) SpinnerLogelaKop.getValue(); // marka
 					}
 
-					MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota, logela_kop);
+					MetodoakVista.terminoEtaCondizioetara(prezioFinala, hotela, gelaMota, logela_kop);
 
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota, strDateHasiera, m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);

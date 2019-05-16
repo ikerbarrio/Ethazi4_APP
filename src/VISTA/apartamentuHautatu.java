@@ -284,12 +284,14 @@ public class apartamentuHautatu extends JFrame {
 					} else if (temporada.equals("baja")) {
 						prezioFinala = prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
 								* (int) SpinnerLogelaKop.getValue(); // marka
+						System.out.println(prezioFinala);
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
 					
 					//prezioFinala = m.prezioKalk(logelaKop, mota);
-					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
+					MetodoakVista.saioaHastera(prezioFinala,hotela,gelaMota,logela_kop);
+					
 					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),SpinnerPisua.getComponentCount() );
 					pisua = (int)SpinnerPisua.getValue();
 					System.out.println("PISUA: "+pisua);

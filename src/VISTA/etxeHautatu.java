@@ -251,7 +251,7 @@ public class etxeHautatu extends JFrame {
 					prezioFinala=prezioEtxea* m.datenKenketa(strDateHasiera, strDateAmaiera); 
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
-					MetodoakVista.saihoaHastera(prezioFinala,etxeIzena,gelaMota,logela_kop);
+					MetodoakVista.saioaHastera(prezioFinala,etxeIzena,gelaMota,logela_kop);
 				
 					
 					
