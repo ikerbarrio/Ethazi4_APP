@@ -285,8 +285,8 @@ public class Metodoak {
 		return Kontsultak.hotelIzenaPantailaratu(hiria);
 	}
 
-	public static String hotelInformazioaPantailaratu(String hotelIzena) {
-		return Kontsultak.hotelInformazioaPantailaratu(hotelIzena);
+	public static String informazioaPantailaratu(String hotelIzena, String tabla) {
+		return Kontsultak.informazioaPantailaratu(hotelIzena,tabla);
 	}
 
 	public static void sartuErabiltzailea(String DNI, String izena, String abizena, String jaiotze_data, String sexua,
@@ -323,7 +323,7 @@ public class Metodoak {
 	public static void logelaKopAldatu(int cod_logela, String mota, int kop) {
 		Kontsultak.logelaKopAldatu(cod_logela, mota, kop);
 	}
-
+	
 	public static boolean dataKalkulatu(String hasieraData) {
 		boolean balidatu = false;
 		ArrayList<String> datak = new ArrayList<String>();
@@ -347,12 +347,12 @@ public class Metodoak {
 
 		return balidatu;
 	}
+	
+	
 
 	// DATEN ARTEKO KENKETA
 	public int datenKenketa(String fechaInicio, String fechaActual) {
-
-		System.out.println(
-				"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
 		Date date = new Date(0);
 
@@ -372,6 +372,7 @@ public class Metodoak {
 
 //		    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
 
+		
 //		    if (mesFinal > mesInicio) {
 //		    	
 //			    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
@@ -400,38 +401,70 @@ public class Metodoak {
 //	    System.out.println(" aplicando la diferencia del mes " + dias);
 //	    	
 //	 
-//	    }
+//	    }	       
 
-		System.out.println(diaFinal);
-		System.out.println(mesFinal);
-		System.out.println(anioFinal);
-		int b = 0;
-		int dias = 0;
-		int mes = 0;
-		int anios = 0;
-		int meses = 0;
-		mes = mesInicio - 1;
-		if (mes == 2) {
-			if ((anioFinal % 4 == 0) && ((anioFinal % 100 != 0) || (anioFinal % 400 == 0))) {
-				b = 29;
-			} else {
-				b = 28;
-			}
-		} else if (mes <= 7) {
-			if (mes == 0) {
-				b = 31;
-			} else if (mes % 2 == 0) {
-				b = 30;
-			} else {
-				b = 31;
-			}
-		} else if (mes > 7) {
-			if (mes % 2 == 0) {
-				b = 31;
-			} else {
-				b = 30;
-			}
-		}
+		        System.out.println(diaFinal);
+		        System.out.println(mesFinal);
+		        System.out.println(anioFinal);
+		        int b = 0;
+		        int dias = 0;
+		        int mes = 0;
+		        int anios = 0;
+		        int meses = 0;
+		        mes = mesInicio - 1;
+		        if (mes == 2) {
+		            if ((anioFinal % 4 == 0) && ((anioFinal % 100 != 0) || (anioFinal % 400 == 0))) {
+		                b = 29;
+		            } else {
+		                b = 28;
+		            }
+		        } else if (mes <= 7) {
+		            if (mes == 0) {
+		                b = 31;
+		            } else if (mes % 2 == 0) {
+		                b = 30;
+		            } else {
+		                b = 31;
+		            }
+		        } else if (mes > 7) {
+		            if (mes % 2 == 0) {
+		                b = 31;
+		            } else {
+		                b = 30;
+		            }
+		        }
+		        
+		        if ((anioInicio > anioFinal) || (anioInicio == anioFinal && mesInicio > mesFinal)
+		                || (anioInicio == anioFinal && mesInicio == mesFinal && diaInicio > diaFinal)) {
+		        	
+		            System.out.println("La fecha de inicio debe ser anterior a la fecha Actual");
+		            
+		        } else {
+		            if (mesInicio <= mesFinal) {
+		                anios = anioFinal - anioInicio;
+		                if (diaInicio <= diaFinal) {
+		                    meses = mesFinal - mesInicio;
+		                    dias = b - (diaInicio - diaFinal);
+		                } else {
+		                    if (mesFinal == mesInicio) {
+		                        anios = anios - 1;
+		                    }
+		                    meses = (mesFinal - mesInicio - 1 + 12) % 12;
+		                    dias = b - (diaInicio - diaFinal);
+		                }
+		            } else {
+		                anios = anioFinal - anioInicio - 1;
+		                System.out.println(anios);
+		                if (diaInicio > diaFinal) {
+		                    meses = mesFinal - mesInicio - 1 + 12;
+		                    dias = b - (diaInicio - diaFinal);
+		                } else {
+		                    meses = mesFinal - mesInicio + 12;
+		                    dias = diaFinal - diaInicio;
+		                }
+		            }
+		        }
+		       
 
 		if ((anioInicio > anioFinal) || (anioInicio == anioFinal && mesInicio > mesFinal)
 				|| (anioInicio == anioFinal && mesInicio == mesFinal && diaInicio > diaFinal)) {
@@ -464,8 +497,10 @@ public class Metodoak {
 			}
 		}
 
+
 //	        System.out.println("Años: " + anios);
 //	        System.out.println("Meses: " + meses);
+
 
 		System.out.println("Años: " + anios);
 		System.out.println("Meses: " + meses);
@@ -878,6 +913,8 @@ public class Metodoak {
 
 	}
 
+
+	    
 //	public static int logelaKopKalkulatu(String data) {
 //		int okupatutak=0;
 //		

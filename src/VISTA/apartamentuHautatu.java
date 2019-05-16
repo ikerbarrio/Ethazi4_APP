@@ -1,5 +1,3 @@
-
-
 package VISTA;
 
 import java.awt.Color;
@@ -86,6 +84,7 @@ public class apartamentuHautatu extends JFrame {
 	private int logelaKop;
 	private JSpinner SpinnerPisua = new JSpinner();
 	private int pisua=0;
+	private int prezioApartamentua=0;
 	
 	
 	
@@ -141,7 +140,7 @@ public class apartamentuHautatu extends JFrame {
 					
 
 							
-					txtInformazioa.setText(Metodoak.hotelInformazioaPantailaratu(comboApartamentuak.getSelectedItem().toString()));
+					txtInformazioa.setText(Metodoak.informazioaPantailaratu(comboApartamentuak.getSelectedItem().toString(),"apartamentua"));
 					
 //					SpinnerLogelaKop.setModel(new SpinnerNumberModel(0,0, Kontsultak.logelaKopuruaLortu(comboHotelak.getSelectedItem().toString(), gelaMota),1));
 					apartamentuIzena = comboApartamentuak.getSelectedItem().toString();
@@ -188,12 +187,12 @@ public class apartamentuHautatu extends JFrame {
 
 					System.out.println(gauKopurua);
 					
-					if (rdbtnBanakakoa.isSelected() | rdbtnBinakakoa.isSelected() | rdbtnUmeentzat.isSelected()) {
+					/*if (rdbtnBanakakoa.isSelected() | rdbtnBinakakoa.isSelected() | rdbtnUmeentzat.isSelected()) {
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Logela mota aukeratu");
 						ondo = false;
-					}
+					}*/
 					System.out.println(prezioFinala);
 					
 
@@ -225,10 +224,10 @@ public class apartamentuHautatu extends JFrame {
 					}
 					
 					
-					if((int)SpinnerLogelaKop.getValue()==0) {
+					/*if((int)SpinnerLogelaKop.getValue()==0) {
 						JOptionPane.showMessageDialog(null, "Ez duzu logelarik aukeratu");
 						ondo = false;
-					}
+					}*/
 					//PARA QUE NO PETE ESTE IF TIENE QUE ESTAR AQUI ABAJO//
 					if(ondo) {
 						strDateHasiera = dateFormat.format(hasieraDateChooser.getDate());
@@ -238,12 +237,7 @@ public class apartamentuHautatu extends JFrame {
 							JOptionPane.showMessageDialog(null, "Ezin duzu egun berdinean erreserbatu");
 							ondo = false;
 						}
-						if(!m.reserbaFechaKalkulatuApartamentu(strDateHasiera,strDateAmaiera,(int)SpinnerLogelaKop.getValue(), hotela, gelaMota)) {
-							JOptionPane.showMessageDialog(null, "Reserba data okupatuta");
-							ondo = false;
-							amaieraDateChooser.setEnabled(false);
-							amaieraDateChooser.setDate(null);
-						}
+						
 					}
 					if (!ondo) {
 						hasieraDateChooser.setEnabled(true);
@@ -255,10 +249,8 @@ public class apartamentuHautatu extends JFrame {
 					dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 					
 					
-					cod_logela=Kontsultak.selectCod_logelaApartamentu(hotela, gelaMota);
-					prezioLogela=Kontsultak.selectPrezioa(cod_logela);
-					
-					prezioFinala=prezioLogela* m.datenKenketa(strDateHasiera, strDateAmaiera)*(int)SpinnerLogelaKop.getValue(); //marka
+					prezioApartamentua=Kontsultak.selectPrezioApartamentu(comboApartamentuak.getSelectedItem().toString());
+					prezioFinala=prezioApartamentua* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
 					
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
@@ -295,8 +287,8 @@ public class apartamentuHautatu extends JFrame {
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
-					logelaKop = (int)SpinnerLogelaKop.getValue();
-					prezioFinala = m.prezioKalk(logelaKop, mota);
+					
+					//prezioFinala = m.prezioKalk(logelaKop, mota);
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota,logela_kop);
 					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),SpinnerPisua.getComponentCount() );
 					pisua = (int)SpinnerPisua.getValue();
