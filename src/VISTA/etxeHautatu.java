@@ -275,12 +275,14 @@ public class etxeHautatu extends JFrame {
 						
 					}
 
+					int egunKop = m.datenKenketa(strDateHasiera, strDateAmaiera);
+					
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
 					if (temporada.equals("alta")) {
-						prezioFinala = (prezioEtxea * m.datenKenketa(strDateHasiera, strDateAmaiera));
+						prezioFinala = (prezioEtxea * egunKop);
 						prezioFinala = prezioFinala + 50;// marka
 					} else if (temporada.equals("baja")) {
-						prezioFinala = prezioEtxea * m.datenKenketa(strDateHasiera, strDateAmaiera); // marka
+						prezioFinala = (prezioEtxea * egunKop); // marka
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 

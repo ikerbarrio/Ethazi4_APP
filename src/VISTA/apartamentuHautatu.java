@@ -250,14 +250,14 @@ public class apartamentuHautatu extends JFrame {
 					
 					
 					prezioApartamentua=Kontsultak.selectPrezioApartamentu(comboApartamentuak.getSelectedItem().toString());
-					prezioFinala=prezioApartamentua* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
+					//prezioFinala=prezioApartamentua* m.datenKenketa(strDateHasiera, strDateAmaiera); //marka
 					
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
 					
 					
-					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));																					//0los id de papartamentuy y etxea
-					m.datenKenketa(strDateHasiera, strDateAmaiera);
+				//	m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));																					//0los id de papartamentuy y etxea
+					//m.datenKenketa(strDateHasiera, strDateAmaiera);
 				
 					//para el metodo de calcular el precio 
 					if(rdbtnBanakakoa.isSelected()) {
@@ -276,12 +276,14 @@ public class apartamentuHautatu extends JFrame {
 						codLogela=	Kontsultak.selectCodLogelaApartamentu(apartamentuIzena, mota);
 					}
 					
+					int egunKop = m.datenKenketa(strDateHasiera, strDateAmaiera);
+					
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
 					if (temporada.equals("alta")) {
-						prezioFinala = (prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera));
+						prezioFinala = (prezioLogela * egunKop);
 						prezioFinala = prezioFinala + 50;// marka
 					} else if (temporada.equals("baja")) {
-						prezioFinala = prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera); // marka
+						prezioFinala = (prezioLogela * egunKop); // marka
 						System.out.println(prezioFinala);
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
