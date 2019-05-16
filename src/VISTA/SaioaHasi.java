@@ -41,7 +41,7 @@ public class SaioaHasi extends JFrame {
 	private JLabel lblSaioaHasi = new JLabel("SAIOA HASI");
 
 	
-	public SaioaHasi(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
+	public SaioaHasi(double prezioFinala,String hotela,String gelaMota) {
 		this.setSize(478, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +72,7 @@ public class SaioaHasi extends JFrame {
 				DNIkonprobatu = Metodoak.nanKomprobaketa(DNI);
 			
 				if(DNIkonprobatu==true && pasahitzaKonprobatu==true) {
-					MetodoakVista.ordainketaLeihora(prezioFinala,hotela,gelaMota,logela_kop);
+					MetodoakVista.ordainketaLeihora(prezioFinala,hotela,gelaMota);
 					dispose();
 				}else {
 					JOptionPane.showMessageDialog(null, "Ez da existitzen\n Saiatu berriro");
@@ -118,7 +118,7 @@ public class SaioaHasi extends JFrame {
 		
 		alBSaioaSortu = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MetodoakVista.saioaSortzera(prezioFinala,hotela,gelaMota,logela_kop);
+				MetodoakVista.saioaSortzera(prezioFinala,hotela,gelaMota);
 				dispose();
 			}
 		};

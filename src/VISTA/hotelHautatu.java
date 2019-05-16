@@ -169,6 +169,11 @@ public class hotelHautatu extends JFrame {
 				// gauKopurua=(int)spinerGauKopurua.getValue();
 
 				ondo = true;
+				
+				if(comboHotelak.getItemCount()==0) {
+					JOptionPane.showMessageDialog(null, "Hotela aukeratu");
+					ondo=false;
+				}
 
 				System.out.println(gauKopurua);
 
@@ -248,7 +253,7 @@ public class hotelHautatu extends JFrame {
 								* (int) SpinnerLogelaKop.getValue(); // marka
 					}
 
-					MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota, logela_kop);
+					MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota);
 
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota, strDateHasiera, m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);
