@@ -802,7 +802,7 @@ public class Kontsultak {
 	
 	//GUARDAR DATOS DE LOS APARTAMENTU
 	
-	public static void ReserbaDatuakGordeApartamentua(String izena,int id,  double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop,int idE, int idA, int pisua) {
+	public static void ReserbaDatuakGordeApartamentua(String izena, double prezioa, String hasieraData, String amaieraData, int idA, int pisua) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -815,21 +815,16 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,id ,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop, idE, idA, pisua)"
-					+ " VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idA, pisua)"
+					+ " VALUES(?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, izena);
-			preparedStmt.setInt(2, id);
-			preparedStmt.setDouble(3, prezioa);
-			preparedStmt.setString(4, logelaMota);
-			preparedStmt.setInt(5, codLogela);
-			preparedStmt.setString(6, hasieraData);
-			preparedStmt.setString(7, amaieraData);
-			preparedStmt.setInt(8, logeolaKop);
-			preparedStmt.setInt(9, idE);
-			preparedStmt.setInt(10, idA);
-			preparedStmt.setInt(11, pisua);
+			preparedStmt.setDouble(2, prezioa);
+			preparedStmt.setString(3, hasieraData);
+			preparedStmt.setString(4, amaieraData);
+			preparedStmt.setInt(5, idA);
+			preparedStmt.setInt(6, pisua);
 			preparedStmt.execute();
 
 			System.out.println("Sartuta");
@@ -871,7 +866,7 @@ public class Kontsultak {
 	}
 	//GUARDAR DATOS DE ETXEAK
 	
-	public static void ReserbaDatuakGordeEtxeak(String izena,int id,  double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop,int idE, int idA) {
+	public static void ReserbaDatuakGordeEtxeak(String izena, double prezioa, String hasieraData, String amaieraData,int idE) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -884,20 +879,15 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,id ,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop, idE, idA)"
-					+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idE)"
+					+ " VALUES(?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, izena);
-			preparedStmt.setInt(2, id);
-			preparedStmt.setDouble(3, prezioa);
-			preparedStmt.setString(4, logelaMota);
-			preparedStmt.setInt(5, codLogela);
-			preparedStmt.setString(6, hasieraData);
-			preparedStmt.setString(7, amaieraData);
-			preparedStmt.setInt(8, logeolaKop);
-			preparedStmt.setInt(9, idE);
-			preparedStmt.setInt(10, idA);
+			preparedStmt.setDouble(2, prezioa);
+			preparedStmt.setString(3, hasieraData);
+			preparedStmt.setString(4, amaieraData);
+			preparedStmt.setInt(5, idE);
 
 			preparedStmt.execute();
 
@@ -1108,7 +1098,7 @@ public class Kontsultak {
 		
 	}
 	
-	public static int selectIDApartamentu(int cod_logela) { // arraylist bueltatu behar du
+	public static int selectIDApartamentu(String izena) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
 		int id =0;
@@ -1119,7 +1109,7 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IDA FROM LOGELAMOTA WHERE COD_LOGELA = " +cod_logela);
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IDA FROM APARTAMENTUA WHERE IZENA LIKE '" +izena+"'");
 
 			while (rs.next()) {
 
@@ -1135,10 +1125,11 @@ public class Kontsultak {
 		
 	}
 	
-	public static int selectIDEtxe(int cod_logela) { // arraylist bueltatu behar du
+	public static ArrayList selectIDEtxeaArray() { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
-		int id =0;
+		int idE =0;
+		ArrayList<Integer> arrayidE = new ArrayList();
 		try {
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
@@ -1146,19 +1137,45 @@ public class Kontsultak {
 			s = (Statement) conexion.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IDE FROM LOGELAMOTA WHERE COD_LOGELA = " +cod_logela);
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IDE FROM RESERBA WHERE IDE IS NOT NULL");
 
 			while (rs.next()) {
 
 				// SELECTAREN DATUAK GORDE
-				id = rs.getInt(1);
-				
+				idE = rs.getInt(1);
+				arrayidE.add(idE);
 
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return id;
+		return arrayidE;
+		
+	}
+	
+	public static int selectIDEtxea(String izena) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int idE =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT IDE FROM ETXEA WHERE IZENA LIKE '"+izena+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				idE = rs.getInt(1);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return idE;
 		
 	}
 	
@@ -1214,6 +1231,120 @@ public class Kontsultak {
 		}
 		return id;
 		
+	}
+	
+	public static int selectPisuaMaximoa(String izena) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int pisua =0;
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT SOLAIRUA FROM APARTAMENTUA WHERE IZENA = '" +izena+"'");
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+				pisua = rs.getInt(1);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return pisua;
+		
+	}
+	
+	public static ArrayList selectPisuak(int idA) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		int pisua = 0;
+		ArrayList<Integer> pisuak = new ArrayList();
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT PISUA FROM RESERBA WHERE IDA = " +idA);
+
+			while (rs.next()) {
+
+				
+				pisua = rs.getInt(1);
+				pisuak.add(pisua);
+				
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return pisuak;
+		
+	}
+	
+	public static ArrayList selectAmaieraDatakApartamentu(int idA) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		String data;
+		ArrayList<String> datak = new ArrayList();
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT AMAIERADATA FROM RESERBA WHERE IDA ="+idA);
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				
+				data = rs.getString(1);
+				datak.add(data);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return datak; // gero erabili ahal izateko array nankomprobaketa metodoan
+	}
+	
+	public static ArrayList selectAmaieraDatakEtxea(int idE) { // arraylist bueltatu behar du
+		Connection conexion = null;
+		Statement s = null;
+		String data;
+		ArrayList<String> datak = new ArrayList();
+		try {
+			// Cargar el driver
+			Class.forName("com.mysql.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/ethazi4", "root", "");
+			s = (Statement) conexion.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			ResultSet rs = ((java.sql.Statement) s).executeQuery("SELECT AMAIERADATA FROM RESERBA WHERE IDE ="+idE);
+
+			while (rs.next()) {
+
+				// SELECTAREN DATUAK GORDE
+
+				
+				data = rs.getString(1);
+				datak.add(data);
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return datak; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 
 	

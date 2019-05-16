@@ -78,7 +78,7 @@ public class Ordainketa extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Ordainketa(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
+	public Ordainketa(double prezioFinala,String hotela,String gelaMota) {
 
 		getContentPane().setLayout(null);
 		this.setSize(478,300);  
@@ -367,7 +367,7 @@ public class Ordainketa extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.saioaHastera(prezioFinala,hotela,gelaMota,cod_logela);
+				MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota);
 				dispose();
 			}
 		};

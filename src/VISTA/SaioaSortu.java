@@ -63,7 +63,7 @@ public class SaioaSortu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SaioaSortu(double prezioFinala, String hotela, String gelaMota, int logela_kop) {
+	public SaioaSortu(double prezioFinala, String hotela, String gelaMota) {
 		this.setSize(478, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -212,7 +212,7 @@ public class SaioaSortu extends JFrame {
 				if (ondo) {
 					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), strJaiotzeData, sexua,
 							pasahitzaEnkriptatuta);
-					MetodoakVista.ordainketaLeihora(prezioFinala, hotela, gelaMota, logela_kop);
+					MetodoakVista.ordainketaLeihora(prezioFinala, hotela, gelaMota);
 					dispose();
 				}
 
@@ -235,7 +235,7 @@ public class SaioaSortu extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota, logela_kop);
+				MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota);
 				dispose();
 
 			}

@@ -9,8 +9,8 @@ public class MetodoakVista {
 		ongiEtorri.setBounds(550, 200, 642, 467);
 }
 
-	public static void saioaHastera(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
-		SaioaHasi saioaHasi = new SaioaHasi(prezioFinala,hotela,gelaMota,logela_kop);
+	public static void saihoaHastera(double prezioFinala,String hotela,String gelaMota) {
+		SaioaHasi saioaHasi = new SaioaHasi(prezioFinala,hotela,gelaMota);
 		saioaHasi.setVisible(true);
 		saioaHasi.setBounds(550, 200, 642, 467);
 	}
@@ -21,8 +21,8 @@ public class MetodoakVista {
 		hotelHautatu.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void ordainketaLeihora(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
-		Ordainketa ordainketa = new Ordainketa(prezioFinala,hotela,gelaMota,logela_kop);
+	public static void ordainketaLeihora(double prezioFinala,String hotela,String gelaMota) {
+		Ordainketa ordainketa = new Ordainketa(prezioFinala,hotela,gelaMota);
 		ordainketa.setVisible(true);
 		ordainketa.setBounds(550, 200, 642, 467);
 	}
@@ -33,8 +33,8 @@ public class MetodoakVista {
 		azkena.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void saioaSortzera(double prezioFinala,String hotela,String gelaMota,int logela_kop) {
-		SaioaSortu SaioaSortu = new SaioaSortu(prezioFinala,hotela,gelaMota,logela_kop);
+	public static void saioaSortzera(double prezioFinala,String hotela,String gelaMota) {
+		SaioaSortu SaioaSortu = new SaioaSortu(prezioFinala,hotela,gelaMota);
 		SaioaSortu.setVisible(true);
 		SaioaSortu.setBounds(550, 200, 642, 467);
 	}
@@ -57,8 +57,8 @@ public class MetodoakVista {
 		etxeHautatu.setBounds(550, 200, 642, 467);
 	}
 	
-	public static void terminoEtaCondizioetara(double prezioFinala, String hotela, String gelaMota, int logela_kop) {
-		terminosCondiciones terminosCondiciones = new terminosCondiciones(prezioFinala, hotela, gelaMota, logela_kop);
+	public static void terminoEtaCondizioetara(double prezioFinala, String hotela, String gelaMota) {
+		terminosCondiciones terminosCondiciones = new terminosCondiciones(prezioFinala, hotela, gelaMota);
 		terminosCondiciones.setVisible(true);
 		terminosCondiciones.setBounds(550, 200, 642, 467);
 	}
