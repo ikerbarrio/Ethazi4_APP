@@ -33,7 +33,7 @@ public class terminosCondiciones extends JFrame {
 	 * @param hotela 
 	 * @param prezioFinala 
 	 */
-	public terminosCondiciones(double prezioFinala, String hotela, String gelaMota, int logela_kop) {
+	public terminosCondiciones(double prezioFinala, String hotela, String gelaMota) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 200, 635, 455);
 		contentPane = new JPanel();
@@ -56,7 +56,7 @@ public class terminosCondiciones extends JFrame {
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MetodoakVista.saioaHastera(prezioFinala, hotela, gelaMota, logela_kop);
+				MetodoakVista.saioaHastera(prezioFinala, hotela, gelaMota);
 			}
 		};
 		btnAurrera.addActionListener(al);

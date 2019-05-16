@@ -250,11 +250,8 @@ public class hotelHautatu extends JFrame {
 						prezioFinala = prezioLogela * egunKop; // marka
 					}
 
-<<<<<<< HEAD
 					MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota);
-=======
-					MetodoakVista.terminoEtaCondizioetara(prezioFinala, hotela, gelaMota, logela_kop);
->>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
+					MetodoakVista.terminoEtaCondizioetara(prezioFinala, hotela, gelaMota);
 
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota, strDateHasiera, egunKop);
 //					m.datenKenketa(strDateHasiera, strDateAmaiera);

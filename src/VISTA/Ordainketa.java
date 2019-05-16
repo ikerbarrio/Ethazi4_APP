@@ -367,11 +367,7 @@ public class Ordainketa extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-<<<<<<< HEAD
 				MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota);
-=======
-				MetodoakVista.saioaHastera(prezioFinala,hotela,gelaMota,cod_logela);
->>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 				dispose();
 			}
 		};
