@@ -240,21 +240,22 @@ public class Metodoak {
 	}
 
 	// ESCRIBIR LAS RESERVAS EN EL FITXERO
-	//añadir  mas datos al fitxero 
+	// añadir mas datos al fitxero
 
 	public void fitxeroaIdatzi(String hotelIzena, double prezioFinala, String logelamota, String eguna, int gauKop) {
-		
+
 		System.out.println("ENTRA EN EL METODO");
 
-		 //zerbitzua = k.zerbitzuakAtera(hotelIzena);
+		// zerbitzua = k.zerbitzuakAtera(hotelIzena);
 		FileWriter reserba = null;
 
 		try {
 			reserba = new FileWriter("..\\Ethazi4_APP\\src\\APP\\Reserba");
 
 			reserba.write("Zure reserba " + hotelIzena + " hotelean egin da. " + " \n Bere prezioa " + prezioFinala
-					+ "€-koa izan da.  " + "\n Aukeratutako logela :" + logelamota + "\n Hotelaren erreserba " + eguna + "-tik aurrera " + gauKop + " gauko estantzia."); // Fitxategian datuak gorde egiten ditu
-																					// (Izena Hotela)
+					+ "€-koa izan da.  " + "\n Aukeratutako logela :" + logelamota + "\n Hotelaren erreserba " + eguna
+					+ "-tik aurrera " + gauKop + " gauko estantzia."); // Fitxategian datuak gorde egiten ditu
+			// (Izena Hotela)
 
 			reserba.close();
 
@@ -318,7 +319,7 @@ public class Metodoak {
 	public static int selectCod_logela(String hotelIzena, String mota) {
 		return Kontsultak.selectCod_logelaHotel(hotelIzena, mota);
 	}
-	
+
 	public static void logelaKopAldatu(int cod_logela, String mota, int kop) {
 		Kontsultak.logelaKopAldatu(cod_logela, mota, kop);
 	}
@@ -331,32 +332,56 @@ public class Metodoak {
 		int intUrteaAmaieraData;
 		String urteaHasieraData;
 		int inturteaHasieraData;
-		
+
 		urteaHasieraData = hasieraData.substring(6, 7);
 		inturteaHasieraData = Integer.parseInt(urteaHasieraData);
-		
-		for(int i=0;i<datak.size();i++) {
+
+		for (int i = 0; i < datak.size(); i++) {
 			urteaAmaieraData = datak.get(i).substring(6, 7);
 			intUrteaAmaieraData = Integer.parseInt(urteaAmaieraData);
-			if(intUrteaAmaieraData<inturteaHasieraData) {
-				
+			if (intUrteaAmaieraData < inturteaHasieraData) {
+
 			}
-			
+
 		}
-		
-		
-		
+
 		return balidatu;
 	}
 	
 	
+<<<<<<< HEAD
 	
 	//DATEN ARTEKO KENKETA
 	public int datenKenketa(String fechaInicio, String fechaActual) {
 		
 		
 		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+=======
 
+	// DATEN ARTEKO KENKETA
+	public int datenKenketa(String fechaInicio, String fechaActual) {
+		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
+		Date date = new Date(0);
+
+		DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+
+		String[] aFechaIng = fechaInicio.split("/");
+		Integer diaInicio = Integer.parseInt(aFechaIng[0]);
+		Integer mesInicio = Integer.parseInt(aFechaIng[1]);
+		Integer anioInicio = Integer.parseInt(aFechaIng[2]);
+
+		String[] aFecha = fechaActual.split("/");
+		Integer diaFinal = Integer.parseInt(aFecha[0]);
+		Integer mesFinal = Integer.parseInt(aFecha[1]);
+		Integer anioFinal = Integer.parseInt(aFecha[2]);
+
+//		        int dias = diaFinal - diaInicio;
+
+//		    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
+
+<<<<<<< HEAD
 
 
 	        
@@ -375,12 +400,31 @@ public class Metodoak {
 	        Integer anioFinal = Integer.parseInt(aFecha[2]);
 	        
 	        
+=======
+		
+//		    if (mesFinal > mesInicio) {
+//		    	
+//			    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
+//			    
+//			    int sumaPorMes=	mesFinal -mesInicio;
+//			    sumaPorMes = sumaPorMes *30;
+//			    dias = dias + sumaPorMes;
+//			    
+//		    System.out.println(" aplicando la diferencia del mes " + dias);
+//		    	
+//		 
+//		    }
+
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 //	        int dias = diaFinal - diaInicio;
-	        
+
 //	    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
 
+<<<<<<< HEAD
 
 	    
+=======
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 //	    if (mesFinal > mesInicio) {
 //	    	
 //		    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
@@ -392,6 +436,7 @@ public class Metodoak {
 //	    System.out.println(" aplicando la diferencia del mes " + dias);
 //	    	
 //	 
+<<<<<<< HEAD
 //	    }
 
   
@@ -478,7 +523,11 @@ public class Metodoak {
 	            }
 	        }
 	       
+=======
+//	    }	       
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 
+<<<<<<< HEAD
 
 
 	        if(mesFinal==mesInicio) {
@@ -492,53 +541,171 @@ public class Metodoak {
 //        System.out.println("Meses: " + meses);
 
      
+=======
+		        System.out.println(diaFinal);
+		        System.out.println(mesFinal);
+		        System.out.println(anioFinal);
+		        int b = 0;
+		        int dias = 0;
+		        int mes = 0;
+		        int anios = 0;
+		        int meses = 0;
+		        mes = mesInicio - 1;
+		        if (mes == 2) {
+		            if ((anioFinal % 4 == 0) && ((anioFinal % 100 != 0) || (anioFinal % 400 == 0))) {
+		                b = 29;
+		            } else {
+		                b = 28;
+		            }
+		        } else if (mes <= 7) {
+		            if (mes == 0) {
+		                b = 31;
+		            } else if (mes % 2 == 0) {
+		                b = 30;
+		            } else {
+		                b = 31;
+		            }
+		        } else if (mes > 7) {
+		            if (mes % 2 == 0) {
+		                b = 31;
+		            } else {
+		                b = 30;
+		            }
+		        }
+		        
+		        if ((anioInicio > anioFinal) || (anioInicio == anioFinal && mesInicio > mesFinal)
+		                || (anioInicio == anioFinal && mesInicio == mesFinal && diaInicio > diaFinal)) {
+		        	
+		            System.out.println("La fecha de inicio debe ser anterior a la fecha Actual");
+		            
+		        } else {
+		            if (mesInicio <= mesFinal) {
+		                anios = anioFinal - anioInicio;
+		                if (diaInicio <= diaFinal) {
+		                    meses = mesFinal - mesInicio;
+		                    dias = b - (diaInicio - diaFinal);
+		                } else {
+		                    if (mesFinal == mesInicio) {
+		                        anios = anios - 1;
+		                    }
+		                    meses = (mesFinal - mesInicio - 1 + 12) % 12;
+		                    dias = b - (diaInicio - diaFinal);
+		                }
+		            } else {
+		                anios = anioFinal - anioInicio - 1;
+		                System.out.println(anios);
+		                if (diaInicio > diaFinal) {
+		                    meses = mesFinal - mesInicio - 1 + 12;
+		                    dias = b - (diaInicio - diaFinal);
+		                } else {
+		                    meses = mesFinal - mesInicio + 12;
+		                    dias = diaFinal - diaInicio;
+		                }
+		            }
+		        }
+		       
 
+		if ((anioInicio > anioFinal) || (anioInicio == anioFinal && mesInicio > mesFinal)
+				|| (anioInicio == anioFinal && mesInicio == mesFinal && diaInicio > diaFinal)) {
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 
+			System.out.println("La fecha de inicio debe ser anterior a la fecha Actual");
+
+<<<<<<< HEAD
 
 	        System.out.println("Años: " + anios);
 	        System.out.println("Meses: " + meses);
 	   
 	        
+=======
+		} else {
+			if (mesInicio <= mesFinal) {
+				anios = anioFinal - anioInicio;
+				if (diaInicio <= diaFinal) {
+					meses = mesFinal - mesInicio;
+					dias = b - (diaInicio - diaFinal);
+				} else {
+					if (mesFinal == mesInicio) {
+						anios = anios - 1;
+					}
+					meses = (mesFinal - mesInicio - 1 + 12) % 12;
+					dias = b - (diaInicio - diaFinal);
+				}
+			} else {
+				anios = anioFinal - anioInicio - 1;
+				System.out.println(anios);
+				if (diaInicio > diaFinal) {
+					meses = mesFinal - mesInicio - 1 + 12;
+					dias = b - (diaInicio - diaFinal);
+				} else {
+					meses = mesFinal - mesInicio + 12;
+					dias = diaFinal - diaInicio;
+				}
+			}
+		}
 
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 
+<<<<<<< HEAD
+=======
+//	        System.out.println("Años: " + anios);
+//	        System.out.println("Meses: " + meses);
+		if (dias < 0) {
+			dias = dias * (-1);
+		}
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
+
+<<<<<<< HEAD
 	        System.out.println("Días: " + (dias - 30));
 	        
 			return dias;
+=======
+		System.out.println("Años: " + anios);
+		System.out.println("Meses: " + meses);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 
+<<<<<<< HEAD
   }
+=======
+		System.out.println("Días: " + (dias + 2));
+		System.out.println("Final del metodo.");
 
-	
-	public boolean reserbaFechaKalkulatuHotel(String fechaInicio,String fechaFinal, int logelaKop, String hotelIzena, String gelaMota) {
-	        
-	        boolean ondo = true;
-	        ArrayList<String> datak_DB = new ArrayList();
-	        datak_DB = Kontsultak.selectAmaieraDatak();
-	        ArrayList<Integer> arrayLogelaKop_DB = new ArrayList();
-	        arrayLogelaKop_DB = Kontsultak.selectLogelaKop();
-	        String fechaInicio_DB;
-	        int okupatutak=0;
-	        int emaitza=0;//resta entre el maximo de habitaciones permitidas y ocupadas
-	        int cod_logela=0;
-	        int maximoLogelaKop=0;//maximo de habitaciones de un tipo de cod_logela
-	        int maximoLogelaKopHotel=50;//maximo de habitaciones permitidas en el hotel
-	        int logelaKop_DB=0;//numero de habitaciones de un tipo de cod_logela en la tabla de reserba
-	        int logelaKopHotel=0;
-	
-	        String[] aFechaIng = fechaInicio.split("/");
-	        Integer diaInicio = Integer.parseInt(aFechaIng[0]);
-	        Integer mesInicio = Integer.parseInt(aFechaIng[1]);
-	        Integer anioInicio = Integer.parseInt(aFechaIng[2]);
+		return dias + 2;
 
-	        String[] aFecha;
-	        int diaFinal;
-	        int mesFinal;
-	        int anioFinal;
-	        
-	       
-	        
-	        cod_logela = Kontsultak.selectCod_logelaHotel(hotelIzena, gelaMota);
-	        maximoLogelaKop = Kontsultak.selectMaximoLogelaKop(cod_logela);
+	}
 
+	public boolean reserbaFechaKalkulatuHotel(String fechaInicio, String fechaFinal, int logelaKop, String hotelIzena,
+			String gelaMota) {
+
+		boolean ondo = true;
+		ArrayList<String> datak_DB = new ArrayList();
+		datak_DB = Kontsultak.selectAmaieraDatak();
+		ArrayList<Integer> arrayLogelaKop_DB = new ArrayList();
+		arrayLogelaKop_DB = Kontsultak.selectLogelaKop();
+		String fechaInicio_DB;
+		int okupatutak = 0;
+		int emaitza = 0;// resta entre el maximo de habitaciones permitidas y ocupadas
+		int cod_logela = 0;
+		int maximoLogelaKop = 0;// maximo de habitaciones de un tipo de cod_logela
+		int maximoLogelaKopHotel = 50;// maximo de habitaciones permitidas en el hotel
+		int logelaKop_DB = 0;// numero de habitaciones de un tipo de cod_logela en la tabla de reserba
+		int logelaKopHotel = 0;
+
+		String[] aFechaIng = fechaInicio.split("/");
+		Integer diaInicio = Integer.parseInt(aFechaIng[0]);
+		Integer mesInicio = Integer.parseInt(aFechaIng[1]);
+		Integer anioInicio = Integer.parseInt(aFechaIng[2]);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
+
+		String[] aFecha;
+		int diaFinal;
+		int mesFinal;
+		int anioFinal;
+
+		cod_logela = Kontsultak.selectCod_logelaHotel(hotelIzena, gelaMota);
+		maximoLogelaKop = Kontsultak.selectMaximoLogelaKop(cod_logela);
+
+<<<<<<< HEAD
 	        for(int i=0;i<datak_DB.size();i++) {
 	        	aFechaIng = fechaInicio.split("/");
 	        	diaInicio = Integer.parseInt(aFechaIng[0]);
@@ -631,15 +798,111 @@ public class Metodoak {
 	        System.out.println("Maximo general del hotel: "+maximoLogelaKopHotel);
 	        
 	        
+=======
+		for (int i = 0; i < datak_DB.size(); i++) {
+			aFechaIng = fechaInicio.split("/");
+			diaInicio = Integer.parseInt(aFechaIng[0]);
+			mesInicio = Integer.parseInt(aFechaIng[1]);
+			anioInicio = Integer.parseInt(aFechaIng[2]);
+			aFecha = datak_DB.get(i).split("/");
+			diaFinal = Integer.parseInt(aFecha[0]);
+			mesFinal = Integer.parseInt(aFecha[1]);
+			anioFinal = Integer.parseInt(aFecha[2]);
+			if (anioFinal == anioInicio) {
+				if (mesFinal == mesInicio) {
+					if (diaFinal >= diaInicio) {
+						fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+						aFechaIng = fechaInicio_DB.split("/");
+						diaInicio = Integer.parseInt(aFechaIng[0]);
+						aFecha = fechaFinal.split("/");
+						diaFinal = Integer.parseInt(aFecha[0]);
+						if (diaInicio <= diaFinal) {
+							okupatutak += arrayLogelaKop_DB.get(i);
+							// okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+							logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+							System.out.println("Okupatuta: " + okupatutak);
+
+							logelaKopHotel = Kontsultak
+									.selectSumaLogelaKopPorHotel(Kontsultak.selectIDHotel(cod_logela), datak_DB.get(i));
+							System.out.println("LogelaKopHotel: " + logelaKopHotel);
+							logelaKopHotel += logelaKop;
+							if (maximoLogelaKopHotel < logelaKopHotel) {
+								ondo = false;
+							}
+						}
+
+					}
+				} else if (mesFinal > mesInicio) {
+					fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+					aFechaIng = fechaInicio_DB.split("/");
+					mesInicio = Integer.parseInt(aFechaIng[0]);
+					aFecha = fechaFinal.split("/");
+					mesFinal = Integer.parseInt(aFecha[0]);
+					if (mesInicio <= mesFinal) {
+						okupatutak += arrayLogelaKop_DB.get(i);
+						// okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+						logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+						System.out.println("Okupatuta: " + okupatutak);
+
+						logelaKopHotel = Kontsultak.selectSumaLogelaKopPorHotel(Kontsultak.selectIDHotel(cod_logela),
+								datak_DB.get(i));
+						System.out.println("LogelaKopHotel: " + logelaKopHotel);
+						logelaKopHotel += logelaKop;
+						if (maximoLogelaKopHotel < logelaKopHotel) {
+							ondo = false;
+						}
+					}
+
+				}
+			} else if (anioFinal > anioInicio) {
+				fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+				aFechaIng = fechaInicio_DB.split("/");
+				anioInicio = Integer.parseInt(aFechaIng[0]);
+				aFecha = fechaFinal.split("/");
+				anioFinal = Integer.parseInt(aFecha[0]);
+				if (anioInicio <= anioFinal) {
+					okupatutak += arrayLogelaKop_DB.get(i);
+					// okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+					logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+					System.out.println("Okupatuta: " + okupatutak);
+
+					logelaKopHotel = Kontsultak.selectSumaLogelaKopPorHotel(Kontsultak.selectIDHotel(cod_logela),
+							datak_DB.get(i));
+					System.out.println("LogelaKopHotel: " + logelaKopHotel);
+					logelaKopHotel += logelaKop;
+					if (maximoLogelaKopHotel < logelaKopHotel) {
+						ondo = false;
+					}
+				}
+			}
+		}
+
+		logelaKop_DB += logelaKop;
+
+		emaitza = maximoLogelaKopHotel - okupatutak;
+
+		if (maximoLogelaKop < logelaKop_DB) {
+			ondo = false;
+			logelaKop_DB -= logelaKop;
+		}
+
+		System.out.println("Numero de habitaciones elegidas: " + logelaKop);
+		System.out.println("Numero de habitaciones en la BD de cod_logela " + cod_logela + ": " + logelaKop_DB);
+		System.out.println("Logela okupatutak: " + okupatutak);
+		System.out.println("Maximologelakop de cod_logela " + cod_logela + ": " + maximoLogelaKop);
+		System.out.println("Maximo general del hotel: " + maximoLogelaKopHotel);
+
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 //	        if(emaitza<logelaKop) {
 //	        	ondo = false;
 //	        }else {
 //	        	emaitza-=logelaKop;
 //	        }
-	        System.out.println("Habitaciones restantes en el hotel: "+emaitza);
-	        
-			return ondo;
+		System.out.println("Habitaciones restantes en el hotel: " + emaitza);
 
+		return ondo;
+
+<<<<<<< HEAD
 	    }
 	
 	public boolean reserbaFechaKalkulatuApartamentu(String fechaInicio,String fechaFinal, int idA, int pisua) {
@@ -801,6 +1064,280 @@ public class Metodoak {
 	
 	
 	
+=======
+	}
+
+	public boolean reserbaFechaKalkulatuApartamentu(String fechaInicio, String fechaFinal, int logelaKop,
+			String hotelIzena, String gelaMota) {
+
+		boolean ondo = true;
+		ArrayList<String> datak_DB = new ArrayList();
+		datak_DB = Kontsultak.selectAmaieraDatak();
+		ArrayList<Integer> arrayLogelaKop_DB = new ArrayList();
+		arrayLogelaKop_DB = Kontsultak.selectLogelaKop();
+		String fechaInicio_DB;
+		int okupatutak = 0;
+		int emaitza = 0;// resta entre el maximo de habitaciones permitidas y ocupadas
+		int cod_logela = 0;
+		int maximoLogelaKop = 0;// maximo de habitaciones de un tipo de cod_logela
+		int maximoLogelaKopApartamentu = 50;// maximo de habitaciones permitidas en el hotel
+		int logelaKop_DB = 0;// numero de habitaciones de un tipo de cod_logela en la tabla de reserba
+		int logelaKopApartamentu = 0;
+
+		String[] aFechaIng = fechaInicio.split("/");
+		Integer diaInicio = Integer.parseInt(aFechaIng[0]);
+		Integer mesInicio = Integer.parseInt(aFechaIng[1]);
+		Integer anioInicio = Integer.parseInt(aFechaIng[2]);
+
+		String[] aFecha;
+		int diaFinal;
+		int mesFinal;
+		int anioFinal;
+
+		cod_logela = Kontsultak.selectCod_logelaApartamentu(hotelIzena, gelaMota);
+		maximoLogelaKop = Kontsultak.selectMaximoLogelaKop(cod_logela);
+
+		for (int i = 0; i < datak_DB.size(); i++) {
+			aFechaIng = fechaInicio.split("/");
+			diaInicio = Integer.parseInt(aFechaIng[0]);
+			mesInicio = Integer.parseInt(aFechaIng[1]);
+			anioInicio = Integer.parseInt(aFechaIng[2]);
+			aFecha = datak_DB.get(i).split("/");
+			diaFinal = Integer.parseInt(aFecha[0]);
+			mesFinal = Integer.parseInt(aFecha[1]);
+			anioFinal = Integer.parseInt(aFecha[2]);
+			if (anioFinal == anioInicio) {
+				if (mesFinal == mesInicio) {
+					if (diaFinal >= diaInicio) {
+						fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+						aFechaIng = fechaInicio_DB.split("/");
+						diaInicio = Integer.parseInt(aFechaIng[0]);
+						aFecha = fechaFinal.split("/");
+						diaFinal = Integer.parseInt(aFecha[0]);
+						if (diaInicio <= diaFinal) {
+							okupatutak += arrayLogelaKop_DB.get(i);
+							// okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+							logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+							System.out.println("Okupatuta: " + okupatutak);
+
+							logelaKopApartamentu = Kontsultak.selectSumaLogelaKopPorApartamentu(
+									Kontsultak.selectIDApartamentu(cod_logela), datak_DB.get(i));
+							System.out.println("logelaKopApartamentu: " + logelaKopApartamentu);
+							logelaKopApartamentu += logelaKop;
+							if (maximoLogelaKopApartamentu < logelaKopApartamentu) {
+								ondo = false;
+							}
+						}
+
+					}
+				} else if (mesFinal > mesInicio) {
+					fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+					aFechaIng = fechaInicio_DB.split("/");
+					mesInicio = Integer.parseInt(aFechaIng[0]);
+					aFecha = fechaFinal.split("/");
+					mesFinal = Integer.parseInt(aFecha[0]);
+					if (mesInicio <= mesFinal) {
+						okupatutak += arrayLogelaKop_DB.get(i);
+						// okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+						logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+						System.out.println("Okupatuta: " + okupatutak);
+
+						logelaKopApartamentu = Kontsultak.selectSumaLogelaKopPorApartamentu(
+								Kontsultak.selectIDApartamentu(cod_logela), datak_DB.get(i));
+						System.out.println("logelaKopApartamentu: " + logelaKopApartamentu);
+						logelaKopApartamentu += logelaKop;
+						if (maximoLogelaKopApartamentu < logelaKopApartamentu) {
+							ondo = false;
+						}
+					}
+
+				}
+			} else if (anioFinal > anioInicio) {
+				fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+				aFechaIng = fechaInicio_DB.split("/");
+				anioInicio = Integer.parseInt(aFechaIng[0]);
+				aFecha = fechaFinal.split("/");
+				anioFinal = Integer.parseInt(aFecha[0]);
+				if (anioInicio <= anioFinal) {
+					okupatutak += arrayLogelaKop_DB.get(i);
+					// okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+					logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+					System.out.println("Okupatuta: " + okupatutak);
+
+					logelaKopApartamentu = Kontsultak.selectSumaLogelaKopPorApartamentu(
+							Kontsultak.selectIDApartamentu(cod_logela), datak_DB.get(i));
+					System.out.println("logelaKopApartamentu: " + logelaKopApartamentu);
+					logelaKopApartamentu += logelaKop;
+					if (maximoLogelaKopApartamentu < logelaKopApartamentu) {
+						ondo = false;
+					}
+				}
+			}
+		}
+
+		logelaKop_DB += logelaKop;
+
+		emaitza = maximoLogelaKopApartamentu - okupatutak;
+
+		if (maximoLogelaKop < logelaKop_DB) {
+			ondo = false;
+			logelaKop_DB -= logelaKop;
+		}
+
+		System.out.println("Numero de habitaciones elegidas: " + logelaKop);
+		System.out.println("Numero de habitaciones en la BD de cod_logela " + cod_logela + ": " + logelaKop_DB);
+		System.out.println("Logela okupatutak: " + okupatutak);
+		System.out.println("Maximologelakop de cod_logela " + cod_logela + ": " + maximoLogelaKop);
+		System.out.println("Maximo general del hotel: " + maximoLogelaKopApartamentu);
+
+//        if(emaitza<logelaKop) {
+//        	ondo = false;
+//        }else {
+//        	emaitza-=logelaKop;
+//        }
+		System.out.println("Habitaciones restantes en el hotel: " + emaitza);
+
+		return ondo;
+
+	}
+
+	public boolean reserbaFechaKalkulatuEtxe(String fechaInicio, String fechaFinal, int logelaKop, String hotelIzena,
+			String gelaMota) {
+
+		boolean ondo = true;
+		ArrayList<String> datak_DB = new ArrayList();
+		datak_DB = Kontsultak.selectAmaieraDatak();
+		ArrayList<Integer> arrayLogelaKop_DB = new ArrayList();
+		arrayLogelaKop_DB = Kontsultak.selectLogelaKop();
+		String fechaInicio_DB;
+		int okupatutak = 0;
+		int emaitza = 0;// resta entre el maximo de habitaciones permitidas y ocupadas
+		int cod_logela = 0;
+		int maximoLogelaKop = 0;// maximo de habitaciones de un tipo de cod_logela
+		int maximoLogelaKopEtxe = 50;// maximo de habitaciones permitidas en el hotel
+		int logelaKop_DB = 0;// numero de habitaciones de un tipo de cod_logela en la tabla de reserba
+		int logelaKopEtxe = 0;
+
+		String[] aFechaIng = fechaInicio.split("/");
+		Integer diaInicio = Integer.parseInt(aFechaIng[0]);
+		Integer mesInicio = Integer.parseInt(aFechaIng[1]);
+		Integer anioInicio = Integer.parseInt(aFechaIng[2]);
+
+		String[] aFecha;
+		int diaFinal;
+		int mesFinal;
+		int anioFinal;
+
+		cod_logela = Kontsultak.selectCod_logelaEtxe(hotelIzena, gelaMota);
+		maximoLogelaKop = Kontsultak.selectMaximoLogelaKop(cod_logela);
+
+		for (int i = 0; i < datak_DB.size(); i++) {
+			aFechaIng = fechaInicio.split("/");
+			diaInicio = Integer.parseInt(aFechaIng[0]);
+			mesInicio = Integer.parseInt(aFechaIng[1]);
+			anioInicio = Integer.parseInt(aFechaIng[2]);
+			aFecha = datak_DB.get(i).split("/");
+			diaFinal = Integer.parseInt(aFecha[0]);
+			mesFinal = Integer.parseInt(aFecha[1]);
+			anioFinal = Integer.parseInt(aFecha[2]);
+			if (anioFinal == anioInicio) {
+				if (mesFinal == mesInicio) {
+					if (diaFinal >= diaInicio) {
+						fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+						aFechaIng = fechaInicio_DB.split("/");
+						diaInicio = Integer.parseInt(aFechaIng[0]);
+						aFecha = fechaFinal.split("/");
+						diaFinal = Integer.parseInt(aFecha[0]);
+						if (diaInicio <= diaFinal) {
+							okupatutak += arrayLogelaKop_DB.get(i);
+							// okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+							logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+							System.out.println("Okupatuta: " + okupatutak);
+
+							logelaKopEtxe = Kontsultak.selectSumaLogelaKopPorEtxe(Kontsultak.selectIDEtxe(cod_logela),
+									datak_DB.get(i));
+							System.out.println("logelaKopEtxe: " + logelaKopEtxe);
+							logelaKopEtxe += logelaKop;
+							if (maximoLogelaKopEtxe < logelaKopEtxe) {
+								ondo = false;
+							}
+						}
+
+					}
+				} else if (mesFinal > mesInicio) {
+					fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+					aFechaIng = fechaInicio_DB.split("/");
+					mesInicio = Integer.parseInt(aFechaIng[0]);
+					aFecha = fechaFinal.split("/");
+					mesFinal = Integer.parseInt(aFecha[0]);
+					if (mesInicio <= mesFinal) {
+						okupatutak += arrayLogelaKop_DB.get(i);
+						// okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+						logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+						System.out.println("Okupatuta: " + okupatutak);
+
+						logelaKopEtxe = Kontsultak.selectSumaLogelaKopPorEtxe(Kontsultak.selectIDEtxe(cod_logela),
+								datak_DB.get(i));
+						System.out.println("logelaKopEtxe: " + logelaKopEtxe);
+						logelaKopEtxe += logelaKop;
+						if (maximoLogelaKopEtxe < logelaKopEtxe) {
+							ondo = false;
+						}
+					}
+
+				}
+			} else if (anioFinal > anioInicio) {
+				fechaInicio_DB = Kontsultak.selectHasieraData(datak_DB.get(i));
+				aFechaIng = fechaInicio_DB.split("/");
+				anioInicio = Integer.parseInt(aFechaIng[0]);
+				aFecha = fechaFinal.split("/");
+				anioFinal = Integer.parseInt(aFecha[0]);
+				if (anioInicio <= anioFinal) {
+					okupatutak += arrayLogelaKop_DB.get(i);
+					// okupatutak += Metodoak.logelaKopKalkulatu(datak_DB.get(i));
+					logelaKop_DB = Kontsultak.selectLogelaKopEspecifico(cod_logela);
+					System.out.println("Okupatuta: " + okupatutak);
+
+					logelaKopEtxe = Kontsultak.selectSumaLogelaKopPorEtxe(Kontsultak.selectIDEtxe(cod_logela),
+							datak_DB.get(i));
+					System.out.println("logelaKopEtxe: " + logelaKopEtxe);
+					logelaKopEtxe += logelaKop;
+					if (maximoLogelaKopEtxe < logelaKopEtxe) {
+						ondo = false;
+					}
+				}
+			}
+		}
+
+		logelaKop_DB += logelaKop;
+
+		emaitza = maximoLogelaKopEtxe - okupatutak;
+
+		if (maximoLogelaKop < logelaKop_DB) {
+			ondo = false;
+			logelaKop_DB -= logelaKop;
+		}
+
+		System.out.println("Numero de habitaciones elegidas: " + logelaKop);
+		System.out.println("Numero de habitaciones en la BD de cod_logela " + cod_logela + ": " + logelaKop_DB);
+		System.out.println("Logela okupatutak: " + okupatutak);
+		System.out.println("Maximologelakop de cod_logela " + cod_logela + ": " + maximoLogelaKop);
+		System.out.println("Maximo general del hotel: " + maximoLogelaKopEtxe);
+
+//        if(emaitza<logelaKop) {
+//        	ondo = false;
+//        }else {
+//        	emaitza-=logelaKop;
+//        }
+		System.out.println("Habitaciones restantes en el hotel: " + emaitza);
+
+		return ondo;
+
+	}
+
+
+	    
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 //	public static int logelaKopKalkulatu(String data) {
 //		int okupatutak=0;
 //		
@@ -812,10 +1349,11 @@ public class Metodoak {
 	public static ArrayList apartamentuIzenaPantailaratu(String hiria) {
 		return Kontsultak.apartamentuIzenaPantailaratu(hiria);
 	}
-	
+
 	public static ArrayList etxeIzenaPantailaratu(String hiria) {
 		return Kontsultak.etxeIzenaPantailaratu(hiria);
 	}
+<<<<<<< HEAD
 	
 	
 	//PREZIOA CALCULATU METODOA
@@ -841,34 +1379,63 @@ public class Metodoak {
 //		return prezioFinala;
 //	}
 	
+=======
+
+	// PREZIOA CALCULATU METODOA
+	public static int prezioKalk(int logelaKop, String mota) {
+
+		int prezioFinala = 0;
+
+		if (mota.equalsIgnoreCase("Banakakoa")) {
+
+			prezioFinala = logelaKop * 20;
+
+		} else if (mota.equalsIgnoreCase("Bikoitza")) {
+
+			prezioFinala = logelaKop * 40;
+			System.out.println(logelaKop + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
+		} else if (mota.equalsIgnoreCase("Umeentzat")) {
+
+			prezioFinala = logelaKop * 10;
+
+		}
+
+		return prezioFinala;
+	}
+
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 	public static String kalkulatuDenboraldia(String fechaInicio, String fechaFinal) {
 		String temporada = null;
 		String[] aFechaIng = new String[3];
-		String [] aFechaSal = new String[3];
+		String[] aFechaSal = new String[3];
 		int diaInicio;
 		int mesInicio;
 		int anioInicio;
 		int diaFinal;
 		int mesFinal;
 		int anioFinal;
-		
+
 		aFechaIng = fechaInicio.split("/");
-    	diaInicio = Integer.parseInt(aFechaIng[0]);
-        mesInicio = Integer.parseInt(aFechaIng[1]);
-        anioInicio = Integer.parseInt(aFechaIng[2]);
-                
-        aFechaSal = fechaInicio.split("/");
-    	diaFinal = Integer.parseInt(aFechaIng[0]);
-        mesFinal = Integer.parseInt(aFechaIng[1]);
-        anioFinal = Integer.parseInt(aFechaIng[2]);
-        
-        if (mesInicio == 11 || mesInicio == 12 || mesInicio == 1 || mesInicio == 2 || mesInicio == 3 || (diaInicio > 21 && mesInicio == 6) || mesInicio == 7 || mesInicio == 8
-        	||	mesFinal == 11 || mesFinal == 12 || mesFinal == 1 || mesFinal == 2 || mesFinal == 3 || (diaFinal > 21 && mesFinal == 6) || mesFinal == 7 || mesFinal == 8) {
-        	temporada = "alta";
-        }else if (mesInicio == 4 || mesInicio == 5 || (mesInicio == 6 && diaInicio < 22) || mesInicio == 9 || mesInicio == 10
-        	||	mesFinal == 4 || mesFinal == 5 || (mesFinal == 6 && diaFinal < 22) || mesFinal == 9 || mesFinal == 10) {
-        	temporada = "baja";
-        }
+		diaInicio = Integer.parseInt(aFechaIng[0]);
+		mesInicio = Integer.parseInt(aFechaIng[1]);
+		anioInicio = Integer.parseInt(aFechaIng[2]);
+
+		aFechaSal = fechaInicio.split("/");
+		diaFinal = Integer.parseInt(aFechaIng[0]);
+		mesFinal = Integer.parseInt(aFechaIng[1]);
+		anioFinal = Integer.parseInt(aFechaIng[2]);
+
+		if (mesInicio == 11 || mesInicio == 12 || mesInicio == 1 || mesInicio == 2 || mesInicio == 3
+				|| (diaInicio > 21 && mesInicio == 6) || mesInicio == 7 || mesInicio == 8 || mesFinal == 11
+				|| mesFinal == 12 || mesFinal == 1 || mesFinal == 2 || mesFinal == 3 || (diaFinal > 21 && mesFinal == 6)
+				|| mesFinal == 7 || mesFinal == 8) {
+			temporada = "alta";
+		} else if (mesInicio == 4 || mesInicio == 5 || (mesInicio == 6 && diaInicio < 22) || mesInicio == 9
+				|| mesInicio == 10 || mesFinal == 4 || mesFinal == 5 || (mesFinal == 6 && diaFinal < 22)
+				|| mesFinal == 9 || mesFinal == 10) {
+			temporada = "baja";
+		}
 		return temporada;
 	}
 

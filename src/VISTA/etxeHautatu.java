@@ -263,7 +263,11 @@ public class etxeHautatu extends JFrame {
 					prezioFinala=prezioEtxea* m.datenKenketa(strDateHasiera, strDateAmaiera); 
 					
 					dispose();
+<<<<<<< HEAD
 					MetodoakVista.saihoaHastera(prezioFinala,etxeIzena,gelaMota);
+=======
+					MetodoakVista.saioaHastera(prezioFinala,etxeIzena,gelaMota,logela_kop);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 				
 					
 					

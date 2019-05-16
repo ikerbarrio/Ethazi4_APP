@@ -237,26 +237,27 @@ public class hotelHautatu extends JFrame {
 					cod_logela = Kontsultak.selectCod_logelaHotel(hotela, gelaMota);
 					prezioLogela = Kontsultak.selectPrezioa(cod_logela);
 
-					prezioFinala = prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
-							* (int) SpinnerLogelaKop.getValue(); // marka
-
 					logela_kop = (int) SpinnerLogelaKop.getValue();
 					dispose();
-
+					
+					int egunKop = m.datenKenketa(strDateHasiera, strDateAmaiera);
+					
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
 					if (temporada.equals("alta")) {
-						prezioFinala = (prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
-								* (int) SpinnerLogelaKop.getValue());
+						prezioFinala = (prezioLogela * egunKop);
 						prezioFinala = prezioFinala + 50;// marka
 					} else if (temporada.equals("baja")) {
-						prezioFinala = prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera)
-								* (int) SpinnerLogelaKop.getValue(); // marka
+						prezioFinala = prezioLogela * egunKop; // marka
 					}
 
+<<<<<<< HEAD
 					MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota);
+=======
+					MetodoakVista.terminoEtaCondizioetara(prezioFinala, hotela, gelaMota, logela_kop);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 
-					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota, strDateHasiera, m.datenKenketa(strDateHasiera, strDateHasiera));
-					m.datenKenketa(strDateHasiera, strDateAmaiera);
+					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota, strDateHasiera, egunKop);
+//					m.datenKenketa(strDateHasiera, strDateAmaiera);
 					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota,
 							Kontsultak.selectCod_logelaHotel(hotela, gelaMota), strDateHasiera, strDateAmaiera,
 							(int) SpinnerLogelaKop.getValue(), 0, 0);

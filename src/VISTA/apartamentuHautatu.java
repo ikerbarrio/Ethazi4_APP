@@ -286,17 +286,32 @@ public class apartamentuHautatu extends JFrame {
 					
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
 					if (temporada.equals("alta")) {
+<<<<<<< HEAD
 						prezioFinala = (prezioApartamentua * m.datenKenketa(strDateHasiera, strDateAmaiera));
+=======
+						prezioFinala = (prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera));
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 						prezioFinala = prezioFinala + 50;// marka
 					} else if (temporada.equals("baja")) {
+<<<<<<< HEAD
 						prezioFinala = prezioApartamentua * m.datenKenketa(strDateHasiera, strDateAmaiera); // marka
+=======
+						prezioFinala = prezioLogela * m.datenKenketa(strDateHasiera, strDateAmaiera); // marka
+						System.out.println(prezioFinala);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
 					
 					//prezioFinala = m.prezioKalk(logelaKop, mota);
+<<<<<<< HEAD
 					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota);
 					
+=======
+					MetodoakVista.saioaHastera(prezioFinala,hotela,gelaMota,logela_kop);
+					
+					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena,0, prezioFinala, gelaMota, codLogela, strDateHasiera, strDateHasiera, logela_kop,0, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),SpinnerPisua.getComponentCount() );
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 					pisua = (int)SpinnerPisua.getValue();
 					System.out.println("PISUA: "+pisua);
 					
