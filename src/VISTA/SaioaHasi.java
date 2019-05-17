@@ -86,7 +86,7 @@ public class SaioaHasi extends JFrame {
 		btnAurrera.setEnabled(true);
 		btnAurrera.addActionListener(alBAurrera);
 		btnAurrera.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAurrera.setBounds(524, 386, 99, 33);
+		btnAurrera.setBounds(510, 373, 113, 44);
 		getContentPane().add(btnAurrera);
 
 		

@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import DB.*;
 
@@ -777,6 +778,14 @@ public class Metodoak {
 			temporada = "baja";
 		}
 		return temporada;
+	}
+	
+	public static void bostSegundo() {
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
 	}
 
 }
