@@ -47,6 +47,7 @@ public class terminosCondiciones extends JFrame {
 		al2 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnAurrera.setEnabled(true);
+				btnOnartu.setEnabled(false);
 			}
 		};
 		btnOnartu.addActionListener(al2);

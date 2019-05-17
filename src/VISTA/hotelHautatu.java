@@ -252,7 +252,7 @@ public class hotelHautatu extends JFrame {
 					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 					Date date = new Date();
 					
-					String strDate = dateFormat.format(date); //marka
+					String strDate = dateFormat.format(date);
 
 					MetodoakVista.saioaHastera(prezioFinala, hotela, gelaMota);
 					MetodoakVista.terminoEtaCondizioetara(prezioFinala, hotela, gelaMota);

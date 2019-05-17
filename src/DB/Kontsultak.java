@@ -802,7 +802,7 @@ public class Kontsultak {
 	
 	//GUARDAR DATOS DE LOS APARTAMENTU
 	
-	public static void ReserbaDatuakGordeApartamentua(String izena, double prezioa, String hasieraData, String amaieraData, int idA, int pisua) {
+	public static void ReserbaDatuakGordeApartamentua(String izena, double prezioa, String hasieraData, String amaieraData, int idA, int pisua, String localDate) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -815,8 +815,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idA, pisua)"
-					+ " VALUES(?,?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idA, pisua, fecha_tc)"
+					+ " VALUES(?,?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, izena);
@@ -825,6 +825,7 @@ public class Kontsultak {
 			preparedStmt.setString(4, amaieraData);
 			preparedStmt.setInt(5, idA);
 			preparedStmt.setInt(6, pisua);
+			preparedStmt.setString(7, localDate);
 			preparedStmt.execute();
 
 			System.out.println("Sartuta");
@@ -866,7 +867,7 @@ public class Kontsultak {
 	}
 	//GUARDAR DATOS DE ETXEAK
 	
-	public static void ReserbaDatuakGordeEtxeak(String izena, double prezioa, String hasieraData, String amaieraData,int idE) {
+	public static void ReserbaDatuakGordeEtxeak(String izena, double prezioa, String hasieraData, String amaieraData,int idE, String localDate) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -879,8 +880,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idE)"
-					+ " VALUES(?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idE, fecha_tc)"
+					+ " VALUES(?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, izena);
@@ -888,6 +889,8 @@ public class Kontsultak {
 			preparedStmt.setString(3, hasieraData);
 			preparedStmt.setString(4, amaieraData);
 			preparedStmt.setInt(5, idE);
+			preparedStmt.setString(6, localDate);
+			
 
 			preparedStmt.execute();
 

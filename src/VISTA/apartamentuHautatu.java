@@ -298,13 +298,16 @@ public class apartamentuHautatu extends JFrame {
 					
 					MetodoakVista.terminoEtaCondizioetara(prezioFinala, temporada, temporada);
 		
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+					Date date = new Date();
 					
+					String strDate = dateFormat.format(date);
 					
 
 					pisua = (int)SpinnerPisua.getValue();
 					System.out.println("PISUA: "+pisua);
 					
-					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena, prezioFinala, strDateHasiera, strDateAmaiera, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),pisua);
+					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena, prezioFinala, strDateHasiera, strDateAmaiera, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),pisua, strDate);
 					//marka
 			
 				}

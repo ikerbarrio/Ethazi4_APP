@@ -264,29 +264,11 @@ public class etxeHautatu extends JFrame {
 					
 					dispose();
 					
-				
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+					Date date = new Date();
 					
+					String strDate = dateFormat.format(date);
 					
-//					//para el metodo de calcular el precio 
-//					if(rdbtnBanakakoa.isSelected()) {
-//						
-//						mota = "Banakakoa";
-//						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
-//					
-//						
-//					}else if(rdbtnBinakakoa.isSelected()) {
-//						
-//						mota = "Bikoitza";
-//						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
-//					
-//						
-//					}else if(rdbtnUmeentzat.isSelected()) {
-//						
-//						mota = "Umeentzat";
-//						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
-//						
-//					}
-
 					int egunKop = m.datenKenketa(strDateHasiera, strDateAmaiera);
 					
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
@@ -307,7 +289,7 @@ public class etxeHautatu extends JFrame {
 					
 				
 					//prezioFinala = m.prezioKalk(logelaKop, mota);
-					Kontsultak.ReserbaDatuakGordeEtxeak(etxeIzena, prezioFinala, strDateHasiera,  strDateAmaiera, Kontsultak.etxeIdLortu(etxeIzena));
+					Kontsultak.ReserbaDatuakGordeEtxeak(etxeIzena, prezioFinala, strDateHasiera,  strDateAmaiera, Kontsultak.etxeIdLortu(etxeIzena), strDate);
 					
 					
 				
