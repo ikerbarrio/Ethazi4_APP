@@ -58,7 +58,8 @@ public class SaioaSortu extends JFrame {
 	private String data;
 	private JPasswordField pasahitzaErrepikatu;
 	private ArrayList<String> arrayDNI = new ArrayList();
-	JDateChooser jaiotzeDateChooser = new JDateChooser();
+	private JDateChooser jaiotzeDateChooser = new JDateChooser();
+	private String txtNANEnkriptatuta;
 
 	/**
 	 * Create the frame.
@@ -159,6 +160,7 @@ public class SaioaSortu extends JFrame {
 				// NAN balidatzen du
 				Pattern p3 = Pattern.compile("[0-9]{8}[A-Z]");
 				m1 = p3.matcher(txtNAN.getText());
+				txtNANEnkriptatuta = Metodoak.getMD5(txtNAN.getText());
 				if (m1.matches()) {// NAN pattern expresioa betetzen badu letra begiratzen dugu
 					if (Metodoak.NANbalidatu(txtNAN.getText())) {
 					} else {
@@ -199,7 +201,7 @@ public class SaioaSortu extends JFrame {
 				arrayDNI = Kontsultak.selectDNI();
 
 				for (int i = 0; i < arrayDNI.size(); i++) {
-					if (txtNAN.getText().equals(arrayDNI.get(i))) {
+					if (txtNANEnkriptatuta.equals(arrayDNI.get(i))) {
 						JOptionPane.showMessageDialog(null, "NAN hori badago erregistratuta");
 						ondo = false;
 					}
@@ -210,7 +212,7 @@ public class SaioaSortu extends JFrame {
 				String strJaiotzeData = dateFormat.format(jaiotzeDateChooser.getDate());
 				
 				if (ondo) {
-					Metodoak.sartuErabiltzailea(txtNAN.getText(), txtIzena.getText(), txtAbizena.getText(), strJaiotzeData, sexua,
+					Metodoak.sartuErabiltzailea(txtNANEnkriptatuta, txtIzena.getText(), txtAbizena.getText(), strJaiotzeData, sexua,
 							pasahitzaEnkriptatuta);
 					MetodoakVista.ordainketaLeihora(prezioFinala, hotela, gelaMota);
 					dispose();
@@ -235,7 +237,7 @@ public class SaioaSortu extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota);
+				MetodoakVista.saioaHastera(prezioFinala, hotela, gelaMota);
 				dispose();
 
 			}

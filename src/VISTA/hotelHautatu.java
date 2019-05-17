@@ -249,15 +249,19 @@ public class hotelHautatu extends JFrame {
 					} else if (temporada.equals("baja")) {
 						prezioFinala = prezioLogela * egunKop; // marka
 					}
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+					Date date = new Date();
+					
+					String strDate = dateFormat.format(date); //marka
 
-					MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota);
+					MetodoakVista.saioaHastera(prezioFinala, hotela, gelaMota);
 					MetodoakVista.terminoEtaCondizioetara(prezioFinala, hotela, gelaMota);
 
 					m.fitxeroaIdatzi(hotela, prezioFinala, gelaMota, strDateHasiera, egunKop);
 //					m.datenKenketa(strDateHasiera, strDateAmaiera);
 					k.ReserbaDatuakGorde(hotela, Kontsultak.hotelIdLortu(hotela), prezioFinala, gelaMota,
 							Kontsultak.selectCod_logelaHotel(hotela, gelaMota), strDateHasiera, strDateAmaiera,
-							(int) SpinnerLogelaKop.getValue(), 0, 0);
+							(int) SpinnerLogelaKop.getValue(), strDate);
 
 				}
 

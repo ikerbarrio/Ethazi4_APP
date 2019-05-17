@@ -68,7 +68,8 @@ public class SaioaHasi extends JFrame {
 				pasahitzaEnkriptatuta = Metodoak.getMD5(passwordField.getText());
 				pasahitzaKonprobatu = Metodoak.pasahitzaKomprobaketa(pasahitzaEnkriptatuta);
 				System.out.println(pasahitzaEnkriptatuta);
-				DNI = txtDNI.getText();
+				
+				DNI = Metodoak.getMD5(txtDNI.getText());
 				DNIkonprobatu = Metodoak.nanKomprobaketa(DNI);
 			
 				if(DNIkonprobatu==true && pasahitzaKonprobatu==true) {

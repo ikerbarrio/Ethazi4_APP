@@ -263,7 +263,7 @@ public class etxeHautatu extends JFrame {
 					prezioFinala=prezioEtxea* m.datenKenketa(strDateHasiera, strDateAmaiera); 
 					
 					dispose();
-					MetodoakVista.terminoEtaCondizioetara(prezioFinala, hotela, gelaMota);
+					
 				
 					
 					
@@ -303,7 +303,7 @@ public class etxeHautatu extends JFrame {
 					
 					m.fitxeroaIdatzi(etxeIzena, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);		
-					
+					MetodoakVista.terminoEtaCondizioetara(prezioFinala, hotela, gelaMota);
 					
 				
 					//prezioFinala = m.prezioKalk(logelaKop, mota);

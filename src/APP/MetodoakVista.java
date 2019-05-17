@@ -9,7 +9,7 @@ public class MetodoakVista {
 		ongiEtorri.setBounds(550, 200, 642, 467);
 }
 
-	public static void saihoaHastera(double prezioFinala,String hotela,String gelaMota) {
+	public static void saioaHastera(double prezioFinala,String hotela,String gelaMota) {
 		SaioaHasi saioaHasi = new SaioaHasi(prezioFinala,hotela,gelaMota);
 		saioaHasi.setVisible(true);
 		saioaHasi.setBounds(550, 200, 642, 467);

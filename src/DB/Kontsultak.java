@@ -399,7 +399,7 @@ public class Kontsultak {
 	//INSERTAR DATOS EN LA TABLA DE RESERBAS
 	
 	
-	public static void ReserbaDatuakGorde(String hotela, int id, double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop,int idE, int idA) {
+	public static void ReserbaDatuakGorde(String hotela, int id, double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop, String localDate) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -412,8 +412,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,id,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop,idE,idA)"
-					+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,id,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop,fecha_tc)"
+					+ " VALUES(?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, hotela);
@@ -424,8 +424,8 @@ public class Kontsultak {
 			preparedStmt.setString(6, hasieraData);
 			preparedStmt.setString(7, amaieraData);
 			preparedStmt.setInt(8, logeolaKop);
-			preparedStmt.setInt(9, idE);
-			preparedStmt.setInt(10, idA);
+			preparedStmt.setString(9, localDate);
+			
 
 			preparedStmt.execute();
 
