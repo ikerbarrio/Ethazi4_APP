@@ -296,7 +296,7 @@ public class apartamentuHautatu extends JFrame {
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
-					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota);
+					MetodoakVista.terminoEtaCondizioetara(prezioFinala, temporada, temporada);
 		
 					
 					

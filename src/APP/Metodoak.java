@@ -355,170 +355,38 @@ public class Metodoak {
 	public int datenKenketa(String fechaInicio, String fechaActual) {
 		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
-		Date date = new Date(0);
 
-		DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        //creo las variables en date 
+        java.util.Date fechaDate = null;
+        java.util.Date fechaDate2 = null;
+     
+       // paso a date el string de la fecha
+        try {
+            fechaDate =   formato.parse(fechaInicio);
+        } 
+        catch (ParseException ex) 
+        {
+        	 System.out.println(ex+ " falla aqui");
+        }
+        
+        // paso a date el string de la fecha
+        try {   
+         fechaDate2 =  formato.parse(fechaActual);    
+       	} 
+       catch (ParseException ex) 
+       {
+           System.out.println(ex + "falla aqui");
+        }
 
-		String[] aFechaIng = fechaInicio.split("/");
-		Integer diaInicio = Integer.parseInt(aFechaIng[0]);
-		Integer mesInicio = Integer.parseInt(aFechaIng[1]);
-		Integer anioInicio = Integer.parseInt(aFechaIng[2]);
-
-		String[] aFecha = fechaActual.split("/");
-		Integer diaFinal = Integer.parseInt(aFecha[0]);
-		Integer mesFinal = Integer.parseInt(aFecha[1]);
-		Integer anioFinal = Integer.parseInt(aFecha[2]);
-
-//		        int dias = diaFinal - diaInicio;
-
-//		    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
-
-
-	        
-	        
-	        
+//la resta maravillosa
+	int dias =	(int)((  fechaDate2.getTime() -  fechaDate.getTime())/ 86400000);
+	
+	System.out.println("DIAS : "+ dias);
+	return dias;
 		
-//		    if (mesFinal > mesInicio) {
-//		    	
-//			    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
-//			    
-//			    int sumaPorMes=	mesFinal -mesInicio;
-//			    sumaPorMes = sumaPorMes *30;
-//			    dias = dias + sumaPorMes;
-//			    
-//		    System.out.println(" aplicando la diferencia del mes " + dias);
-//		    	
-//		 
-//		    }
-
-//	        int dias = diaFinal - diaInicio;
-
-//	    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
-
-//	    if (mesFinal > mesInicio) {
-//	    	
-//		    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
-//		    
-//		    int sumaPorMes=	mesFinal -mesInicio;
-//		    sumaPorMes = sumaPorMes *30;
-//		    dias = dias + sumaPorMes;
-//		    
-//	    System.out.println(" aplicando la diferencia del mes " + dias);
-//	    	
-//	    }
-
-  
-        
-//        int dias = diaFinal - diaInicio;
-        
-//    System.out.println( "mes inicio "+mesInicio + " y el mes final" + mesFinal);
-
-    
-//    if (mesFinal > mesInicio) {
-//    	
-//	    System.out.println(" PROBANDO SI FUNCIONA  EL IF");
-//	    
-//	    int sumaPorMes=	mesFinal -mesInicio;
-//	    sumaPorMes = sumaPorMes *30;
-//	    dias = dias + sumaPorMes;
-//	    
-//    System.out.println(" aplicando la diferencia del mes " + dias);
-//    	
-// 
-//    }
-
-       
-
-	        System.out.println(diaFinal);
-	        System.out.println(mesFinal);
-	        System.out.println(anioFinal);
-	        int b = 0;
-	        int dias = 0;
-	        int mes = 0;
-	        int anios = 0;
-	        int meses = 0;
-	        mes = mesInicio - 1;
-	        if (mes == 2) {
-	            if ((anioFinal % 4 == 0) && ((anioFinal % 100 != 0) || (anioFinal % 400 == 0))) {
-	                b = 29;
-	            } else {
-	                b = 28;
-	            }
-	        } else if (mes <= 7) {
-	            if (mes == 0) {
-	                b = 31;
-	            } else if (mes % 2 == 0) {
-	                b = 30;
-	            } else {
-	                b = 31;
-	            }
-	        } else if (mes > 7) {
-	            if (mes % 2 == 0) {
-	                b = 31;
-	            } else {
-	                b = 30;
-	            }
-	        }
-	        
-	        if ((anioInicio > anioFinal) || (anioInicio == anioFinal && mesInicio > mesFinal)
-	                || (anioInicio == anioFinal && mesInicio == mesFinal && diaInicio > diaFinal)) {
-	        	
-	            System.out.println("La fecha de inicio debe ser anterior a la fecha Actual");
-	            
-	        } else {
-	            if (mesInicio <= mesFinal) {
-	                anios = anioFinal - anioInicio;
-	                if (diaInicio <= diaFinal) {
-	                    meses = mesFinal - mesInicio;
-	                    dias = b - (diaInicio - diaFinal);
-	                } else {
-	                    if (mesFinal == mesInicio) {
-	                        anios = anios - 1;
-	                    }
-	                    meses = (mesFinal - mesInicio - 1 + 12) % 12;
-	                    dias = b - (diaInicio - diaFinal);
-	                }
-	            } else {
-	                anios = anioFinal - anioInicio - 1;
-	                System.out.println(anios);
-	                if (diaInicio > diaFinal) {
-	                    meses = mesFinal - mesInicio - 1 + 12;
-	                    dias = b - (diaInicio - diaFinal);
-	                } else {
-	                    meses = mesFinal - mesInicio + 12;
-	                    dias = diaFinal - diaInicio;
-	                }
-	            }
-	        }
-	       
-//	    }	       
-
-
-	        if(mesFinal==mesInicio) {
-	        	dias -= 30;
-	        }else {
-	        	dias += 1;
-	        }
-        
-
-//	        System.out.println("Años: " + anios);
-//	        System.out.println("Meses: " + meses);
-		if (dias < 0) {
-			dias = dias * (-1);
-		}
-	        System.out.println("Días: " + (dias - 30));
-	        
-			
-		System.out.println("Años: " + anios);
-		System.out.println("Meses: " + meses);
-  
-		System.out.println("Días: " + (dias + 2));
-		System.out.println("Final del metodo.");
-
-		return dias + 2;
-
+		
 	}
-
 	public boolean reserbaFechaKalkulatuHotel(String fechaInicio, String fechaFinal, int logelaKop, String hotelIzena,
 			String gelaMota) {
 
