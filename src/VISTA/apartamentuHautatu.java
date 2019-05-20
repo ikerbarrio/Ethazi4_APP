@@ -296,15 +296,18 @@ public class apartamentuHautatu extends JFrame {
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
-					MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota);
+					MetodoakVista.terminoEtaCondizioetara(prezioFinala, temporada, temporada);
 		
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+					Date date = new Date();
 					
+					String strDate = dateFormat.format(date);
 					
 
 					pisua = (int)SpinnerPisua.getValue();
 					System.out.println("PISUA: "+pisua);
 					
-					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena, prezioFinala, strDateHasiera, strDateAmaiera, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),pisua);
+					Kontsultak.ReserbaDatuakGordeApartamentua(apartamentuIzena, prezioFinala, strDateHasiera, strDateAmaiera, Kontsultak.apartamentuIdLortu(comboApartamentuak.getSelectedItem().toString()),pisua, strDate);
 					//marka
 			
 				}

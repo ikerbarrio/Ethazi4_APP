@@ -263,37 +263,20 @@ public class etxeHautatu extends JFrame {
 					prezioFinala=prezioEtxea* m.datenKenketa(strDateHasiera, strDateAmaiera); 
 					
 					dispose();
-					MetodoakVista.saihoaHastera(prezioFinala,etxeIzena,gelaMota);
-
-				
 					
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+					Date date = new Date();
 					
-//					//para el metodo de calcular el precio 
-//					if(rdbtnBanakakoa.isSelected()) {
-//						
-//						mota = "Banakakoa";
-//						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
-//					
-//						
-//					}else if(rdbtnBinakakoa.isSelected()) {
-//						
-//						mota = "Bikoitza";
-//						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
-//					
-//						
-//					}else if(rdbtnUmeentzat.isSelected()) {
-//						
-//						mota = "Umeentzat";
-//						codlogela=Kontsultak.selectCodLogelaEtxea(etxeIzena, mota);
-//						
-//					}
-
+					String strDate = dateFormat.format(date);
+					
+					int egunKop = m.datenKenketa(strDateHasiera, strDateAmaiera);
+					
 					String temporada = Metodoak.kalkulatuDenboraldia(strDateHasiera, strDateAmaiera);
 					if (temporada.equals("alta")) {
-						prezioFinala = (prezioEtxea * m.datenKenketa(strDateHasiera, strDateAmaiera));
+						prezioFinala = (prezioEtxea * egunKop);
 						prezioFinala = prezioFinala + 50;// marka
 					} else if (temporada.equals("baja")) {
-						prezioFinala = prezioEtxea * m.datenKenketa(strDateHasiera, strDateAmaiera); // marka
+						prezioFinala = (prezioEtxea * egunKop); // marka
 					}
 					//prezioFinala = m.prezioKalk(SpinnerLogelaKop.getComponentCount(), mota); // cambiar el mota
 					
@@ -302,11 +285,11 @@ public class etxeHautatu extends JFrame {
 					
 					m.fitxeroaIdatzi(etxeIzena, prezioFinala, gelaMota,strDateHasiera,m.datenKenketa(strDateHasiera, strDateHasiera));
 					m.datenKenketa(strDateHasiera, strDateAmaiera);		
-					
+					MetodoakVista.terminoEtaCondizioetara(prezioFinala, hotela, gelaMota);
 					
 				
 					//prezioFinala = m.prezioKalk(logelaKop, mota);
-					Kontsultak.ReserbaDatuakGordeEtxeak(etxeIzena, prezioFinala, strDateHasiera,  strDateAmaiera, Kontsultak.etxeIdLortu(etxeIzena));
+					Kontsultak.ReserbaDatuakGordeEtxeak(etxeIzena, prezioFinala, strDateHasiera,  strDateAmaiera, Kontsultak.etxeIdLortu(etxeIzena), strDate);
 					
 					
 				

@@ -1,23 +1,20 @@
 package VISTA;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import APP.MetodoakVista;
-
-import javax.swing.JTextField;
-import javax.swing.JCheckBox;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-import javax.swing.JTextPane;
-import javax.swing.JScrollBar;
-import javax.swing.JRadioButton;
 
 public class terminosCondiciones extends JFrame {
 
@@ -26,6 +23,7 @@ public class terminosCondiciones extends JFrame {
 	private JPanel contentPane;
 	private JButton btnAurrera = new JButton("AURRERA");
 	private final JButton btnOnartu = new JButton("ONARTU");
+	private LocalDate gaurkoData;
 	/**
 	 * Create the frame.
 	 * @param logela_kop 
@@ -49,14 +47,23 @@ public class terminosCondiciones extends JFrame {
 		al2 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnAurrera.setEnabled(true);
+				btnOnartu.setEnabled(false);
 			}
 		};
 		btnOnartu.addActionListener(al2);
 		
 		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
 				dispose();
+<<<<<<< HEAD
 				MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota);
+=======
+				
+				MetodoakVista.saioaHastera(prezioFinala, hotela, gelaMota);
+>>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
 			}
 		};
 		btnAurrera.addActionListener(al);
@@ -132,7 +139,7 @@ public class terminosCondiciones extends JFrame {
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(592, 11, 17, 328);
 		contentPane.add(scrollBar);
-		btnOnartu.setBounds(534, 350, 75, 23);
+		btnOnartu.setBounds(520, 350, 89, 23);
 		
 		contentPane.add(btnOnartu);
 	}

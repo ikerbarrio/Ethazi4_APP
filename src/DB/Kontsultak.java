@@ -12,7 +12,11 @@ import com.mysql.jdbc.PreparedStatement;
 import APP.*;
 
 public class Kontsultak {
-
+/*
+ * @author grupo1
+ * @deprecated hotelaren izena lortzen du
+ * @return hotelak
+ */
 	public static ArrayList hotelIzenaPantailaratu(String hiria) {
 		String izena = null;// hotelen izenak gordetzen dira
 		String katea;// izena
@@ -44,6 +48,13 @@ public class Kontsultak {
 		}
 		return hotelak;
 	}
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated hotelak daukan informazioa lortu
+	 * @return informazioa
+	 */
 
 	public static String informazioaPantailaratu(String hotelIzena, String tabla) {
 		String informazioa = null;// hotelen informazioa gordetzeko
@@ -72,6 +83,13 @@ public class Kontsultak {
 		}
 		return informazioa;
 	}
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated hirien izenak arraylist batean gordetzen ditu
+	 * @return ArryList
+	 */
 
 	public static ArrayList hiriakPantailaratu() {
 		String izena = null;
@@ -106,7 +124,11 @@ public class Kontsultak {
 
 	// HOTELEN ZERBITZUAK ATERA
 	
-	
+	/*
+	 * @author grupo1
+	 * @deprecated HOTELEN ZERBITZUAK ATERA
+	 * @return zerbitzuak
+	 */
 	public  String zerbitzuakAtera(String hotelIzena) {
 		String zerbitzua = "";
 
@@ -137,6 +159,11 @@ public class Kontsultak {
 	
 	
 	
+	/*
+	 * @author grupo1
+	 * @deprecated erabiltzaileak gorde
+	 * @return erabiltzaileen arrayList
+	 */
 
 	public static ArrayList<Erabiltzailea> gordeErabiltzailea() { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -185,6 +212,13 @@ public class Kontsultak {
 		return inicioSes; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated Datu basera insert bat erregistratutako erabiltzailea
+	 * @return 
+	 */
 	public static void sartuErabiltzailea(String DNI, String izena, String abizena, String jaiotze_data, String sexua,
 			String pasahitza) {
 
@@ -221,6 +255,11 @@ public class Kontsultak {
 	}
 	
 	
+	/*
+	 * @author grupo1
+	 * @deprecated logela bakoitzak zenbat logela kopurua daukan lortu
+	 * @return lopgela kopurua
+	 */
 
 	public static int logelaKopuruaLortu(String hotelIzena, String gelaMota) {
 		int logelaKop = 0;
@@ -254,6 +293,13 @@ public class Kontsultak {
 
 	}
 	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated update bat datu basean kontrolatzeko geratzen diren logelak
+	 * @return 
+	 */
+	
 	public static void logelaKopAldatu(int cod_logela, String mota, int kop) {
 
 		Connection conexion = null;
@@ -277,6 +323,11 @@ public class Kontsultak {
 		
 	}
 	
+	/*
+	 * @author grupo1
+	 * @deprecated hotelaren cod_ logela lortu
+	 * @return cod_logela
+	 */
 	//hotelaren cod_ logela lortu
 	
 	public static int selectCod_logelaHotel(String izena, String mota) { // arraylist bueltatu behar du
@@ -307,6 +358,12 @@ public class Kontsultak {
 		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated apartamentuaren  cod_ logela lortu
+	 * @return cod_logela
+	 */
 	public static int selectCod_logelaApartamentu(String izena, String mota) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -335,6 +392,13 @@ public class Kontsultak {
 		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated etxearen  cod_ logela lortu
+	 * @return cod_logela
+	 */
 	public static int selectCod_logelaEtxe(String izena, String mota) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -399,7 +463,12 @@ public class Kontsultak {
 	//INSERTAR DATOS EN LA TABLA DE RESERBAS
 	
 	
-	public static void ReserbaDatuakGorde(String hotela, int id, double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop,int idE, int idA) {
+	/*
+	 * @author grupo1
+	 * @deprecated reserba tablan datuak gordetzen ditu
+	 * @return 
+	 */
+	public static void ReserbaDatuakGorde(String hotela, int id, double prezioa, String logelaMota, int codLogela, String hasieraData, String amaieraData,int logeolaKop, String localDate) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -412,8 +481,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,id,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop,idE,idA)"
-					+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,id,prezioa,logelaMota,codLogela,hasieraData, amaieraData, logelakop,fecha_tc)"
+					+ " VALUES(?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, hotela);
@@ -424,8 +493,8 @@ public class Kontsultak {
 			preparedStmt.setString(6, hasieraData);
 			preparedStmt.setString(7, amaieraData);
 			preparedStmt.setInt(8, logeolaKop);
-			preparedStmt.setInt(9, idE);
-			preparedStmt.setInt(10, idA);
+			preparedStmt.setString(9, localDate);
+			
 
 			preparedStmt.execute();
 
@@ -436,6 +505,13 @@ public class Kontsultak {
 		}
 
 	}
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated hotelaren ID lortzen du select batekin
+	 * @return ID 
+	 */
 	
 	public static int hotelIdLortu(String hotela) { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -466,6 +542,12 @@ public class Kontsultak {
 		
 	}
 	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated datu basetik prezioa eskuratzen dugu
+	 * @return prezioa
+	 */
 	public static int selectPrezioa(int cod_logela) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -494,6 +576,13 @@ public class Kontsultak {
 		return prezioa; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated amaiera datak arraylistean gorde
+	 * @return arraylist 
+	 */
 	public static ArrayList selectAmaieraDatak() { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -523,6 +612,13 @@ public class Kontsultak {
 		return datak; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated datu basetik hasiera data lortu
+	 * @return hasiera data
+	 */
 	public static String selectHasieraData(String fechaFinal) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -551,6 +647,13 @@ public class Kontsultak {
 		return data; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated datu basetik apartamentu izena lortu
+	 * @return apartamentuak
+	 */
 	public static ArrayList apartamentuIzenaPantailaratu(String hiria) {
 		String izena = null;// hotelen izenak gordetzen dira
 		String katea;// izena
@@ -581,6 +684,13 @@ public class Kontsultak {
 		}
 		return apartamentuak;
 	}
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated datu basetik etxe izena lortu
+	 * @return etxe izena
+	 */
 	
 	public static ArrayList etxeIzenaPantailaratu(String hiria) {
 		String izena = null;// hotelen izenak gordetzen dira
@@ -615,7 +725,13 @@ public class Kontsultak {
 		return etxeak;
 	}
 	
-	public static int selectLogelaKop(String data) { // arraylist bueltatu behar du
+	
+	/*
+	 * @author grupo1
+	 * @deprecated zenbat logelakopuru dauden reserban 
+	 * @return reserbatutako logelak
+	 */
+	public static int selectLogelaKop(String data) { 
 		Connection conexion = null;
 		Statement s = null;
 		int kop =0;
@@ -642,7 +758,12 @@ public class Kontsultak {
 		
 	}
 	
-	public static int selectMaximoLogelaKop(int cod_logela) { // arraylist bueltatu behar du
+	/*
+	 * @author grupo1
+	 * @deprecated zenbat logelakopuru dauden reserban 
+	 * @return reserbatutako logelak
+	 */
+	public static int selectMaximoLogelaKop(int cod_logela) { 
 		Connection conexion = null;
 		Statement s = null;
 		int kop =0;
@@ -669,6 +790,11 @@ public class Kontsultak {
 		
 	}
 	
+	/*
+	 * @author grupo1
+	 * @deprecated zenbat logelakopuru dauden reserban 
+	 * @return reserbatutako logelak
+	 */
 	public static int selectLogelaKopEspecifico(int cod_logela) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -696,7 +822,11 @@ public class Kontsultak {
 		
 	}
 
-	
+	/*
+	 * @author grupo1
+	 * @deprecated etxeko logela motak lortu
+	 * @return logelakopurua
+	 */
 	
 	//etxeko logela motak lortu
 	public static int logelaKopuruaLortuEtxea(String hotelIzena, String gelaMota) {
@@ -733,7 +863,11 @@ public class Kontsultak {
 
 	}
 	
-	
+	/*
+	 * @author grupo1
+	 * @deprecated apartamentu logela motak lortu
+	 * @return logelakopurua
+	 */
 	//apartamentu logela motak lortu
 	
 	public static int logelaKopuruaLortuApartamentu(String apartamentuIzena, String gelaMota) {
@@ -768,7 +902,11 @@ public class Kontsultak {
 
 	}	
 	
-	
+	/*
+	 * @author grupo1
+	 * @deprecated apartamentu id lortu
+	 * @return id
+	 */
 	//apartamentu id lortu
 	
 	public static int apartamentuIdLortu(String apartamentuIzena) { 
@@ -799,10 +937,16 @@ public class Kontsultak {
 		
 	}
 	
+	/*
+	 * @author grupo1
+	 * @deprecated apartamentuaren reserba egiten du
+	 * @return 
+	 
+	 */
 	
 	//GUARDAR DATOS DE LOS APARTAMENTU
 	
-	public static void ReserbaDatuakGordeApartamentua(String izena, double prezioa, String hasieraData, String amaieraData, int idA, int pisua) {
+	public static void ReserbaDatuakGordeApartamentua(String izena, double prezioa, String hasieraData, String amaieraData, int idA, int pisua, String localDate) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -815,8 +959,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idA, pisua)"
-					+ " VALUES(?,?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idA, pisua, fecha_tc)"
+					+ " VALUES(?,?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, izena);
@@ -825,6 +969,7 @@ public class Kontsultak {
 			preparedStmt.setString(4, amaieraData);
 			preparedStmt.setInt(5, idA);
 			preparedStmt.setInt(6, pisua);
+			preparedStmt.setString(7, localDate);
 			preparedStmt.execute();
 
 			System.out.println("Sartuta");
@@ -836,6 +981,11 @@ public class Kontsultak {
 
 	}
 	
+	/*
+	 * @author grupo1
+	 * @deprecated etxeko idE lortu
+	 * @return idE
+	 */
 	// conseguir el idE de etxea
 	public static int etxeIdLortu(String etxeIzena) { 
 		Connection conexion = null;
@@ -864,9 +1014,16 @@ public class Kontsultak {
 		return id;
 		
 	}
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated etxearen reserba egiten du
+	 * @return 
+	 */
 	//GUARDAR DATOS DE ETXEAK
 	
-	public static void ReserbaDatuakGordeEtxeak(String izena, double prezioa, String hasieraData, String amaieraData,int idE) {
+	public static void ReserbaDatuakGordeEtxeak(String izena, double prezioa, String hasieraData, String amaieraData,int idE, String localDate) {
 
 		Connection conexion = null;
 		Statement s = null;
@@ -879,8 +1036,8 @@ public class Kontsultak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idE)"
-					+ " VALUES(?,?,?,?,?)";
+			String query = "INSERT INTO reserba (hotelIzena,prezioa,hasieraData, amaieraData, idE, fecha_tc)"
+					+ " VALUES(?,?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
 			preparedStmt.setString(1, izena);
@@ -888,6 +1045,8 @@ public class Kontsultak {
 			preparedStmt.setString(3, hasieraData);
 			preparedStmt.setString(4, amaieraData);
 			preparedStmt.setInt(5, idE);
+			preparedStmt.setString(6, localDate);
+			
 
 			preparedStmt.execute();
 
@@ -900,7 +1059,11 @@ public class Kontsultak {
 
 	}
 	   
-	
+	/*
+	 * @author grupo1
+	 * @deprecated ETXEEN COD_ LOGELA LORTU
+	 * @return cod_logela
+	 */
 	//ETXEEN COD_ LOGELA LORTU
 	
 	public static int selectCodLogelaEtxea(String izena, String mota) { 
@@ -929,7 +1092,11 @@ public class Kontsultak {
 		return cod_logela; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
-	
+	/*
+	 * @author grupo1
+	 * @deprecated apartamentu COD_ LOGELA LORTU
+	 * @return cod_logela
+	 */
 	//APARTAMENTUAREN CODLOGELA LORTU
 	public static int selectCodLogelaApartamentu(String izena, String mota) { 
 		Connection conexion = null;
@@ -989,7 +1156,11 @@ public class Kontsultak {
 		}
 		return logelaKop; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
-	
+	/*
+	 * @author grupo1
+	 * @deprecatedhotelak daukan logelakop maximoa kalkulatu
+	 * @return logela kopurua
+	 */
 	public static int selectSumaLogelaKopPorHotel(int id, String data) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -1016,6 +1187,14 @@ public class Kontsultak {
 		return kop;
 		
 	}
+	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated apartamentuen logela kopurua 
+	 * @return logela kopurua
+	 * 
+	 */
 	
 	public static int selectSumaLogelaKopPorApartamentu(int id, String data) { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -1044,6 +1223,13 @@ public class Kontsultak {
 		
 	}
 	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated etxeen logela kopurua
+	 * @return logela kopurua
+	 * 
+	 */
 	public static int selectSumaLogelaKopPorEtxe(int id, String data) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -1071,6 +1257,14 @@ public class Kontsultak {
 		
 	}
 	
+	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated hotelaren ID lortu 
+	 * @return lID
+	 * 
+	 */
 	public static int selectIDHotel(int cod_logela) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -1098,6 +1292,14 @@ public class Kontsultak {
 		
 	}
 	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated apartamentuen ID lortu 
+	 * @return ID
+	 * 
+	 */
+	
 	public static int selectIDApartamentu(String izena) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -1124,6 +1326,14 @@ public class Kontsultak {
 		return id;
 		
 	}
+	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated etxe ID lortu 
+	 * @return ID
+	 * 
+	 */
 	
 	public static ArrayList selectIDEtxeaArray() { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -1179,6 +1389,13 @@ public class Kontsultak {
 		
 	}
 	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated etxe ID lortu 
+	 * @return ID
+	 * 
+	 */
 	public static int selectPrezioEtxe(String izena) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -1205,6 +1422,14 @@ public class Kontsultak {
 		return id;
 		
 	}
+	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated apartamentuaren prezioa lortu
+	 * @return prezioa
+	 * 
+	 */
 	
 	public static int selectPrezioApartamentu(String izena) { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -1233,6 +1458,13 @@ public class Kontsultak {
 		
 	}
 	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated apartamentuaren pisu maximoa lortu
+	 * @return pisu maximoa
+	 * 
+	 */
 	public static int selectPisuaMaximoa(String izena) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -1259,6 +1491,14 @@ public class Kontsultak {
 		return pisua;
 		
 	}
+	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated reserban dauden pisuak lortu
+	 * @return pisuak
+	 * 
+	 */
 	
 	public static ArrayList selectPisuak(int idA) { // arraylist bueltatu behar du
 		Connection conexion = null;
@@ -1289,6 +1529,13 @@ public class Kontsultak {
 		
 	}
 	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated apartamentuaren amaiera data lortu
+	 * @return data
+	 * 
+	 */
 	public static ArrayList selectAmaieraDatakApartamentu(int idA) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;
@@ -1318,6 +1565,13 @@ public class Kontsultak {
 		return datak; // gero erabili ahal izateko array nankomprobaketa metodoan
 	}
 	
+	/*
+	 * 
+	 * @author grupo1
+	 * @deprecated etxearen  idE lortu
+	 * @return idE
+	 * 
+	 */
 	public static ArrayList selectAmaieraDatakEtxea(int idE) { // arraylist bueltatu behar du
 		Connection conexion = null;
 		Statement s = null;

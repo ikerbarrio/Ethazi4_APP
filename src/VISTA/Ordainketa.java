@@ -351,10 +351,8 @@ public class Ordainketa extends JFrame {
 		
 		alBAurrera = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-//				cod_logela = Metodoak.selectCod_logela(hotela, gelaMota);
-//				Metodoak.logelaKopAldatu(cod_logela, gelaMota,logela_kop);
 				m.FitxeroaIrakurri();
-//				MetodoakVista.seigarrenera(DNI);
+				MetodoakVista.azkenera();
 				dispose();
 			}
 		};
@@ -367,7 +365,7 @@ public class Ordainketa extends JFrame {
 		alBAtzera = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				MetodoakVista.saihoaHastera(prezioFinala,hotela,gelaMota);
+				MetodoakVista.saioaHastera(prezioFinala,hotela,gelaMota);
 				dispose();
 			}
 		};
