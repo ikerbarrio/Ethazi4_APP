@@ -1,3 +1,4 @@
+
 package APP;
 
 import java.io.File;
@@ -28,6 +29,11 @@ public class Metodoak {
 	public static double kontTotala = 0;
 	DB.Kontsultak k = new DB.Kontsultak();
 
+	/*
+	 * @author grupo1
+	 * @deprecated  diruaren buieltak kalkulatu
+	 * @return zenbat buelta diren
+	 */
 	public static String[] diruarenBueltak(String emaitza, String ordainketa) {// emaitza balioa main-etik hartu
 		double DoubleTextDiruTot = Double.parseDouble(emaitza);
 		DoubleTextDiruTot = DoubleTextDiruTot * 100;
@@ -124,6 +130,12 @@ public class Metodoak {
 		return arrayBueltak;// main-era bidali buelten zerrenda
 	}/* metodo bueltak */
 
+	
+	/*
+	 * @author grupo1
+	 * @deprecated  diruaren kenketa
+	 * @return emaitza
+	 */
 	public static String kenketa(String diruTot, String ordainketa) {
 
 		double doubleDiruTot = Double.parseDouble(diruTot);
@@ -140,6 +152,12 @@ public class Metodoak {
 		return stringEmaitza;
 	}
 
+	/*
+	 * @author grupo1
+	 * @deprecated  fitxeroaren datuak irakurtzen diutu
+	 * @return 
+	 */
+	
 	// METODO DE LECTURA DEL FICHERO LEER LAS RESERVAS
 
 	public void FitxeroaIrakurri() {
@@ -169,6 +187,11 @@ public class Metodoak {
 		}
 	}
 
+	/*
+	 * @author grupo1
+	 * @deprecated  NAN letra komprobatu
+	 * @return ondo a la txarto dagoen NAN
+	 */
 	public static boolean nanKomprobaketa(String DNI) {
 
 		ArrayList<Erabiltzailea> datuErabiltzaile = new ArrayList<Erabiltzailea>();
@@ -196,6 +219,13 @@ public class Metodoak {
 		System.out.println("Fin del metodo");// comprobar el metodo
 		return konprobatu;
 	}
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated  pasahitza ondo dagoen komprobatze du 
+	 * @return pasahitza ondo dagoen ala ez
+	 */
 
 	public static boolean pasahitzaKomprobaketa(String pasahitza) {
 
@@ -222,6 +252,13 @@ public class Metodoak {
 		System.out.println("Fin del metodo");// comprobar el metodo
 		return konprobatu;
 	}
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated  pasatzen saion datua enkriptatzen du
+	 * @return datua enkriptatuta
+	 */
 
 	public static String getMD5(String input) {
 		try {
@@ -241,7 +278,11 @@ public class Metodoak {
 	}
 
 	// ESCRIBIR LAS RESERVAS EN EL FITXERO
-	// añadir mas datos al fitxero
+	/*
+	 * @author grupo1
+	 * @deprecated  fitxeroan datuak idatzi
+	 * @return 
+	 */
 
 	public void fitxeroaIdatzi(String hotelIzena, double prezioFinala, String logelamota, String eguna, int gauKop) {
 
@@ -264,9 +305,13 @@ public class Metodoak {
 			System.out.println("Mesua: " + e.getMessage());
 		}
 	}
+	
 	// KALKULATU ZENBAT LOGELA GERATZEN DIREN
-
-	/* LogelaKopurua pasar el dato del spinner */
+	/*
+	 * @author grupo1
+	 * @deprecated  KALKULATU ZENBAT LOGELA GERATZEN DIREN
+	 * @return logelen kantitatea
+	 */
 	public static int hotelLogelakKalkulatu(int logelakopurua, String hotelIzena, String gelaMota) {
 
 		int hotelLogelaKopurua = (int) DB.Kontsultak.logelaKopuruaLortu(hotelIzena, gelaMota);
@@ -295,6 +340,12 @@ public class Metodoak {
 		Kontsultak.sartuErabiltzailea(DNI, izena, abizena, jaiotze_data, sexua, pasahitza);
 	}
 
+	
+	/*
+	 * @author grupo1
+	 * @deprecated  // NAN-aren letra balidatzeko
+	 * @return letra ondo dagoen ala ez
+	 */
 	// NAN-aren letra balidatzeko
 	public static boolean NANbalidatu(String NAN) {
 		boolean ondo = false;
@@ -325,6 +376,8 @@ public class Metodoak {
 		Kontsultak.logelaKopAldatu(cod_logela, mota, kop);
 	}
 	
+	
+	
 	public static boolean dataKalkulatu(String hasieraData) {
 		boolean balidatu = false;
 		ArrayList<String> datak = new ArrayList<String>();
@@ -353,6 +406,11 @@ public class Metodoak {
 		
 
 	// DATEN ARTEKO KENKETA
+	/*
+	 * @author grupo1
+	 * @deprecated bi daten arteko denbora kalkulatu
+	 * @return aukeratutako egunak
+	 */
 	public int datenKenketa(String fechaInicio, String fechaActual) {
 		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESTA FECHAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
@@ -388,6 +446,11 @@ public class Metodoak {
 		
 		
 	}
+	/*
+	 * @author grupo1
+	 * @deprecated hotelaren reserba data kalkulatu
+	 * @return reserba egin al den ala ez
+	 */
 	public boolean reserbaFechaKalkulatuHotel(String fechaInicio, String fechaFinal, int logelaKop, String hotelIzena,
 			String gelaMota) {
 
@@ -522,6 +585,12 @@ public class Metodoak {
 
 	    }
 	
+	/*
+	 * @author grupo1
+	 * @deprecated apartamentu reserba data kalkulatu
+	 * @return reserba egin al den ala ez
+	 */
+	
 	public boolean reserbaFechaKalkulatuApartamentu(String fechaInicio,String fechaFinal, int idA, int pisua) {
         
         boolean ondo = true;
@@ -599,6 +668,13 @@ public class Metodoak {
 
     }
 	
+	
+	
+	/*
+	 * @author grupo1
+	 * @deprecated etxearen reserba data kalkulatu
+	 * @return reserba egin al den ala ez
+	 */
 	public boolean reserbaFechaKalkulatuEtxea(String fechaInicio,String fechaFinal, int idE) {
         
         boolean ondo = true;
@@ -722,7 +798,11 @@ public class Metodoak {
 //		return prezioFinala;
 //	}
 	
-
+	/*
+	 * @author grupo1
+	 * @deprecated prezioa kalkulatu logela motaren artabera
+	 * @return logelaren prezioa
+	 */
 	// PREZIOA CALCULATU METODOA
 	public static int prezioKalk(int logelaKop, String mota) {
 
@@ -746,6 +826,11 @@ public class Metodoak {
 		return prezioFinala;
 	}
 
+	/*
+	 * @author grupo1
+	 * @deprecated aukeratutako egunak ia denboraldi altua ala baxua den
+	 * @return denboralñdi altua a la baxua den
+	 */
 	public static String kalkulatuDenboraldia(String fechaInicio, String fechaFinal) {
 		String temporada = null;
 		String[] aFechaIng = new String[3];

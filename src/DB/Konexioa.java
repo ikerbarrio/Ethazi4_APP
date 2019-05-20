@@ -7,7 +7,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Konexioa {
-	
+	/*
+	 * @author grupo1
+	 * Datu basearekin konexioa egiten du
+	 */
 	 private String  maquina;
 	    private String  usuario;
 	    private String  clave;
