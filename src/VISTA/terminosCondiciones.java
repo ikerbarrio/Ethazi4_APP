@@ -58,12 +58,8 @@ public class terminosCondiciones extends JFrame {
 				
 				
 				dispose();
-<<<<<<< HEAD
-				MetodoakVista.saihoaHastera(prezioFinala, hotela, gelaMota);
-=======
-				
 				MetodoakVista.saioaHastera(prezioFinala, hotela, gelaMota);
->>>>>>> branch 'master' of https://github.com/ikerbarrio/Ethazi4_APP.git
+				
 			}
 		};
 		btnAurrera.addActionListener(al);
