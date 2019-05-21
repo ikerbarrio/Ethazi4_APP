@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import APP.Metodoak;
 
 public class JUnit {
+	Metodoak m = new Metodoak();
 
 	@Test
 	public void testKenketa() {
@@ -16,18 +17,23 @@ public class JUnit {
 	}
 	
 	@Test
-	public void testNanKomprobaketa() {
-		assertEquals(Metodoak.nanKomprobaketa("12345678Z"),true);
+	public void testNanBalidatu() {
+		assertEquals(Metodoak.NANbalidatu("12345678Z"),true);
 	}
 	
-//	@Test
-//	public void testPasahitzaKomprobaketa() {
-//		assertEquals(Metodoak.pasahitzaKomprobaketa("123"),true);
-//	}
-
 	@Test
-	public void testNanBalidatu() {
-		assertEquals(Metodoak.nanKomprobaketa("12345678Z"),true);
+	public void testDatenKenketa() {
+		assertEquals(m.datenKenketa("12/02/99", "14/02/99"),2);
+	}
+	
+	@Test
+	public void testPrezioKalk() {
+		assertEquals(m.prezioKalk(2, "Banakakoa"),40);
+	}
+	
+	@Test
+	public void testKalkulatuDenboraldia() {
+		assertEquals(m.kalkulatuDenboraldia("20/08/19", "22/08/19"),"alta");
 	}
 
 
